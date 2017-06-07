@@ -11,7 +11,7 @@ public class CalendarController
 	@RequestMapping(value="calendar.do", method=RequestMethod.GET)
 	public String scheduleStudy(Model model) {
 		
-		model.addAttribute("content", "schedule/Calendar.jsp");
+		model.addAttribute("content", "schedule/fullcalendar-3.4.0/demos/theme.jsp");
 		
 		return "index";
 	}
