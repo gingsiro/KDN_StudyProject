@@ -22,9 +22,9 @@
 							</button>
 							<ul class="dropdown-menu">
 								<li><a href="studyList.do">전체</a></li>
-								<li><a href="studyList.do?key='cno'&word='1'">HTML</a></li>
-								<li><a href="studyList.do?key='cno'&word='2'">CSS</a></li>
-								<li><a href="studyList.do?key='cno'&word='3'">JavaScript</a></li>
+								<li><a href="studyList.do?key=cno&word='1'">HTML</a></li>
+								<li><a href="studyList.do?key=cno&word='2'">CSS</a></li>
+								<li><a href="studyList.do?key=cno&word='3'">JavaScript</a></li>
 							</ul>
 						</div></th>
 					<th>스터디명</th>
@@ -34,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var='study' items='list'>
+				<c:forEach var="study" items="${ list }">
 					<tr>
 						<th scope="row">${ study.cno }</th>
 						<td>${ study.sname }</td>

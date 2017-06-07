@@ -27,7 +27,6 @@ public class StudyController {
 	
 	@RequestMapping(value="studyList.do", method=RequestMethod.GET)
 	public String studyList(Model model, String key, String word) {
-		System.out.println(key+"/"+word);
 		PageBean bean = new PageBean(key, word);
 		model.addAttribute("list", studyService.searchAll(bean));
 		model.addAttribute("content", "study/studyHome.jsp");
