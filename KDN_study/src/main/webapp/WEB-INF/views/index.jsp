@@ -84,7 +84,7 @@
                                 <li><a href="404.html">404</a></li>
                                 <li><a href="shortcodes.html">Shortcodes</a></li>
                             </ul>
-                        </li> -->
+                        </li> --> 
                         <li><a href="admin.do">Admin</a></li>
                         <!-- <li><a href="contact-us.html">Contact</a></li>  -->                       
                     </ul>
