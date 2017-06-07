@@ -10,6 +10,33 @@ public class PageBean implements Serializable {
 	 */
 	private String key, word, pagelink;
 	private int pageNo, interval = 5, start=1 , end=interval ;
+	
+	public PageBean(){
+		setKey("all");
+		setWord("");
+		setPagelink("1");
+		setPageNo(1);
+	}
+	
+	public PageBean(String key, String word) {
+		super();
+		this.key = key;
+		this.word = word;
+	}
+	
+	public PageBean(String key, String word, String pagelink, int pageNo) {
+		setKey(key);
+		setWord(word);
+		setPagelink(pagelink);
+		setPageNo(pageNo);
+	}
+	
+	public PageBean(String key, String word, String pagelink, String pageNo) {
+		setKey(key);
+		setWord(word);
+		setPagelink(pagelink);
+		setPageNo(pageNo);
+	}
 	public String getKey() {
 		return key;
 	}
@@ -48,24 +75,7 @@ public class PageBean implements Serializable {
 		if(k!=null && key.equals(k)) return "selected='selected'";
 		else return "";
 	}
-	public PageBean(){
-		setKey("all");
-		setWord("");
-		setPagelink("1");
-		setPageNo(1);
-	}
-	public PageBean(String key, String word, String pagelink, int pageNo) {
-		setKey(key);
-		setWord(word);
-		setPagelink(pagelink);
-		setPageNo(pageNo);
-	}
-	public PageBean(String key, String word, String pagelink, String pageNo) {
-		setKey(key);
-		setWord(word);
-		setPagelink(pagelink);
-		setPageNo(pageNo);
-	}
+	
 	public int getInterval() {
 		return interval;
 	}
