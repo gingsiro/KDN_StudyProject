@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<!--
+	 KDN Study 쿼리로 변경 필요 !!!!!! 
+ -->	
+<mapper namespace="study">
+	<select id="search" parameterType="int" resultType="study">
+		select *
+		from study
+		where sno = 1
+	</select>
+</mapper>
