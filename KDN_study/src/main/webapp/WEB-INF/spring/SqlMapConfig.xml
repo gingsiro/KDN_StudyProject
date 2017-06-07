@@ -11,6 +11,7 @@
 		 -->
 		 <typeAlias type="com.kdn.study.domain.Room" alias="room"/>
 		 <typeAlias type="com.kdn.study.domain.Study" alias="study"/>
+		 <typeAlias type="com.kdn.study.domain.Schedule" alias="schedule"/>
 		 <typeAlias type="com.kdn.study.domain.PageBean" alias="pagebean"/>
 		 
 	</typeAliases>
