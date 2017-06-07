@@ -72,7 +72,7 @@
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/study">Home</a></li>
+                        <li><a href="/study">Home</a></li>
                         <li><a href="studyList.do">Study</a></li>
                         <li><a href="roomList.do">Study Room</a></li>
                         <li><a href="contact.do">Contact</a></li>
