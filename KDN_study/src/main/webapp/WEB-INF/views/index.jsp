@@ -67,12 +67,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                    <a class="navbar-brand" href="/study"><img src="images/logo.png" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="/study">Home</a></li>
                         <li><a href="studyList.do">Study</a></li>
                         <li><a href="roomList.do">Study Room</a></li>
                         <li><a href="contact.do">Contact</a></li>
@@ -84,7 +84,7 @@
                                 <li><a href="404.html">404</a></li>
                                 <li><a href="shortcodes.html">Shortcodes</a></li>
                             </ul>
-                        </li> -->
+                        </li> --> 
                         <li><a href="admin.do">Admin</a></li>
                         <!-- <li><a href="contact-us.html">Contact</a></li>  -->                       
                     </ul>
