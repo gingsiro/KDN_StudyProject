@@ -12,4 +12,23 @@
 		from study
 		where sno = 1
 	</select>
+	<select id="searchall" parameterType="String" resultType="study">
+		select sno, smaster, sname, smax, scurr, cno
+		from study
+		<where>
+			<if test="word != null">
+				<choose>
+					<when test="key == 'cno'">
+						cno = #{ word } 
+					</when>
+					<when test="key == 'sname'">
+						sname like '%'||#{ word }||'%' 
+					</when>
+					<when test="word == 'smaster'">
+						smaster = #{ word }
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
 </mapper>

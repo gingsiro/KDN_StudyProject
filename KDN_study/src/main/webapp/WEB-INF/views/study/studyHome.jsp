@@ -10,8 +10,8 @@
 <body>
 	<section id="study-main">
 		<c:choose>
-			<c:when test="${ !empty list }">
-				<jsp:include page="${ list }" />
+			<c:when test="${ !empty listform }">
+				<jsp:include page="${ listform }" />
 			</c:when>
 			<c:otherwise>
 				스터디 홈 입니다.
