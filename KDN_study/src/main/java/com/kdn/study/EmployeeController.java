@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.study.domain.Employee;
 import com.kdn.study.service.EmployeeService;
 
 @Controller
@@ -35,13 +36,13 @@ public class EmployeeController
 		return "index";
 	}
 	
-	/*@RequestMapping(value="insertEmployee.do", method=RequestMethod.POST)
+	@RequestMapping(value="insertEmployee.do", method=RequestMethod.POST)
 	public String insertEmployee(Employee employee, Model model)
 	{
 		employeeService.add(employee);
 		model.addAttribute("content", "employee/login.jsp");
 		return "index";
-	}*/
+	}
 	
 	@RequestMapping(value="loginForm.do", method=RequestMethod.GET)
 	public String loginForm(Model model)
