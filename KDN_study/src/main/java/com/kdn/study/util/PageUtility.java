@@ -38,7 +38,17 @@ public class PageUtility {
         if(totalrowcount%displayrowcount!=0){
           this.totalpagecount++;
         }
-        
+    }
+    
+    public PageUtility(int displayrowcount, int totalrowcount, int currentpagecount)
+    {
+        this.displayrowcount = displayrowcount;
+        this.totalrowcount = totalrowcount;
+        this.currentpagecount = currentpagecount;
+        this.totalpagecount=totalrowcount/displayrowcount;
+        if(totalrowcount%displayrowcount!=0){
+          this.totalpagecount++;
+        }
     }
    
     public String getCurrentPageCount()

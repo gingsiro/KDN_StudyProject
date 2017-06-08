@@ -27,9 +27,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
-
+ 
 <body class="homepage">
-
+ 
     <header id="header">
         <div class="top-bar">
             <div class="container">
@@ -40,24 +40,32 @@
                     <div class="col-sm-6 col-xs-8">
                        <div class="social">
                             <ul class="social-share">
-                                <!-- <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-                                <li><a href="loginForm.do"><i class="fa fa-linkedin"></i></a></li> 
-                                <!-- <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-skype"></i></a></li> -->
+                            	<c:choose>
+		   							<c:when test="${empty id}">
+                               		 	<li><a href="loginForm.do"><i class="fa fa-linkedin"></i></a></li> 
+                                	</c:when>
+		   						<c:otherwise>
+		   								<li><a href="logout.do">로그아웃</a></li>
+		     							<li><a href="employeeUpdateForm.do">회원정보수정</a></li>
+		     							<li><a href="myPage.do">myPage</a></li>
+		   						</c:otherwise>
+								</c:choose>
                             </ul>
-                            <div class="search">
+                            <!-- <div class="search">
                                 <form role="form">
                                     <input type="text" class="search-form" autocomplete="off" placeholder="Search">
                                     <i class="fa fa-search"></i>
                                 </form>
-                           </div>
+                           </div> -->
+                           <nav id="menu">		
+		 						<a href="insertEmployeeForm.do">회원가입</a><br/>
+		 					</nav>             
                        </div>
                     </div>
                 </div>
             </div><!--/.container-->
         </div><!--/.top-bar-->
-
+ 
         <nav class="navbar navbar-inverse" role="banner">
             <div class="container">
                 <div class="navbar-header">
@@ -107,7 +115,7 @@
                 <li data-target="#main-slider" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-
+ 
                 <div class="item active" style="background-image: url(images/slider/bg1.jpg)">
                     <div class="container">
                         <div class="row slide-margin">
@@ -118,17 +126,17 @@
                                     <a class="btn-slide animation animated-item-3" href="#">Read More</a>
                                 </div>
                             </div>
-
+ 
                             <div class="col-sm-6 hidden-xs animation animated-item-4">
                                 <div class="slider-img">
                                     <img src="images/slider/img1.png" class="img-responsive">
                                 </div>
                             </div>
-
+ 
                         </div>
                     </div>
                 </div><!--/.item-->
-
+ 
                 <div class="item" style="background-image: url(images/slider/bg2.jpg)">
                     <div class="container">
                         <div class="row slide-margin">
@@ -139,17 +147,17 @@
                                     <a class="btn-slide animation animated-item-3" href="#">Read More</a>
                                 </div>
                             </div>
-
+ 
                             <div class="col-sm-6 hidden-xs animation animated-item-4">
                                 <div class="slider-img">
                                     <img src="images/slider/img2.png" class="img-responsive">
                                 </div>
                             </div>
-
+ 
                         </div>
                     </div>
                 </div><!--/.item-->
-
+ 
                 <div class="item" style="background-image: url(images/slider/bg3.jpg)">
                     <div class="container">
                         <div class="row slide-margin">
@@ -177,14 +185,14 @@
             <i class="fa fa-chevron-right"></i>
         </a>
     </article><!--/#main-slider-->
-
+ 
     <article id="feature" >
         <div class="container">
            <div class="center wow fadeInDown">
                 <h2>Features</h2>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
             </div>
-
+ 
             <div class="row">
                 <div class="features">
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -194,7 +202,7 @@
                             <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
                         </div>
                     </div><!--/.col-md-4-->
-
+ 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-comments"></i>
@@ -202,7 +210,7 @@
                             <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
                         </div>
                     </div><!--/.col-md-4-->
-
+ 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-cloud-download"></i>
@@ -218,7 +226,7 @@
                             <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
                         </div>
                     </div><!--/.col-md-4-->
-
+ 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-cogs"></i>
@@ -226,7 +234,7 @@
                             <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
                         </div>
                     </div><!--/.col-md-4-->
-
+ 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-heart"></i>
@@ -238,14 +246,14 @@
             </div><!--/.row-->    
         </div><!--/.container-->
     </article><!--/#feature-->
-
+ 
     <article id="recent-works">
         <div class="container">
             <div class="center wow fadeInDown">
                 <h2>Recent Works</h2>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
             </div>
-
+ 
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <div class="recent-work-wrap">
@@ -259,7 +267,7 @@
                         </div>
                     </div>
                 </div>   
-
+ 
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <div class="recent-work-wrap">
                         <img class="img-responsive" src="images/portfolio/recent/item2.png" alt="">
@@ -272,7 +280,7 @@
                         </div>
                     </div>
                 </div> 
-
+ 
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <div class="recent-work-wrap">
                         <img class="img-responsive" src="images/portfolio/recent/item3.png" alt="">
@@ -285,7 +293,7 @@
                         </div>
                     </div>
                 </div>   
-
+ 
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <div class="recent-work-wrap">
                         <img class="img-responsive" src="images/portfolio/recent/item4.png" alt="">
@@ -311,7 +319,7 @@
                         </div>
                     </div>
                 </div>   
-
+ 
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <div class="recent-work-wrap">
                         <img class="img-responsive" src="images/portfolio/recent/item6.png" alt="">
@@ -324,7 +332,7 @@
                         </div>
                     </div>
                 </div> 
-
+ 
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <div class="recent-work-wrap">
                         <img class="img-responsive" src="images/portfolio/recent/item7.png" alt="">
@@ -337,7 +345,7 @@
                         </div>
                     </div>
                 </div>   
-
+ 
                 <div class="col-xs-12 col-sm-4 col-md-3">
                     <div class="recent-work-wrap">
                         <img class="img-responsive" src="images/portfolio/recent/item8.png" alt="">
@@ -353,16 +361,16 @@
             </div><!--/.row-->
         </div><!--/.container-->
     </article><!--/#recent-works-->
-
+ 
     <article id="services" class="service-item">
 	   <div class="container">
             <div class="center wow fadeInDown">
                 <h2>Our Service</h2>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
             </div>
-
+ 
             <div class="row">
-
+ 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
@@ -374,7 +382,7 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
@@ -386,7 +394,7 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
@@ -398,7 +406,7 @@
                         </div>
                     </div>
                 </div>  
-
+ 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
@@ -410,7 +418,7 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
@@ -422,7 +430,7 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
@@ -437,7 +445,7 @@
             </div><!--/.row-->
         </div><!--/.container-->
     </article><!--/#services-->
-
+ 
     <article id="middle">
         <div class="container">
             <div class="row">
@@ -445,17 +453,17 @@
                     <div class="skill">
                         <h2>Our Skills</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
+ 
                         <div class="progress-wrap">
                             <h3>Graphic Design</h3>
                             <div class="progress">
                               <div class="progress-bar  color1" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
                                 <span class="bar-width">85%</span>
                               </div>
-
+ 
                             </div>
                         </div>
-
+ 
                         <div class="progress-wrap">
                             <h3>HTML</h3>
                             <div class="progress">
@@ -464,7 +472,7 @@
                               </div>
                             </div>
                         </div>
-
+ 
                         <div class="progress-wrap">
                             <h3>CSS</h3>
                             <div class="progress">
@@ -473,7 +481,7 @@
                               </div>
                             </div>
                         </div>
-
+ 
                         <div class="progress-wrap">
                             <h3>Wordpress</h3>
                             <div class="progress">
@@ -483,9 +491,9 @@
                             </div>
                         </div>
                     </div>
-
+ 
                 </div><!--/.col-sm-6-->
-
+ 
                 <div class="col-sm-6 wow fadeInDown">
                     <div class="accordion">
                         <h2>Why People like us?</h2>
@@ -499,7 +507,7 @@
                                 </a>
                               </h3>
                             </div>
-
+ 
                             <div id="collapseOne1" class="panel-collapse collapse in">
                               <div class="panel-body">
                                   <div class="media accordion-inner">
@@ -514,7 +522,7 @@
                               </div>
                             </div>
                           </div>
-
+ 
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">
@@ -530,7 +538,7 @@
                               </div>
                             </div>
                           </div>
-
+ 
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">
@@ -546,7 +554,7 @@
                               </div>
                             </div>
                           </div>
-
+ 
                           <div class="panel panel-default">
                             <div class="panel-heading">
                               <h3 class="panel-title">
@@ -565,11 +573,11 @@
                         </div><!--/#accordion1-->
                     </div>
                 </div>
-
+ 
             </div><!--/.row-->
         </div><!--/.container-->
     </article><!--/#middle-->
-
+ 
     <article id="content">
         <div class="container">
             <div class="row">
@@ -585,7 +593,7 @@
                                     <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">What We Do?</a></li>
                                 </ul>
                             </div>
-
+ 
                             <div class="parrent media-body">
                                 <div class="tab-content">
                                     <div class="tab-pane fade" id="tab1">
@@ -599,7 +607,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+ 
                                      <div class="tab-pane fade active in" id="tab2">
                                         <div class="media">
                                            <div class="pull-left">
@@ -612,7 +620,7 @@
                                             </div>
                                         </div>
                                      </div>
-
+ 
                                      <div class="tab-pane fade" id="tab3">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
                                      </div>
@@ -620,7 +628,7 @@
                                      <div class="tab-pane fade" id="tab4">
                                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words</p>
                                      </div>
-
+ 
                                      <div class="tab-pane fade" id="tab5">
                                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,</p>
                                      </div>
@@ -629,7 +637,7 @@
                         </div> <!--/.media-->     
                     </div><!--/.tab-wrap-->               
                 </div><!--/.col-sm-6-->
-
+ 
                 <div class="col-xs-12 col-sm-4 wow fadeInDown">
                     <div class="testimonial">
                         <h2>Testimonials</h2>
@@ -642,7 +650,7 @@
                                 <span><strong>-John Doe/</strong> Director of corlate.com</span>
                             </div>
                          </div>
-
+ 
                          <div class="media testimonial-inner">
                             <div class="pull-left">
                                 <img class="img-responsive img-circle" src="images/testimonials1.png">
@@ -652,21 +660,21 @@
                                 <span><strong>-John Doe/</strong> Director of corlate.com</span>
                             </div>
                          </div>
-
+ 
                     </div>
                 </div>
-
+ 
             </div><!--/.row-->
         </div><!--/.container-->
     </article><!--/#content-->
-
+ 
     <article id="partner">
         <div class="container">
             <div class="center wow fadeInDown">
                 <h2>Our Partners</h2>
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
             </div>    
-
+ 
             <div class="partners">
                 <ul>
                     <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/partners/partner1.png"></a></li>
@@ -678,7 +686,7 @@
             </div>        
         </div><!--/.container-->
     </article><!--/#partner-->
-
+ 
     <article id="conatcat-info">
         <div class="container">
             <div class="row">
@@ -696,7 +704,7 @@
             </div>
         </div><!--/.container-->    
     </article><!--/#conatcat-info-->
-
+ 
     <article id="bottom">
         <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="row">
@@ -714,7 +722,7 @@
                         </ul>
                     </div>    
                 </div><!--/.col-md-3-->
-
+ 
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
                         <h3>Support</h3>
@@ -729,7 +737,7 @@
                         </ul>
                     </div>    
                 </div><!--/.col-md-3-->
-
+ 
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
                         <h3>Developers</h3>
@@ -744,7 +752,7 @@
                         </ul>
                     </div>    
                 </div><!--/.col-md-3-->
-
+ 
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
                         <h3>Our Partners</h3>
@@ -769,20 +777,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                    © 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="schedule.do">칼칼하다칼칼칼</a></li>
+                         <li><a href="calendar.do">칼칼하다칼칼칼</a></li>
+                        <li><a href="listSchedule.do">여기는 스케줄</a></li>
                         <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer><!--/#footer-->
-    <script src="js/jquery.js"></script>
+ 
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/jquery.isotope.min.js"></script>
