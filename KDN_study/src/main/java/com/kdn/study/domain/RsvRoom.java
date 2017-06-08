@@ -8,9 +8,8 @@ public class RsvRoom {
 	private int sno;
 	private int empno;
 	
+
 	public RsvRoom() {}
-	
-	
 	
 	public RsvRoom(int rsvno, String rsvdate, int rsvcode, int rno, int sno,
 			int empno) {
@@ -58,6 +57,15 @@ public class RsvRoom {
 	}
 	public void setEmpno(int empno) {
 		this.empno = empno;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "RsvRoom [rsvno=" + rsvno + ", rsvdate=" + rsvdate
+				+ ", rsvcode=" + rsvcode + ", rno=" + rno + ", sno=" + sno
+				+ ", empno=" + empno + "]";
 	}
 	
 	
