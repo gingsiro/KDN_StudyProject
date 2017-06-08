@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<!--
+	 KDN Study 쿼리로 변경 필요 !!!!!! 
+ -->	
+<mapper namespace="employee">
+	<select id="search" parameterType="int" resultType="employee">
+		select *
+		from employee
+		where empno = #{ empno }
+	</select>
+	<select id="searchAll" parameterType="pagebean" resultType="employee">
+		select *
+		from employee
+		<where>
+			<if test="word != null">
+				<choose>
+					<when test="key == 'empno'">
+						empno = #{ word } 
+					</when>
+					<when test="key == 'ename'">
+						ename like '%'||#{ word }||'%' 
+					</when>
+					<when test="word == 'dept'">
+						dept like '%'||#{ word }||'%'
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -8,8 +8,51 @@
  -->	
 <mapper namespace="schedule">
 	<select id="search" parameterType="int" resultType="schedule">
-		select *
+		select scno, sctitle, to_char(scdate, 'yyyy-mm-dd') scdate, sno
 		from schedule
 		where scno = #{scno}
 	</select>
-</mapper>
+
+<select id="searchAll" parameterType="pagebean" resultType="schedule">
+		select scno, sctitle, to_char(scdate, 'yyyy-mm-dd') scdate, sno
+		from schedule
+		<where>
+			<if test="word != null">
+				<choose>
+					<when test="key == 'scno'">
+						scno = #{word}
+					</when>
+					<when test="key == 'sctitle'">
+						sctitle like '%' || #{word} || '%'
+					</when>
+					<when test="key == 'sno'">
+						sno = #{word}
+					</when>
+				</choose>
+			</if>
+		</where>
+		order by scno desc
+	</select>
+	
+	
+	<select id="getCount" parameterType="pagebean" resultType="int">
+		select count(*)
+		from schedule
+		<where>
+			<if test="word != null">
+				<choose>
+					<when test="key == 'scno'">
+						scno = #{word}
+					</when>
+					<when test="key == 'sctitle'">
+						sctitle like '%' || #{word} || '%'
+					</when>
+					<when test="key == 'sno'">
+						sno = #{word}
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+	
+	</mapper>
