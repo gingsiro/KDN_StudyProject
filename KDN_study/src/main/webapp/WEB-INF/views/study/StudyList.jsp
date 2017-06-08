@@ -15,10 +15,14 @@
 	$(function() {
 		$("#popbutton").click(function() {
 			$('div.modal').modal({
-				remote : 'CreateStudy.jsp'
 			});
 		})
 	})
+	
+	function test(){
+		location.href="createStudy.do"
+	}
+	
 </script>
 
 
@@ -41,29 +45,31 @@
 					<!-- header title -->
 					<h4 class="modal-title">스터디 생성</h4>
 				</div>
-				<form method="post" action="createStudy.do" enctype="multipart/form-data" >
 					<!-- body -->
 					<div class="modal-body">
+						<form action="createStudy.do"> <!--  enctype="multipart/form-data" --> 
 					
 						<div class="form-group"> 
 							<label for="inputStudyName">스터디 이름</label> 
-							<input type="text" class="form-control" id="studyName" placeholder="Study Name"> 
+							<input type="text" class="form-control" id="sname" name="sname" placeholder="Study Name"> 
 						</div>
 						<div class="form-group">
 							<label for="inputCategory">카테고리</label> 
-							<select class="form-control">
+							<select id="cno" name="cno" class="form-control">
 								<c:forEach var="category" items="${ categoryList }">
-									<option id="categoryName" value="${ category.cname }">${ category.cname }</option>
+									<option value="${ category.cname }">${ category.cname }</option>
 								</c:forEach>
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="inputMax">정원</label> 
-							<select class="form-control">
+							<select id="smax" name="smax" class="form-control">
 								<c:forEach var="i" begin="2" end="12" step="1">
-									<option id="max" value="${ i }">${ i }</option>
+									<option value="${ i }">${ i }</option>
 								</c:forEach>
 							</select>
+							<input type="hidden" id="scurr" name="scurr" value="1"/>
+							<input type="hidden" id="smaster" name="smaster" value="170001"/>
 						</div> 
 						<!-- <div class="form-group"> 
 							<label for="exampleInputFile">File input</label> 
@@ -75,13 +81,13 @@
 								<input type="checkbox"> Check me out 
 							</label> 
 						</div>  -->
+						<button type="submit" class="btn btn-default" data-dismiss="modal">생성</button>
+						</form>
 					</div>
 					<!-- Footer -->
 					<div class="modal-footer"> 내용을 확인하신 후 확인버튼을 눌러주세요.
-					<button type="submit" class="btn btn-default" data-dismiss="modal">생성</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 				</div>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -106,6 +112,7 @@
 									<li><a href="studyList.do?key=cno&word=${ category.cno }">${ category.cname }</a></li>
 								</c:forEach>
 							</ul>
+						</div>
 						</div>
 					</th>
 					<th>스터디명</th>

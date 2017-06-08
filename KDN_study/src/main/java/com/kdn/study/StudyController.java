@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.study.domain.PageBean;
+import com.kdn.study.domain.Study;
 import com.kdn.study.service.CategoryService;
 import com.kdn.study.service.StudyService;
 
@@ -43,6 +44,12 @@ public class StudyController {
 		
 		
 		return "index";
+	}
+	
+	@RequestMapping(value="createStudy.do", method=RequestMethod.GET)
+	public void createStudy(Model model, Study study){
+		System.out.println(study);
+		studyService.createStudy(study);
 	}
 	
 }
