@@ -4,9 +4,9 @@
 
 <mapper namespace="rsvroom">
 <select id="rsvRoomSearch" parameterType="String" resultType="rsvroom">
-		select *
+		select rsvno, to_char(rsvdate, 'yyyy-mm-dd') rsvdate, rsvcode, rno, sno, empno
 		from rsv_room
-		where rsvdate = to_date(#{roomdate}, 'yyyy-mm-dd')
+		where to_char(rsvdate, 'yyyy-mm-dd') = #{roomdate}
 	</select>
 
 </mapper>

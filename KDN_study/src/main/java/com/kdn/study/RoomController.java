@@ -1,7 +1,10 @@
 
 package com.kdn.study;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +24,18 @@ public class RoomController {
 	@RequestMapping(value="roomList.do", method=RequestMethod.GET)
 	public String roomList(Model model) {
 		
-		model.addAttribute("room", roomService.search(1));
-		model.addAttribute("content", "room/RoomList.jsp");
+		//model.addAttribute("room", roomService.search(1));
+		model.addAttribute("content", "room/RoomHome.jsp"); 
+		model.addAttribute("listform","RoomList.jsp");
 		
+		SimpleDateFormat date = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
+		Date currentTime = new Date();
+		String sysDate = date.format(currentTime).toString();
+	
+		List<RsvRoom> rooms = roomService.rsvRoomSearch(sysDate);
+		model.addAttribute("rooms", rooms);
+		
+		model.addAttribute("listcontent", "ReservCheckRoom.jsp");
 		
 		return "index";
 	}
@@ -31,10 +43,14 @@ public class RoomController {
 	
 	@RequestMapping(value="reserveCheckRoom.do", method=RequestMethod.POST)
 	public String reserveCheckRoom(Model model, String roomdate) {
-		//System.out.println(roomdate);
 		List<RsvRoom> rooms = roomService.rsvRoomSearch(roomdate);
 		model.addAttribute("rooms", rooms );
-		model.addAttribute("content", "room/ReservCheckRoom.jsp");
+		
+		model.addAttribute("content", "room/RoomHome.jsp"); 
+		model.addAttribute("listform","RoomList.jsp");
+		model.addAttribute("listcontent", "ReservCheckRoom.jsp");
+		
+		System.out.println(rooms);
 		
 		return "index";
 	}
