@@ -36,6 +36,12 @@ public class StudyController {
 		model.addAttribute("content", "study/StudyHome.jsp");
 		model.addAttribute("listform","StudyList.jsp");
 		model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
+		
+		for (int i = 0; i < 5; i++) {
+			model.addAttribute("room"+i, studyService.searchAll(bean));
+		}
+		
+		
 		return "index";
 	}
 	
