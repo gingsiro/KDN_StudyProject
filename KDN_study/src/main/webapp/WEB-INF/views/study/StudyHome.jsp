@@ -8,15 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section id="study-main">
-		<c:choose>
-			<c:when test="${ !empty listform }">
-				<jsp:include page="${ listform }" />
-			</c:when>
-			<c:otherwise>
+		<section id="study-main">
+			<c:choose>
+				<c:when test="${ !empty listform }">
+					<jsp:include page="${ listform }" />
+				</c:when>
+				<c:otherwise>
 				스터디 홈 입니다.
 			</c:otherwise>
-		</c:choose>
-	</section>
+			</c:choose>
+		</section>
 </body>
 </html>

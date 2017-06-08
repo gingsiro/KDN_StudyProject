@@ -6,9 +6,11 @@
 <head>
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
+
+<link href="css/StudyCSS.css" rel="stylesheet">
+
 </head>
 <body>
-
 	<div class="container">
 		<h2>스터디 목록</h2>
 		<p>현재 KDN Study 포털에 등록된 전체 스터디 목록입니다.</p>
@@ -22,9 +24,9 @@
 							</button>
 							<ul class="dropdown-menu">
 								<li><a href="studyList.do">전체</a></li>
-								<li><a href="studyList.do?key=cno&word='1'">HTML</a></li>
-								<li><a href="studyList.do?key=cno&word='2'">CSS</a></li>
-								<li><a href="studyList.do?key=cno&word='3'">JavaScript</a></li>
+								<c:forEach var="category" items="${ categoryList }">
+									<li><a href="studyList.do?key=cno&word=${ category.cno }">${ category.cname }</a></li>
+								</c:forEach>
 							</ul>
 						</div></th>
 					<th>스터디명</th>
@@ -36,7 +38,7 @@
 			<tbody>
 				<c:forEach var="study" items="${ list }">
 					<tr>
-						<th scope="row">${ study.cno }</th>
+						<th scope="row">${ study.cname }</th>
 						<td>${ study.sname }</td>
 						<td>${ study.scurr }</td>
 						<td>${ study.smax }</td>
@@ -48,6 +50,5 @@
 			</tbody>
 		</table>
 	</div>
-
 </body>
 </html>

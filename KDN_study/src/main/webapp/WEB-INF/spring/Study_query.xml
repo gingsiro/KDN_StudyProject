@@ -10,11 +10,12 @@
 	<select id="search" parameterType="int" resultType="study">
 		select *
 		from study
-		where sno = 1
+		where sno = #{ sno }
 	</select>
-	<select id="searchall" parameterType="String" resultType="study">
-		select sno, smaster, sname, smax, scurr, cno
+	<select id="searchAll" parameterType="String" resultType="study">
+		select sno, smaster, sname, smax, scurr, cno, cname
 		from study
+		JOIN category USING(cno)
 		<where>
 			<if test="word != null">
 				<choose>

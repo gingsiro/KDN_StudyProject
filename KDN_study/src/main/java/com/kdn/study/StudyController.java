@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.study.domain.PageBean;
+import com.kdn.study.service.CategoryService;
 import com.kdn.study.service.StudyService;
 
 @Controller
 public class StudyController {
 	@Autowired
 	private StudyService studyService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	
 	@ExceptionHandler
 	public ModelAndView Handler(Exception e){
@@ -29,9 +33,9 @@ public class StudyController {
 	public String studyList(Model model, String key, String word) {
 		PageBean bean = new PageBean(key, word);
 		model.addAttribute("list", studyService.searchAll(bean));
-		model.addAttribute("content", "study/studyHome.jsp");
-		model.addAttribute("listform","studyList.jsp");
-		
+		model.addAttribute("content", "study/StudyHome.jsp");
+		model.addAttribute("listform","StudyList.jsp");
+		model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));
 		return "index";
 	}
 	
