@@ -10,6 +10,32 @@
 	<script src='js/sch/moment.min.js'></script>
 	<script src='js/sch/jquery.min.js'></script>
 	<script src='js/fullcalendar.min.js'></script>
+	
+
+<script>
+var example_value = '${listschedule}';
+
+
+var sch = '${listschedule[2].scdate}';
+
+document.write('변수 내용 쓰기 테스트: ' + example_value + '<br />');
+document.write('변수 내용 쓰기 테스트: ' + sch + '<br />');
+
+
+var list = new Array(); 
+<c:foreach var ="item" items="${listschedule}">
+list.push("${item.scdate}");
+</c:foreach>
+
+for( var i =0; list.length; i++ ) {
+	document.write(list.pop);
+}
+
+
+
+</script>
+
+	
 <script>
 
 	$(document).ready(function() {
@@ -78,7 +104,7 @@
 				{
 					title: 'Click for Google',
 					url: 'http://google.com/',
-					start: '2017-05-28'
+					start: sch
 				}
 			]
 		});
@@ -105,6 +131,6 @@
 <body>
 
 	<div id='calendar'></div>
-	캘린더캘린더캘린더
+
 </body>
 </html>

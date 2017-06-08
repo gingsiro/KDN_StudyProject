@@ -12,6 +12,8 @@
 		from study
 		where sno = #{ sno }
 	</select>
+	
+	
 	<select id="searchAll" parameterType="String" resultType="study">
 		select sno, smaster, sname, smax, scurr, cno, cname
 		from study

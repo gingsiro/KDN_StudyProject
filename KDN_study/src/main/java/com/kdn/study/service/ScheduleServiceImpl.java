@@ -44,15 +44,10 @@ public class ScheduleServiceImpl implements ScheduleService{
 	@Override
 	public List<Schedule> searchAll(PageBean bean) {
 		try {
-			System.out.println(">>>>>>>>>>>>1");
 			int total = dao.getCount(bean);
-			System.out.println(">>>>>>>>>>>>2");
-			PageUtility bar = new PageUtility(bean.getInterval()
-														  		, total
-														  		, bean.getPageNo());
-			bean.setPagelink(bar.getPageBar());
+			PageUtility bar = new PageUtility(bean.getInterval(), total, bean.getPageNo());
 			
-			System.out.println(">>>>>>>>>>>>3");
+			bean.setPagelink(bar.getPageBar());
 			return dao.searchAll(bean);
 		} catch (Exception e) {
 			e.printStackTrace();
