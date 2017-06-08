@@ -14,8 +14,9 @@
 	</select>
 
 <select id="searchAll" parameterType="pagebean" resultType="schedule">
-		select scno, sctitle, to_char(scdate, 'yyyy-mm-dd') scdate, sno
+		select scno, sctitle, to_char(scdate, 'yyyy-mm-dd') scdate, sno, sname
 		from schedule
+		JOIN study USING(sno)
 		<where>
 			<if test="word != null">
 				<choose>
@@ -54,5 +55,8 @@
 			</if>
 		</where>
 	</select>
+	
+	
+	
 	
 	</mapper>

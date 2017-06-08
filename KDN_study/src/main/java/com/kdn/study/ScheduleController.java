@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Schedule;
 import com.kdn.study.service.ScheduleService;
+import com.kdn.study.service.StudyService;
 
 @Controller
 public class ScheduleController 
@@ -18,18 +19,19 @@ public class ScheduleController
 	@Autowired
 	private ScheduleService scheduleService;
 	
+	@Autowired
+	private StudyService studyService;
+	
 	@RequestMapping(value="listSchedule.do", method=RequestMethod.GET)
 	public String listSchedule(PageBean bean, Model model)
 	{
 		List<Schedule> list = scheduleService.searchAll(bean);
 		model.addAttribute("listschedule", list);
 		model.addAttribute("content", "schedule/listSchedule.jsp");
+		model.addAttribute("studyList", studyService.searchAll(new PageBean("all", null)));
 		
 		return "index";
 	}
-	
-	
-	
 	
 	
 	@RequestMapping(value="schedule.do", method=RequestMethod.GET)
