@@ -97,6 +97,7 @@ public class EmployeeController
 	
 	@RequestMapping(value="updateEmployee.do", method=RequestMethod.POST)
 	public String updateEmployee(Employee employee, Model model) {
+		System.out.println(employee);
 		employeeService.update(employee);
 		model.addAttribute("content", "employee/employeeInfo.jsp");
 		System.out.println("댐댐");

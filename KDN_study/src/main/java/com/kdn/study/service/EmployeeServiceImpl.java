@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.kdn.study.dao.EmployeeDao;
 import com.kdn.study.domain.Employee;
+import com.kdn.study.dao.EmployeeDao;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.UpdateException;
 
@@ -60,13 +60,38 @@ public class EmployeeServiceImpl implements EmployeeService
 		return true;
 	}
 
-	public void withdraw(int empno) {
-	}
+	/*public void withdraw(int empno) {
+		
+	}*/
 
 	public void update(Employee employee) {
+		try {
+
+			Employee find = dao.search(employee.getEmpno());
+			System.out.println(find);
+			if(find == null){
+				throw new UpdateException("아이디에 해당하는 회원이 없어 수정할 수 없습니다.");
+			}else{
+		
+				dao.update(employee);
+			}
+		} catch(Exception  s){
+			throw new UpdateException("업데이트DB 서버 오류");
+		}
 	}
 
 	public void add(Employee employee) {
+		try {
+
+			Employee find= dao.search(employee.getEmpno());
+			if(find != null){
+				throw new UpdateException("이미 등록된 사원번호 입니다.");
+			}else{
+				dao.add(employee);
+			}
+		} catch(Exception  s){
+			throw new UpdateException("DB 서버 오류");
+		}
 	}
 
 }
