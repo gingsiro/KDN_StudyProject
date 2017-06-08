@@ -18,7 +18,7 @@ public class EmployeeController
 	@Autowired
 	private EmployeeService employeeService;
 	
-	/*@ExceptionHandler
+	@ExceptionHandler
 	public ModelAndView handler(Exception e)
 	{
 		ModelAndView model = new ModelAndView("index");
@@ -26,9 +26,9 @@ public class EmployeeController
 		model.addObject("content", "ErrorHandler.jsp");
 		
 		return model;
-	}*/
+	}
 	
-	@RequestMapping(value="insertemployeeForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="insertEmployeeForm.do", method=RequestMethod.GET)
 	public String insertemployeeForm(Model model)
 	{
 		model.addAttribute("content", "employee/insertEmployee.jsp");
