@@ -50,6 +50,7 @@
 		<!-- query를 위한 xml 등록 -->
 		<property name="mapperLocations">
 			<list>
+				<value>/WEB-INF/spring/Category_query.xml</value>
 				<value>/WEB-INF/spring/Study_query.xml</value>
 				<value>/WEB-INF/spring/Schedule_query.xml</value>
 				<value>/WEB-INF/spring/Room_query.xml</value>
