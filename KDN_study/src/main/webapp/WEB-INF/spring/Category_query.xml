@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="category">
+	<select id="search" parameterType="int" resultType="category">
+		select *
+		from category
+		where cno = #{ cno }
+	</select>
+	<select id="searchAll" parameterType="String" resultType="category">
+		select *
+		from category
+		<where>
+			<if test="word != null">
+				<choose>
+					<when test="key == 'cno'">
+						cno = #{ word } 
+					</when>
+					<when test="key == 'cname'">
+						cname like '%'||#{ word }||'%' 
+					</when>
+				</choose>
+			</if>
+		</where>
+	</select>
+</mapper>
