@@ -14,6 +14,11 @@
 	<div class="container">
 		<h2>스터디 목록</h2>
 		<p>현재 KDN Study 포털에 등록된 전체 스터디 목록입니다.</p>
+		<a href="">스터디만들기</a>
+		
+
+
+
 		<table class="table">
 			<thead>
 				<tr>
@@ -42,9 +47,11 @@
 						<td>${ study.sname }</td>
 						<td>${ study.scurr }</td>
 						<td>${ study.smax }</td>
-						<td><a class="blue-text"><i class="fa fa-user"></i></a> <a
-							class="teal-text"><i class="fa fa-pencil"></i></a> <a
-							class="red-text"><i class="fa fa-times"></i></a></td>
+						<td>
+							<a class="blue-text"><i class="fa fa-user"></i></a> 
+							<a class="teal-text"><i class="fa fa-pencil"></i></a>
+							<a class="red-text"><i class="fa fa-times"></i></a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

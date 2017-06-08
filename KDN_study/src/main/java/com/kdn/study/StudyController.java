@@ -35,7 +35,7 @@ public class StudyController {
 		model.addAttribute("list", studyService.searchAll(bean));
 		model.addAttribute("content", "study/StudyHome.jsp");
 		model.addAttribute("listform","StudyList.jsp");
-		model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));
+		model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
 		return "index";
 	}
 	
