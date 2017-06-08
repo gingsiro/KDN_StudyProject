@@ -1,5 +1,6 @@
 package com.kdn.study.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,19 @@ public class RoomServiceImpl implements RoomService {
 		return room;
 	}
 	
-	public List<RsvRoom> rsvRoomSearch(String roomdate) {
-		List<RsvRoom> rsvRooms = dao.rsvRoomSearch(roomdate);
+	public List<RsvRoom> rsvRoomSearchAll(String roomdate) {
+		List<RsvRoom> rsvRooms = dao.rsvRoomSearchAll(roomdate);
 		
 		return rsvRooms;
+		
+	}
+	
+	public List<HashMap<String, Integer>> searchDayRsv(String roomResvDate) {
+		System.out.println("service>>>>>>>>>>>>>>>>>>>>"+roomResvDate);
+		List<HashMap<String, Integer>> dayRsvlist = dao.searchDayRsv(roomResvDate);
+		
+		return dayRsvlist;
+		
 		
 	}
 }

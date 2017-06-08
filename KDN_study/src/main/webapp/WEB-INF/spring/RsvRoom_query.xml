@@ -3,11 +3,27 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
 <mapper namespace="rsvroom">
-<select id="rsvRoomSearch" parameterType="String" resultType="rsvroom">
+<select id="searchAll" parameterType="String" resultType="rsvroom">
 		select rsvno, to_char(rsvdate, 'yyyy-mm-dd') rsvdate, rsvcode, rno, sno, empno
 		from rsv_room
 		where to_char(rsvdate, 'yyyy-mm-dd') = #{roomdate}
-	</select>
+</select>
+	
+<select id="searchDayRsv" parameterType="String" resultType="hashmap">
+	SELECT r.rno, SUM(DECODE(rsvcode, 1, 1, 0)) time07_09,
+				  SUM(DECODE(rsvcode, 2, 1, 0)) time09_12,
+				  SUM(DECODE(rsvcode, 3, 1, 0)) time13_15,
+				  SUM(DECODE(rsvcode, 4, 1, 0)) time15_18,
+				  SUM(DECODE(rsvcode, 5, 1, 0)) time19_21,
+				  SUM(DECODE(rsvcode, 6, 1, 0)) tmie21_23
+	FROM ROOM r,( SELECT ro.rno rno, rsvcode
+				  FROM ROOM ro, RSV_ROOM rs
+				  WHERE ro.rno = rs.rno(+) AND rsvdate = TO_DATE(#{roomResvDate}, 'yyyy-mm-dd')) a
+	WHERE r.rno = a.rno(+)
+	GROUP BY r.rno
+	ORDER BY r.rno
+</select>
+
 
 </mapper>
 

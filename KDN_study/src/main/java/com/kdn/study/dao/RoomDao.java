@@ -1,5 +1,6 @@
 package com.kdn.study.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kdn.study.domain.Room;
@@ -11,7 +12,8 @@ public interface RoomDao {
 	public void insert(Room room);
 	public void delete(int rno);
 	
-	public List<RsvRoom> rsvRoomSearch(String roomdate);
+	public List<RsvRoom> rsvRoomSearchAll(String roomdate);
+	public List<HashMap<String, Integer>> searchDayRsv(String roomResvDate);
 	
 	
 

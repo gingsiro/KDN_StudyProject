@@ -11,7 +11,7 @@
 	<article>
 		<aside>
 			<nav id="menu" >
-				<form method=post action="reserveCheckRoom.do" >
+				<form method=get action="roomList.do" >
 					<input type="date" id="roomdate" name="roomdate"> <input
 						type="submit" value="전송">
 				</form>
