@@ -46,7 +46,7 @@
                                 	</c:when>
 		   						<c:otherwise>
 		   								<li><a href="logout.do">로그아웃</a></li>
-		     							<li><a href="memberUpdateForm.do">회원정보수정</a></li>
+		     							<li><a href="employeeUpdateForm.do">회원정보수정</a></li>
 		     							<li><a href="myPage.do">myPage</a></li>
 		   						</c:otherwise>
 								</c:choose>
@@ -58,7 +58,7 @@
                                 </form>
                            </div> -->
                            <nav id="menu">		
-		 						<a href="insertMemberForm.do">회원가입</a><br/>
+		 						<a href="insertEmployeeForm.do">회원가입</a><br/>
 		 					</nav>             
                        </div>
                     </div>
