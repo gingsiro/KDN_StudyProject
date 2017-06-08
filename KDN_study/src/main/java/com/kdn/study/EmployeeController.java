@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kdn.study.domain.Employee;
 import com.kdn.study.service.EmployeeService;
+import com.kdn.study.domain.Employee;
+
 
 @Controller
 public class EmployeeController 
@@ -76,4 +77,33 @@ public class EmployeeController
 		session.removeAttribute("empno");
 		return "index";
 	}
-}
+	
+	@RequestMapping(value="myPage.do", method=RequestMethod.GET)
+	public String myPage(HttpSession session, Model model) {
+		int empno = (Integer)session.getAttribute("empno");
+		model.addAttribute("employee", employeeService.search(empno));
+		model.addAttribute("content", "employee/employeeInfo.jsp");
+		
+		return "index";
+		
+	}
+	
+	@RequestMapping(value="employeeUpdateForm.do", method=RequestMethod.GET)
+	public String employeeUpdateForm(Model model) {
+		model.addAttribute("content", "employee/updateEmployee.jsp");
+		
+		return "index";
+	}
+	
+	@RequestMapping(value="updateEmployee.do", method=RequestMethod.POST)
+	public String updateEmployee(Employee employee, Model model) {
+		employeeService.update(employee);
+		model.addAttribute("content", "employee/employeeInfo.jsp");
+		System.out.println("댐댐");
+		return "index";
+		
+	}
+	
+	
+	
+	}	

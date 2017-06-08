@@ -3,7 +3,7 @@ package com.kdn.study.domain;
 import java.io.Serializable;
 
 public class Employee implements Serializable{
-	private static final long serialVersionUID = 1L;
+	/*private static final long serialVersionUID = 1L;*/
 	private int empno;
 	private String dept;
 	private String ename;
@@ -12,6 +12,20 @@ public class Employee implements Serializable{
 	private String admin;
 	
 	public Employee() {	}
+	
+	public Employee(int empno, String password) {
+		super();
+		this.empno = empno;
+		this.password = password;
+	}
+	
+	public Employee(int empno, String dept, String ename, String password) {
+		super();
+		this.empno = empno;
+		this.dept = dept;
+		this.ename = ename;
+		this.password = password;
+	}
 
 	public Employee(int empno, String dept, String ename, String gender,
 			String password, String admin) {
@@ -72,13 +86,21 @@ public class Employee implements Serializable{
 		this.admin = admin;
 	}
 
-	public String toString() {
+	/*public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Employee [empno=").append(empno).append(", dept=")
 				.append(dept).append(", ename=").append(ename)
 				.append(", gender=").append(gender).append(", password=")
 				.append(password).append(", admin=").append(admin).append("]");
 		return builder.toString();
-	}
+	}*/
+	
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("empno=").append(empno).append(", dept=").append(dept).append(", ename=").append(ename)
+				.append(", gender=").append(gender).append(", password=").append(password).append(", admin=")
+				.append(admin);
+		return builder.toString();
 
+	}
 }
