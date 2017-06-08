@@ -14,13 +14,13 @@
 		//input 양식의 hidden으로 선언된 page에 요청된 페이지 정보 셋팅 
 		document.getElementById("pageNo").value=cpage;
 		var frm = document.getElementById("frm");
-		frm.action="scheduleList.do";
+		frm.action="listSchedule.do";
 		frm.submit();
 	}
 	//게시글 번호나 타이틀을 클릭하면 해당 게시글 요청을 위한 메서드 
 	function getBoard(no){
 		//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
-		document.getElementById("scno").value = no;
+		document.getElementById("scno").value = scno;
 		var frm = document.getElementById("frm");
 		frm.action="searchSchedule.do";
 		frm.submit();
@@ -68,7 +68,7 @@
 	  	</tr>
 	  	<tr align="center">
 	  	  <td width="100"> 일정번호</td><td width="200">제목</td><td  width="100">일시</td>
-	  	  <c:forEach  var="schedule" items="${list}">
+	  	  <c:forEach  var="schedule" items="${listschedule}">
 	  	  <tr>
 			 <td>${schedule.scno}</td>  	  
 			 <td>${schedule.sctitle}</td>  	  

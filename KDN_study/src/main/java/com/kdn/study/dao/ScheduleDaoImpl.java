@@ -46,14 +46,16 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		 * offset 추출할 row의 시작 위치 (0부터 시작)
 		 * limit 추출할 개수
 		 */
+		System.out.println(">>>>>>>>>>>>Dao1");
 		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getInterval());
-		return session.selectList("board.searchAll", bean, rows);
+		System.out.println(">>>>>>>>>>>>Dao2");
+		return session.selectList("schedule.searchAll", bean, rows);
 	}
 
+	
 	@Override
 	public int getCount(PageBean bean) {
-		// TODO Auto-generated method stub
-		return 0;
+		return session.selectOne("schedule.getCount", bean);
 	}
 
 	@Override

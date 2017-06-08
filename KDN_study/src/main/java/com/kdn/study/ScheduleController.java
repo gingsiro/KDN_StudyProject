@@ -18,24 +18,34 @@ public class ScheduleController
 	@Autowired
 	private ScheduleService scheduleService;
 	
-	@RequestMapping(value="schedule.do", method=RequestMethod.GET)
-	public String scheduleStudy(Model model)
+	@RequestMapping(value="listSchedule.do", method=RequestMethod.GET)
+	public String listSchedule(PageBean bean, Model model)
 	{
-		model.addAttribute("content", "schedule/scheduleHome.jsp");
+		List<Schedule> list = scheduleService.searchAll(bean);
+		model.addAttribute("listschedule", list);
+		model.addAttribute("content", "schedule/listSchedule.jsp");
+		
+		return "index";
+	}
+	
+	
+	
+	
+	
+	@RequestMapping(value="schedule.do", method=RequestMethod.GET)
+	public String scheduleStudy(Model model, PageBean bean)
+	{
+		List<Schedule> list = scheduleService.searchAll(bean);
+		for(Object obj:list){
+			System.out.println(obj);
+		}
+		model.addAttribute("sList", list);
 		model.addAttribute("list","listSchedule.jsp");
 		
 		return "index";
 	}
 	
-	@RequestMapping(value="listSchedule.do", method=RequestMethod.GET)
-	public String listSchedule(PageBean bean, Model model)
-	{
-		List<Schedule> list = scheduleService.searchAll(bean);
-		model.addAttribute("list", list);
-		model.addAttribute("content", "schedule/listSchedule.jsp");
-		
-		return "index";
-	}
+	
 	
 	
 	@RequestMapping(value="searchSchedule.do", method=RequestMethod.GET)
@@ -49,6 +59,11 @@ public class ScheduleController
 	}
 	
 	
-	
-	
+	@RequestMapping(value="calendar.do", method=RequestMethod.GET)
+	public String showCalendar(Model model)
+	{
+		model.addAttribute("content", "schedule/calendar.jsp");
+		
+		return "index";
+	}
 }

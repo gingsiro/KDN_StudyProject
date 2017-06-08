@@ -15,7 +15,7 @@
 
 <select id="searchAll" parameterType="pagebean" resultType="schedule">
 		select scno, sctitle, to_char(scdate, 'yyyy-mm-dd') scdate, sno
-		from board
+		from schedule
 		<where>
 			<if test="word != null">
 				<choose>
@@ -26,12 +26,33 @@
 						sctitle like '%' || #{word} || '%'
 					</when>
 					<when test="key == 'sno'">
-						sno like #{word}
+						sno = #{word}
 					</when>
 				</choose>
 			</if>
 		</where>
-		order by no desc
+		order by scno desc
+	</select>
+	
+	
+	<select id="getCount" parameterType="pagebean" resultType="int">
+		select count(*)
+		from schedule
+		<where>
+			<if test="word != null">
+				<choose>
+					<when test="key == 'scno'">
+						scno = #{word}
+					</when>
+					<when test="key == 'sctitle'">
+						sctitle like '%' || #{word} || '%'
+					</when>
+					<when test="key == 'sno'">
+						sno = #{word}
+					</when>
+				</choose>
+			</if>
+		</where>
 	</select>
 	
 	</mapper>

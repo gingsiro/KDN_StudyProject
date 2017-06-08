@@ -7,8 +7,8 @@ import com.kdn.study.domain.Schedule;
 
 public interface ScheduleService {
 	public Schedule search(int no);
-	public void update(Schedule board);
+	public void update(Schedule schedule);
 	public void remove(int no);
-	public void add(Schedule board, String dir);
+	public void add(Schedule schedule, String dir);
 	public List<Schedule> searchAll(PageBean bean);
 }

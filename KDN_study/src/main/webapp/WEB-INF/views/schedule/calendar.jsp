@@ -1,13 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8' />
 <link rel='stylesheet' href='css/jquery-ui.min.css' />
-<link href='css/fullcalendar.min.css' rel='stylesheet' />
-<link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
-<script src='js/moment.min.js'></script>
-<script src='js/jquery.min.js'></script>
-<script src='js/fullcalendar.min.js'></script>
+	<link href='css/fullcalendar.min.css' rel='stylesheet' />
+	<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+	<script src='js/sch/moment.min.js'></script>
+	<script src='js/sch/jquery.min.js'></script>
+	<script src='js/fullcalendar.min.js'></script>
 <script>
 
 	$(document).ready(function() {
@@ -94,8 +96,7 @@
 	}
 
 	#calendar {
-		width: 5000px;
-		height: 5000px;
+		max-width: 5000px;
 		margin: 0 auto;
 	}
 
@@ -104,6 +105,6 @@
 <body>
 
 	<div id='calendar'></div>
-ttt
+	캘린더캘린더캘린더
 </body>
 </html>
