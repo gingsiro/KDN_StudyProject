@@ -8,11 +8,5 @@
 		from room
 		where rno = 101
 	</select>
-	
-	<select id="rsvRoomSearch" parameterType="String" resultType="RsvRoom">
-		select *
-		from rsv_room
-		where rsvdate = to_date(#{roomdate}, 'yyyy-mm-dd')
-	</select>
 
 </mapper>

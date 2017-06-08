@@ -20,7 +20,7 @@ public class StudyDaoImpl implements StudyDao {
 	}
 	
 	public List<Study> searchAll(PageBean bean){
-		return session.selectList("study.searchall", bean);
+		return session.selectList("study.searchAll", bean);
 	}
-
+	
 }

@@ -11,6 +11,7 @@ public class Study implements Serializable{
 	private int smax;
 	private int scurr;
 	private int cno;
+	private String cname;
 	
 	public Study(){ }
 	
@@ -71,6 +72,14 @@ public class Study implements Serializable{
 
 	public void setCno(int cno) {
 		this.cno = cno;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 
 	public String toString() {
