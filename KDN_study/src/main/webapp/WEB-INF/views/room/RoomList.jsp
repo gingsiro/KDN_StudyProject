@@ -11,9 +11,9 @@
 	<article>
 		<aside>
 			<nav id="menu" >
-				<form method=get action="roomList.do" >
-					<input type="date" id="roomdate" name="roomdate"> <input
-						type="submit" value="전송">
+				<form style="text-align:center" method=get action="roomList.do" >
+					<input type="date" id="roomdate" name="roomdate"> 
+					<input type="submit" value="전송">
 				</form>
 			</nav>
 		</aside>
