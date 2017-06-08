@@ -45,6 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService
 
 	public boolean login(int empno, String password) {
 		Employee employee = null;
+		
 		try {
 			employee = dao.search(empno);
 		} catch(Exception  s){

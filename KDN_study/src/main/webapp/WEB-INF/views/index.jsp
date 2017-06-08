@@ -41,7 +41,7 @@
                        <div class="social">
                             <ul class="social-share">
                             	<c:choose>
-		   							<c:when test="${empty id}">
+		   							<c:when test="${empty empno}">
                                		 	<li><a href="loginForm.do"><i class="fa fa-linkedin"></i></a></li> 
                                 	</c:when>
 		   						<c:otherwise>
