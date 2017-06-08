@@ -18,7 +18,7 @@ public class EmployeeController
 	@Autowired
 	private EmployeeService employeeService;
 	
-	@ExceptionHandler
+	/*@ExceptionHandler
 	public ModelAndView handler(Exception e)
 	{
 		ModelAndView model = new ModelAndView("index");
@@ -26,7 +26,7 @@ public class EmployeeController
 		model.addObject("content", "ErrorHandler.jsp");
 		
 		return model;
-	}
+	}*/
 	
 	@RequestMapping(value="insertemployeeForm.do", method=RequestMethod.GET)
 	public String insertemployeeForm(Model model)
@@ -51,9 +51,10 @@ public class EmployeeController
 	}
 	
 	@RequestMapping(value="login.do", method=RequestMethod.POST)
-	public String login(Model model, HttpSession session, int empno, String pw)
+	public String login(Model model, HttpSession session, int empno, String password)
 	{
-		employeeService.login(empno, pw);
+		
+		employeeService.login(empno, password);
 		session.setAttribute("empno", empno);
 		String referer = (String)session.getAttribute("referer");
 		
