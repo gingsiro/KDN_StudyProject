@@ -28,8 +28,16 @@
 	    <td class='tbasic'><input type='text' name='address'  id='address'>
 	</tr> -->
 	
-	<tr><td class='tbasic'>사원번호</td>
+	
+	
+	
+	
+	<!-- <tr><td class='tbasic'>사원번호</td>
 	    <td class='tbasic'><input type='text' name='empno'  id='empno'></td>
+	</tr> -->
+	
+	<tr>
+		<td>사원번호</td><td>${session.employee.empno }</td>
 	</tr>
 	
 	<tr><td class='tbasic'>부 &nbsp;서</td>

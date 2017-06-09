@@ -100,7 +100,6 @@ public class EmployeeController
 		System.out.println(employee);
 		employeeService.update(employee);
 		model.addAttribute("content", "employee/employeeInfo.jsp");
-		System.out.println("댐댐");
 		return "index";
 		
 	}
