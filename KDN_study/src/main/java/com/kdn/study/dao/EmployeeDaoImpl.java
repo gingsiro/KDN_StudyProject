@@ -17,8 +17,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 	private SqlSessionTemplate session;
 
 	public Employee search(int empno) {
-		System.out.println(empno);
-		System.out.println(session.selectOne("employee.search", empno));
+		System.out.println("dao.search");
 		return session.selectOne("employee.search", empno);
 	}
 
@@ -40,6 +39,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 	}
 
 	public void update(Employee employee) {
+		System.out.println("댐"+employee);
 		session.update("employee.update", employee);
 	}
 
