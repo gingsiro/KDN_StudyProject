@@ -5,27 +5,95 @@
 <html>
 <head>
 <title>Bootstrap Example</title>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 
-<link href="css/StudyCSS.css" rel="stylesheet">
+<!-- <link href="css/StudyCSS.css" rel="stylesheet"> -->
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#popbutton").click(function() {
+			$('div.modal').modal({});
+		})
+	})
+
+	function test() {
+		location.href = "createStudy.do"
+	}
+</script>
+
 
 </head>
 <body>
+
 	<div class="container">
+		<div style="text-align: right">
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createForm">스터디 생성</button>
+		</div>
+		<!-- Modal -->
+		<div id="createForm" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 style="color: blue;">
+							<span class="glyphicon glyphicon-pencil"></span> 스터디 생성
+						</h4>
+					</div>
+					<div class="modal-body">
+						<form role="form" method="POST" action="createStudy.do">
+							<div class="form-group">
+							<label for="inputStudyName">스터디 이름</label> <input type="text"
+								class="form-control" id="sname" name="sname"
+								placeholder="Study Name">
+						</div>
+						<div class="form-group">
+							<label for="inputCategory">카테고리</label> <select id="cno"
+								name="cno" class="form-control">
+								<c:forEach var="category" items="${ categoryList }">
+									<option value="${ category.cno }">${ category.cname }</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="inputMax">정원</label> 
+							<select id="smax" name="smax" class="form-control">
+								<c:forEach var="i" begin="2" end="12" step="1">
+									<option value="${ i }">${ i }</option>
+								</c:forEach>
+							</select>
+							<input type="hidden" id="scurr" name="scurr" value="1" />
+							<input type="hidden" id="smaster" name="smaster" value="170001" />
+						</div>
+						<button type="submit" class="btn btn-default btn-success">
+								<span class="glyphicon glyphicon-ok"></span> 생성
+							</button>
+							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove"></span> 취소
+							</button>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
 		<h2>스터디 목록</h2>
 		<p>현재 KDN Study 포털에 등록된 전체 스터디 목록입니다.</p>
-		<a href="">스터디만들기</a>
-		
-
-
-
 		<table class="table">
 			<thead>
 				<tr>
-					<th><div class="dropdown">
-							<button class="btn btn-primary dropdown-toggle" type="button"
+					<th>
+						<div class="dropdown">
+							<button class="btn btn-default dropdown-toggle" type="button"
 								data-toggle="dropdown">
-								카테고리 <span class="caret"></span>
+								카테고리<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
 								<li><a href="studyList.do">전체</a></li>
@@ -33,7 +101,8 @@
 									<li><a href="studyList.do?key=cno&word=${ category.cno }">${ category.cname }</a></li>
 								</c:forEach>
 							</ul>
-						</div></th>
+						</div>
+					</th>
 					<th>스터디명</th>
 					<th>현재인원</th>
 					<th>최대인원</th>
@@ -47,11 +116,9 @@
 						<td>${ study.sname }</td>
 						<td>${ study.scurr }</td>
 						<td>${ study.smax }</td>
-						<td>
-							<a class="blue-text"><i class="fa fa-user"></i></a> 
-							<a class="teal-text"><i class="fa fa-pencil"></i></a>
-							<a class="red-text"><i class="fa fa-times"></i></a>
-						</td>
+						<td><a class="blue-text"><i class="fa fa-user"></i></a> <a
+							class="teal-text"><i class="fa fa-pencil"></i></a> <a
+							class="red-text"><i class="fa fa-times"></i></a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

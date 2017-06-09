@@ -13,7 +13,6 @@
 		where sno = #{ sno }
 	</select>
 	
-	
 	<select id="searchAll" parameterType="String" resultType="study">
 		select sno, smaster, sname, smax, scurr, cno, cname
 		from study
@@ -34,4 +33,9 @@
 			</if>
 		</where>
 	</select>
+	
+	<insert id="createStudy" parameterType="study">
+		insert into study(sno, smaster, sname, smax, scurr, cno)
+		values(study_sno.nextval,#{ smaster:INTEGER },#{ sname:VARCHAR },#{ smax:INTEGER },#{ scurr:INTEGER },#{ cno:INTEGER })
+	</insert>
 </mapper>

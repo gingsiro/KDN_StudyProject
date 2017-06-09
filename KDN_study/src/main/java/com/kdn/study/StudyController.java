@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.study.domain.PageBean;
+import com.kdn.study.domain.Study;
 import com.kdn.study.service.CategoryService;
 import com.kdn.study.service.StudyService;
 
@@ -36,7 +37,16 @@ public class StudyController {
 		model.addAttribute("content", "study/StudyHome.jsp");
 		model.addAttribute("listform","StudyList.jsp");
 		model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
+		for (int i = 0; i < 5; i++) {
+			model.addAttribute("room"+i, studyService.searchAll(bean));
+		}
 		return "index";
+	}
+	
+	@RequestMapping(value="createStudy.do", method=RequestMethod.POST)
+	public String createStudy(Model model, Study study){
+		studyService.createStudy(study);
+		return "redirect:studyList.do";
 	}
 	
 }

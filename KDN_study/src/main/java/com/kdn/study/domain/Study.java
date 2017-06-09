@@ -15,10 +15,8 @@ public class Study implements Serializable{
 	
 	public Study(){ }
 	
-	public Study(int sno, int smaster, String sname, int smax, int scurr,
+	public Study(int smaster, String sname, int smax, int scurr,
 			int cno) {
-		super();
-		this.sno = sno;
 		this.smaster = smaster;
 		this.sname = sname;
 		this.smax = smax;
