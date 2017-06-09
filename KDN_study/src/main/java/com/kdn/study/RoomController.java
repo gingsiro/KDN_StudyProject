@@ -38,21 +38,21 @@ public class RoomController {
 		List<RsvRoom> rooms = roomService.rsvRoomSearchAll(roomdate);
 		model.addAttribute("rooms", rooms);
 		
-		model.addAttribute("listcontent", "ReservRoomCheck.jsp");
+		model.addAttribute("listcontent", "ReservedRoomCheck.jsp");
 		
 		return "index";
 	}
 	
-	@RequestMapping(value="reserveRoomForm.do", method=RequestMethod.GET)
-	public String reserveRoomForm(Model model) {
+	@RequestMapping(value="reservedRoomForm.do", method=RequestMethod.GET)
+	public String reservedRoomForm(Model model) {
 		model.addAttribute("content", "room/RoomHome.jsp"); 
-		model.addAttribute("listform", "ReservRoom.jsp");
+		model.addAttribute("listform", "RservedRoom.jsp");
 		
 		return "index";
 	}
 	
-	@RequestMapping(value="reservRoom.do", method=RequestMethod.GET) //나중에는 post로 
-	public String reservRoom(Model model, String roomResvDate) {
+	@RequestMapping(value="reservedRoom.do", method=RequestMethod.GET) //나중에는 post로 
+	public String reservedRoom(Model model, String roomResvDate) {
 		
 		List<HashMap<String, Integer>> dayRsvlist = roomService.searchDayRsv(roomResvDate);
 		model.addAttribute("dayRsvlist", dayRsvlist);
@@ -60,28 +60,21 @@ public class RoomController {
 		System.out.println(dayRsvlist.get(0));
 		
 		model.addAttribute("content", "room/RoomHome.jsp"); 
-		model.addAttribute("listform", "ReservRoom.jsp");
-		model.addAttribute("listcontent", "DayRservRoomCheck.jsp");
+		model.addAttribute("listform", "RservedRoom.jsp");
+		model.addAttribute("listcontent", "DayRsvRoomCheck.jsp");
 		
 		return "index";
 	}
 	
 	
-	
-	@RequestMapping(value="reserveCheckRoom.do", method=RequestMethod.POST)
-	public String reserveCheckRoom(Model model, String roomdate) {
+	@RequestMapping(value="reserveRoom.do", method=RequestMethod.POST)
+	public String reserveRoom(RsvRoom rsvRoom) {
 		
-/*		List<RsvRoom> rooms = roomService.rsvRoomSearch(roomdate);
-		model.addAttribute("rooms", rooms );
-		
-		model.addAttribute("content", "room/RoomHome.jsp"); 
-		model.addAttribute("listform","RoomList.jsp");
-		model.addAttribute("listcontent", "ReservCheckRoom.jsp");
-		
-		System.out.println(rooms);*/
-		
-		return "index";
+		return "redirect:reservedRoom.do";
 	}
+	
+	
+	
 	
 	@RequestMapping(value="insertRoomForm.do", method=RequestMethod.GET)
 	public String insertRoomForm(Model model) {
