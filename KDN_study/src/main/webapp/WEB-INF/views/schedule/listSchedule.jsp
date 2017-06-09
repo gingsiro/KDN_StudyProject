@@ -19,6 +19,22 @@
 			}
 		</style>
 		
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+		</script>
+		
+		<script type="text/javascript">
+			$(function() {
+				$("#popbutton").click(function() {
+					$('div.modal').modal({});
+				})
+			})
+		
+			function updateForm(sname, cno, smax) {
+				$('#updateSname').val(sname);
+			}
+		</script>
+
+	
 		<script type="text/javascript">
 			//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
 			function pagelist(cpage){
@@ -40,6 +56,59 @@
 	</head>
 
 <body>
+	
+	
+	<div class="container">
+		<!-- Modal -->
+		<div style="overflow:hidden" id="createForm" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 style="color: blue;">
+							<span class="glyphicon glyphicon-pencil"></span> 스케줄 입력
+						</h4>
+					</div>
+					<div class="modal-body">
+						<form role="form" method="POST" action="createStudy.do">
+							<div class="form-group">
+								<label for="inputStudyName">스케줄 이름</label> <input type="text"
+									class="form-control" id="sname" name="sname"
+									placeholder="Study Name">
+							</div>
+						
+						<input type="date" id="roomdate" name="roomdate"> 
+						
+						<div class="form-group">
+								<label for="inputStudyName">스터디 명(일단 번호로)</label> <input type="text"
+									class="form-control" id="sname" name="sname"
+									placeholder="Study Name">
+							</div>
+							
+						<button type="submit" class="btn btn-default btn-success">
+								<span class="glyphicon glyphicon-ok"></span> 입력
+							</button>
+							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove"></span> 취소
+							</button>
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div>
+		<h2>니가 선택한 스터디의 메인 화면</h2>
+		<p>니 스케줄이다. 그 밑에는 게시판</p>
+		<div style="text-align: right">
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createForm">스케줄 입력</button>
+		</div>
+	</div>
+	
+		
+	</div>
 
 	<section id='loadCalendar'>
 		<jsp:include page="calendar.jsp"></jsp:include>
