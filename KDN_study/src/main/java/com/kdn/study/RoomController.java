@@ -38,7 +38,7 @@ public class RoomController {
 		List<RsvRoom> rooms = roomService.rsvRoomSearchAll(roomdate);
 		model.addAttribute("rooms", rooms);
 		
-		model.addAttribute("listcontent", "ReservCheckRoom.jsp");
+		model.addAttribute("listcontent", "ReservRoomCheck.jsp");
 		
 		return "index";
 	}
@@ -58,6 +58,10 @@ public class RoomController {
 		model.addAttribute("dayRsvlist", dayRsvlist);
 		
 		System.out.println(dayRsvlist.get(0));
+		
+		model.addAttribute("content", "room/RoomHome.jsp"); 
+		model.addAttribute("listform", "ReservRoom.jsp");
+		model.addAttribute("listcontent", "DayRservRoomCheck.jsp");
 		
 		return "index";
 	}
