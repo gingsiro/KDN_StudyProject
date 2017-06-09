@@ -10,7 +10,6 @@ public interface EmployeeDao {
 	public List<Employee> searchAll(PageBean bean);
 	public int getCount(PageBean bean);
 	public void add(Employee employee);
-	/** withdraw를 Y로 update해야 한다.*/
 	public void update(int empno);
 	public void update(Employee employee);
 }

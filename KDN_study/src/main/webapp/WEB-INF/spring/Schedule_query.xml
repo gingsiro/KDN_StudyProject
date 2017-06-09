@@ -56,7 +56,11 @@
 		</where>
 	</select>
 	
-	
+	<select id="searchMySchedule" parameterType="int" resultType="employee">
+		SELECT e.empno, j.sno, s.SCTITLE
+		FROM EMPLOYEE e, join_study j, schedule s
+		WHERE e.empno = j.empno AND j.sno = s.SNO AND e.empno=#{empno};
+	</select>
 	
 	
 	</mapper>

@@ -24,8 +24,8 @@
 	</tr>
 	
 	<tr><td class='tbasic'>성 &nbsp;별</td>
-	   <td align='left'><input type="radio" name="gender" value="man">남자</td>
-		<td align='left'><input type="radio" name="gender" value="woman">여자</td>
+	   <td align='left'><input type="radio" name="gender" value="m">남자</td>
+		<td align='left'><input type="radio" name="gender" value="f">여자</td>
 	</tr>
 	
 	

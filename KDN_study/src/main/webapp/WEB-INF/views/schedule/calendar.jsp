@@ -11,7 +11,7 @@
 	<script src='js/sch/moment.min.js'></script>
 	<script src='js/sch/jquery.min.js'></script>
 	<script src='js/fullcalendar.min.js'></script>
-	
+
 
 
 <script>
@@ -21,12 +21,18 @@ var ourSchedule = new Array() ;
 <c:forEach items="${listschedule}" var="item">
     // var data = {title:'${item.sctitle}', start: '${item.scdate}'}
     var data = new Object();
-    
+    console.log(">>>>>>>>>>" + '${empno}' );
     data.title='${item.sctitle}';
     data.start= '${item.scdate}';
-    
     ourSchedule.push(data);
+    
+  <c:if test = "${empno == '170003'}">
+	    
+   </c:if>
+    
 </c:forEach>
+
+console.log(ourSchedule);
 
 // 날짜
 var date = new Date();
@@ -127,7 +133,7 @@ $(document).ready(function() {
 </style>
 </head>
 <body>
-	
+
 	<div id='calendar'></div>
 
 </body>
