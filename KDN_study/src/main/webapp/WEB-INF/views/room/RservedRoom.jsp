@@ -10,7 +10,7 @@
 	<article>
 		<aside>
 			<nav id="menu" >
-				<form style="text-align:center" method="get" action="reservRoom.do" >
+				<form style="text-align:center" method="get" action="reservedRoom.do" >
 					<input type="date" id="roomResvDate" name="roomResvDate">
 					<input type="submit" value="전송">
 				</form>

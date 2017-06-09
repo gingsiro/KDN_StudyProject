@@ -19,6 +19,6 @@
 	</c:choose>
 	</section>
 	</br>
- 	<a href="reserveRoomForm.do">예약 하기</a>
+ 	<a href="reservedRoomForm.do">예약 하기</a>
 </body>
 </html>
