@@ -34,6 +34,12 @@
 		</where>
 	</select>
 	
+	<select id="searchMyStudy" parameterType="int" resultType="study">
+		select jno, empno, js.sno sno, st.sname sname
+		from join_study js, study st
+		where js.sno = st.sno(+) and empno = #{ empno };
+	</select>
+	
 	<insert id="createStudy" parameterType="study">
 		insert into study(sno, smaster, sname, smax, scurr, cno)
 		values(study_sno.nextval,#{ smaster:INTEGER },#{ sname:VARCHAR },#{ smax:INTEGER },#{ scurr:INTEGER },#{ cno:INTEGER })
