@@ -11,7 +11,7 @@
 	<div class="container">
 		<h2>스터디룸 예약 정보</h2>
 		<p>현재 KDN Study 포털의 룸 예약 현황 목록입니다.</p>
-		<table class="table">
+		<table class="table" style="text-align: center">
 			<thead>
 				<tr>
 					<th>스터디룸 번호</th>
@@ -28,12 +28,55 @@
 				<c:forEach var="room" items="${ dayRsvlist }">
 					<tr>
 						<th scope="row">${room.RNO}</th>
-						<td>${room.TIME07_09}</td>
-						<td>${room.TIME09_12}</td>
-						<td>${room.TIME13_15}</td>
-						<td>${room.TIME15_18}</td>
-						<td>${room.TIME19_21}</td>
-						<td>${room.TIME21_23}</td>
+						<c:choose>
+							<c:when test="${room.TIME07_09 == 0 }">
+								<td style="color: blue">가능</td>
+							</c:when>
+							<c:otherwise>
+								<td style="color: gray">불가능</td>
+							</c:otherwise>
+						</c:choose>	
+						<c:choose>
+							<c:when test="${room.TIME09_12 == 0 }">
+								<td style="color: blue">가능</td>
+							</c:when>
+							<c:otherwise>
+								<td style="color: gray">불가능</td>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${room.TIME13_15 == 0}">
+									<td style="color: blue">가능</td>
+							</c:when>
+							<c:otherwise>
+								<td style="color: gray">불가능</td>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${room.TIME15_18 == 0}">
+									<td style="color: blue">가능</td>
+							</c:when>
+							<c:otherwise>
+								<td style="color: gray">불가능</td>
+							</c:otherwise>
+						</c:choose>
+							<c:choose>
+							<c:when test="${room.TIME19_21 == 0}">
+								<td style="color: blue">가능</td>
+							</c:when>
+							<c:otherwise>
+								<td style="color: gray">불가능</td>
+							</c:otherwise>
+						</c:choose>
+							<c:choose>
+							<c:when test="${room.TIME21_23 ==0}">
+									<td style="color: blue">가능</td>
+							</c:when>
+							<c:otherwise>
+								<td style="color: gray">불가능</td>
+							</c:otherwise>
+						</c:choose>
+	
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -41,51 +84,3 @@
 	</div>
 </body>
 </html>
-	<%-- 					<c:choose>
-							<c:when test="${room.TIME07_09} == 0 ">
-								<td>예약 가능</td>
-							</c:when>
-							<c:otherwise>
-								<td>예약 불가능</td>
-							</c:otherwise>
-						</c:choose>	
-						<c:choose>
-							<c:when test="'${room.TIME09_12}' == '0' ">
-								<td>예약 가능</td>
-							</c:when>
-							<c:otherwise>
-								<td>예약 불가능</td>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="'${room.TIME13_15}' == '0' ">
-								<td>예약 가능</td>
-							</c:when>
-							<c:otherwise>
-								<td>예약 불가능</td>
-							</c:otherwise>
-						</c:choose>
-						<c:choose>
-							<c:when test="'${room.TIME15_18}' == '0' ">
-								<td>예약 가능</td>
-							</c:when>
-									<c:otherwise>
-								<td>예약 불가능</td>
-							</c:otherwise>
-						</c:choose>
-							<c:choose>
-							<c:when test="'${room.TIME19_21}' == '0' ">
-								<td>예약 가능</td>
-							</c:when>
-									<c:otherwise>
-								<td>예약 불가능</td>
-							</c:otherwise>
-						</c:choose>
-							<c:choose>
-							<c:when test="'${room.TIME21_23}' == '0' ">
-								<td>예약 가능</td>
-							</c:when>
-									<c:otherwise>
-								<td>예약 불가능</td>
-							</c:otherwise>
-						</c:choose> --%>
