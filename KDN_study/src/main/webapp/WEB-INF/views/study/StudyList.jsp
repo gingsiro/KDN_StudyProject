@@ -18,8 +18,10 @@
 	
 	function insertForm() {
 		$('#modal-title').html("스터디 생성");
-		$('#submitButtonName').html("삭제");
+		$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>생성");
 		$('#sname').val();
+		$('#sno').val(0);
+		$("#cuStudy").attr("action", "createStudy.do");
 		$('#cno').val(1).attr("selected", "selected");
 		$('#smax').val(2).attr("selected", "selected");
 		$('#modalForm').modal();
@@ -28,9 +30,10 @@
 	function updateForm(sno, sname, cno, smax, smaster) {
 		if( <%=request.getSession().getAttribute("empno")%>== smaster){
 			$('#modal-title').html("스터디 수정");
-			$('#submitButtonName').html("수정");
-			$('#sno').val(sno).attr("selected", "selected");
+			$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>수정");
+			$('#sno').val(sno);
 			$('#sname').val(sname);
+			$("#cuStudy").attr("action", "updateStudy.do");
 			$('#cno').val(cno).attr("selected", "selected");
 			$('#smax').val(smax).attr("selected", "selected");
 			
@@ -67,7 +70,7 @@
 					</h4>
 				</div>
 				<div class="modal-body" id="modal-body">
-					<form role="form" method="POST" action="updateStudy.do">
+					<form id="cuStudy" name="cuStudy" role="form" method="POST" action="createStudy.do">
 						<div class="form-group" >
 							<label for="inputStudyName">스터디 이름</label> 
 							<input type="text" class="form-control" id="sname" name="sname" placeholder="Study Name" value="" required>
