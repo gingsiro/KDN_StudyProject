@@ -80,17 +80,48 @@ public class EmployeeServiceImpl implements EmployeeService
 	}
 
 	public void add(Employee employee) {
-		try {
-
+		/*try {*/
 			Employee find= dao.search(employee.getEmpno());
 			if(find != null){
+				System.out.println(find);
 				throw new UpdateException("이미 등록된 사원번호 입니다.");
-			}else{
-				dao.add(employee);
 			}
-		} catch(Exception  s){
-			throw new UpdateException("DB 서버 오류");
-		}
+			if (find == null) {
+				if(employee.getEmpno() == 0){
+					throw new UpdateException("사원번호를 입력하세요");
+				}
+				else if(employee.getDept() == ""){
+					throw new UpdateException("부서명을 입력하세요");
+				}
+				else if(employee.getEname() == ""){
+					throw new UpdateException("이름을 입력하세요");
+				}
+				else if(employee.getGender() == ""){
+					throw new UpdateException("성별을 입력하세요");
+				}
+				else if(employee.getPassword() == ""){
+					throw new UpdateException("비밀번호를 입력하세요");
+				}
+				else{
+					dao.add(employee);
+				}
+			}
 	}
-
 }
+		
+			
+			
+			
+			
+			
+			
+			/*else{
+				System.out.println("add.search"+find);
+				dao.add(employee);
+			}*/
+		
+		/*} catch(Exception  s){
+			System.out.println("add.errorcatch");
+			throw new UpdateException("DB 서버 오류");
+		}*/
+

@@ -7,11 +7,13 @@
 	 KDN Study 쿼리로 변경 필요 !!!!!! 
  -->	
 <mapper namespace="employee">
+	
 	<select id="search" parameterType="int" resultType="employee">
 		select *
 		from employee
 		where empno = #{ empno }
 	</select>
+	
 	<select id="searchAll" parameterType="pagebean" resultType="employee">
 		select *
 		from employee
@@ -32,18 +34,17 @@
 		</where>
 	</select>
 	
-	
-	<!-- <insert id="insert" parameterType="employee">
-		insert into employee(empno, dept, ename, gender, password admin)
+	<insert id="insert" parameterType="employee">
+		insert into employee(empno, dept, ename, gender, password <!-- admin -->)
 		values(
-				#{empno:NUMBER}
+				#{empno:INTEGER}
 				, #{dept:VARCHAR}	
 				, #{ename:VARCHAR}	
-				, #{gender:VARCHAR}	
+				, #{gender:CHAR}	
 				, #{password:VARCHAR}
-				, #{admin:VARCHAR}	
+				<!-- , #{admin:VARCHAR} -->	
 		)
-	</insert> -->
+	</insert>
  
 	<update id="update" parameterType="employee">
 		update employee set password=#{password:VARCHAR}
