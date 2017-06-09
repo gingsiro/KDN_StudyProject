@@ -18,6 +18,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 
 	public Employee search(int empno) {
 		System.out.println("dao.search");
+		System.out.println(empno);
 		return session.selectOne("employee.search", empno);
 	}
 

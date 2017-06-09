@@ -50,7 +50,7 @@
 		update employee set password=#{password:VARCHAR}
 						, ename=#{ename:VARCHAR}	
 						, dept= #{dept:VARCHAR}	
-		where empno=#{empno:INTEGER}
+		where empno = #{empno:INTEGER}
 	</update>
 	
 	<!-- <update id="delete" parameterType="String">
