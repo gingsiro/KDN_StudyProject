@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <%-- 예약확인화면입니다.
 <table>
 	<tr>
@@ -22,7 +23,7 @@
 </table> 
  --%>
  
- 	<div class="container">
+  	<div class="container">
 		<h2>스터디룸 예약 정보</h2>
 		<p>현재 KDN Study 포털의 룸 예약 현황 목록입니다.</p>
 		<table class="table">

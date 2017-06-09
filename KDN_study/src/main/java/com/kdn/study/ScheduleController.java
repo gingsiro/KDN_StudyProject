@@ -2,6 +2,8 @@ package com.kdn.study;
 
 import java.util.List;
 
+import net.sf.json.JSONArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,7 @@ public class ScheduleController
 		List<Schedule> list = scheduleService.searchAll(bean);
 		model.addAttribute("listschedule", list);
 		model.addAttribute("content", "schedule/listSchedule.jsp");
+		
 		model.addAttribute("studyList", studyService.searchAll(new PageBean("all", null)));
 		
 		return "index";

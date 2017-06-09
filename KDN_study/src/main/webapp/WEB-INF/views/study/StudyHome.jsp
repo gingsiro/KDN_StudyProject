@@ -9,8 +9,6 @@
 
 </head>
 <body>
-	
-
 	<section id="study-main">
 		<c:choose>
 			<c:when test="${ !empty listform }">

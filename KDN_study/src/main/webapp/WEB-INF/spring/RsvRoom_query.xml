@@ -15,7 +15,7 @@
 				  SUM(DECODE(rsvcode, 3, 1, 0)) time13_15,
 				  SUM(DECODE(rsvcode, 4, 1, 0)) time15_18,
 				  SUM(DECODE(rsvcode, 5, 1, 0)) time19_21,
-				  SUM(DECODE(rsvcode, 6, 1, 0)) tmie21_23
+				  SUM(DECODE(rsvcode, 6, 1, 0)) time21_23
 	FROM ROOM r,( SELECT ro.rno rno, rsvcode
 				  FROM ROOM ro, RSV_ROOM rs
 				  WHERE ro.rno = rs.rno(+) AND rsvdate = TO_DATE(#{roomResvDate}, 'yyyy-mm-dd')) a
