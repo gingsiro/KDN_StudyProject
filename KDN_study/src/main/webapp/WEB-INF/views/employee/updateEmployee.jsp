@@ -9,39 +9,32 @@
 </head>
 <body>
 <form method="post" action="updateEmployee.do" >
+
+<%-- <input type = 'hidden' name='empno' id='empno' value = "${session.employee.empno }">
+ --%>
 <table  align='center' >
 	<tr><td class="caption" colspan='2'>회원 정보 수정</td></tr>
 	
-	<!-- <tr><td class='tbasic'>아 이 디</td>
-	    <td class='tbasic'><input type='text' name='id'  id='id'></td>
-	</tr>
-	<tr><td class='tbasic'>비밀번호</td>
-	    <td class='tbasic'><input type='text' name='password'  id='password'></td>
-	</tr>
-	<tr><td class='tbasic'>이 &nbsp;름</td>
-	    <td class='tbasic'><input type='text' name='name'  id='name'></td>
-	</tr>
-	<tr><td class='tbasic'>이메일</td>
-	    <td class='tbasic'><input type='text' name='email'  id='email'>
-	</tr>
-	<tr><td class='tbasic'>주 &nbsp;소</td>
-	    <td class='tbasic'><input type='text' name='address'  id='address'>
-	</tr> -->
 	
 	<tr><td class='tbasic'>사원번호</td>
-	    <td class='tbasic'><input type='text' name='empno'  id='empno'></td>
+		<td>${employee.empno }</td>
+	    <td class='tbasic'><input type='hidden' name='empno'  id='empno' value = '${employee.empno }' ></td>
 	</tr>
+	 
+	<%-- <tr>
+		<td>사원번호</td><td>${employee.empno }</td>
+	</tr> --%>
 	
 	<tr><td class='tbasic'>부 &nbsp;서</td>
-	    <td class='tbasic'><input type='text' name='dept'  id='dept'>
+	    <td class='tbasic'><input type='text' name='dept'  id='dept' value= '${employee.dept }'>
 	</tr>
 	
 	<tr><td class='tbasic'>이 &nbsp;름</td>
-	    <td class='tbasic'><input type='text' name='ename'  id='ename'></td>
+	    <td class='tbasic'><input type='text' name='ename'  id='ename' value= '${employee.ename }'></td>
 	</tr>
 	
 	<tr><td class='tbasic'>비밀번호</td>
-	    <td class='tbasic'><input type='text' name='password'  id='password'></td>
+	    <td class='tbasic'><input type='text' name='password'  id='password'  value= '${employee.password }'></td>
 	</tr>
 	
 	

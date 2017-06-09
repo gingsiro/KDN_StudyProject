@@ -62,5 +62,14 @@
 		WHERE e.empno = j.empno AND j.sno = s.SNO AND e.empno=#{empno};
 	</select>
 	
+	<insert id="insertSchedule" parameterType="Schedule">
+		insert into schedule(scno, sctitle, scdate, sno)
+		values(study_sno.nextval
+				, #{ smaster:INTEGER }
+				, #{ sname:VARCHAR }
+				, #{ smax:INTEGER }, #{ scurr:INTEGER },#{ cno:INTEGER })
+	</insert>
+	
+	
 	
 	</mapper>
