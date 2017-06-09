@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,34 +13,28 @@
 	<script src='js/fullcalendar.min.js'></script>
 	
 
-<script>
-var example_value = '${listschedule}';
 
-
-var sch = '${listschedule[2].scdate}';
-
-document.write('변수 내용 쓰기 테스트: ' + example_value + '<br />');
-document.write('변수 내용 쓰기 테스트: ' + sch + '<br />');
-
-
-var list = new Array(); 
-<c:foreach var ="item" items="${listschedule}">
-list.push("${item.scdate}");
-</c:foreach>
-
-for( var i =0; list.length; i++ ) {
-	document.write(list.pop);
-}
-
-
-
-</script>
-
-	
 <script>
 
-	$(document).ready(function() {
+// 날짜 가져오기, json 생성
+var ourSchedule = new Array() ;
+<c:forEach items="${listschedule}" var="item">
+    // var data = {title:'${item.sctitle}', start: '${item.scdate}'}
+    var data = new Object();
+    
+    data.title='${item.sctitle}';
+    data.start= '${item.scdate}';
+    
+    ourSchedule.push(data);
+</c:forEach>
 
+// 날짜
+var date = new Date();
+var sysdate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+document.write('현재 날짜: ' + sysdate);
+
+// 시작
+$(document).ready(function() {
 		$('#calendar').fullCalendar({
 			theme: true,
 			header: {
@@ -47,14 +42,15 @@ for( var i =0; list.length; i++ ) {
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay,listMonth'
 			},
-			defaultDate: '2017-05-12',
+			defaultDate: sysdate,
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
-			events: [
+			events:  ourSchedule
+			  /*  [
 				{
-					title: 'All Day Event',
-					start: '2017-05-01'
+					title: '오잉??',
+					start: '2017-06-25'
 				},
 				{
 					title: 'Long Event',
@@ -104,14 +100,16 @@ for( var i =0; list.length; i++ ) {
 				{
 					title: 'Click for Google',
 					url: 'http://google.com/',
-					start: sch
+					start: '2017-05-13T07:00:00'
 				}
-			]
+			]    */
 		});
 		
 	});
 
 </script>
+
+
 <style>
 
 	body {
@@ -129,7 +127,7 @@ for( var i =0; list.length; i++ ) {
 </style>
 </head>
 <body>
-
+	
 	<div id='calendar'></div>
 
 </body>
