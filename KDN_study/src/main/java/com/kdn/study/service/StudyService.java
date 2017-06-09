@@ -8,4 +8,5 @@ import com.kdn.study.domain.Study;
 public interface StudyService {
 	public Study search(int no);
 	public List<Study> searchAll(PageBean bean);
+	public void createStudy(Study study);
 }

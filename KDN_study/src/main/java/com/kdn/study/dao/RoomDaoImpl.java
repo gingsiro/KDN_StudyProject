@@ -1,5 +1,6 @@
 package com.kdn.study.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -29,10 +30,13 @@ public class RoomDaoImpl implements RoomDao {
 
 	}
 	
-	public List<RsvRoom> rsvRoomSearch(String roomdate) {
-		return session.selectList("rsvroom.rsvRoomSearch", roomdate);
-		
-		
+	public List<RsvRoom> rsvRoomSearchAll(String roomdate) {
+		return session.selectList("rsvroom.searchAll", roomdate);
+	}
+	
+	public List<HashMap<String, Integer>> searchDayRsv(String roomResvDate){
+		System.out.println("dao>>>>>>>>>>>>>>>>>>>"+roomResvDate);
+		return session.selectList("rsvroom.searchDayRsv", roomResvDate);
 	}
 
 }

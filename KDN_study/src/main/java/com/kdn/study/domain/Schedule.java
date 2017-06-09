@@ -9,6 +9,7 @@ public class Schedule implements Serializable{
 	private String sctitle;
 	private String scdate;
 	private int sno;
+	private String sname;
 		
 	public Schedule() { }
 	
@@ -46,6 +47,14 @@ public class Schedule implements Serializable{
 		return serialVersionUID;
 	}
 
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

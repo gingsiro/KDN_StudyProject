@@ -24,4 +24,8 @@ public class StudyServiceImpl implements StudyService {
 		return dao.searchAll(bean);
 	}
 
+	public void createStudy(Study study) {
+		dao.createStudy(study);
+	}
+
 }

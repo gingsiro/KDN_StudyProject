@@ -8,9 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="head">
-  	스 터 디 룸
-</div>
 	<section id="room-main">
 	<c:choose>
 		<c:when test="${ !empty listform }">
@@ -21,5 +18,7 @@
 		</c:otherwise>
 	</c:choose>
 	</section>
+	</br>
+ 	<a href="reserveRoomForm.do">예약 하기</a>
 </body>
 </html>
