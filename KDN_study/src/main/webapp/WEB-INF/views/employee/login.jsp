@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
  	<% String empno = (String) session.getAttribute("empno");
- 	if(empno == null){    //·Î±äÀ» ÇÏÁö ¾ÊÀº °æ¿ì   ·Î±×ÀÎ È­¸é Ãâ·Â
+ 	if(empno == null){    //ë¡œê¸´ì„ í•˜ì§€ ì•Šì€ ê²½ìš°   ë¡œê·¸ì¸ í™”ë©´ ì¶œë ¥
  	  Cookie[] cookies = request.getCookies();
  		String empnoSave ="";
  	    for(Cookie cookie: cookies){
@@ -21,11 +21,11 @@
  	    <p  style="color:red"><%=msg %></p>
  	 <% } %>
 	<form action="login.do" method="post"  id="frm">
-		»ç¿ø¹øÈ£: <input type="text" name="empno" value='<%=empnoSave %>'  id="empno"/><br/>
-		ºñ¹Ð¹øÈ£ : <input type="text" name="password"  id="password"/><br/>
+		ì‚¬ì›ë²ˆí˜¸: <input type="text" name="empno" value='<%=empnoSave %>'  id="empno"/><br/>
+		ë¹„ë°€ë²ˆí˜¸ : <input type="text" name="password"  id="password"/><br/>
 		<input type="checkbox" name='empnosave' value='t'
 		 <%= empnoSave.length()>0? "checked='checked'" :"" %>
-		>»ç¿ø¹øÈ£ ÀúÀå
+		>ì‚¬ì›ë²ˆí˜¸ ì €ìž¥
 		<input type="submit" value="Login"/>
 	</form>
 	<%} %>

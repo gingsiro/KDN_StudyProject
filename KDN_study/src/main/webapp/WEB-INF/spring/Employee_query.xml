@@ -33,23 +33,23 @@
 	</select>
 	
 	
-	<insert id="insert" parameterType="employee">
-		insert into employee(empno, dept, ename, gender, password, admin)
+	<!-- <insert id="insert" parameterType="employee">
+		insert into employee(empno, dept, ename, gender, password admin)
 		values(
 				#{empno:NUMBER}
 				, #{dept:VARCHAR}	
 				, #{ename:VARCHAR}	
-				, #{gender:CHAR}	
+				, #{gender:VARCHAR}	
 				, #{password:VARCHAR}
-				<!-- , #{admin:VARCHAR} -->	
+				, #{admin:VARCHAR}	
 		)
-	</insert>
-
+	</insert> -->
+ 
 	<update id="update" parameterType="employee">
 		update employee set password=#{password:VARCHAR}
 						, ename=#{ename:VARCHAR}	
-						,dept= #{dept:VARCHAR}	
-		where empno=#{empno:VARCHAR}
+						, dept= #{dept:VARCHAR}	
+		where empno=#{empno:INTEGER}
 	</update>
 	
 	<!-- <update id="delete" parameterType="String">
