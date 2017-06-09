@@ -8,5 +8,6 @@ import com.kdn.study.domain.Study;
 public interface StudyDao {
 	public Study search(int no);
 	public List<Study> searchAll(PageBean bean);
+	public List<Study> searchMyStudy(int empno);
 	public void createStudy(Study study);
 }

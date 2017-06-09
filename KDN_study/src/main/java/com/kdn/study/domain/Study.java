@@ -12,6 +12,7 @@ public class Study implements Serializable{
 	private int scurr;
 	private int cno;
 	private String cname;
+	private int jno;
 	
 	public Study(){ }
 	
@@ -78,6 +79,14 @@ public class Study implements Serializable{
 
 	public void setCname(String cname) {
 		this.cname = cname;
+	}
+
+	public int getJno() {
+		return jno;
+	}
+
+	public void setJno(int jno) {
+		this.jno = jno;
 	}
 
 	public String toString() {

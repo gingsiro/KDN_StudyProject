@@ -23,6 +23,10 @@ public class StudyServiceImpl implements StudyService {
 	public List<Study> searchAll(PageBean bean){
 		return dao.searchAll(bean);
 	}
+	
+	public List<Study> searchMyStudy(int empno){
+		return dao.searchMyStudy(empno);
+	}
 
 	public void createStudy(Study study) {
 		dao.createStudy(study);

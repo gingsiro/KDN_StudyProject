@@ -64,4 +64,9 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		return 0;
 	}
 
+	@Override
+	public List<Schedule> searchMySchedule(int no) {
+		return session.selectList("schedule.searchMySchedule", no);
+	}
+
 }

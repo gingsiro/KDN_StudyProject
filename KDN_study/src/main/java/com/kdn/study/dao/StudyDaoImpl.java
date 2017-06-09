@@ -22,6 +22,10 @@ public class StudyDaoImpl implements StudyDao {
 	public List<Study> searchAll(PageBean bean){
 		return session.selectList("study.searchAll", bean);
 	}
+	
+	public List<Study> searchMyStudy(int empno){
+		return session.selectList("study.searchMyStudy", empno);
+	}
 
 	public void createStudy(Study study) {
 		session.insert("study.createStudy", study);
