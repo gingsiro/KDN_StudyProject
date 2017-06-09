@@ -7,19 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	룸 예약하는 폼을 띄워주는 화면입니다.
-		<article>
+	<article>
 		<aside>
 			<nav id="menu" >
-				<form style="text-align:center" method=get action="reservRoom.do" >
+				<form style="text-align:center" method="get" action="reservRoom.do" >
 					<input type="date" id="roomResvDate" name="roomResvDate">
 					<input type="submit" value="전송">
 				</form>
 			</nav>
 		</aside>
-<%-- 		<article id="mainContent">
+ 		<article id="mainContent">
 				<jsp:include page="${ listcontent }" />
-		</article> --%>
+		</article> 
 
 	</article>
 </body>
