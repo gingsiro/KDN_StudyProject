@@ -10,4 +10,5 @@ public interface StudyService {
 	public List<Study> searchAll(PageBean bean);
 	public List<Study> searchMyStudy(int empno);
 	public void createStudy(Study study);
+	public void updateStudy(Study study);
 }
