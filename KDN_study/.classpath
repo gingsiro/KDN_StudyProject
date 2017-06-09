@@ -25,11 +25,5 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Haesung/Downloads/commons-beanutils.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Haesung/Downloads/commons-collections-3.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Haesung/Downloads/commons-lang-2.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Haesung/Downloads/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Haesung/Downloads/ezmorph-1.0.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Haesung/Downloads/json-lib-2.1-jdk15.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

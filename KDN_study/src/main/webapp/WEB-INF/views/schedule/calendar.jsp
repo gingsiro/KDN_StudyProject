@@ -15,6 +15,7 @@
 
 
 <script>
+console.log('${myScheduleList}');
 
 // 날짜 가져오기, json 생성
 var ourSchedule = new Array() ;

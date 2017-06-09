@@ -2,7 +2,7 @@ package com.kdn.study;
 
 import java.util.List;
 
-import net.sf.json.JSONArray;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,14 +25,14 @@ public class ScheduleController
 	private StudyService studyService;
 	
 	@RequestMapping(value="listSchedule.do", method=RequestMethod.GET)
-	public String listSchedule(PageBean bean, Model model)
+	public String listSchedule(PageBean bean, Model model, HttpSession session)
 	{
 		List<Schedule> list = scheduleService.searchAll(bean);
 		model.addAttribute("listschedule", list);
 		model.addAttribute("content", "schedule/listSchedule.jsp");
 		
 		model.addAttribute("studyList", studyService.searchAll(new PageBean("all", null)));
-		
+				
 		return "index";
 	}
 	

@@ -54,4 +54,9 @@ public class ScheduleServiceImpl implements ScheduleService{
 			throw new UpdateException("게시글 검색 중 오류 발생");
 		}
 	}
+
+	@Override
+	public List<Schedule> searchMySchedule(int no) {
+		return dao.searchMySchedule(no);
+	}
 }

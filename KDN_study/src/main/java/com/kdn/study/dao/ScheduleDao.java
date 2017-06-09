@@ -14,4 +14,6 @@ public interface ScheduleDao {
 	public List<Schedule> 	searchAll(PageBean bean);
 	public int 				getCount(PageBean bean);
 	public int 				getBoardNo();
+	
+	public List<Schedule> searchMySchedule(int no);
 }
