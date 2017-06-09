@@ -1,5 +1,7 @@
 package com.kdn.study;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,16 +33,26 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value="studyList.do", method=RequestMethod.GET)
-	public String studyList(Model model, String key, String word) {
-		PageBean bean = new PageBean(key, word);
-		model.addAttribute("list", studyService.searchAll(bean));
-		model.addAttribute("content", "study/StudyHome.jsp");
-		model.addAttribute("listform","StudyList.jsp");
-		model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
-		for (int i = 0; i < 5; i++) {
-			model.addAttribute("room"+i, studyService.searchAll(bean));
+	public String studyList(Model model, String key, String word, HttpSession session) {
+		if(session.getAttribute("empno")!=null){
+			if(key!=null && key.equals("empno")){
+				model.addAttribute("list", studyService.searchMyStudy(Integer.parseInt(word)));
+				model.addAttribute("listform","MyStudyList.jsp");
+			}else{
+				PageBean bean = new PageBean(key, word);
+				model.addAttribute("list", studyService.searchAll(bean));
+				model.addAttribute("listform","StudyList.jsp");
+			}
+			
+			model.addAttribute("content", "study/StudyHome.jsp");
+			model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
+			/*for (int i = 0; i < 5; i++) {
+				model.addAttribute("room"+i, studyService.searchAll(bean));
+			}*/
+			return "index";
+		}else{
+			return "redirect:loginForm.do";
 		}
-		return "index";
 	}
 	
 	@RequestMapping(value="createStudy.do", method=RequestMethod.POST)
@@ -51,6 +63,7 @@ public class StudyController {
 	
 	@RequestMapping(value="updateStudy.do", method=RequestMethod.POST)
 	public String updateStudy(Model model, Study study){
+		System.out.println(study);
 		studyService.updateStudy(study);
 		return "redirect:studyList.do";
 	}
