@@ -70,28 +70,33 @@
 							</div>
 							
 							<div class="form-group">
-							<label for="inputRoomName">예약 날짜</label> <input type="text"
+							<label for="inputRsvDate">예약 날짜</label> <input type="text"
 								class="form-control" id="rsvdate" name="rsvdate"
 								placeholder="Room RESERVE DATE" value=<%=date %>>
 							</div>
 						
 							<div class="form-group">
-							<label for="inputRoomName">예약 시간</label> <input type="text"
+							<label for="inputRsvTime">예약 시간</label> <input type="text"
 								class="form-control" id="rsvtime" name="rsvtime"
 								placeholder="Room RESERVE TIME" >
 							</div>
 							
 							<div class="form-group">
-							<label for="inputRoomName">예약자 사번</label> <input type="text"
+							<label for="inputRsvEmpno">예약자 사번</label> <input type="text"
 								class="form-control" id="rsvempno" name="rsvempno"
 								placeholder="Room RESERVER" value="${empno}">
 							</div>
 							
 							<div class="form-group">
-							<label for="inputRoomName">룸을 예약할 스터디</label> <input type="text"
-								class="form-control" id="rsvstudy" name="rsvstudy"
-								placeholder="Room RESERVE STUDY" >
+								<label for="inputRsvStudy">룸을 예약할 스터디</label> 
+								<select id="rsvstudy" name="rsvstudy" class="form-control">
+									<c:forEach var="mystudy" items="${ myStudyList }">
+										<option value="${ mystudy.sno}">${ mystudy.sname }</option>
+									</c:forEach>
+								</select>
 							</div>
+							
+					
 			
 						<button type="submit" class="btn btn-default btn-success">
 								<span class="glyphicon glyphicon-ok"></span> 예약
