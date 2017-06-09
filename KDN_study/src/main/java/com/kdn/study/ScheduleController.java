@@ -1,5 +1,6 @@
 package com.kdn.study;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -35,7 +36,23 @@ public class ScheduleController
 				
 		return "index";
 	}
-	
+
+	/*
+	@RequestMapping(value="insertSchedule.do", method=RequestMethod.GET)
+	public String reservedRoom(Model model, String roomResvDate) 
+	{
+		List<Schedule> dayRsvlist = scheduleService.searchDayRsv(roomResvDate);
+		model.addAttribute("dayRsvlist", dayRsvlist);
+		
+		System.out.println(dayRsvlist.get(0));
+		
+		model.addAttribute("content", "room/RoomHome.jsp"); 
+		model.addAttribute("listform", "RservedRoom.jsp");
+		model.addAttribute("listcontent", "DayRsvRoomCheck.jsp");
+		
+		return "index";
+	}
+	*/
 	
 	@RequestMapping(value="schedule.do", method=RequestMethod.GET)
 	public String scheduleStudy(Model model, PageBean bean)
@@ -49,8 +66,6 @@ public class ScheduleController
 		
 		return "index";
 	}
-	
-	
 	
 	
 	@RequestMapping(value="searchSchedule.do", method=RequestMethod.GET)

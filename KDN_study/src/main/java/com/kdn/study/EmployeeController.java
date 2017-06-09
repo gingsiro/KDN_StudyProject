@@ -88,19 +88,31 @@ public class EmployeeController
 		
 	}
 	
+	
+	
 	@RequestMapping(value="employeeUpdateForm.do", method=RequestMethod.GET)
-	public String employeeUpdateForm(Model model) {
+	public String employeeUpdateForm(HttpSession session, Model model) {
+		int empno = (Integer)session.getAttribute("empno");
+		model.addAttribute("employee", employeeService.search(empno));
 		model.addAttribute("content", "employee/updateEmployee.jsp");
-		
 		return "index";
 	}
 	
+	
+	/*@RequestMapping(value="employeeUpdateForm.do", method=RequestMethod.GET)
+	public String employeeUpdateForm(Model model) {
+		model.addAttribute("content", "employee/updateEmployee.jsp");
+		return "index";
+	}*/
+	
+	
+	
+	
 	@RequestMapping(value="updateEmployee.do", method=RequestMethod.POST)
 	public String updateEmployee(Employee employee, Model model) {
-		System.out.println(employee);
+		System.out.println("update"+employee);
 		employeeService.update(employee);
 		model.addAttribute("content", "employee/employeeInfo.jsp");
-		System.out.println("댐댐");
 		return "index";
 		
 	}

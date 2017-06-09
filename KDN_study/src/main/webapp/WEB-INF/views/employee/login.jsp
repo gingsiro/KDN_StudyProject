@@ -20,6 +20,9 @@
  	    if(msg!=null && !msg.equals("")){ %>
  	    <p  style="color:red"><%=msg %></p>
  	 <% } %>
+ 	 
+ 	 
+ 	 
 	<form action="login.do" method="post"  id="frm">
 		사원번호: <input type="text" name="empno" value='<%=empnoSave %>'  id="empno"/><br/>
 		비밀번호 : <input type="text" name="password"  id="password"/><br/>
