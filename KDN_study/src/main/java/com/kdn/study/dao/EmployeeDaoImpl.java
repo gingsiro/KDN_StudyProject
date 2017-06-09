@@ -40,6 +40,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 	}
 
 	public void update(Employee employee) {
+		System.out.println("댐"+employee);
 		session.update("employee.update", employee);
 	}
 

@@ -72,7 +72,6 @@ public class EmployeeServiceImpl implements EmployeeService
 			if(find == null){
 				throw new UpdateException("아이디에 해당하는 회원이 없어 수정할 수 없습니다.");
 			}else{
-		
 				dao.update(employee);
 			}
 		} catch(Exception  s){
