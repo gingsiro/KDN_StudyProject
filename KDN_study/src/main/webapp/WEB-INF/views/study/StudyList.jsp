@@ -21,14 +21,20 @@
 
 	function updateForm(sname, cno, smax) {
 		$('#updateSname').val(sname);
+		alert(cno);
+		$('#updateCno').val(cno).attr("selected", "selected");
+		$('#updateSmax').val(smax).attr("selected", "selected");
 	}
 </script>
 
 
 </head>
 <body>
-
+	
 	<div class="container">
+		<!--
+			스터디 입력모달
+	 	-->
 		<!-- Modal -->
 		<div style="overflow:hidden" id="createForm" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -77,7 +83,10 @@
 				</div>
 			</div>
 		</div>
-		
+	
+		<!--
+			스터디 수정모달 
+	 	-->
 		<div style="overflow:hidden" id="updateForm" class="modal fade" role="dialog">
 			<div class="modal-dialog">
 				<!-- Modal content-->
@@ -89,14 +98,14 @@
 						</h4>
 					</div>
 					<div class="modal-body" id="modal-body">
-						<form role="form" method="POST" action="createStudy.do">
+						<form role="form" method="POST" action="updateStudy.do">
 							<div class="form-group" >
 								<label for="inputStudyName">스터디 이름</label> 
 								<input type="text" class="form-control" id="updateSname" name="updateSname" placeholder="Study Name" value="">
 							</div>
 							<div class="form-group">
 								<label for="inputCategory">카테고리</label> 
-								<select id="cno" name="cno" class="form-control">
+								<select id="updateCno" name="updateCno" class="form-control">
 									<c:forEach var="category" items="${ categoryList }">
 										<option value="${ category.cno }">${ category.cname }</option>
 									</c:forEach>
@@ -104,13 +113,12 @@
 							</div>
 							<div class="form-group">
 								<label for="inputMax">정원</label> 
-								<select id="smax" name="smax" class="form-control">
+								<select id="updateSmax" name="updateSmax" class="form-control">
 									<c:forEach var="i" begin="2" end="12" step="1">
 										<option value="${ i }">${ i }</option>
 									</c:forEach>
 								</select>
-								<input type="hidden" id="scurr" name="scurr" value="1" />
-								<input type="hidden" id="smaster" name="smaster" value="170001" />
+								<input type="hidden" id="smaster" name="smaster" value="${ empno }" />
 							</div>
 							<button type="submit" class="btn btn-default btn-success">
 								<span class="glyphicon glyphicon-ok"></span> 생성

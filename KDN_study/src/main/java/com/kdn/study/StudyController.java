@@ -49,4 +49,10 @@ public class StudyController {
 		return "redirect:studyList.do";
 	}
 	
+	@RequestMapping(value="updateStudy.do", method=RequestMethod.POST)
+	public String updateStudy(Model model, Study study){
+		studyService.updateStudy(study);
+		return "redirect:studyList.do";
+	}
+	
 }

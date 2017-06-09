@@ -31,5 +31,9 @@ public class StudyServiceImpl implements StudyService {
 	public void createStudy(Study study) {
 		dao.createStudy(study);
 	}
+	
+	public void updateStudy(Study study) {
+		dao.createStudy(study);
+	}
 
 }

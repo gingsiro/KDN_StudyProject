@@ -44,4 +44,9 @@
 		insert into study(sno, smaster, sname, smax, scurr, cno)
 		values(study_sno.nextval,#{ smaster:INTEGER },#{ sname:VARCHAR },#{ smax:INTEGER },#{ scurr:INTEGER },#{ cno:INTEGER })
 	</insert>
+	
+	<update id="updateStudy" parameterType="study">
+		update study set sname=#{ sname:VARCHAR }, smax=#{ smax:INTEGER }, cno=#{ cno:INTEGER }
+		where sno = #{ sno:INTEGER }
+	</update>
 </mapper>

@@ -30,5 +30,9 @@ public class StudyDaoImpl implements StudyDao {
 	public void createStudy(Study study) {
 		session.insert("study.createStudy", study);
 	}
+
+	public void updateStudy(Study study) {
+		session.update("study.updateStudy", study);
+	}
 	
 }
