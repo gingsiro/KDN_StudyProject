@@ -18,6 +18,7 @@ public class EmployeeDaoImpl implements EmployeeDao
 
 	public Employee search(int empno) {
 		System.out.println("dao.search");
+		System.out.println(empno);
 		return session.selectOne("employee.search", empno);
 	}
 
@@ -39,7 +40,6 @@ public class EmployeeDaoImpl implements EmployeeDao
 	}
 
 	public void update(Employee employee) {
-		System.out.println("댐"+employee);
 		session.update("employee.update", employee);
 	}
 

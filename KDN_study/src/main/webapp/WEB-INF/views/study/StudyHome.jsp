@@ -5,19 +5,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<title>Study Home</title>
 </head>
 <body>
-	<section id="study-main">
-		<c:choose>
-			<c:when test="${ !empty listform }">
-				<jsp:include page="${ listform }" />
-			</c:when>
-			<c:otherwise>
+	<div style="overflow:hidden" class="container">
+		<div class="row">
+			<div class="col-sm-2">
+				<a href="studyList.do">전체 스터디</a><br/>
+				<a href="studyList.do?key=empno&word=${ empno }">나의 스터디</a>
+			</div>
+			<div class="col-sm-10">
+				<c:choose>
+					<c:when test="${ !empty listform }">
+						<jsp:include page="${ listform }" />
+					</c:when>
+					<c:otherwise>
 				스터디 홈 입니다.
 			</c:otherwise>
-		</c:choose>
-	</section>
+				</c:choose>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

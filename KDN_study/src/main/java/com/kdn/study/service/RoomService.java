@@ -10,4 +10,6 @@ public interface RoomService {
 	public Room search(int rno);
 	public List<RsvRoom> rsvRoomSearchAll(String roomdate);
 	public List<HashMap<String, Integer>> searchDayRsv(String roomResvDate);
+	
+	public void reserveRoom(RsvRoom rsvroom);
 }

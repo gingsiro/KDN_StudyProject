@@ -16,8 +16,8 @@ public class StudyServiceImpl implements StudyService {
 	@Qualifier("studyDao")
 	private StudyDao dao;
 	
-	public Study search(int no) {
-		return dao.search(no);
+	public Study search(int sno) {
+		return dao.search(sno);
 	}
 	
 	public List<Study> searchAll(PageBean bean){
@@ -27,13 +27,16 @@ public class StudyServiceImpl implements StudyService {
 	public List<Study> searchMyStudy(int empno){
 		return dao.searchMyStudy(empno);
 	}
-
+	
 	public void createStudy(Study study) {
 		dao.createStudy(study);
 	}
 	
 	public void updateStudy(Study study) {
-		dao.createStudy(study);
+		dao.updateStudy(study);
 	}
-
+	
+	public void joinStudy(int empno, int sno){
+		dao.joinStudy(empno, sno);
+	}
 }

@@ -21,14 +21,6 @@ public class RoomDaoImpl implements RoomDao {
 		return session.selectOne("room.search");
 
 	}
-
-	public void insert(Room room) {
-
-	}
-
-	public void delete(int rno) {
-
-	}
 	
 	public List<RsvRoom> rsvRoomSearchAll(String roomdate) {
 		return session.selectList("rsvroom.searchAll", roomdate);
@@ -38,5 +30,10 @@ public class RoomDaoImpl implements RoomDao {
 		System.out.println("dao>>>>>>>>>>>>>>>>>>>"+roomResvDate);
 		return session.selectList("rsvroom.searchDayRsv", roomResvDate);
 	}
-
+	
+	public void reserveRoom(RsvRoom rsvroom) {
+		System.out.println("dao>>>>>>>>>>>>>>>>>>>"+rsvroom);
+		session.insert("rsvroom.reserveRoom", rsvroom);
+		
+	}
 }
