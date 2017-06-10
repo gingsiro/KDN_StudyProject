@@ -13,6 +13,7 @@
 		 <typeAlias type="com.kdn.study.domain.Employee" alias="employee"/>
 		 <typeAlias type="com.kdn.study.domain.PageBean" alias="pagebean"/>
 		 <typeAlias type="com.kdn.study.domain.RsvRoom" alias="rsvroom"/>
+		 <typeAlias type="com.kdn.study.domain.JoinStudy" alias="joinstudy"/>
 		 <typeAlias type="com.kdn.study.domain.Room" alias="room"/>
 		 <typeAlias type="com.kdn.study.domain.Study" alias="study"/>
 		 <typeAlias type="com.kdn.study.domain.JoinStudy" alias="joinstudy"/>
