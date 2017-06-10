@@ -1,6 +1,5 @@
 package com.kdn.study;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -37,6 +36,33 @@ public class ScheduleController
 		return "index";
 	}
 
+	@RequestMapping(value="insertSchedule.do", method=RequestMethod.POST)
+	public String insertSchedule(Model model, Schedule schedule){
+		
+		String s = schedule.getScdate();
+		
+		
+		
+		String s2 = s.substring(0,10);
+		String s3 = s.substring(11, 16);
+		
+		System.out.println("s : "+ s);
+		System.out.println("s2: " + s2);
+		System.out.println("s3: " + s3);
+		String s4 = s2 + s3;
+		
+		
+		System.out.println("s4: " + s4);
+		schedule.setScdate(s4);
+		
+		
+//		2017-06-13T15:02
+		
+		scheduleService.insertSchedule(schedule);
+		return "redirect:listSchedule.do";
+	}
+	
+	
 	/*
 	@RequestMapping(value="insertSchedule.do", method=RequestMethod.GET)
 	public String reservedRoom(Model model, String roomResvDate) 

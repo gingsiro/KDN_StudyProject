@@ -53,6 +53,43 @@
 				frm.submit();
 			}
 		</script>
+		
+		<script>
+		$.fn.setNow = function (onlyBlank) {
+			  var now = new Date($.now())
+			    , year
+			    , month
+			    , date
+			    , hours
+			    , minutes
+			    , seconds
+			    , formattedDateTime
+			    ;
+			  
+			  year = now.getFullYear();
+			  month = now.getMonth().toString().length === 1 ? '0' + (now.getMonth() + 1).toString() : now.getMonth() + 1;
+			  date = now.getDate().toString().length === 1 ? '0' + (now.getDate()).toString() : now.getDate();
+			  hours = now.getHours().toString().length === 1 ? '0' + now.getHours().toString() : now.getHours();
+			  minutes = now.getMinutes().toString().length === 1 ? '0' + now.getMinutes().toString() : now.getMinutes();
+			  seconds = now.getSeconds().toString().length === 1 ? '0' + now.getSeconds().toString() : now.getSeconds();
+			  
+			  formattedDateTime = year + '-' + month + '-' + date + 'T' + hours + ':' + minutes + ':' + seconds;
+			 
+			  if ( onlyBlank === true && $(this).val() ) {
+			    return this;
+			  }
+			  
+			  $(this).val(formattedDateTime);
+			  
+			  return this;
+			}
+
+			$(function () {
+			    // Handler for .ready() called.
+			    $('input[type="datetime"]').setNow();
+			    
+			});
+		</script>
 	</head>
 
 <body>
@@ -71,19 +108,22 @@
 						</h4>
 					</div>
 					<div class="modal-body">
-						<form role="form" method="POST" action="createStudy.do">
+						<form role="form" method="POST" action="insertSchedule.do">
 							<div class="form-group">
-								<label for="inputStudyName">스케줄 이름</label> <input type="text"
-									class="form-control" id="sname" name="sname"
-									placeholder="Study Name">
+								<label for="inputScheduleName">스케줄 이름</label> <input type="text"
+									class="form-control" id="sctitle" name="sctitle"
+									placeholder="Schedule Name">
 							</div>
 						
-						<input type="date" id="roomdate" name="roomdate"> 
+						<!-- 
+						value="2017-10-09T15:38:00" -->
+						
+						<input type="datetime-local" id="scdate" name="scdate" > 
 						
 						<div class="form-group">
-								<label for="inputStudyName">스터디 명(일단 번호로)</label> <input type="text"
-									class="form-control" id="sname" name="sname"
-									placeholder="Study Name">
+								<label for="inputScheduleName">스터디 명(일단 번호로)</label> <input type="text"
+									class="form-control" id="sno" name="sno"
+									placeholder="Schedule Name">
 							</div>
 							
 						<button type="submit" class="btn btn-default btn-success">

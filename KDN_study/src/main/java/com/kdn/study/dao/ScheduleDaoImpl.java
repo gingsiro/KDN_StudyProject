@@ -22,9 +22,9 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 
 	@Override
-	public void add(Schedule schedule) {
-		// TODO Auto-generated method stub
-		
+	public void insertSchedule(Schedule schedule) {
+		System.out.println("DAo>>>>>" + schedule);
+		session.insert("schedule.insertSchedule", schedule);
 	}
 
 	@Override
@@ -46,9 +46,11 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		 * offset 추출할 row의 시작 위치 (0부터 시작)
 		 * limit 추출할 개수
 		 */
-		System.out.println(">>>>>>>>>>>>Dao1");
-		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getInterval());
-		System.out.println(">>>>>>>>>>>>Dao2");
+		
+		int countSchedule = session.selectOne("schedule.getCount", bean);
+		RowBounds rows = new RowBounds(bean.getStart()-1, countSchedule);
+		
+//		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getInterval());
 		return session.selectList("schedule.searchAll", bean, rows);
 	}
 

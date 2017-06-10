@@ -8,7 +8,7 @@ import com.kdn.study.domain.Schedule;
 public interface ScheduleDao {
 
 	public Schedule search(int no);
-	public void 			add(Schedule schedule);
+	public void 			insertSchedule(Schedule schedule);
 	public void 			update(Schedule schedule);
 	public void 			remove(int no);
 	public List<Schedule> 	searchAll(PageBean bean);

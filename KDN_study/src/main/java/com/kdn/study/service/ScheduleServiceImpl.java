@@ -35,9 +35,9 @@ public class ScheduleServiceImpl implements ScheduleService{
 	}
 
 	@Override
-	public void add(Schedule schedule, String dir) {
-		// TODO Auto-generated method stub
-		
+	public void insertSchedule(Schedule schedule) {
+		System.out.println("service>>>>>" + schedule);
+		dao.insertSchedule(schedule);		
 	}
 
 	
