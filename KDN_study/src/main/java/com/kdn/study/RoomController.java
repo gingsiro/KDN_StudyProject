@@ -73,16 +73,25 @@ public class RoomController {
 	@RequestMapping(value="reservedRoom.do", method=RequestMethod.GET) //나중에는 post로 
 	public String reservedRoom(Model model, String roomResvDate, HttpSession session) {
 		
-		List<HashMap<String, Integer>> dayRsvlist = roomService.searchDayRsv(roomResvDate);
-		model.addAttribute("dayRsvlist", dayRsvlist);
-		
-		int empno = (Integer)session.getAttribute("empno");
-		List<Study> myStudyList = studyService.searchMyStudy(empno);
-		model.addAttribute("myStudyList", myStudyList);
-		
 		model.addAttribute("content", "room/RoomHome.jsp"); 
 		model.addAttribute("listform", "RservedRoom.jsp");
-		model.addAttribute("listcontent", "DayRsvRoomCheck.jsp");
+		
+		if(roomResvDate != null) {
+		
+			List<HashMap<String, Integer>> dayRsvlist = roomService.searchDayRsv(roomResvDate);
+			model.addAttribute("dayRsvlist", dayRsvlist);
+			
+			System.out.println(dayRsvlist.get(0));
+			
+			int empno = (Integer)session.getAttribute("empno");
+			System.out.println(empno + ">>>>>controller");
+			
+			List<Study> myStudyList = studyService.searchMyStudy(empno);
+			model.addAttribute("myStudyList", myStudyList);
+			
+			
+			model.addAttribute("listcontent", "DayRsvRoomCheck.jsp");
+		} 
 		
 		return "index";
 	}
@@ -115,6 +124,11 @@ public class RoomController {
 	
 	
 	
+
+
+
+
+
 	
 	
 }

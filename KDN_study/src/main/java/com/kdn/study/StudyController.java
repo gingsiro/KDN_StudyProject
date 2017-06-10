@@ -36,12 +36,12 @@ public class StudyController {
 	
 	@RequestMapping(value="studyList.do", method=RequestMethod.GET)
 	public String studyList(Model model, String key, String word, HttpSession session) {
-		if(session.getAttribute("empno")==""){
-			return "loginForm.do";
+		if(session.getAttribute("empno")==null){
+			return "redirect:loginForm.do";
 		}
-		List<Study> list = studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString()));
-
+		List<Study> list = null;
 		if(session.getAttribute("empno")!=null){
+			list = studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString()));
 			if(key!=null && key.equals("empno")){
 				model.addAttribute("list", list);
 				model.addAttribute("listform","MyStudyList.jsp");
@@ -56,7 +56,8 @@ public class StudyController {
 			model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
 			/*for (int i = 0; i < 5; i++) {
 				model.addAttribute("room"+i, studyService.searchAll(bean));
-			}*/
+			}
+			*/
 			return "index";
 		}else{
 			return "redirect:loginForm.do";
@@ -74,11 +75,12 @@ public class StudyController {
 		studyService.updateStudy(study);
 		return "redirect:studyList.do";
 	}
-	
+
 	@RequestMapping(value="joinStudy.do", method=RequestMethod.POST)
-	public String joinStudy(Model model, HttpSession session, int sno){
-		studyService.joinStudy(Integer.parseInt(session.getAttribute("empno").toString()), sno);
+	public String joinStudy(Model model, HttpSession session, String sno){
+		studyService.joinStudy(Integer.parseInt(session.getAttribute("empno").toString()), Integer.parseInt(sno));
 		return "index";
 	}
+	
 	
 }
