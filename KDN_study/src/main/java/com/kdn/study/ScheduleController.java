@@ -27,7 +27,7 @@ public class ScheduleController
 	@RequestMapping(value="listSchedule.do", method=RequestMethod.GET)
 	public String listSchedule(PageBean bean, Model model, HttpSession session)
 	{
-		List<Schedule> list = scheduleService.searchAll(bean);
+		List<Schedule> list = scheduleService.searchAllForCalendar(bean);
 		model.addAttribute("listschedule", list);
 		model.addAttribute("content", "schedule/listSchedule.jsp");
 		
@@ -83,7 +83,7 @@ public class ScheduleController
 	@RequestMapping(value="schedule.do", method=RequestMethod.GET)
 	public String scheduleStudy(Model model, PageBean bean)
 	{
-		List<Schedule> list = scheduleService.searchAll(bean);
+		List<Schedule> list = scheduleService.searchAllForCalendar(bean);
 		for(Object obj:list){
 			System.out.println(obj);
 		}

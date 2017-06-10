@@ -15,7 +15,7 @@
 		where scno = #{scno}
 	</select>
 	
-<select id="searchAll" parameterType="pagebean" resultType="schedule">
+<select id="searchAllForCalendar" parameterType="pagebean" resultType="schedule">
 		select scno, sctitle
 									, to_char(scdate, 'yyyy-mm-ddHH24:mi') scdate
 									, sno

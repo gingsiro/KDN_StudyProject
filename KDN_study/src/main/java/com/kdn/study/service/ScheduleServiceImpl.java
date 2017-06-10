@@ -42,13 +42,13 @@ public class ScheduleServiceImpl implements ScheduleService{
 
 	
 	@Override
-	public List<Schedule> searchAll(PageBean bean) {
+	public List<Schedule> searchAllForCalendar(PageBean bean) {
 		try {
 			int total = dao.getCount(bean);
 			PageUtility bar = new PageUtility(bean.getInterval(), total, bean.getPageNo());
 			
 			bean.setPagelink(bar.getPageBar());
-			return dao.searchAll(bean);
+			return dao.searchAllForCalendar(bean);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new UpdateException("게시글 검색 중 오류 발생");

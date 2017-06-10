@@ -40,18 +40,18 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 
 	@Override
-	public List<Schedule> searchAll(PageBean bean) {
+	public List<Schedule> searchAllForCalendar(PageBean bean) {
 		/*
 		 * RowBounds(offset, limit)
 		 * offset 추출할 row의 시작 위치 (0부터 시작)
 		 * limit 추출할 개수
 		 */
 		
-		int countSchedule = session.selectOne("schedule.getCount", bean);
-		RowBounds rows = new RowBounds(bean.getStart()-1, countSchedule);
+//		int countSchedule = session.selectOne("schedule.getCount", bean);
+//		RowBounds rows = new RowBounds(bean.getStart()-1, countSchedule);
 		
-//		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getInterval());
-		return session.selectList("schedule.searchAll", bean, rows);
+		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getInterval());
+		return session.selectList("schedule.searchAllForCalendar", bean, rows);
 	}
 
 	
