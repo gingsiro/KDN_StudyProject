@@ -37,6 +37,7 @@ public class StudyDaoImpl implements StudyDao {
 	}
 	
 	public void joinStudy(int empno, int sno){
+		System.out.println("JoinStudy DAO");
 		Study study = session.selectOne("study.search", sno);
 		study.setScurr(study.getScurr()+1);
 		session.update("study.updateStudy", study);

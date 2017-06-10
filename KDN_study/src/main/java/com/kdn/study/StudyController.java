@@ -39,11 +39,9 @@ public class StudyController {
 		if(session.getAttribute("empno")==null){
 			return "redirect:loginForm.do";
 		}
-		List<Study> list = null;
 		if(session.getAttribute("empno")!=null){
-			list = studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString()));
 			if(key!=null && key.equals("empno")){
-				model.addAttribute("list", list);
+				model.addAttribute("list", studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString())));
 				model.addAttribute("listform","MyStudyList.jsp");
 			}else{
 				PageBean bean = new PageBean(key, word);
@@ -51,7 +49,7 @@ public class StudyController {
 				model.addAttribute("listform","StudyList.jsp");
 			}
 			
-			model.addAttribute("myStudyList", list);
+			model.addAttribute("myStudyList", studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString())));
 			model.addAttribute("content", "study/StudyHome.jsp");
 			model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
 			/*for (int i = 0; i < 5; i++) {
@@ -78,8 +76,10 @@ public class StudyController {
 
 	@RequestMapping(value="joinStudy.do", method=RequestMethod.POST)
 	public String joinStudy(Model model, HttpSession session, String sno){
+		System.out.println(session.getAttribute("empno") + "//" + Integer.parseInt(sno) );
 		studyService.joinStudy(Integer.parseInt(session.getAttribute("empno").toString()), Integer.parseInt(sno));
-		return "index";
+		//추후 스터디 메인페이지로 이동하게 만들어야함
+		return "redirect:studyList.do";
 	}
 	
 	

@@ -45,7 +45,7 @@
 	
 	function deleteStudy(sno, smaster) {
 		if( <%=request.getSession().getAttribute("empno")%>== smaster){
-			$('#sno').val(sno);			
+			$('#rdsno').val(sno);			
 			$('#checkContentTitle').html('스터디 삭제');
 			$('#checkContent').html('정말 삭제하시겠습니까?');
 			$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 삭제');
@@ -58,7 +58,7 @@
 	}
 	
 	function joinStudy(sno){
-		$('#sno').val(sno);
+		$('#rdsno').val(sno);
 		$('#checkContentTitle').html('스터디 가입');
 		$('#checkContent').html('정말 가입하시겠습니까?');
 		$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 가입');
@@ -136,7 +136,7 @@
 				<div class="modal-body" id="modal-body">
 					<form id="rdStudy" name="rdStudy" role="form" method="POST" action="deleteStudy.do">
 						<label id="checkContent" for="checkContent">정말 삭제하시겠습니까?</label><br/>
-						<input type="hidden" id="sno" name="sno" value="" />
+						<input type="hidden" id="rdsno" name="sno" value="" />
 						<div style="text-align:right">
 							<button id="checkButtonName" name="checkButtonName" type="submit" class="btn btn-default btn-success">
 								<span class="glyphicon glyphicon-ok"></span> 삭제							
@@ -188,11 +188,17 @@
 					<td>${ study.scurr }</td>
 					<td>${ study.smax }</td>
 					<td>
+						<c:set var="index" value="0"/> 
 						<c:forEach var="myStudy" items="${ myStudyList }">
-							<c:if test="${ study.sno != myStudy.sno }">
-								<a class="teal-text" data-keyboard="true" onClick="joinStudy('${ study.sno }')"><i class="fa fa-plus"></i>가입</a>
+							<c:if test="${index eq '0'}"> 
+								<c:if test="${ study.sno == myStudy.sno }"> 
+									<c:set var="index" value="1"/> 
+								</c:if>
 							</c:if>
 						</c:forEach>
+						<c:if test="${ index eq '0' }">
+							<a class="teal-text" data-keyboard="true" onClick="joinStudy('${ study.sno }')"><i class="fa fa-plus"></i>가입</a>
+						</c:if>
 						<c:if test="${ empno == study.smaster }">
 							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }')"><i class="fa fa-pencil"></i>수정</a>
 							<a class="red-text"onClick="deleteStudy('${ study.sno }', '${ study.smaster }')"><i class="fa fa-times"></i>삭제</a>
