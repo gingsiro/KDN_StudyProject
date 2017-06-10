@@ -42,13 +42,23 @@
 		where a.cno = c.cno
 	</select>
 	
+	<select id="searchJoinStudy" resultType="study">
+		select *
+		from join_study
+	</select>
+	
 	<insert id="createStudy" parameterType="study">
 		insert into study(sno, smaster, sname, smax, scurr, cno)
 		values(study_sno.nextval,#{ smaster:INTEGER },#{ sname:VARCHAR },#{ smax:INTEGER },#{ scurr:INTEGER },#{ cno:INTEGER })
 	</insert>
 	
 	<update id="updateStudy" parameterType="study">
-		update study set sname=#{ sname:VARCHAR }, smax=#{ smax:INTEGER }, cno=#{ cno:INTEGER }
+		update study set sname=#{ sname:VARCHAR }, smax=#{ smax:INTEGER }, scurr=#{ scurr:INTEGER }, cno=#{ cno:INTEGER }
 		where sno = #{ sno:INTEGER }
 	</update>
+	
+	<insert id="joinStudy" parameterType="join">
+		insert into join_study(jno, empno, sno)
+		values(join_no.nextval, #{empno:INTEGER}, #{sno:INTEGER})
+	</insert>
 </mapper>
