@@ -53,9 +53,21 @@
 		where empno = #{empno:INTEGER}
 	</update>
 	
-	<!-- <update id="delete" parameterType="String">
-		update member set withdraw='Y'
-		where empno=#{empno:VARCHAR}
-	</update> -->
+	
+	
+	
+	<!-- <select id="searchpassword" parameterType="String" resultType="employee">
+		select *
+		from employee
+		where password = #{ password } and empno=#{empno:INTEGER}
+	</select> -->
+	
+	<!-- <update id="delete" parameterType="int"> -->
+	<update id="delete" parameterType="employee">  
+		<!-- update employee set withdraw = 'Y' -->
+		delete from employee
+		<!-- where empno=#{empno:INTEGER} -->
+		where password=#{password:VARCHAR} and empno=#{empno:INTEGER}
+	</update>
 	
 </mapper>

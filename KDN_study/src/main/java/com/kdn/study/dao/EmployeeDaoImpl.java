@@ -35,13 +35,31 @@ public class EmployeeDaoImpl implements EmployeeDao
 		session.insert("employee.insert", employee);
 	}
 
-	public void update(int empno) {
+	/*public void update(int empno) {
 		session.update("employee.delete", empno);
-	}
+	}*/
 
 	public void update(Employee employee) {
 		session.update("employee.update", employee);
 	}
+
+	
+	
+	
+	/*public Employee searchpassword(int empno, String password) {
+		System.out.println("dao.searchpassword");
+		System.out.println("입력한 password" +password);
+		return session.selectList("employee.searchpassword", empno, password);
+	}*/
+	
+	public void delete(Employee employee) {
+	session.delete("employee.delete", employee);
+}
+
+	/*public void update(int empno) {
+		
+	}*/
+
 
 	
 	

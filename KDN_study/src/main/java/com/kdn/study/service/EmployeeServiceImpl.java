@@ -59,11 +59,7 @@ public class EmployeeServiceImpl implements EmployeeService
 		}
 		return true;
 	}
-
-	/*public void withdraw(int empno) {
-		
-	}*/
-
+	
 	public void update(Employee employee) {
 		try {
 
@@ -78,7 +74,60 @@ public class EmployeeServiceImpl implements EmployeeService
 			throw new UpdateException("업데이트DB 서버 오류");
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*public Employee searchpassword(int empno, String password)
+	{
+		Employee employee = null;
+		
+		try {
+			employee = dao.searchpassword(empno, password);
+		} catch(Exception  s){
+			throw new UpdateException("DB 서버 오류");
+		}
+		if(password == null){
+			throw new UpdateException("비밀번호가 다릅니다.");
+		}else{
+			return employee;
+		}
+		
+	}*/
+	
+	public void delete(Employee employee) {
+		/*try {
 
+			Employee find = dao.search(employee.getPassword(), employee.getEmpno());
+			System.out.println(find);
+			if(find == null){
+				throw new UpdateException("비밀번호가 다릅니다.");
+			}else{
+				dao.delete(employee);
+			}
+		} catch(Exception  s){
+			throw new UpdateException("업데이트DB 서버 오류");
+		}
+*/	
+	dao.delete(employee);	
+	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void add(Employee employee) {
 		/*try {*/
 			Employee find= dao.search(employee.getEmpno());
@@ -107,6 +156,8 @@ public class EmployeeServiceImpl implements EmployeeService
 				}
 			}
 	}
+
+	
 }
 		
 			

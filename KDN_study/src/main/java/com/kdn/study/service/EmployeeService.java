@@ -10,8 +10,13 @@ public interface EmployeeService {
 	public Employee search(int empno);
 	public List<Employee> searchAll(PageBean bean);
 	public boolean login(int empno, String password);
-	/*public void withdraw(int empno);*/
 	public void update(Employee employee);
 	public void add(Employee employee);
+	
+	
+	/*public Employee searchpassword(int empno, String password);*/
+	public void delete(Employee employee);
+	
+	
 
 }

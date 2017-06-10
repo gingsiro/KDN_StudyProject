@@ -13,7 +13,10 @@
 		<tr><td>부 서</td><td> ${ employee.dept } </td></tr>
 		<tr><td>이 름</td><td> ${ employee.ename }</td></tr>
 		<tr><td>비밀번호</td><td> ${employee.password } </td></tr>
+		
+		<li><a href="employeeDeleteForm.do">회원탈퇴</a></li>
 	</table>
+
 </body>
 </html>
 

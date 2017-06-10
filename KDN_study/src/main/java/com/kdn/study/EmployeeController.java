@@ -88,8 +88,6 @@ public class EmployeeController
 		
 	}
 	
-	
-	
 	@RequestMapping(value="employeeUpdateForm.do", method=RequestMethod.GET)
 	public String employeeUpdateForm(HttpSession session, Model model) {
 		int empno = (Integer)session.getAttribute("empno");
@@ -98,15 +96,11 @@ public class EmployeeController
 		return "index";
 	}
 	
-	
 	/*@RequestMapping(value="employeeUpdateForm.do", method=RequestMethod.GET)
 	public String employeeUpdateForm(Model model) {
 		model.addAttribute("content", "employee/updateEmployee.jsp");
 		return "index";
 	}*/
-	
-	
-	
 	
 	@RequestMapping(value="updateEmployee.do", method=RequestMethod.POST)
 	public String updateEmployee(Employee employee, Model model) {
@@ -114,8 +108,42 @@ public class EmployeeController
 		employeeService.update(employee);
 		model.addAttribute("content", "employee/employeeInfo.jsp");
 		return "index";
-		
 	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="employeeDeleteForm.do", method=RequestMethod.GET)
+	public String employeeDeleteForm(HttpSession session, Model model) {
+		int empno = (Integer)session.getAttribute("empno");
+		model.addAttribute("employee", employeeService.search(empno));
+		model.addAttribute("content", "employee/deleteEmployee.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value="deleteEmployee.do", method=RequestMethod.POST)
+	public String deleteEmployee(Employee employee, Model model) {
+		System.out.println("delete"+employee);
+		employeeService.delete(employee);
+		model.addAttribute("content", "employee/deleteinfo.jsp");
+		return "index";
+	}
+
+	@RequestMapping(value="deletelogout.do", method=RequestMethod.POST)
+	public String deletelogout(HttpSession session)
+	{
+		session.invalidate();
+		return "index";
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
