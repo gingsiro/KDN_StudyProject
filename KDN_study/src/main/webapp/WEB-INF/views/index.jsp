@@ -82,7 +82,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/study">Home</a></li>
                         <li><a href="studyList.do">Study</a></li>
-                        <li><a href="roomList.do">Study Room</a></li>
+                        <li><a href="reservedRoomForm.do">Study Room</a></li>
                         <li><a href="contact.do">Contact</a></li>
                         <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>

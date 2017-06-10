@@ -8,7 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<article>
+<article id="mainContent">
+			<jsp:include page="${ listcontent }" />
+	</article>
+
+<%-- 	<article>
 		<aside>
 			<nav id="menu" >
 				<form style="text-align:center" method=get action="roomList.do" >
@@ -21,10 +25,7 @@
 				<jsp:include page="${ listcontent }" />
 		</article>
 
-	</article>
+	</article> --%>
 
-
-	<!-- 	<a href="reserveCheckRoom.do">예약확인</a>
-	<a href="reserveRoomForm.do">예약하기</a> -->
 </body>
 </html>

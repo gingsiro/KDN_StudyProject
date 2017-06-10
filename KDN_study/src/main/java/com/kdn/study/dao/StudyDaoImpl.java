@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Study;
 
@@ -15,8 +16,8 @@ public class StudyDaoImpl implements StudyDao {
 	@Autowired
 	private SqlSessionTemplate session;
 	
-	public Study search(int no) {
-		return session.selectOne("study.search", no);
+	public Study search(int sno) {
+		return session.selectOne("study.search", sno);
 	}
 	
 	public List<Study> searchAll(PageBean bean){
@@ -26,13 +27,23 @@ public class StudyDaoImpl implements StudyDao {
 	public List<Study> searchMyStudy(int empno){
 		return session.selectList("study.searchMyStudy", empno);
 	}
-
+	
 	public void createStudy(Study study) {
 		session.insert("study.createStudy", study);
 	}
 
 	public void updateStudy(Study study) {
 		session.update("study.updateStudy", study);
+	}
+	
+	public void joinStudy(int empno, int sno){
+		System.out.println("JoinStudy DAO");
+		Study study = session.selectOne("study.search", sno);
+		study.setScurr(study.getScurr()+1);
+		session.update("study.updateStudy", study);
+		
+		JoinStudy join = new JoinStudy(empno, sno);
+		session.insert("study.joinStudy", join);
 	}
 	
 }

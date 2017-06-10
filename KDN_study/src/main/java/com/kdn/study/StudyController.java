@@ -1,5 +1,7 @@
 package com.kdn.study;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +36,12 @@ public class StudyController {
 	
 	@RequestMapping(value="studyList.do", method=RequestMethod.GET)
 	public String studyList(Model model, String key, String word, HttpSession session) {
+		if(session.getAttribute("empno")==null){
+			return "redirect:loginForm.do";
+		}
 		if(session.getAttribute("empno")!=null){
 			if(key!=null && key.equals("empno")){
-				model.addAttribute("list", studyService.searchMyStudy(Integer.parseInt(word)));
+				model.addAttribute("list", studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString())));
 				model.addAttribute("listform","MyStudyList.jsp");
 			}else{
 				PageBean bean = new PageBean(key, word);
@@ -44,11 +49,13 @@ public class StudyController {
 				model.addAttribute("listform","StudyList.jsp");
 			}
 			
+			model.addAttribute("myStudyList", studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString())));
 			model.addAttribute("content", "study/StudyHome.jsp");
 			model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
 			/*for (int i = 0; i < 5; i++) {
 				model.addAttribute("room"+i, studyService.searchAll(bean));
-			}*/
+			}
+			*/
 			return "index";
 		}else{
 			return "redirect:loginForm.do";
@@ -63,9 +70,17 @@ public class StudyController {
 	
 	@RequestMapping(value="updateStudy.do", method=RequestMethod.POST)
 	public String updateStudy(Model model, Study study){
-		System.out.println(study);
 		studyService.updateStudy(study);
 		return "redirect:studyList.do";
 	}
+
+	@RequestMapping(value="joinStudy.do", method=RequestMethod.POST)
+	public String joinStudy(Model model, HttpSession session, String sno){
+		System.out.println(session.getAttribute("empno") + "//" + Integer.parseInt(sno) );
+		studyService.joinStudy(Integer.parseInt(session.getAttribute("empno").toString()), Integer.parseInt(sno));
+		//추후 스터디 메인페이지로 이동하게 만들어야함
+		return "redirect:studyList.do";
+	}
+	
 	
 }

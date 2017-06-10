@@ -24,7 +24,25 @@
 		//location.href = "createStudy.do"
 		//alart(rno);
 		$('#rno').val(rno);
-	
+		var timeString;
+		
+		if(time == 1) {
+			timeString = "7-9시";
+		} else if(time == 2) {
+			timeString = "9-12시";
+		} else if(time == 3) {
+			timeString = "13-15시";
+		} else if(time == 4) {
+			timeString = "15-18시";
+		} else if(time == 5) {
+			timeString = "19-21시";
+		} else if(time == 6) {
+			timeString = "21-23시";
+		} 
+		
+		$('#rsvTimeString').val(timeString);
+		$('#rsvcode').val(time);
+		<%-- $('#empno').val(<%= request.getSession().getAttribute("empno") %>); --%>
 		
 		
 	}
@@ -33,9 +51,6 @@
 </head>
 <body>
 	<div class="container">
-		<div style="text-align: right">
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#roomRsvForm">스터디룸 예약</button>
-		</div>
 		<!-- Modal -->
 		<div id="roomRsvForm" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -52,27 +67,46 @@
 							<div class="form-group">
 							<label for="inputRoomName">룸 번호</label> <input type="text"
 								class="form-control" id="rno" name="rno"
-								placeholder="Room Name">
+								placeholder="Room NUMBER" readonly="readonly">
 							</div>
 							
 							<div class="form-group">
-							<label for="inputRoomName">예약 날짜</label> <input type="text"
-								class="form-control" id="rsvdate" name="rsvdate"
-								placeholder="Room RESERVE date" value=<%=date %>>
+							<label for="inputRsvDate">예약 날짜</label><input type="text"
+								class="form-control" id="rsvdate" name="rsvdate" value=<%= date %>
+								placeholder="Room RESERVE DATE" readonly="readonly">
 							</div>
 						
 							<div class="form-group">
-							<label for="inputRoomName">예약 시간</label> <input type="text"
-								class="form-control" id="rsvtime" name="rsvtime"
-								placeholder="Room RESERVE time" >
+							<label for="inputRsvTime">예약 시간</label> <input type="text"
+								class="form-control" id="rsvTimeString" name="rsvTimeString" 
+								placeholder="Room RESERVE TIME" readonly="readonly">
 							</div>
+							
+							<div class="form-group">
+							<label for="inputRsvEmpno">예약자 사번</label> <input type="text"
+								class="form-control" id="empno" name="empno" value='${ empno }'
+								placeholder="Room RESERVER" readonly="readonly">
+							</div>
+							
+							 <div class="form-group">
+								<label for="inputRsvStudy">룸을 예약할 스터디</label> 
+								<select id="sno" name="sno" class="form-control">
+									 <c:forEach var="mystudy" items="${ myStudyList }">
+										<option value="${ mystudy.sno}">${ mystudy.sname }</option>
+									</c:forEach> 
+								</select>
+							</div> 
+							
 					
+							<input type="hidden" id="rsvcode" name="rsvcode"  />
+							
 						<button type="submit" class="btn btn-default btn-success">
 								<span class="glyphicon glyphicon-ok"></span> 예약
 							</button>
 							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
 								<span class="glyphicon glyphicon-remove"></span> 취소
 							</button>
+							
 							
 						</form>
 					</div>

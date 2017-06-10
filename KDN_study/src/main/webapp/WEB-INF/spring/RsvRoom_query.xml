@@ -24,6 +24,26 @@
 	ORDER BY r.rno
 </select>
 
+	<insert id="reserveRoom" parameterType="rsvroom">
+		insert into rsv_room(rsvno, rsvdate, rsvcode, rno, sno, empno)
+		values(
+				RESERVE_RSVNO.nextval
+				, TO_DATE(#{rsvdate:DATE}, 'yyyy-mm-dd')
+				, #{rsvcode:INTEGER}
+				, #{rno:INTEGER}
+				, #{sno:INTEGER}
+				, #{empno:INTEGER}
+				 )
+	</insert>
+	
+	
+	<select id="searchMyRsv" parameterType="int" resultType="rsvroom">
+		select rsvno, to_char(rsvdate, 'yyyy-mm-dd') rsvdate, rsvcode, rno, sno, empno
+		from rsv_room
+		where empno = #{empno}
+		order by rsvdate
+		
+	</select>
 
 </mapper>
 
