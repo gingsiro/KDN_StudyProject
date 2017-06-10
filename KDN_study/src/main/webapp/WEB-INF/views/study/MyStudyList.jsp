@@ -135,8 +135,8 @@
 
 
 
-	<h2>전체 스터디 목록</h2>
-	<p>KDN Study 포털에 등록된 전체 스터디 목록입니다.</p>
+	<h2>나의 스터디 목록</h2>
+	<p>나의 스터디 목록입니다.</p>
 	<div style="text-align: right">
 		<button type="button" class="btn btn-info btn-lg" data-keyboard="true" onClick="insertForm()">스터디 생성</button>
 	</div>

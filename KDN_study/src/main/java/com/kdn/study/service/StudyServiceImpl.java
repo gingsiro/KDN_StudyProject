@@ -33,7 +33,7 @@ public class StudyServiceImpl implements StudyService {
 	}
 	
 	public void updateStudy(Study study) {
-		dao.createStudy(study);
+		dao.updateStudy(study);
 	}
 
 }

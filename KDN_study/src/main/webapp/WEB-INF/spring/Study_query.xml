@@ -24,7 +24,7 @@
 						cno = #{ word } 
 					</when>
 					<when test="key == 'sname'">
-						sname like '%'||#{ word }||'%' 
+						sname like '%'||#{ word }||'%'
 					</when>
 					<when test="word == 'smaster'">
 						smaster = #{ word }
@@ -35,9 +35,11 @@
 	</select>
 	
 	<select id="searchMyStudy" parameterType="int" resultType="study">
-		select jno, empno, js.sno sno, st.sname sname
-		from join_study js, study st
-		where js.sno = st.sno(+) and empno = #{ empno };
+		select jno, empno, sno, smaster, sname, smax, scurr, a.cno, cname
+		from (select jno, empno, js.sno, smaster, st.sname, smax, scurr, cno
+			  from join_study js, study st
+			  where js.sno = st.sno and empno = #{ empno:INTEGER }) a, category c
+		where a.cno = c.cno
 	</select>
 	
 	<insert id="createStudy" parameterType="study">
