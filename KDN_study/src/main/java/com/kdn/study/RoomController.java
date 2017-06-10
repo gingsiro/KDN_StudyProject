@@ -41,7 +41,7 @@ public class RoomController {
 		return model;
 	}
 	
-	@RequestMapping(value="roomList.do", method=RequestMethod.GET)
+/*	@RequestMapping(value="roomList.do", method=RequestMethod.GET)
 	public String roomList(Model model, String roomdate) {
 		
 		//model.addAttribute("room", roomService.search(1));
@@ -60,7 +60,7 @@ public class RoomController {
 		model.addAttribute("listcontent", "ReservedRoomCheck.jsp");
 		
 		return "index";
-	}
+	}*/
 	
 	@RequestMapping(value="reservedRoomForm.do", method=RequestMethod.GET)
 	public String reservedRoomForm(Model model) {
@@ -105,7 +105,22 @@ public class RoomController {
 		return "redirect:reservedRoomForm.do";
 	}
 	
-	
+	@RequestMapping(value="myRsvList.do", method=RequestMethod.GET)
+	public String myRsvList(Model model, HttpSession session) {
+		model.addAttribute("content", "room/RoomHome.jsp"); 
+		model.addAttribute("listform", "RoomList.jsp");
+		int empno = (Integer)session.getAttribute("empno");
+		List<RsvRoom> myRsvList = roomService.searchMyRsv(empno);
+		
+		model.addAttribute("myRsvList", myRsvList);
+		
+		model.addAttribute("listcontent", "ReservedRoomCheck.jsp");
+		
+		return "index";
+		
+		
+	}
+
 	
 	
 	@RequestMapping(value="insertRoomForm.do", method=RequestMethod.GET)

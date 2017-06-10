@@ -42,7 +42,11 @@ public class RoomServiceImpl implements RoomService {
 	public void reserveRoom(RsvRoom rsvroom) {
 		System.out.println("service>>>>>>>>>>>>>>>>>>>>"+rsvroom);
 		dao.reserveRoom(rsvroom);
+	}
+	
+	public List<RsvRoom> searchMyRsv(int empno) {
+		List<RsvRoom> myRsv = dao.searchMyRsv(empno);
 		
-		
+		return myRsv;
 	}
 }

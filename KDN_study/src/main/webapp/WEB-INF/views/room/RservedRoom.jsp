@@ -11,12 +11,15 @@
         <!-- datepicker 한국어로 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
 
+
 	<script type="text/javascript">
+
 	$(function() {
 		$.datepicker.setDefaults($.datepicker.regional['ko']);
-		$( "#roomResvDate" ).datepicker({minDate: +1 , dateFormat: 'yy-mm-dd'});
-		
+		$( "#roomResvDate" ).datepicker({minDate: +1 , dateFormat: 'yy-mm-dd'
+		});
 	});
+	
 	</script>
 
 </head>
@@ -26,8 +29,7 @@
 			<nav id="menu" >
 				<form style="text-align:center" method="get" action="reservedRoom.do" >
 					<input type="text" id="roomResvDate" name="roomResvDate">
-					<a class="teal-text" data-keyboard="true" onClick=""><i class="fa fa-pencil"></i></a>
-					<input type="submit" value="전송">
+					<input type="submit" value="예약 조회">
 				</form>
 			</nav>
 		</aside>

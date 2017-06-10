@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-2">
-				<a href="">나의 룸 예약</a><br/>
+				<a href="myRsvList.do">나의 룸 예약</a><br/>
 			</div>
 			<div class="col-sm-10">
 				<c:choose>

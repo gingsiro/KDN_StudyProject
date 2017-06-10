@@ -36,4 +36,7 @@ public class RoomDaoImpl implements RoomDao {
 		session.insert("rsvroom.reserveRoom", rsvroom);
 		
 	}
+	public List<RsvRoom> searchMyRsv(int empno) {
+		return session.selectList("rsvroom.searchMyRsv", empno);
+	}
 }
