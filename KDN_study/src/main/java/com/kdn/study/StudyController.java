@@ -56,7 +56,8 @@ public class StudyController {
 			model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
 			/*for (int i = 0; i < 5; i++) {
 				model.addAttribute("room"+i, studyService.searchAll(bean));
-			}*/
+			}
+			*/
 			return "index";
 		}else{
 			return "redirect:loginForm.do";
