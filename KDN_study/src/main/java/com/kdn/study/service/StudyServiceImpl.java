@@ -36,4 +36,7 @@ public class StudyServiceImpl implements StudyService {
 		dao.updateStudy(study);
 	}
 
+	public void joinStudy(int empno, int sno){
+		dao.joinStudy(empno, sno);
+	}
 }

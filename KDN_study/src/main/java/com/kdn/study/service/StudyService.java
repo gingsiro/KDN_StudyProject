@@ -11,4 +11,5 @@ public interface StudyService {
 	public List<Study> searchMyStudy(int empno);
 	public void createStudy(Study study);
 	public void updateStudy(Study study);
+	public void joinStudy(int empno, int sno);
 }

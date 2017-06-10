@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Study;
 
@@ -33,6 +34,15 @@ public class StudyDaoImpl implements StudyDao {
 
 	public void updateStudy(Study study) {
 		session.update("study.updateStudy", study);
+	}
+	
+	public void joinStudy(int empno, int sno){
+		Study study = session.selectOne("study.search", sno);
+		study.setScurr(study.getScurr()+1);
+		session.update("study.updateStudy", study);
+		
+		JoinStudy join = new JoinStudy(empno, sno);
+		session.insert("study.joinStudy", join);
 	}
 	
 }
