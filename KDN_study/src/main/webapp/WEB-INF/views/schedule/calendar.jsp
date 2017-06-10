@@ -12,11 +12,7 @@
 	<script src='js/sch/jquery.min.js'></script>
 	<script src='js/fullcalendar.min.js'></script>
 
-
-
 <script>
-console.log('${myScheduleList}');
-
 // 날짜 가져오기, json 생성
 var ourSchedule = new Array() ;
 <c:forEach items="${listschedule}" var="item">
@@ -25,6 +21,29 @@ var ourSchedule = new Array() ;
     console.log(">>>>>>>>>>" + '${empno}' );
     data.title='${item.sctitle}';
     data.start= '${item.scdate}';
+    
+    var a ='${item.scdate}';
+    
+    var front_date = a.substring(0,10);
+    var rear_date = a.substring(13,15);
+    
+
+    var mid_date = a.substring(11,12);
+    mid_date = Number(mid_date);
+    
+    console.log("mid>>>>>"+mid_date);
+    
+    mid_date = mid_date + 12;
+    mid_date = String(mid_date);
+    
+    var s = front_date + "T" + mid_date + ":" +  rear_date + ":00";
+    
+    data.start= s;
+    console.log("front>>" + front_date);
+    console.log("rear>>>" + rear_date);
+    console.log("s>>>>" + s);
+    
+    console.log(data.start);
     ourSchedule.push(data);
     
   <c:if test = "${empno == '170003'}">
@@ -47,8 +66,11 @@ $(document).ready(function() {
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay,listMonth'
+				right: 'month, agendaWeek, agendaDay, listMonth'
 			},
+			eventBorderColor: '#E2583E',
+	 		eventBackgroundColor: '#E2583E',
+	 		
 			defaultDate: sysdate,
 			navLinks: true, // can click day/week names to navigate views
 			editable: true,

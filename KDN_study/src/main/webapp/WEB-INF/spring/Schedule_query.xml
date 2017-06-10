@@ -8,13 +8,18 @@
  -->	
 <mapper namespace="schedule">
 	<select id="search" parameterType="int" resultType="schedule">
-		select scno, sctitle, to_char(scdate, 'yyyy-mm-dd') scdate, sno
+		select scno, sctitle
+									, to_char(scdate, 'yyyy-mm-dd') scdate
+									, sno
 		from schedule
 		where scno = #{scno}
 	</select>
-
+	
 <select id="searchAll" parameterType="pagebean" resultType="schedule">
-		select scno, sctitle, to_char(scdate, 'yyyy-mm-dd') scdate, sno, sname
+		select scno, sctitle
+									, to_char(scdate, 'yyyy-mm-ddHH24:mi') scdate
+									, sno
+									, sname
 		from schedule
 		JOIN study USING(sno)
 		<where>
@@ -62,12 +67,13 @@
 		WHERE e.empno = j.empno AND j.sno = s.SNO AND e.empno=#{empno};
 	</select>
 	
-	<insert id="insertSchedule" parameterType="Schedule">
+	<insert id="insertSchedule" parameterType="schedule">
 		insert into schedule(scno, sctitle, scdate, sno)
-		values(study_sno.nextval
-				, #{ smaster:INTEGER }
-				, #{ sname:VARCHAR }
-				, #{ smax:INTEGER }, #{ scurr:INTEGER },#{ cno:INTEGER })
+		values(SCHEDULE_SCNO.nextval
+				, #{ sctitle:VARCHAR }
+				, TO_DATE(#{scdate:DATE} , 'yyyy-mm-ddHH24:mi')
+				, #{ sno:INTEGER }
+				)
 	</insert>
 	
 	
