@@ -43,7 +43,7 @@
 		}
 	}
 	
-	function deleteStudy(sno) {
+	function deleteStudy(sno, smaster) {
 		if( <%=request.getSession().getAttribute("empno")%>== smaster){
 			$('#sno').val(sno);
 			$('#checkForm').modal();
@@ -172,7 +172,7 @@
 					<td>
 						<c:if test="${ empno == study.smaster }">
 							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }' )"><i class="fa fa-pencil"></i></a>
-							<a class="red-text"onClick="deleteStudy('${ study.sno }' )"><i class="fa fa-times"></i></a>
+							<a class="red-text"onClick="deleteStudy('${ study.sno }', ${ study.smaster } )"><i class="fa fa-times"></i></a>
 						</c:if>
 					</td>
 				</tr>

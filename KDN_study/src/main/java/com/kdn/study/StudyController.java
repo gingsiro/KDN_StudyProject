@@ -1,5 +1,7 @@
 package com.kdn.study;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +36,14 @@ public class StudyController {
 	
 	@RequestMapping(value="studyList.do", method=RequestMethod.GET)
 	public String studyList(Model model, String key, String word, HttpSession session) {
+		if(session.getAttribute("empno")==""){
+			return "loginForm.do";
+		}
+		List<Study> list = studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString()));
+
 		if(session.getAttribute("empno")!=null){
 			if(key!=null && key.equals("empno")){
-				model.addAttribute("list", studyService.searchMyStudy(Integer.parseInt(word)));
+				model.addAttribute("list", list);
 				model.addAttribute("listform","MyStudyList.jsp");
 			}else{
 				PageBean bean = new PageBean(key, word);
@@ -44,6 +51,7 @@ public class StudyController {
 				model.addAttribute("listform","StudyList.jsp");
 			}
 			
+			model.addAttribute("myStudyList", list);
 			model.addAttribute("content", "study/StudyHome.jsp");
 			model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
 			/*for (int i = 0; i < 5; i++) {
@@ -63,9 +71,14 @@ public class StudyController {
 	
 	@RequestMapping(value="updateStudy.do", method=RequestMethod.POST)
 	public String updateStudy(Model model, Study study){
-		System.out.println(study);
 		studyService.updateStudy(study);
 		return "redirect:studyList.do";
+	}
+	
+	@RequestMapping(value="joinStudy.do", method=RequestMethod.POST)
+	public String joinStudy(Model model, HttpSession session, int sno){
+		studyService.joinStudy(Integer.parseInt(session.getAttribute("empno").toString()), sno);
+		return "index";
 	}
 	
 }

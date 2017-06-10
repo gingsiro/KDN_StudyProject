@@ -9,7 +9,7 @@
 <title>Study Home</title>
 </head>
 <body>
-	<div class="container">
+	<div style="overflow:hidden" class="container">
 		<div class="row">
 			<div class="col-sm-2">
 				<a href="studyList.do">전체 스터디</a><br/>
