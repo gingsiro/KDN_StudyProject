@@ -5,6 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		$( "#roomResvDate" ).datepicker({minDate: 0});
+		$( "#roomResvDate" ).datepicker({dateFormat: 'yy/mm/dd'});
+	});
+	</script>
+
 </head>
 <body>
 	<article>
