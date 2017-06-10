@@ -40,8 +40,9 @@
 			timeString = "21-23시";
 		} 
 		
-		$('#rsvtime').val(timeString);
-		$('#rsvTimeCode').val(time);
+		$('#rsvTimeString').val(timeString);
+		$('#rsvcode').val(time);
+		<%-- $('#empno').val(<%= request.getSession().getAttribute("empno") %>); --%>
 		
 		
 	}
@@ -66,38 +67,39 @@
 							<div class="form-group">
 							<label for="inputRoomName">룸 번호</label> <input type="text"
 								class="form-control" id="rno" name="rno"
-								placeholder="Room NUMBER">
+								placeholder="Room NUMBER" readonly="readonly">
 							</div>
 							
 							<div class="form-group">
-							<label for="inputRsvDate">예약 날짜</label> <input type="text"
-								class="form-control" id="rsvdate" name="rsvdate"
-								placeholder="Room RESERVE DATE" value=<%=date %>>
+							<label for="inputRsvDate">예약 날짜</label><input type="text"
+								class="form-control" id="rsvdate" name="rsvdate" value=<%= date %>
+								placeholder="Room RESERVE DATE" readonly="readonly">
 							</div>
 						
 							<div class="form-group">
 							<label for="inputRsvTime">예약 시간</label> <input type="text"
-								class="form-control" id="rsvtime" name="rsvtime"
-								placeholder="Room RESERVE TIME" >
+								class="form-control" id="rsvTimeString" name="rsvTimeString" 
+								placeholder="Room RESERVE TIME" readonly="readonly">
 							</div>
 							
 							<div class="form-group">
 							<label for="inputRsvEmpno">예약자 사번</label> <input type="text"
-								class="form-control" id="rsvempno" name="rsvempno"
-								placeholder="Room RESERVER" value="${empno}">
+								class="form-control" id="empno" name="empno" value='${ empno }'
+								placeholder="Room RESERVER" readonly="readonly">
 							</div>
 							
-							<div class="form-group">
+							 <div class="form-group">
 								<label for="inputRsvStudy">룸을 예약할 스터디</label> 
-								<select id="rsvstudy" name="rsvstudy" class="form-control">
-									<c:forEach var="mystudy" items="${ myStudyList }">
+								<select id="sno" name="sno" class="form-control">
+									 <c:forEach var="mystudy" items="${ myStudyList }">
 										<option value="${ mystudy.sno}">${ mystudy.sname }</option>
-									</c:forEach>
+									</c:forEach> 
 								</select>
-							</div>
+							</div> 
 							
 					
-			
+							<input type="hidden" id="rsvcode" name="rsvcode"  />
+							
 						<button type="submit" class="btn btn-default btn-success">
 								<span class="glyphicon glyphicon-ok"></span> 예약
 							</button>
@@ -105,7 +107,6 @@
 								<span class="glyphicon glyphicon-remove"></span> 취소
 							</button>
 							
-							<input type="hidden" id="rsvTimeCode" name="rsvTimeCode"  />
 							
 						</form>
 					</div>
