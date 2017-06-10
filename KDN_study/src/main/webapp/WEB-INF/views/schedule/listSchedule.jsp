@@ -11,9 +11,9 @@
 		
 		<style>
 			#loadCalendar { witdth: 50px;
-									margin-left: 20%;
-									margin-right: 20%;
-			}
+									margin-left: 5%;
+									margin-right: 35%;
+				}
 			
 			#loadBoard { text-align: center;
 			}
@@ -53,6 +53,7 @@
 				frm.submit();
 			}
 		</script>
+		
 	</head>
 
 <body>
@@ -71,19 +72,22 @@
 						</h4>
 					</div>
 					<div class="modal-body">
-						<form role="form" method="POST" action="createStudy.do">
+						<form role="form" method="POST" action="insertSchedule.do">
 							<div class="form-group">
-								<label for="inputStudyName">스케줄 이름</label> <input type="text"
-									class="form-control" id="sname" name="sname"
-									placeholder="Study Name">
+								<label for="inputScheduleName">스케줄 이름</label> <input type="text"
+									class="form-control" id="sctitle" name="sctitle"
+									placeholder="Schedule Name">
 							</div>
 						
-						<input type="date" id="roomdate" name="roomdate"> 
+						<!-- 
+						value="2017-10-09T15:38:00" -->
+						
+						<input type="datetime-local" id="scdate" name="scdate" > 
 						
 						<div class="form-group">
-								<label for="inputStudyName">스터디 명(일단 번호로)</label> <input type="text"
-									class="form-control" id="sname" name="sname"
-									placeholder="Study Name">
+								<label for="inputScheduleName">스터디 명(일단 번호로)</label> <input type="text"
+									class="form-control" id="sno" name="sno"
+									placeholder="Schedule Name">
 							</div>
 							
 						<button type="submit" class="btn btn-default btn-success">
@@ -100,21 +104,52 @@
 		</div>
 		
 		<div>
-		<h2>니가 선택한 스터디의 메인 화면</h2>
-		<p>니 스케줄이다. 그 밑에는 게시판</p>
-		<div style="text-align: right">
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createForm">스케줄 입력</button>
+			<h2>니가 선택한 스터디의 메인 화면</h2>
+			<p>니 스케줄이다. 그 밑에는 게시판</p>
+			<div style="text-align: right">
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createForm">스케줄 입력</button>
+			</div>
 		</div>
-	</div>
-	
-		
 	</div>
 
 	<section id='loadCalendar'>
 		<jsp:include page="calendar.jsp"></jsp:include>
 	</section>
 	
+	<div class="main">
+		<form id="frm" >
+			<input type="hidden" id="pageNo"  name="pageNo"  value="1"/>
+			<input type="hidden" id="no"  name="no"/>
+			<table align="center">
+			<tr><th colspan="3"> 게시글 목록</th></tr>
+	  	<tr align="center">
+	  	</tr>
+	  	<tr align="center">
+	  	  <td width="100"> 일정번호</td><td width="200">제목</td><td  width="100">일시</td>
+	  	  <c:forEach  var="schedule" items="${listschedule}">
+	  	  <tr>
+			 <td>${schedule.scno}</td>  	  
+			 <td>${schedule.sctitle}</td>  	  
+			 <td>${schedule.scdate}</td>  	
+		  </tr>  
+	  	  </c:forEach>
+	  	  <td colspan="3" height="100" align="center">
+	  	  <select  name="key" id="key">
+	  		<option value="all"     >-----all-----</option>
+	  		<option value="scno"      <%=pageBean.getKey("scno")%> >일정번호</option>
+	  		<option value="sctitle"   <%=pageBean.getKey("sctitle")%>  >제목</option>
+	  		<option value="sno" <%=pageBean.getKey("sno")%>  >스터디번호</option>
+	  	  </select>
+	  	  <input type="text" id="word" name="word" value="${pageBean.word}"/>
+	  	  <a href="#" onclick="pagelist(1)">검색</a> &nbsp;&nbsp;&nbsp;
+	  	 </td>
+	  	</tr>
+		</table>
+			<div class="bottom"><center>${pageBean.pagelink } </center></div>
+		</form>
+	</div>
 	
+<div>
 	<c:forEach var="studyList" items="${ studyList }">
 		ggg${ studyList.sname }
 	</c:forEach>
@@ -127,6 +162,8 @@
 		우하하하하하
 		<br/><br/><br/>
 	</section>
+</div>
+
 
 	<form method="get" action="searchSchedule.do">
 		<table align='center'>
@@ -145,37 +182,5 @@
 		</table>
 	</form>
 
-	<div class="main">
-		<form id="frm" >
-			<input type="hidden" id="pageNo"  name="pageNo"  value="1"/>
-			<input type="hidden" id="no"  name="no"/>
-			<table align="center">
-			<tr><th colspan="3"> 게시글 목록</th></tr>
-	  	<tr align="center">
-	  	 <td colspan="3" height="100" align="center">
-	  	  <select  name="key" id="key">
-	  		<option value="all"     >-----all-----</option>
-	  		<option value="scno"      <%=pageBean.getKey("scno")%> >일정번호</option>
-	  		<option value="sctitle"   <%=pageBean.getKey("sctitle")%>  >제목</option>
-	  		<option value="sno" <%=pageBean.getKey("sno")%>  >스터디번호</option>
-	  	  </select>
-	  	  <input type="text" id="word" name="word" value="${pageBean.word}"/>
-	  	  <a href="#" onclick="pagelist(1)">검색</a> &nbsp;&nbsp;&nbsp;
-	  	 </td>
-	  	</tr>
-	  	<tr align="center">
-	  	  <td width="100"> 일정번호</td><td width="200">제목</td><td  width="100">일시</td>
-	  	  <c:forEach  var="schedule" items="${listschedule}">
-	  	  <tr>
-			 <td>${schedule.scno}</td>  	  
-			 <td>${schedule.sctitle}</td>  	  
-			 <td>${schedule.scdate}</td>  	
-		  </tr>  
-	  	  </c:forEach>
-	  	</tr>
-		</table>
-			<div class="bottom"><center>${pageBean.pagelink } </center></div>
-		</form>
-	</div>
 </body>
 </html>

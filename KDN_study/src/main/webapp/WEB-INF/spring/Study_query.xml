@@ -49,7 +49,7 @@
 	
 	<insert id="joinStudy" parameterType="joinstudy">
 		insert into join_study(jno, empno, sno)
-		values(join_no.nextval, #{empno:INTEGER}, #{sno:INTEGER})
+		values(join_jno.nextval, #{empno:INTEGER}, #{sno:INTEGER})
 	</insert>
 	
 	<update id="updateStudy" parameterType="study">
