@@ -17,10 +17,10 @@ public class RoomServiceImpl implements RoomService {
 	@Qualifier("roomDao")
 	private RoomDao dao;
 	
-	public Room search(int rno) {
-		Room room = dao.search(rno);
+	public List<Room> searchAll() {
+		List<Room> roomlist = dao.searchAll();
 		
-		return room;
+		return roomlist;
 	}
 	
 	public List<RsvRoom> rsvRoomSearchAll(String roomdate) {
@@ -48,5 +48,9 @@ public class RoomServiceImpl implements RoomService {
 		List<RsvRoom> myRsv = dao.searchMyRsv(empno);
 		
 		return myRsv;
+	}
+	
+	public void deleteRsvRoom(int rsvNo) {
+		dao.deleteRsvRoom(rsvNo);
 	}
 }

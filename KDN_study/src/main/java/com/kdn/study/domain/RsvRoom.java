@@ -7,6 +7,7 @@ public class RsvRoom {
 	private int rno;
 	private int sno;
 	private int empno;
+	private String sname;
 	
 
 	public RsvRoom() {}
@@ -20,6 +21,27 @@ public class RsvRoom {
 		this.rno = rno;
 		this.sno = sno;
 		this.empno = empno;
+	}
+	
+	
+	public RsvRoom(int rsvno, String rsvdate, int rsvcode, int rno, int sno,
+			int empno, String sname) {
+		super();
+		this.rsvno = rsvno;
+		this.rsvdate = rsvdate;
+		this.rsvcode = rsvcode;
+		this.rno = rno;
+		this.sno = sno;
+		this.empno = empno;
+		this.sname = sname;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
 	}
 
 	public int getRsvno() {
@@ -65,7 +87,7 @@ public class RsvRoom {
 	public String toString() {
 		return "RsvRoom [rsvno=" + rsvno + ", rsvdate=" + rsvdate
 				+ ", rsvcode=" + rsvcode + ", rno=" + rno + ", sno=" + sno
-				+ ", empno=" + empno + "]";
+				+ ", empno=" + empno + ", sname=" + sname + "]";
 	}
 	
 	

@@ -19,6 +19,7 @@
 		$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>생성");
 		$('#sname').val();
 		$('#sno').val(0);
+		$('#scurr').val(1);
 		$("#cuStudy").attr("action", "createStudy.do");
 		$('#cno').val(1).attr("selected", "selected");
 		$('#smax').val(2).attr("selected", "selected");

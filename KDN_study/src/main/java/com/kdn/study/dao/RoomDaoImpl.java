@@ -17,8 +17,8 @@ public class RoomDaoImpl implements RoomDao {
 	private SqlSessionTemplate session;
 	
 	
-	public Room search(int rno) {
-		return session.selectOne("room.search");
+	public List<Room> searchAll() {
+		return session.selectList("room.searchAll");
 
 	}
 	
@@ -38,5 +38,9 @@ public class RoomDaoImpl implements RoomDao {
 	}
 	public List<RsvRoom> searchMyRsv(int empno) {
 		return session.selectList("rsvroom.searchMyRsv", empno);
+	}
+	
+	public void deleteRsvRoom(int rsvNo) {
+		session.delete("rsvroom.deleteRsvRoom", rsvNo);
 	}
 }
