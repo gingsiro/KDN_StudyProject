@@ -54,9 +54,23 @@ public class ScheduleServiceImpl implements ScheduleService{
 			throw new UpdateException("게시글 검색 중 오류 발생");
 		}
 	}
+	
+	@Override
+	public List<Schedule> searchAllForRightList(PageBean bean) {
+		try {
+			int total = dao.getCount(bean);
+			PageUtility bar = new PageUtility(bean.getInterval(), total, bean.getPageNo());
+			
+			bean.setPagelink(bar.getPageBar());
+			return dao.searchAllForRightList(bean);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new UpdateException("게시글 검색 중 오류 발생");
+		}
+	}
 
 	@Override
-	public List<Schedule> searchMySchedule(int no) {
-		return dao.searchMySchedule(no);
+	public List<Schedule> searchMySchedule(int empno) {
+		return dao.searchMySchedule(empno);
 	}
 }

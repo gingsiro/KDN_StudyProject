@@ -25,14 +25,19 @@ public class ScheduleController
 	private StudyService studyService;
 	
 	@RequestMapping(value="listSchedule.do", method=RequestMethod.GET)
-	public String listSchedule(PageBean bean, Model model, HttpSession session)
+	public String listSchedule(PageBean bean, Model model, HttpSession session, String sno)
 	{
 		List<Schedule> list = scheduleService.searchAllForCalendar(bean);
 		model.addAttribute("listschedule", list);
+		
+		List<Schedule> right_list = scheduleService.searchAllForRightList(bean);
+		model.addAttribute("right_list", right_list);
 		model.addAttribute("content", "schedule/listSchedule.jsp");
 		
 		model.addAttribute("studyList", studyService.searchAll(new PageBean("all", null)));
-				
+		
+		model.addAttribute("sno", sno);
+		model.addAttribute("myScheduleOfStudyList", scheduleService.searchMySchedule(Integer.parseInt(session.getAttribute("empno").toString())));
 		return "index";
 	}
 
@@ -40,8 +45,6 @@ public class ScheduleController
 	public String insertSchedule(Model model, Schedule schedule){
 		
 		String s = schedule.getScdate();
-		
-		
 		
 		String s2 = s.substring(0,10);
 		String s3 = s.substring(11, 16);

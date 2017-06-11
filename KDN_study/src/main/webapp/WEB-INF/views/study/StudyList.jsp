@@ -7,8 +7,7 @@
 <title>Bootstrap Example</title>
 <meta charset="UTF-8">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	/*$(function() {
 		$("#popbutton").click(function() {
@@ -36,6 +35,7 @@
 			$('#cno').val(cno).attr("selected", "selected");
 			$('#smax').val(smax).attr("selected", "selected");
 			$('#scurr').val(scurr).val(scurr);
+			
 			
 			$('#modalForm').modal();
 		} else {
@@ -161,7 +161,7 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>
+				<th style="width:100px">
 					<div class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
 							카테고리<span class="caret"></span>
@@ -175,19 +175,16 @@
 					</div>
 				</th>
 				<th>스터디명</th>
-				<th>현재인원</th>
-				<th>최대인원</th>
-				<th>조작</th>
+				<th style="width:100px; text-align:center">현재인원</th>
+				<th style="width:100px; text-align:center">최대인원</th>
+				<th style="width:65px"></th>
+				<th style="width:65px"></th>
+				<th style="width:65px"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="study" items="${ list }">
 				<tr>
-					<th scope="row">${ study.cname }</th>
-					<td>${ study.sname }</td>
-					<td>${ study.scurr }</td>
-					<td>${ study.smax }</td>
-					<td>
 						<c:set var="index" value="0"/> 
 						<c:forEach var="myStudy" items="${ myStudyList }">
 							<c:if test="${index eq '0'}"> 
@@ -196,11 +193,30 @@
 								</c:if>
 							</c:if>
 						</c:forEach>
+					<th scope="row">${ study.cname }</th>
+					<td>
+						<c:if test="${ index eq '1' }">
+							<a href="listSchedule.do?sno=${study.sno}">${ study.sname }</a>
+						</c:if>
+						<c:if test="${ index eq '0' }">
+							${ study.sname }
+						</c:if>
+					</td>
+					<td style="text-align:center">${ study.scurr }</td>
+					<td style="text-align:center">${ study.smax }</td>
+					
+					<td>
 						<c:if test="${ index eq '0' }">
 							<a class="teal-text" data-keyboard="true" onClick="joinStudy('${ study.sno }')"><i class="fa fa-plus"></i>가입</a>
 						</c:if>
+					</td>
+					<td>
 						<c:if test="${ empno == study.smaster }">
 							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }')"><i class="fa fa-pencil"></i>수정</a>
+						</c:if>
+					</td>
+					<td>
+						<c:if test="${ empno == study.smaster }">
 							<a class="red-text"onClick="deleteStudy('${ study.sno }', '${ study.smaster }')"><i class="fa fa-times"></i>삭제</a>
 						</c:if>
 					</td>

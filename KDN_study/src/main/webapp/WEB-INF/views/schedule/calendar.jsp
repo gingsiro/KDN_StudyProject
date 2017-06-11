@@ -15,7 +15,7 @@
 <script>
 // 날짜 가져오기, json 생성
 var ourSchedule = new Array() ;
-<c:forEach items="${listschedule}" var="item">
+<c:forEach items="${myScheduleOfStudyList}" var="item">
     // var data = {title:'${item.sctitle}', start: '${item.scdate}'}
     var data = new Object();
     console.log(">>>>>>>>>>" + '${empno}' );
@@ -36,7 +36,7 @@ var ourSchedule = new Array() ;
     mid_date = mid_date + 12;
     mid_date = String(mid_date);
     
-    var s = front_date + "T" + mid_date + ":" +  rear_date + ":00";
+    var s = front_date + "T" + mid_date +   rear_date + "0:00";
     
     data.start= s;
     console.log("front>>" + front_date);
@@ -44,10 +44,9 @@ var ourSchedule = new Array() ;
     console.log("s>>>>" + s);
     
     console.log(data.start);
-    ourSchedule.push(data);
     
-  <c:if test = "${empno == '170003'}">
-	    
+  <c:if test = "${item.sno == sno}">
+  	ourSchedule.push(data);
    </c:if>
     
 </c:forEach>

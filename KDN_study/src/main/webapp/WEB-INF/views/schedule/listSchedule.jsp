@@ -126,11 +126,13 @@
 	  	</tr>
 	  	<tr align="center">
 	  	  <td width="100"> 일정번호</td><td width="200">제목</td><td  width="100">일시</td>
-	  	  <c:forEach  var="schedule" items="${listschedule}">
+	  	  <c:forEach  var="schedule" items="${myScheduleOfStudyList}">
 	  	  <tr>
-			 <td>${schedule.scno}</td>  	  
-			 <td>${schedule.sctitle}</td>  	  
-			 <td>${schedule.scdate}</td>  	
+	  	  	<c:if test= "${schedule.sno == sno}">
+				 <td>${schedule.scno}</td>  	  
+				 <td>${schedule.sctitle}</td>  	  
+				 <td>${schedule.scdate}</td>  	
+			 </c:if>
 		  </tr>  
 	  	  </c:forEach>
 	  	  <td colspan="3" height="100" align="center">

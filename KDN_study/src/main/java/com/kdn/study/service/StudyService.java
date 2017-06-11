@@ -2,6 +2,7 @@ package com.kdn.study.service;
 
 import java.util.List;
 
+import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Study;
 
@@ -11,5 +12,6 @@ public interface StudyService {
 	public List<Study> searchMyStudy(int empno);
 	public void createStudy(Study study);
 	public void updateStudy(Study study);
-	public void joinStudy(int empno, int sno);
+	public void joinStudy(JoinStudy joinInfo);
+	public void dismissStudy(JoinStudy joinInfo);
 }

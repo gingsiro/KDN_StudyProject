@@ -47,6 +47,21 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		 * limit 추출할 개수
 		 */
 		
+		int countSchedule = session.selectOne("schedule.getCount", bean);
+		RowBounds rows = new RowBounds(bean.getStart()-1, countSchedule);
+		
+//		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getInterval());
+		return session.selectList("schedule.searchAllForCalendar", bean, rows);
+	}
+	
+	@Override
+	public List<Schedule> searchAllForRightList(PageBean bean) {
+		/*
+		 * RowBounds(offset, limit)
+		 * offset 추출할 row의 시작 위치 (0부터 시작)
+		 * limit 추출할 개수
+		 */
+		
 //		int countSchedule = session.selectOne("schedule.getCount", bean);
 //		RowBounds rows = new RowBounds(bean.getStart()-1, countSchedule);
 		
@@ -67,8 +82,8 @@ public class ScheduleDaoImpl implements ScheduleDao {
 	}
 
 	@Override
-	public List<Schedule> searchMySchedule(int no) {
-		return session.selectList("schedule.searchMySchedule", no);
+	public List<Schedule> searchMySchedule(int empno) {
+		return session.selectList("schedule.searchMySchedule", empno);
 	}
 
 }
