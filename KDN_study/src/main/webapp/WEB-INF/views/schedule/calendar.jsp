@@ -11,6 +11,34 @@
 	<script src='js/sch/moment.min.js'></script>
 	<script src='js/sch/jquery.min.js'></script>
 	<script src='js/fullcalendar.min.js'></script>
+	<script type="text/javascript" src="locale/ko.js"></script>
+	<script type="text/javascript" src="js/modal.js"></script>
+	
+
+<style>
+.fc-sat {color:blue;}
+.fc-sun {color:red;}
+#modal {display:none;background-color:#FFFFFF;position:absolute;top:300px;left:200px;padding:10px;border:2px solid #E2E2E2;z-Index:9999}
+</style>
+
+<script>
+//모달창 인스턴트 생성
+var myModal = new Example.Modal({
+    id: "modal" // 모달창 아이디 지정
+});
+  
+// 모달 창 여는 버튼에 이벤트 걸기
+$("#button").click(function() {
+    myModal.show(); // 모달창 보여주기
+});
+  
+// 모달 창 안에 있는 확인 버튼에 이벤트 걸기
+$("#confirm_button").click(function() {
+    alert("나는 모달창이다.");
+    myModal.hide(); // 모달창 감추기
+});
+</script>
+
 
 <script>
 // 날짜 가져오기, json 생성
@@ -67,12 +95,29 @@ $(document).ready(function() {
 				center: 'title',
 				right: 'month, agendaWeek, agendaDay, listMonth'
 			},
+			
+		    eventClick: function(calEvent, jsEvent, view) {
+
+		         alert('Event: ' + calEvent.title);
+		         /*        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+		        alert('View: ' + view.name); */
+		        var myModal = new Example.Modal({
+		            id: "modal" // 모달창 아이디 지정
+		        });
+		        
+		        myModal.show();
+		        // change the border color just for fun
+		        $(this).css('border-color', 'red');
+
+		    },
+			
 			eventBorderColor: '#E2583E',
 	 		eventBackgroundColor: '#E2583E',
-	 		
+	 		lang : "ko",
+	 		editable: true,
 			defaultDate: sysdate,
 			navLinks: true, // can click day/week names to navigate views
-			editable: true,
+//			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			events:  ourSchedule
 			  /*  [
@@ -151,10 +196,21 @@ $(document).ready(function() {
 		max-width: 5000px;
 		margin: 0 auto;
 	}
+	
+	.fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
+    .fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
 
 </style>
 </head>
 <body>
+
+<div id="modal">
+    <h3>Test Modal</h3>
+    <p>이 창은 모달창입니다.</p>
+    <button id="confirm_button">확인</button>
+    <button class="js_close">닫기</button>
+</div>
+
 
 	<div id='calendar'></div>
 

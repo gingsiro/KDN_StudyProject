@@ -44,4 +44,8 @@ public class StudyServiceImpl implements StudyService {
 	public void dismissStudy(JoinStudy joinInfo){
 		dao.dismissStudy(joinInfo);
 	}
+	
+	public void deleteStudy(int sno){
+		dao.deleteStudy(sno);
+	}
 }
