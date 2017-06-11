@@ -37,6 +37,7 @@
 			$('#smax').val(smax).attr("selected", "selected");
 			$('#scurr').val(scurr).val(scurr);
 			
+			
 			$('#modalForm').modal();
 		} else {
 			alert('스터디장이 아니면 수정할 수 없습니다.');
@@ -184,7 +185,7 @@
 			<c:forEach var="study" items="${ list }">
 				<tr>
 					<th scope="row">${ study.cname }</th>
-					<td>${ study.sname }</td>
+					<td><a href="listSchedule.do?sno=${study.sno}">${ study.sname }</a></td>
 					<td>${ study.scurr }</td>
 					<td>${ study.smax }</td>
 					<td>

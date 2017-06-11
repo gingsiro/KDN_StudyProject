@@ -80,7 +80,7 @@ public class PageUtility {
             nexttenpage=(((totalpagecount-1)/pagePercount)+1)*pagePercount;
         if(lastpagecount>totalpagecount)
             lastpagecount = totalpagecount+1;
-		
+		/*
         if(firstpagecount>pagePercount)
             sb.append(" <a href='javascript:pagelist("+beforetenpage+")'><img src=\""+imagepath+"btn_first.gif\" border='0'  hspace='3' align='absmiddle'></a>&nbsp;&nbsp;");
         else
@@ -90,7 +90,7 @@ public class PageUtility {
             sb.append("<a href='javascript:pagelist("+ beforetenpage+")'><img src=\""+imagepath+"btn_prev.gif\" border='0' hspace='3' align=absmiddle></a>&nbsp;&nbsp;");
         else
             sb.append("<img src=\""+imagepath+"btn_prev.gif\" border='0'   align=absmiddle>&nbsp;&nbsp;");
-
+*/
         for (int i = firstpagecount; i < lastpagecount; i++)
         {
             if(i<=totalpagecount)
@@ -104,6 +104,7 @@ public class PageUtility {
             }
         }
 
+        /*
         if(nexttenpage<((totalpagecount-1)/pagePercount+1)*pagePercount)
             sb.append("&nbsp;&nbsp;<a href='javascript:pagelist("+ (nexttenpage)+ ")'><img src=\""+imagepath+"btn_next.gif\" border='0' hspace='3' align=absmiddle></a>");
         else
@@ -113,8 +114,12 @@ public class PageUtility {
             sb.append("&nbsp;&nbsp;<a href='javascript:pagelist("+ (nexttenpage)+")'><img src=\""+imagepath+"btn_end.gif\" border='0' align=absmiddle></a>");
         else
             sb.append("&nbsp;&nbsp;<img src=\""+imagepath+"btn_end.gif\" border='0' align=absmiddle>");
+         */
         return sb.toString();
+        
     }
+    
+    
     public String getTotalPageCount() {       return String.valueOf(totalpagecount);
     }
 }

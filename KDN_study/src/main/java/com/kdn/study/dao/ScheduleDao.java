@@ -12,8 +12,9 @@ public interface ScheduleDao {
 	public void 			update(Schedule schedule);
 	public void 			remove(int no);
 	public List<Schedule> 	searchAllForCalendar(PageBean bean);
+	public List<Schedule> 	searchAllForRightList(PageBean bean);
 	public int 				getCount(PageBean bean);
 	public int 				getBoardNo();
 	
-	public List<Schedule> searchMySchedule(int no);
+	public List<Schedule> searchMySchedule(int empno);
 }
