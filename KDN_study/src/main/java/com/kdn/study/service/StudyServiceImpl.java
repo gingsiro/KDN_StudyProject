@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.kdn.study.dao.StudyDao;
+import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Study;
 
@@ -36,7 +37,11 @@ public class StudyServiceImpl implements StudyService {
 		dao.updateStudy(study);
 	}
 	
-	public void joinStudy(int empno, int sno){
-		dao.joinStudy(empno, sno);
+	public void joinStudy(JoinStudy joinInfo){
+		dao.joinStudy(joinInfo);
+	}
+	
+	public void dismissStudy(JoinStudy joinInfo){
+		dao.dismissStudy(joinInfo);
 	}
 }

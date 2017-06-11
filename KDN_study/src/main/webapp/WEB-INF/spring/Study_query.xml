@@ -56,4 +56,9 @@
 		update study set sname=#{ sname:VARCHAR }, smax=#{ smax:INTEGER }, scurr=#{ scurr:INTEGER }, cno=#{ cno:INTEGER }
 		where sno = #{ sno:INTEGER }
 	</update>
+	
+	<delete id="dismissStudy" parameterType="joinstudy">
+		delete from join_study
+		where empno=#{ empno:INTEGER } AND sno=#{ sno:INTEGER }
+	</delete>
 </mapper>

@@ -1,7 +1,5 @@
 package com.kdn.study;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Study;
 import com.kdn.study.service.CategoryService;
@@ -76,11 +75,16 @@ public class StudyController {
 
 	@RequestMapping(value="joinStudy.do", method=RequestMethod.POST)
 	public String joinStudy(Model model, HttpSession session, String sno){
-		System.out.println(session.getAttribute("empno") + "//" + Integer.parseInt(sno) );
-		studyService.joinStudy(Integer.parseInt(session.getAttribute("empno").toString()), Integer.parseInt(sno));
-		//추후 스터디 메인페이지로 이동하게 만들어야함
-		return "redirect:studyList.do";
+		JoinStudy joinInfo = new JoinStudy(Integer.parseInt(session.getAttribute("empno").toString()), Integer.parseInt(sno));
+		studyService.joinStudy(joinInfo);
+		return "redirect:listSchedule.do?sno="+sno;
 	}
 	
-	
+	@RequestMapping(value="dismissStudy.do", method=RequestMethod.POST)
+	public String dismissStudy(Model model, String empno, String sno){
+		JoinStudy joinInfo = new JoinStudy(Integer.parseInt(empno), Integer.parseInt(sno));
+		System.out.println(empno+"//"+sno);
+		studyService.dismissStudy(joinInfo);
+		return "redirect:studyList.do";
+	}
 }
