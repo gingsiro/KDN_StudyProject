@@ -8,7 +8,7 @@ import com.kdn.study.domain.RsvRoom;
 
 public interface RoomDao {
 	
-	public Room search(int rno);
+	public List<Room> searchAll();
 
 	public List<RsvRoom> rsvRoomSearchAll(String roomdate);
 	public List<HashMap<String, Integer>> searchDayRsv(String roomResvDate);

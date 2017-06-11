@@ -17,9 +17,8 @@
 	String date = null;
 	if(request.getQueryString() != null){
 		date = request.getParameter("roomResvDate").toString();
-		//여긴 
 	}else{
-		//내일 날짜를 date에 설정하면 테이블이 내일날짜의 예약 목록을 띄워줄꺼야 !!! 
+		
 	}
 
 %>
@@ -35,9 +34,14 @@
 		})
 		
 		if (<%=date%> != null) {
-			$("#rsvtable").attr("style", "display")
+			$("#rsvtable").attr("style", "display");
+			//$("input[type='submit']").attr("disabled", false); //활성화
 			
-		} 
+		} else {
+			//$("input[type='submit']").attr("disabled", true);//비활성화
+		}
+		
+
 
 	});
 
@@ -68,13 +72,15 @@
 	}
 	
 
+
 	</script>
 </head>
 <body>
 		<nav id="menu" >
 			<form style="text-align:center" method="get" action="reservedRoom.do" >
 				<input type="text" id="roomResvDate" name="roomResvDate">
-				<input type="submit" value="예약 조회">
+
+				<input type="submit" value="예약 조회" id="rsvbtn">
 			</form>
 		</nav>
  		<article id="mainContent">
@@ -222,6 +228,29 @@
 			</tbody>
 		</table>
 	</div>
-		</article>
+	
+	<div>
+		<h2>KDN 스터디룸 정보</h2>
+		<p>현재 KDN의 스터디룸 정보 목록입니다.</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>룸 번호</th>
+					<th>룸 이름</th>
+					<th>룸 정원</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="room" items="${ roomList }">
+					<tr>
+						<th scope="row">${room.rno}</th>
+						<td>${room.rname}</td>
+						<td>${room.rmax}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+</article>
 </body>
 </html>

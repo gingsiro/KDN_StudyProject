@@ -17,8 +17,8 @@ public class RoomDaoImpl implements RoomDao {
 	private SqlSessionTemplate session;
 	
 	
-	public Room search(int rno) {
-		return session.selectOne("room.search");
+	public List<Room> searchAll() {
+		return session.selectList("room.searchAll");
 
 	}
 	
