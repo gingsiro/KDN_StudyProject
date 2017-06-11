@@ -12,6 +12,7 @@ public interface ScheduleService {
 	public void remove(int no);
 	public void insertSchedule(Schedule schedule);
 	public List<Schedule> searchAllForCalendar(PageBean bean);
+	public List<Schedule> searchAllForRightList(PageBean bean);
 	
-	public List<Schedule> searchMySchedule(int no);
+	public List<Schedule> searchMySchedule(int empno);
 }

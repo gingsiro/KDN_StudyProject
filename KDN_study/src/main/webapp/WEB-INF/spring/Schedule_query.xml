@@ -15,7 +15,7 @@
 		where scno = #{scno}
 	</select>
 	
-<select id="searchAllForCalendar" parameterType="pagebean" resultType="schedule">
+	<select id="searchAllForCalendar" parameterType="pagebean" resultType="schedule">
 		select scno, sctitle
 									, to_char(scdate, 'yyyy-mm-ddHH24:mi') scdate
 									, sno
@@ -40,6 +40,31 @@
 		order by scno desc
 	</select>
 	
+	<select id="searchAllForRightList" parameterType="pagebean" resultType="schedule">
+		select scno, sctitle
+									, to_char(scdate, 'yyyy-mm-ddHH24:mi') scdate
+									, sno
+									, sname
+		from schedule
+		JOIN study USING(sno)
+		<where>
+			<if test="word != null">
+				<choose>
+					<when test="key == 'scno'">
+						scno = #{word}
+					</when>
+					<when test="key == 'sctitle'">
+						sctitle like '%' || #{word} || '%'
+					</when>
+					<when test="key == 'sno'">
+						sno = #{word}
+					</when>
+				</choose>
+			</if>
+		</where>
+		order by scdate desc
+	</select>
+	
 	
 	<select id="getCount" parameterType="pagebean" resultType="int">
 		select count(*)
@@ -62,9 +87,9 @@
 	</select>
 	
 	<select id="searchMySchedule" parameterType="int" resultType="schedule">
-		SELECT e.empno, j.sno, s.SCTITLE
-		FROM EMPLOYEE e, join_study j, schedule s
-		WHERE e.empno = j.empno AND j.sno = s.SNO AND e.empno=#{empno};
+		SELECT *
+		FROM SCHEDULE s, JOIN_STUDY j
+		WHERE s.SNO = j.SNO AND empno = #{ empno:INTEGER }
 	</select>
 	
 	<insert id="insertSchedule" parameterType="schedule">
