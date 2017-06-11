@@ -54,8 +54,6 @@
 	</update>
 	
 	
-	
-	
 	<!-- <select id="searchpassword" parameterType="String" resultType="employee">
 		select *
 		from employee
@@ -69,5 +67,9 @@
 		<!-- where empno=#{empno:INTEGER} -->
 		where password=#{password:VARCHAR} and empno=#{empno:INTEGER}
 	</update>
+	
+	
+	
+	
 	
 </mapper>
