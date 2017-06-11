@@ -44,10 +44,9 @@ var ourSchedule = new Array() ;
     console.log("s>>>>" + s);
     
     console.log(data.start);
-    ourSchedule.push(data);
     
-  <c:if test = "${empno == '170003'}">
-	    
+  <c:if test = "${item.sno == sno}">
+  	ourSchedule.push(data);
    </c:if>
     
 </c:forEach>
