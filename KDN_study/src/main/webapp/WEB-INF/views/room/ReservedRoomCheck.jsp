@@ -32,7 +32,7 @@
 					<th>예약 일시</th>
 					<th>예약 시간</th>
 					<th>호수</th>
-					<th>스터디 번호</th>
+					<th>룸을 예약한 스터디</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -42,10 +42,10 @@
 						<td>
 						<c:choose>
 							<c:when test="${room.rsvcode == 1}">
-								7-9시
+								07-09시
 							</c:when>
 							<c:when test="${room.rsvcode == 2}">
-								9-12시
+								09-12시
 							</c:when>
 							<c:when test="${room.rsvcode == 3}">
 								13-15시
@@ -62,7 +62,8 @@
 						</c:choose>
 						</td>
 						<td>${room.rno}</td>
-						<td>${room.sno}</td>
+						<td>${room.sname}</td>
+						
 						<td><a class="blue-text"><i class="fa fa-user"></i></a> <a
 							class="teal-text"><i class="fa fa-pencil"></i></a> <a
 							class="red-text"><i class="fa fa-times"></i></a></td>

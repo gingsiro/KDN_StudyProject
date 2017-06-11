@@ -90,9 +90,8 @@ public class RoomController {
 			model.addAttribute("myStudyList", myStudyList);
 			
 			
-			model.addAttribute("listcontent", "DayRsvRoomCheck.jsp");
+			//model.addAttribute("listcontent", "DayRsvRoomCheck.jsp");
 		} 
-		
 		return "index";
 	}
 	
@@ -114,6 +113,7 @@ public class RoomController {
 		
 		model.addAttribute("myRsvList", myRsvList);
 		
+		System.out.println(myRsvList);
 		model.addAttribute("listcontent", "ReservedRoomCheck.jsp");
 		
 		return "index";
