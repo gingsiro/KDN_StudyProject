@@ -39,4 +39,8 @@ public class RoomDaoImpl implements RoomDao {
 	public List<RsvRoom> searchMyRsv(int empno) {
 		return session.selectList("rsvroom.searchMyRsv", empno);
 	}
+	
+	public void deleteRsvRoom(int rsvNo) {
+		session.delete("rsvroom.deleteRsvRoom", rsvNo);
+	}
 }

@@ -104,24 +104,32 @@ public class RoomController {
 		return "redirect:reservedRoomForm.do";
 	}
 	
+	
 	@RequestMapping(value="myRsvList.do", method=RequestMethod.GET)
 	public String myRsvList(Model model, HttpSession session) {
 		model.addAttribute("content", "room/RoomHome.jsp"); 
-		model.addAttribute("listform", "RoomList.jsp");
+		model.addAttribute("listform", "ReservedRoomCheck.jsp");
 		int empno = (Integer)session.getAttribute("empno");
 		List<RsvRoom> myRsvList = roomService.searchMyRsv(empno);
 		
 		model.addAttribute("myRsvList", myRsvList);
 		
 		System.out.println(myRsvList);
-		model.addAttribute("listcontent", "ReservedRoomCheck.jsp");
 		
 		return "index";
 		
 		
 	}
 
-	
+	@RequestMapping(value="deleteRsvRoom.do", method=RequestMethod.POST)
+	public String deleteRsvRoom(String rsvno) {
+		int rsvNo = Integer.parseInt(rsvno);
+		roomService.deleteRsvRoom(rsvNo);
+		
+		return "redirect:myRsvList.do";
+		
+		
+	}
 	
 	@RequestMapping(value="insertRoomForm.do", method=RequestMethod.GET)
 	public String insertRoomForm(Model model) {

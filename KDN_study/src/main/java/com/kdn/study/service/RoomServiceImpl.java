@@ -49,4 +49,8 @@ public class RoomServiceImpl implements RoomService {
 		
 		return myRsv;
 	}
+	
+	public void deleteRsvRoom(int rsvNo) {
+		dao.deleteRsvRoom(rsvNo);
+	}
 }

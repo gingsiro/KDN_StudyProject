@@ -43,5 +43,11 @@
 		order by rsvdate
 		
 	</select>
+	
+	<delete id="deleteRsvRoom" parameterType="int">
+		delete 
+		from rsv_room
+		where rsvno = #{rsvNo}
+	</delete>
 </mapper>
 
