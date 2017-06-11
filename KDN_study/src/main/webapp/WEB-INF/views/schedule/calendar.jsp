@@ -98,6 +98,13 @@ $(document).ready(function() {
 			
 		    eventClick: function(calEvent, jsEvent, view) {
 
+		    	$('#sch_title').val(calEvent.title);
+		    	$('#sch_date').val(calEvent.start);
+		    	console.log("*******************"+calEvent.title);
+		    	console.log("*******************"+calEvent.start);
+		    	
+		    	
+		    	
 		         alert('Event: ' + calEvent.title);
 		         /*        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
 		        alert('View: ' + view.name); */
@@ -205,11 +212,44 @@ $(document).ready(function() {
 <body>
 
 <div id="modal">
-    <h3>Test Modal</h3>
+    <h3>일정 수정</h3>
     <p>이 창은 모달창입니다.</p>
-    <button id="confirm_button">확인</button>
-    <button class="js_close">닫기</button>
+    
+   			<form role="form" method="GET" action="updateSchedule.do">
+							<div class="form-group">
+								<label for="inputScheduleName">스케줄 이름</label> 
+								<input type="text" class="form-control" id="sch_title" name="sctitle" placeholder="Schedule Name"
+								value = "">
+							</div>
+						
+						<!-- 
+						value="2017-10-09T15:38:00" -->
+						
+						<input type="datetime-local" id="sch_date" name="scdate" > 
+						
+						<div class="form-group">
+								<label for="inputScheduleName">스터디 명(일단 번호로)</label>
+								 <input type="text" class="form-control" id="sno" name="sno" placeholder="Schedule Name"
+								 value="">
+							</div>
+							
+						<button type="submit" class="btn btn-default btn-success">
+								<span class="glyphicon glyphicon-ok"></span> 입력
+							</button>
+							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove"></span> 취소
+							</button>
+							
+						</form>
+    
+   <!--  <button id="schedule_confirm_button">수정</button>
+    <button id="schedule_close_button" class="js_close">취소</button> -->
 </div>
+
+		
+
+
+
 
 
 	<div id='calendar'></div>
