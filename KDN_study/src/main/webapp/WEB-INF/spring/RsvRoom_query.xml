@@ -36,14 +36,18 @@
 				 )
 	</insert>
 	
-	
 	<select id="searchMyRsv" parameterType="int" resultType="rsvroom">
-		select rsvno, to_char(rsvdate, 'yyyy-mm-dd') rsvdate, rsvcode, rno, sno, empno
-		from rsv_room
-		where empno = #{empno}
+		select rsvno, to_char(rsvdate, 'yyyy-mm-dd') rsvdate, rsvcode, rno, rs.sno sno, empno, sname
+		from rsv_room rs, study s
+		where empno = #{empno} and s.sno = rs.sno 
 		order by rsvdate
 		
 	</select>
-
+	
+	<delete id="deleteRsvRoom" parameterType="int">
+		delete 
+		from rsv_room
+		where rsvno = #{rsvNo}
+	</delete>
 </mapper>
 

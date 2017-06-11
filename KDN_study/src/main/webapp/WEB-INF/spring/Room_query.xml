@@ -3,10 +3,9 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
 <mapper namespace="room">
-	<select id="search" parameterType="int" resultType="room">
+	<select id="searchAll" parameterType="int" resultType="room">
 		select *
 		from room
-		where rno = 101
 	</select>
 
 </mapper>

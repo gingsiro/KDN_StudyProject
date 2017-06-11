@@ -13,7 +13,7 @@
 		where sno = #{ sno }
 	</select>
 	
-	<select id="searchAll" parameterType="String" resultType="study">
+	<select id="searchAll" parameterType="pagebean" resultType="study">
 		select sno, smaster, sname, smax, scurr, cno, cname
 		from study
 		JOIN category USING(cno)
@@ -52,8 +52,22 @@
 		values(join_jno.nextval, #{empno:INTEGER}, #{sno:INTEGER})
 	</insert>
 	
+	<select id="getLastSno" resultType="int">
+		select study_sno.currval from dual
+	</select>
+	
 	<update id="updateStudy" parameterType="study">
 		update study set sname=#{ sname:VARCHAR }, smax=#{ smax:INTEGER }, scurr=#{ scurr:INTEGER }, cno=#{ cno:INTEGER }
 		where sno = #{ sno:INTEGER }
 	</update>
+	
+	<delete id="dismissStudy" parameterType="joinstudy">
+		delete from join_study
+		where empno=#{ empno:INTEGER } AND sno=#{ sno:INTEGER }
+	</delete>
+	
+	<delete id="deleteStudy" parameterType="int">
+		delete from study
+		where sno=#{ sno }
+	</delete>
 </mapper>

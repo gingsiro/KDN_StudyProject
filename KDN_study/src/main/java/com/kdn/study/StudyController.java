@@ -1,7 +1,5 @@
 package com.kdn.study;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Study;
 import com.kdn.study.service.CategoryService;
@@ -63,24 +62,35 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value="createStudy.do", method=RequestMethod.POST)
-	public String createStudy(Model model, Study study){
+	public String createStudy(HttpSession session, Study study){
 		studyService.createStudy(study);
 		return "redirect:studyList.do";
 	}
 	
 	@RequestMapping(value="updateStudy.do", method=RequestMethod.POST)
-	public String updateStudy(Model model, Study study){
+	public String updateStudy(Study study){
 		studyService.updateStudy(study);
 		return "redirect:studyList.do";
 	}
 
 	@RequestMapping(value="joinStudy.do", method=RequestMethod.POST)
-	public String joinStudy(Model model, HttpSession session, String sno){
-		System.out.println(session.getAttribute("empno") + "//" + Integer.parseInt(sno) );
-		studyService.joinStudy(Integer.parseInt(session.getAttribute("empno").toString()), Integer.parseInt(sno));
-		//추후 스터디 메인페이지로 이동하게 만들어야함
+	public String joinStudy(HttpSession session, String sno){
+		JoinStudy joinInfo = new JoinStudy(Integer.parseInt(session.getAttribute("empno").toString()), Integer.parseInt(sno));
+		studyService.joinStudy(joinInfo);
+		return "redirect:listSchedule.do?sno="+sno;
+	}
+	
+	@RequestMapping(value="dismissStudy.do", method=RequestMethod.POST)
+	public String dismissStudy(String empno, String sno){
+		JoinStudy joinInfo = new JoinStudy(Integer.parseInt(empno), Integer.parseInt(sno));
+		System.out.println(empno+"//"+sno);
+		studyService.dismissStudy(joinInfo);
 		return "redirect:studyList.do";
 	}
 	
-	
+	@RequestMapping(value="deleteStudy.do", method=RequestMethod.POST)
+	public String deleteStudy(String sno){
+		studyService.deleteStudy(Integer.parseInt(sno));
+		return "redirect:studyList.do";
+	}
 }

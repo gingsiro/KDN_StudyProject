@@ -40,6 +40,11 @@ public class Room implements Serializable {
 	public void setRmax(int rmax) {
 		this.rmax = rmax;
 	}
+
+	@Override
+	public String toString() {
+		return "Room [rno=" + rno + ", rname=" + rname + ", rmax=" + rmax + "]";
+	}
 	
 	
 	

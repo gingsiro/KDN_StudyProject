@@ -74,9 +74,8 @@
 					<div class="modal-body">
 						<form role="form" method="POST" action="insertSchedule.do">
 							<div class="form-group">
-								<label for="inputScheduleName">스케줄 이름</label> <input type="text"
-									class="form-control" id="sctitle" name="sctitle"
-									placeholder="Schedule Name">
+								<label for="inputScheduleName">스케줄 이름</label> 
+								<input type="text" class="form-control" id="sctitle" name="sctitle" placeholder="Schedule Name">
 							</div>
 						
 						<!-- 
@@ -85,7 +84,8 @@
 						<input type="datetime-local" id="scdate" name="scdate" > 
 						
 						<div class="form-group">
-								<label for="inputScheduleName">스터디 명(일단 번호로)</label> <input type="text"
+								<label for="inputScheduleName">스터디 명(일단 번호로)</label>
+								 <input type="text"
 									class="form-control" id="sno" name="sno"
 									placeholder="Schedule Name">
 							</div>

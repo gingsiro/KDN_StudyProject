@@ -30,20 +30,33 @@ public class StudyDaoImpl implements StudyDao {
 	
 	public void createStudy(Study study) {
 		session.insert("study.createStudy", study);
+		int sno = session.selectOne("getLastSno");
+		JoinStudy joinInfo = new JoinStudy(study.getSmaster() , sno);
+		session.insert("study.joinStudy", joinInfo);
 	}
 
 	public void updateStudy(Study study) {
 		session.update("study.updateStudy", study);
 	}
 	
-	public void joinStudy(int empno, int sno){
-		System.out.println("JoinStudy DAO");
-		Study study = session.selectOne("study.search", sno);
+	public void joinStudy(JoinStudy joinInfo){
+		session.insert("study.joinStudy", joinInfo);
+		
+		Study study = session.selectOne("study.search", joinInfo.getSno());
 		study.setScurr(study.getScurr()+1);
 		session.update("study.updateStudy", study);
+	}
+	
+	public void dismissStudy(JoinStudy joinInfo){
+		session.delete("study.dismissStudy", joinInfo);
 		
-		JoinStudy join = new JoinStudy(empno, sno);
-		session.insert("study.joinStudy", join);
+		Study study = session.selectOne("study.search", joinInfo.getSno());
+		study.setScurr(study.getScurr()-1);
+		session.update("study.updateStudy", study);
+	}
+	
+	public void deleteStudy(int sno){
+		session.delete("study.deleteStudy",sno);
 	}
 	
 }

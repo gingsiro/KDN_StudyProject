@@ -7,8 +7,7 @@
 <title>Bootstrap Example</title>
 <meta charset="UTF-8">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	/* $(function() {
 		$("#popbutton").click(function() {
@@ -45,11 +44,26 @@
 	
 	function deleteStudy(sno, smaster) {
 		if( <%=request.getSession().getAttribute("empno")%>== smaster){
-			$('#sno').val(sno);
+			$('#rdsno').val(sno);			
+			$('#checkContentTitle').html('스터디 삭제');
+			$('#checkContent').html('정말 삭제하시겠습니까?');
+			$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 삭제');
+			$("#rdStudy").attr("action", "deleteStudy.do");
+			
 			$('#checkForm').modal();
 		} else {
 			alert('스터디장이 아니면 삭제할 수 없습니다.');
 		}
+	}
+	
+	function dismissStudy(sno){
+		$('#rdsno').val(sno);
+		$('#checkContentTitle').html('스터디 탈퇴');
+		$('#checkContent').html('정말 탈퇴하시겠습니까?');
+		$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 탈퇴');
+		$("#rdStudy").attr("action", "dismissStudy.do");
+		
+		$('#checkForm').modal();
 	}
 </script>
 
@@ -114,19 +128,22 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 style="color: blue">
-						<span class="glyphicon glyphicon-exclamation-sign"></span><label id="modal-title">스터디 삭제 경고</label>
+						<span class="glyphicon glyphicon-exclamation-sign"></span><label id="checkContentTitle" >스터디 삭제</label>
 					</h4>
 				</div>
 				<div class="modal-body" id="modal-body">
-					<form role="form" method="POST" action="updateStudy.do?">
-						정말 삭제하시겠습니까?
-						<input type="hidden" id="sno" name="sno" value="" />
-						<button type="submit" class="btn btn-default btn-success">
-							<span class="glyphicon glyphicon-ok"></span> 삭제							
-						</button>
-						<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
-							<span class="glyphicon glyphicon-remove"></span> 취소							
-						</button>			
+					<form id="rdStudy" name="rdStudy" role="form" method="POST" action="deleteStudy.do">
+						<label id="checkContent" for="checkContent">정말 삭제하시겠습니까?</label><br/>
+						<input type="hidden" id="rdsno" name="sno" value="" />
+						<input type="hidden" id="empno" name="empno" value="${ empno }"/>
+						<div style="text-align:right">
+							<button id="checkButtonName" name="checkButtonName" type="submit" class="btn btn-default btn-success">
+								<span class="glyphicon glyphicon-ok"></span> 삭제							
+							</button>
+							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove"></span> 취소							
+							</button>
+						</div>			
 					</form>	
 				</div>
 			</div>			
@@ -143,7 +160,7 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>
+				<th style="width:100px">
 					<div class="dropdown">
 						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
 							카테고리<span class="caret"></span>
@@ -157,22 +174,33 @@
 					</div>
 				</th>
 				<th>스터디명</th>
-				<th>현재인원</th>
-				<th>최대인원</th>
-				<th>조작</th>
+				<th style="width:100px; text-align:center">현재인원</th>
+				<th style="width:100px; text-align:center">최대인원</th>
+				<th style="width:65px"></th>
+				<th style="width:65px"></th>
+				<th style="width:65px"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="study" items="${ list }">
 				<tr>
 					<th scope="row">${ study.cname }</th>
-					<td>${ study.sname }</td>
-					<td>${ study.scurr }</td>
-					<td>${ study.smax }</td>
+					<td><a href="listSchedule.do?sno=${study.sno}">${ study.sname }</a></td>
+					<td style="text-align:center">${ study.scurr }</td>
+					<td style="text-align:center">${ study.smax }</td>
 					<td>
 						<c:if test="${ empno == study.smaster }">
-							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }' )"><i class="fa fa-pencil"></i></a>
-							<a class="red-text"onClick="deleteStudy('${ study.sno }', ${ study.smaster } )"><i class="fa fa-times"></i></a>
+							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }' )"><i class="fa fa-pencil"></i>수정</a>
+						</c:if>
+					</td>
+					<td>
+						<c:if test="${ empno == study.smaster }">
+							<a class="red-text"onClick="deleteStudy('${ study.sno }', ${ study.smaster } )"><i class="fa fa-times"></i>삭제</a>
+						</c:if>
+					</td>
+					<td>
+						<c:if test="${ empno != study.smaster }">
+							<a class="red-text"onClick="dismissStudy('${ study.sno }')"><i class="fa fa-times"></i>탈퇴</a>
 						</c:if>
 					</td>
 				</tr>
