@@ -62,29 +62,35 @@ public class StudyController {
 	}
 	
 	@RequestMapping(value="createStudy.do", method=RequestMethod.POST)
-	public String createStudy(Model model, Study study){
+	public String createStudy(HttpSession session, Study study){
 		studyService.createStudy(study);
 		return "redirect:studyList.do";
 	}
 	
 	@RequestMapping(value="updateStudy.do", method=RequestMethod.POST)
-	public String updateStudy(Model model, Study study){
+	public String updateStudy(Study study){
 		studyService.updateStudy(study);
 		return "redirect:studyList.do";
 	}
 
 	@RequestMapping(value="joinStudy.do", method=RequestMethod.POST)
-	public String joinStudy(Model model, HttpSession session, String sno){
+	public String joinStudy(HttpSession session, String sno){
 		JoinStudy joinInfo = new JoinStudy(Integer.parseInt(session.getAttribute("empno").toString()), Integer.parseInt(sno));
 		studyService.joinStudy(joinInfo);
 		return "redirect:listSchedule.do?sno="+sno;
 	}
 	
 	@RequestMapping(value="dismissStudy.do", method=RequestMethod.POST)
-	public String dismissStudy(Model model, String empno, String sno){
+	public String dismissStudy(String empno, String sno){
 		JoinStudy joinInfo = new JoinStudy(Integer.parseInt(empno), Integer.parseInt(sno));
 		System.out.println(empno+"//"+sno);
 		studyService.dismissStudy(joinInfo);
+		return "redirect:studyList.do";
+	}
+	
+	@RequestMapping(value="deleteStudy.do", method=RequestMethod.POST)
+	public String deleteStudy(String sno){
+		studyService.deleteStudy(Integer.parseInt(sno));
 		return "redirect:studyList.do";
 	}
 }

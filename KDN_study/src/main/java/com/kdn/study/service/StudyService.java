@@ -14,4 +14,5 @@ public interface StudyService {
 	public void updateStudy(Study study);
 	public void joinStudy(JoinStudy joinInfo);
 	public void dismissStudy(JoinStudy joinInfo);
+	public void deleteStudy(int sno);
 }

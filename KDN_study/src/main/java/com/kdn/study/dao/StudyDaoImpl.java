@@ -30,6 +30,9 @@ public class StudyDaoImpl implements StudyDao {
 	
 	public void createStudy(Study study) {
 		session.insert("study.createStudy", study);
+		int sno = session.selectOne("getLastSno");
+		JoinStudy joinInfo = new JoinStudy(study.getSmaster() , sno);
+		session.insert("study.joinStudy", joinInfo);
 	}
 
 	public void updateStudy(Study study) {
@@ -39,21 +42,21 @@ public class StudyDaoImpl implements StudyDao {
 	public void joinStudy(JoinStudy joinInfo){
 		session.insert("study.joinStudy", joinInfo);
 		
-		System.out.println("JoinStudy DAO");
 		Study study = session.selectOne("study.search", joinInfo.getSno());
 		study.setScurr(study.getScurr()+1);
 		session.update("study.updateStudy", study);
 	}
 	
 	public void dismissStudy(JoinStudy joinInfo){
-		System.out.println("Dissmissstudy DAO1");
 		session.delete("study.dismissStudy", joinInfo);
-
-		System.out.println("탈퇴 신청 정보 :"+joinInfo);
+		
 		Study study = session.selectOne("study.search", joinInfo.getSno());
-		System.out.println("탈퇴할스터디 :"+study);
 		study.setScurr(study.getScurr()-1);
 		session.update("study.updateStudy", study);
+	}
+	
+	public void deleteStudy(int sno){
+		session.delete("study.deleteStudy",sno);
 	}
 	
 }
