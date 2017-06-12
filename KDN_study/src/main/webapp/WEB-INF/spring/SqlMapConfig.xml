@@ -18,6 +18,8 @@
 		 <typeAlias type="com.kdn.study.domain.Study" alias="study"/>
 		 <typeAlias type="com.kdn.study.domain.JoinStudy" alias="joinstudy"/>
 		 <typeAlias type="com.kdn.study.domain.Schedule" alias="schedule"/>
+		 <typeAlias type="com.kdn.study.domain.Board" alias="board"/>
+	 
 		 
 	</typeAliases>
 	<mappers>

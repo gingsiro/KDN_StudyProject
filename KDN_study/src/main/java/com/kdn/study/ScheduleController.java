@@ -32,7 +32,9 @@ public class ScheduleController
 		
 		List<Schedule> right_list = scheduleService.searchAllForRightList(bean);
 		model.addAttribute("right_list", right_list);
-		model.addAttribute("content", "schedule/listSchedule.jsp");
+		//model.addAttribute("content", "schedule/listSchedule.jsp");
+		model.addAttribute("content", "schedule/scheduleHome.jsp");
+		model.addAttribute("listform", "listSchedule.jsp");
 		
 		model.addAttribute("studyList", studyService.searchAll(new PageBean("all", null)));
 		
