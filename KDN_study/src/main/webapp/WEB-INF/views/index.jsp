@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | KDN Study</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 	
 	<!-- core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,12 +43,13 @@
                             <ul class="social-share">
                             	<c:choose>
 		   							<c:when test="${empty empno}">
-                               		 	<li><a href="loginForm.do"><i class="fa fa-linkedin"></i></a></li> 
+                               		 	<li><a href="loginForm.do"><i class="fa fa-linkedin"></i></a></li>
+                               		 	<a href="insertEmployeeForm.do">회원가입</a><br/>
                                 	</c:when>
 		   						<c:otherwise>
-		   								<li><a href="logout.do">로그아웃</a></li>
-		     							<li><a href="employeeUpdateForm.do">회원정보수정</a></li>
-		     							<li><a href="myPage.do">myPage</a></li>
+		   								<li><a href="logout.do">로</a></li>
+		     							<li><a href="employeeUpdateForm.do">회</a></li>
+		     							<li><a href="myPage.do">my</a></li>
 		   						</c:otherwise>
 								</c:choose>
                             </ul>
@@ -58,7 +60,7 @@
                                 </form>
                            </div> 
                            <nav id="menu">		
-		 						<a href="insertEmployeeForm.do">회원가입</a><br/>
+		 						<!-- <a href="insertEmployeeForm.do">회원가입</a><br/> -->
 		 					</nav>             
                        </div>
                     </div>
@@ -109,7 +111,7 @@
 	</c:when>
 	<c:otherwise>
 	
-    <article id="main-slider" class="no-margin">
+    <section id="main-slider" class="no-margin">
         <div class="carousel slide">
             <ol class="carousel-indicators">
                 <li data-target="#main-slider" data-slide-to="0" class="active"></li>
@@ -125,7 +127,7 @@
                                 <div class="carousel-content">
                                     <h1 class="animation animated-item-1">KDN 사내 스터디를 위한 최고의 서비스 !</h1>
                                     <h2 class="animation animated-item-2">스터디 운영, 스터디룸 예약, 스케줄 관리와 같은 모든 서비스를 지원해드립니다.</h2>
-                                    <a class="btn-slide animation animated-item-3" href="#">설명 보기</a>
+                                    <a class="btn-slide animation animated-item-3" href="#">소개 페이지</a>
                                 </div>
                             </div>
  
@@ -186,74 +188,75 @@
         <a class="next hidden-xs" href="#main-slider" data-slide="next">
             <i class="fa fa-chevron-right"></i>
         </a>
-    </article><!--/#main-slider-->
+    </section><!--/#main-slider-->
  
-    <article id="feature" >
+    <section id="feature" >
         <div class="container">
            <div class="center wow fadeInDown">
-                <h2>Features</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+           <p>
+                <h2>KDN 스터디 맞춤 기능</h2>
+                <p class="lead">우리 회사 스터디 룸과 사내 스터디를 관리하는<br>최고의 스터디 관리 시스템</p>
             </div>
  
             <div class="row">
                 <div class="features">
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
-                            <i class="fa fa-bullhorn"></i>
-                            <h2>Fresh and Clean</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                            <i class="fa fa-user"></i>
+                            <h2>자기 계발</h2>
+                            <h3>자신의 능력 계발을 위해 다양한 스터디 활동을 지원합니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
  
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-comments"></i>
-                            <h2>Retina ready</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                            <h2>스터디 게시판</h2>
+                            <h3>스터디별로 개인적인 게시판 공간을 제공합니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
  
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
-                            <i class="fa fa-cloud-download"></i>
-                            <h2>Easy to customize</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                            <i class="fa fa-calendar"></i>
+                            <h2>스터디 일정관리</h2>
+                            <h3>스터디별로 달력형태의 일정 관리를 제공합니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
                 
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
-                            <i class="fa fa-leaf"></i>
-                            <h2>Adipisicing elit</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                            <i class="fa fa-tags"></i>
+                            <h2>스터디룸 대여</h2>
+                            <h3>KDN 나주 본사 사옥 교육관의 룸을 대여할 수 있습니다.</h3>
+                        </div>
+                    </div><!--/.col-md-4--> 
+ 
+                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="feature-wrap">
+                            <i class="fa fa-key"></i>
+                            <h2>편리한 접근과 사용</h2>
+                            <h3>사원번호를 통해 간편하게 가입하여 이용하실 수 있습니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
  
                     <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="feature-wrap">
                             <i class="fa fa-cogs"></i>
-                            <h2>Sed do eiusmod</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
-                        </div>
-                    </div><!--/.col-md-4-->
- 
-                    <div class="col-md-4 col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-                        <div class="feature-wrap">
-                            <i class="fa fa-heart"></i>
-                            <h2>Labore et dolore</h2>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                            <h2>관리에 용이</h2>
+                            <h3>관리자 입장에서도 편리하게 시스템을 관리하실 수 있습니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
                 </div><!--/.services-->
             </div><!--/.row-->    
         </div><!--/.container-->
-    </article><!--/#feature-->
+    </section><!--/#feature-->
  
-    <article id="recent-works">
+    <!-- <section id="recent-works">
         <div class="container">
             <div class="center wow fadeInDown">
-                <h2>Recent Works</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <h2>우리의 작업 모습</h2>
+                <p class="lead">지난 2주간 열정을 바쳐 KDN 사내 스터디 구축을 위한 작업에 매진하였습니다.<br>그 결과로 이 시스템을 완성할 수 있었습니다.</p>
             </div>
  
             <div class="row">
@@ -360,15 +363,140 @@
                         </div>
                     </div>
                 </div>   
-            </div><!--/.row-->
-        </div><!--/.container-->
-    </article><!--/#recent-works-->
+            </div>/.row
+        </div>/.container
+    </section>/#recent-works -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="center">
+               <h2>우리의 작업 모습</h2>
+               <p class="lead">지난 2주간 열정을 바쳐 KDN 사내 스터디 구축을 위한 작업에 매진하였습니다.<br>그 결과로 이 시스템을 완성할 수 있었습니다.</p>
+            </div>
+        
+
+            <ul class="portfolio-filter text-center">
+                <li><a class="btn btn-default active" href="#" data-filter="*">모든 사진</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".bootstrap">남궁현</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".html">정해성</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".apps">강추영</a></li>             
+                <li><a class="btn btn-default" href="#" data-filter=".wordpress">안재성</a></li>
+            </ul><!--/#portfolio-filter-->
+
+            <div class="row">
+                <div class="portfolio-items">
+                    <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="images/portfolio/recent/item1.png" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">Business theme</a></h3>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                    <a class="preview" href="images/portfolio/full/item1.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                </div> 
+                            </div>
+                        </div>
+                    </div><!--/.portfolio-item-->
+
+                    <div class="portfolio-item joomla bootstrap col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="images/portfolio/recent/item2.png" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">Business theme</a></h3>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                    <a class="preview" href="images/portfolio/full/item2.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                </div> 
+                            </div>
+                        </div>          
+                    </div><!--/.portfolio-item-->
+
+                    <div class="portfolio-item bootstrap wordpress col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="images/portfolio/recent/item3.png" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">Business theme</a></h3>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                    <a class="preview" href="images/portfolio/full/item3.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                </div> 
+                            </div>
+                        </div>        
+                    </div><!--/.portfolio-item-->
+
+                    <div class="portfolio-item joomla wordpress apps col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="images/portfolio/recent/item4.png" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">Business theme</a></h3>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                    <a class="preview" href="images/portfolio/full/item4.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                </div> 
+                            </div>
+                        </div>           
+                    </div><!--/.portfolio-item-->
+          
+                    <div class="portfolio-item joomla html bootstrap col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="images/portfolio/recent/item5.png" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">Business theme</a></h3>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                    <a class="preview" href="images/portfolio/full/item5.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                </div> 
+                            </div>
+                        </div>      
+                    </div><!--/.portfolio-item-->
+
+                    <div class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="images/portfolio/recent/item6.png" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">Business theme</a></h3>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                    <a class="preview" href="images/portfolio/full/item6.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                </div> 
+                            </div>
+                        </div>         
+                    </div><!--/.portfolio-item-->
+
+                    <div class="portfolio-item wordpress html col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="images/portfolio/recent/item7.png" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">Business theme</a></h3>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                    <a class="preview" href="images/portfolio/full/item7.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                </div> 
+                            </div>
+                        </div>          
+                    </div><!--/.portfolio-item-->
+
+                    <div class="portfolio-item wordpress html bootstrap col-xs-12 col-sm-4 col-md-3">
+                        <div class="recent-work-wrap">
+                            <img class="img-responsive" src="images/portfolio/recent/item8.png" alt="">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">Business theme</a></h3>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
+                                    <a class="preview" href="images/portfolio/full/item8.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                </div> 
+                            </div>
+                        </div>          
+                    </div><!--/.portfolio-item-->
+                </div>
+            </div>
+        </div>
+    </section><!--/#portfolio-item-->
  
-    <article id="services" class="service-item">
+    <section id="services" class="service-item">
 	   <div class="container">
             <div class="center wow fadeInDown">
-                <h2>Our Service</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <h2>작업 분야</h2>
+                <p class="lead">프로젝트를 진행하며 다양한 지식과 교육받은 내용을 활용하여 구축하였습니다.<br>지난 3개월동안 배운 강의와 활용한 기술입니다.</p>
             </div>
  
             <div class="row">
@@ -376,35 +504,35 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services1.png">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
-                        </div>
-                    </div>
-                </div>
- 
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap wow fadeInDown">
-                        <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services2.png">
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
-                        </div>
-                    </div>
-                </div>
- 
-                <div class="col-sm-6 col-md-4">
-                    <div class="media services-wrap wow fadeInDown">
-                        <div class="pull-left">
                             <img class="img-responsive" src="images/services/services3.png">
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                            <h3 class="media-heading">Architecture</h3>
+                            <p>소프트웨어 프로젝트의 시작에 아키텍처를 설계 하여 프로젝트의 완성도를 높였습니다.</p>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/network.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Network</h3>
+                            <p>시스템 구조에서 네트워크가 미치는 영향에 대해 이해합니다.</p>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="col-sm-6 col-md-4">
+                    <div class="media services-wrap wow fadeInDown">
+                        <div class="pull-left">
+                            <img class="img-responsive" src="images/services/oracle.png">
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Oracle</h3>
+                            <p>데이터베이스 구조를 이해하고 각종 쿼리를 작성하였습니다.</p>
                         </div>
                     </div>
                 </div>  
@@ -412,11 +540,11 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services4.png">
+                            <img class="img-responsive" src="images/services/java.png">
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                            <h3 class="media-heading">Java</h3>
+                            <p>객체지향 프로그래밍 언어인 자바 기반 지식을 활용하여 프로그래밍을 했습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -424,11 +552,11 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services5.png">
+                            <img class="img-responsive" src="images/services/spring.png">
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                            <h3 class="media-heading">Spring</h3>
+                            <p>스프링 프레임워크를 습득하여 웹 개발에 필요한 기술을 활용하였습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -436,59 +564,58 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="media services-wrap wow fadeInDown">
                         <div class="pull-left">
-                            <img class="img-responsive" src="images/services/services6.png">
+                            <img class="img-responsive" src="images/services/sts.png">
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">SEO Marketing</h3>
-                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit</p>
+                            <h3 class="media-heading">Spring Tools Suite</h3>
+                            <p>스프링의 각종 툴이 모여있는 스프링 전용 개발툴을 활용하였습니다.</p>
                         </div>
                     </div>
                 </div>                                                
             </div><!--/.row-->
         </div><!--/.container-->
-    </article><!--/#services-->
+    </section><!--/#services-->
  
-    <article id="middle">
+    <section id="middle">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 wow fadeInDown">
                     <div class="skill">
-                        <h2>Our Skills</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h2>우리의 기술 능력 향상</h2>
+                        <p>웹의 ㅇ자도 모르던 우리가 설계-구축-개발-테스트 단계를 거쳐 완성하며<br/> 기술 능력 향상을 이루었습니다.</p>
  
                         <div class="progress-wrap">
-                            <h3>Graphic Design</h3>
+                            <h3>Database</h3>
                             <div class="progress">
-                              <div class="progress-bar  color1" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
-                                <span class="bar-width">85%</span>
-                              </div>
- 
-                            </div>
-                        </div>
- 
-                        <div class="progress-wrap">
-                            <h3>HTML</h3>
-                            <div class="progress">
-                              <div class="progress-bar color2" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
-                               <span class="bar-width">95%</span>
-                              </div>
-                            </div>
-                        </div>
- 
-                        <div class="progress-wrap">
-                            <h3>CSS</h3>
-                            <div class="progress">
-                              <div class="progress-bar color3" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                              <div class="progress-bar  color1" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
                                 <span class="bar-width">80%</span>
                               </div>
                             </div>
                         </div>
  
                         <div class="progress-wrap">
-                            <h3>Wordpress</h3>
+                            <h3>HTML, CSS</h3>
                             <div class="progress">
-                              <div class="progress-bar color4" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                <span class="bar-width">90%</span>
+                              <div class="progress-bar color2" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                               <span class="bar-width">90%</span>
+                              </div>
+                            </div>
+                        </div>
+ 
+                        <div class="progress-wrap">
+                            <h3>Spring, Java</h3>
+                            <div class="progress">
+                              <div class="progress-bar color3" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+                                <span class="bar-width">95%</span>
+                              </div>
+                            </div>
+                        </div>
+ 
+                        <div class="progress-wrap">
+                            <h3>Project Achivement</h3>
+                            <div class="progress">
+                              <div class="progress-bar color4" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                <span class="bar-width">100%</span>
                               </div>
                             </div>
                         </div>
@@ -498,13 +625,13 @@
  
                 <div class="col-sm-6 wow fadeInDown">
                     <div class="accordion">
-                        <h2>Why People like us?</h2>
+                        <h2>어려웠던 점이 있나요?</h2>
                         <div class="panel-group" id="accordion1">
                           <div class="panel panel-default">
                             <div class="panel-heading active">
                               <h3 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
-                                  Lorem ipsum dolor sit amet
+                                  공포의 404
                                   <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                               </h3>
@@ -517,8 +644,8 @@
                                             <img class="img-responsive" src="images/accordion1.png">
                                         </div>
                                         <div class="media-body">
-                                             <h4>Adipisicing elit</h4>
-                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore</p>
+                                             <h4>남궁현</h4>
+                                             <p>작업중에 404가 터졌어요.<br/>뭐가 문젠지 어디서 에러인지 알수 없었죠.<br/>머리가 터지는줄 알았어요.</p>
                                         </div>
                                   </div>
                               </div>
@@ -529,14 +656,23 @@
                             <div class="panel-heading">
                               <h3 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
-                                  Lorem ipsum dolor sit amet
+                                  달력? 달력... 달력!!!!!!!
                                   <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                               </h3>
                             </div>
+ 
                             <div id="collapseTwo1" class="panel-collapse collapse">
                               <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                  <div class="media accordion-inner">
+                                        <div class="pull-left">
+                                            <img class="img-responsive" src="images/accordion1.png">
+                                        </div>
+                                        <div class="media-body">
+                                             <h4>정해성</h4>
+                                             <p>달력을 작업해볼까?<br/>달력을 작업 해보자...<br/>달력때문에 머리 다 빠지겠다!!!!!</p>
+                                        </div>
+                                  </div>
                               </div>
                             </div>
                           </div>
@@ -545,14 +681,22 @@
                             <div class="panel-heading">
                               <h3 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1">
-                                  Lorem ipsum dolor sit amet
+                                  DB 란 무엇인가
                                   <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                               </h3>
                             </div>
                             <div id="collapseThree1" class="panel-collapse collapse">
                               <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                <div class="media accordion-inner">
+                                        <div class="pull-left">
+                                            <img class="img-responsive" src="images/accordion1.png">
+                                        </div>
+                                        <div class="media-body">
+                                             <h4>강추영</h4>
+                                             <p>DB란 무엇일까?<br/>DB는 고생문이다.<br/>DB 너무 어려워힝 ㅠㅠㅠ</p>
+                                        </div>
+                                  </div>
                               </div>
                             </div>
                           </div>
@@ -561,14 +705,22 @@
                             <div class="panel-heading">
                               <h3 class="panel-title">
                                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour1">
-                                  Lorem ipsum dolor sit amet
+                                  로그인 폼 장인
                                   <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                               </h3>
                             </div>
                             <div id="collapseFour1" class="panel-collapse collapse">
                               <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor.
+                                <div class="media accordion-inner">
+                                        <div class="pull-left">
+                                            <img class="img-responsive" src="images/accordion1.png">
+                                        </div>
+                                        <div class="media-body">
+                                             <h4>안재성</h4>
+                                             <p>로그인폼을 최고 멋지게 꾸밀꺼야<br/>역시 웹은 한땀한땀이지<br/>직접 찍은 사진으로 멋지게 고고 !! </p>
+                                        </div>
+                                  </div>
                               </div>
                             </div>
                           </div>
@@ -578,9 +730,9 @@
  
             </div><!--/.row-->
         </div><!--/.container-->
-    </article><!--/#middle-->
+    </section><!--/#middle-->
  
-    <article id="content">
+    <section id="content">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 wow fadeInDown">
@@ -588,11 +740,11 @@
                         <div class="media">
                             <div class="parrent pull-left">
                                 <ul class="nav nav-tabs nav-stacked">
-                                    <li class=""><a href="#tab1" data-toggle="tab" class="analistic-01">Responsive Web Design</a></li>
-                                    <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02">Premium Plugin Included</a></li>
-                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">Predefine Layout</a></li>
-                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">Our Philosopy</a></li>
-                                    <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">What We Do?</a></li>
+                                    <li class="active"><a href="#tab1" data-toggle="tab" class="analistic-01">스터디 제작</a></li>
+                                    <li class=""><a href="#tab2" data-toggle="tab" class="analistic-02">일정관리 제작</a></li>
+                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">스터디룸 예약 제작</a></li>
+                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">로그인, 카테고리, 게시판 제작</a></li>
+                                    <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">모든 기능을 취합</a></li>
                                 </ul>
                             </div>
  
@@ -624,15 +776,40 @@
                                      </div>
  
                                      <div class="tab-pane fade" id="tab3">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+                                        <div class="media">
+                                           <div class="pull-left">
+                                                <img class="img-responsive" src="images/tab2.png">
+                                            </div>
+                                            <div class="media-body">
+                                                 <h2>Adipisicing elit</h2>
+                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use.</p>
+                                            </div>
+                                        </div>
                                      </div>
                                      
                                      <div class="tab-pane fade" id="tab4">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words</p>
+                                        <div class="media">
+                                           <div class="pull-left">
+                                                <img class="img-responsive" src="images/tab2.png">
+                                            </div>
+                                            <div class="media-body">
+                                                 <h2>Adipisicing elit</h2>
+                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use.</p>
+                                            </div>
+                                        </div>
                                      </div>
  
                                      <div class="tab-pane fade" id="tab5">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,</p>
+                                        <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,</p> -->
+                                        <div class="media">
+                                           <div class="pull-left">
+                                                <img class="img-responsive" src="images/tab2.png">
+                                            </div>
+                                            <div class="media-body">
+                                                 <h2>Adipisicing elit</h2>
+                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use.</p>
+                                            </div>
+                                        </div>
                                      </div>
                                 </div> <!--/.tab-content-->  
                             </div> <!--/.media-body--> 
@@ -642,14 +819,14 @@
  
                 <div class="col-xs-12 col-sm-4 wow fadeInDown">
                     <div class="testimonial">
-                        <h2>Testimonials</h2>
+                        <h2>후기</h2>
                          <div class="media testimonial-inner">
                             <div class="pull-left">
-                                <img class="img-responsive img-circle" src="images/testimonials1.png">
+                                <img class="img-responsive img-circle" src="images/face/jhs.jpg">
                             </div>
                             <div class="media-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                                <p>달력이 스터디의 알파와 오메가다.<br/>스터디에 감성이 더해지면?<br/>최고의 결과물 ! ㅋㅋ</p>
+                                <span><strong>-hsgoon/</strong> 감성담당 of KDN_Study</span>
                             </div>
                          </div>
  
@@ -658,19 +835,37 @@
                                 <img class="img-responsive img-circle" src="images/testimonials1.png">
                             </div>
                             <div class="media-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                                <span><strong>-John Doe/</strong> Director of corlate.com</span>
+                                <p>프로젝트 하다가 맥북이 사망했다...<br/>7년간 고생했어 <br/>나는 새 맥북으로 갈아탈게</p>
+                                <span><strong>-gingsiro/</strong> 징징담당 of KDN_Study</span>
                             </div>
                          </div>
- 
+                         
+                         <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <img class="img-responsive img-circle" src="images/testimonials1.png">
+                            </div>
+                            <div class="media-body">
+                                <p>내 자신을 되돌아보는 계기가 되었다.<br/>고생했다.</p>
+                                <span><strong>-ulalla/</strong> 로그인담당 of KDN_Study</span>
+                            </div>
+                         </div>
+                         
+                         <div class="media testimonial-inner">
+                            <div class="pull-left">
+                                <img class="img-responsive img-circle" src="images/testimonials1.png">
+                            </div>
+                            <div class="media-body">
+                                <p>프로젝트 다 끝난거<br/> 실화냐?</p>
+                                <span><strong>-choo/</strong> 실화담당 of KDN_Study</span>
+                            </div>
+                         </div>
                     </div>
                 </div>
- 
             </div><!--/.row-->
         </div><!--/.container-->
-    </article><!--/#content-->
+    </section><!--/#content-->
  
-    <article id="partner">
+    <section id="partner">
         <div class="container">
             <div class="center wow fadeInDown">
                 <h2>Our Partners</h2>
@@ -687,9 +882,9 @@
                 </ul>
             </div>        
         </div><!--/.container-->
-    </article><!--/#partner-->
+    </section><!--/#partner-->
  
-    <article id="conatcat-info">
+    <section id="conatcat-info">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
@@ -705,9 +900,9 @@
                 </div>
             </div>
         </div><!--/.container-->    
-    </article><!--/#conatcat-info-->
+    </section><!--/#conatcat-info-->
  
-    <article id="bottom">
+    <!-- <section id="bottom">
         <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
@@ -723,7 +918,7 @@
                             <li><a href="#">Contact us</a></li>
                         </ul>
                     </div>    
-                </div><!--/.col-md-3-->
+                </div>/.col-md-3
  
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
@@ -738,7 +933,7 @@
                             <li><a href="#">Billing system</a></li>
                         </ul>
                     </div>    
-                </div><!--/.col-md-3-->
+                </div>/.col-md-3
  
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
@@ -753,7 +948,7 @@
                             <li><a href="#">Article Writing</a></li>
                         </ul>
                     </div>    
-                </div><!--/.col-md-3-->
+                </div>/.col-md-3
  
                 <div class="col-md-3 col-sm-6">
                     <div class="widget">
@@ -768,17 +963,17 @@
                             <li><a href="#">Laboris</a></li>
                         </ul>
                     </div>    
-                </div><!--/.col-md-3-->
+                </div>/.col-md-3
             </div>
         </div>
-    </article><!--/#bottom-->
+    </section>/#bottom -->
     </c:otherwise>
     </c:choose>
     <footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    © 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+                    © 2017 <a target="_blank" href="#" title="최고의 프로젝트 팀">KDN Study Project</a>. All Rights Reserved.
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">
