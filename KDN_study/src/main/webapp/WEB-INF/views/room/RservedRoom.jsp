@@ -33,18 +33,26 @@
 			$('div.modal').modal({});
 		})
 		
+		$("input[type='submit']").attr("disabled", true);//비활성화
+		
 		if (<%=date%> != null) {
 			$("#rsvtable").attr("style", "display");
 			//$("input[type='submit']").attr("disabled", false); //활성화
-			
 		} else {
-			//$("input[type='submit']").attr("disabled", true);//비활성화
 		}
 		
 
 
 	});
-
+	
+	function textBoxNull(){
+		if ( $('#roomResvDate').val() != null) {
+			$("input[type='submit']").attr("disabled", false); //활성화
+		} else {
+			$("input[type='submit']").attr("disabled", true); //비활성화
+		}
+	}
+	
 	function reserveRoom(rno, time) {
 		//location.href = "createStudy.do"
 		//alart(rno);
@@ -70,15 +78,12 @@
 		
 		<%-- $('#empno').val(<%= request.getSession().getAttribute("empno") %>); --%>
 	}
-	
-
-
 	</script>
 </head>
 <body>
 		<nav id="menu" >
 			<form style="text-align:center" method="get" action="reservedRoom.do" >
-				<input type="text" id="roomResvDate" name="roomResvDate">
+				<input type="text" onchange="textBoxNull()" id="roomResvDate" name="roomResvDate">
 
 				<input type="submit" value="예약 조회" id="rsvbtn">
 			</form>
