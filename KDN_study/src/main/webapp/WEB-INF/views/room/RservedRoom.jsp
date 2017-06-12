@@ -11,73 +11,67 @@
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <!-- datepicker 한국어로 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <% 
 	String date = null;
 	if(request.getQueryString() != null){
 		date = request.getParameter("roomResvDate").toString();
 	}else{
-		
 	}
-
 %>
 <script type="text/javascript">
-
-	$(function() {
-		$.datepicker.setDefaults($.datepicker.regional['ko']);
-		$( "#roomResvDate" ).datepicker({minDate: +1 , dateFormat: 'yy-mm-dd'
+	$.noConflict();
+	jQuery( document ).ready(function( $ ) {
+		$(function() {
+			$.datepicker.setDefaults($.datepicker.regional['ko']);
+			$( "#roomResvDate" ).datepicker({minDate: +1 , dateFormat: 'yy-mm-dd'
 		});
-		
-		$("#popbutton").click(function() {
-			$('div.modal').modal({});
-		})
-		
-		$("input[type='submit']").attr("disabled", true);//비활성화
-		
-		if (<%=date%> != null) {
-			$("#rsvtable").attr("style", "display");
-			//$("input[type='submit']").attr("disabled", false); //활성화
-		} else {
-		}
-		
-
-
 	});
-	
-	function textBoxNull(){
-		if ( $('#roomResvDate').val() != null) {
-			$("input[type='submit']").attr("disabled", false); //활성화
-		} else {
-			$("input[type='submit']").attr("disabled", true); //비활성화
+
+	$("#popbutton").click(function() {
+		$('div.modal').modal({});
+	})
+		
+	$("input[type='submit']").attr("disabled", true);//비활성화
+		if (<%=date != null%>) {
+			$("#rsvtable").attr("style", "display");
 		}
+		else{
+		}
+	});
+function textBoxNull(){
+	if ( $('#roomResvDate').val() != null) {
+		$("input[type='submit']").attr("disabled", false); //활성화
+	} else {
+		$("input[type='submit']").attr("disabled", true); //비활성화
 	}
+}
+
+function reserveRoom(rno, time) {
+	//location.href = "createStudy.do"
+	//alart(rno);
+	$('#rno').val(rno);
+	var timeString;
 	
-	function reserveRoom(rno, time) {
-		//location.href = "createStudy.do"
-		//alart(rno);
-		$('#rno').val(rno);
-		var timeString;
-		
-		if(time == 1) {
-			timeString = "7-9시";
-		} else if(time == 2) {
-			timeString = "9-12시";
-		} else if(time == 3) {
-			timeString = "13-15시";
-		} else if(time == 4) {
-			timeString = "15-18시";
-		} else if(time == 5) {
-			timeString = "19-21시";
-		} else if(time == 6) {
-			timeString = "21-23시";
-		} 
-		
-		$('#rsvTimeString').val(timeString);
-		$('#rsvcode').val(time);
-		
-		<%-- $('#empno').val(<%= request.getSession().getAttribute("empno") %>); --%>
-	}
+	if(time == 1) {
+		timeString = "7-9시";
+	} else if(time == 2) {
+		timeString = "9-12시";
+	} else if(time == 3) {
+		timeString = "13-15시";
+	} else if(time == 4) {
+		timeString = "15-18시";
+	} else if(time == 5) {
+		timeString = "19-21시";
+	} else if(time == 6) {
+		timeString = "21-23시";
+	} 
+	
+	$('#rsvTimeString').val(timeString);
+	$('#rsvcode').val(time);
+	
+	<%-- $('#empno').val(<%= request.getSession().getAttribute("empno") %>); --%>
+}
 	</script>
 </head>
 <body>
