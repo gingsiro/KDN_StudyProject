@@ -8,4 +8,22 @@
 		from room
 	</select>
 
+	<insert id="insertRoom" parameterType="room">
+		insert into room(rno, rname, rmax)
+		values (
+			#{rno:INTEGER}
+			, #{rname:VARCHAR}
+			, #{rmax:INTEGER}
+		)
+	</insert>
+	
+	<update id="updateRoom" parameterType="room">
+		update room set rno=#{rno:INTEGER}, rname=#{rname:VARCHAR}, rmax=#{rmax:INTEGER}
+		where rno = #{rno:INTEGER}
+	</update>
+	
+	<delete id="deleteRoom" parameterType="int">
+		delete from room
+		where rno =#{rno}
+	</delete>
 </mapper>

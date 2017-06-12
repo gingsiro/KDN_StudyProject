@@ -3,13 +3,13 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
 <mapper namespace="rsvroom">
-<select id="searchAll" parameterType="String" resultType="rsvroom">
+<select id="searchAll" parameterType="string" resultType="rsvroom">
 		select rsvno, to_char(rsvdate, 'yyyy-mm-dd') rsvdate, rsvcode, rno, sno, empno
 		from rsv_room
 		where to_char(rsvdate, 'yyyy-mm-dd') = #{roomdate}
 </select>
 	
-<select id="searchDayRsv" parameterType="String" resultType="hashmap">
+<select id="searchDayRsv" parameterType="string" resultType="hashmap">
 	SELECT r.rno, SUM(DECODE(rsvcode, 1, 1, 0)) time07_09,
 				  SUM(DECODE(rsvcode, 2, 1, 0)) time09_12,
 				  SUM(DECODE(rsvcode, 3, 1, 0)) time13_15,
