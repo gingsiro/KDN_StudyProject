@@ -203,7 +203,7 @@ $(document).ready(function() {
 </head>
 
 <body>
-<div class="container">
+<div style="overflow:hidden" role="dialog" id="createForm" class="container">
 	<div id="modal"  class="modal-dialog" >
    		<div class="modal-header">
 			<button type="reset" class="close js_close" data-dismiss="modal" id="schedule_close_button">&times;</button>
