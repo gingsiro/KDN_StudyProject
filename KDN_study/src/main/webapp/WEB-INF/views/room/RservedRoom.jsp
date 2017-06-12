@@ -84,7 +84,6 @@
 			</form>
 		</nav>
  		<article id="mainContent">
-				<div class="container">
 		<!-- Modal -->
 		<div id="roomRsvForm" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -161,13 +160,13 @@
 			<thead>
 				<tr>
 					<th>스터디룸 번호</th>
-					<th>7-9시</th>
-					<th>9-12시</th>
+					<th>07-09시</th>
+					<th>09-12시</th>
 					<th>13-15시</th>
 					<th>15-18시</th>
 					<th>19-21시</th>
 					<th>21-23시</th>
-	
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -227,8 +226,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-	
+	<p>
 	<div>
 		<h2>KDN 스터디룸 정보</h2>
 		<p>현재 KDN의 스터디룸 정보 목록입니다.</p>

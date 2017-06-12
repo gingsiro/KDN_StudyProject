@@ -13,20 +13,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
-$(function() {
-	$("#popbutton").click(function() {
-		$('div.modal').modal({});
-	})
-
-});
-		function deleteRsv(rsvno) {
-			$('#rsvno').val(rsvno);
-		}
+	$(function() {
+		$("#popbutton").click(function() {
+			$('div.modal').modal({});
+		})
 	
-	</script>
+	});
 	
+	function deleteRsv(rsvno) {
+		$('#rsvno').val(rsvno);
+	}
+</script>
 </head>
-
 <body>
 
 <%-- 예약확인화면입니다.
@@ -71,7 +69,6 @@ $(function() {
 		</div>
 	</div>
 	
-  	<div class="container">
 		<h2>나의 스터디룸 예약 정보</h2>
 		<p>현재 나의 KDN Study 포털의 룸 예약 현황 목록입니다.</p>
 		<table class="table">
@@ -116,7 +113,6 @@ $(function() {
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
 
 
   	
