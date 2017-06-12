@@ -18,7 +18,7 @@
 	function insertForm() {
 		$('#modal-title').html("스터디 생성");
 		$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>생성");
-		$('#sname').val();
+		$('#sname').val("");
 		$('#sno').val(0);
 		$("#cuStudy").attr("action", "createStudy.do");
 		$('#cno').val(1).attr("selected", "selected");
@@ -44,7 +44,7 @@
 	
 	function deleteStudy(sno, smaster) {
 		if( <%=request.getSession().getAttribute("empno")%>== smaster){
-			$('#rdsno').val(sno);			
+			$('#rdsno').val(sno);
 			$('#checkContentTitle').html('스터디 삭제');
 			$('#checkContent').html('정말 삭제하시겠습니까?');
 			$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 삭제');

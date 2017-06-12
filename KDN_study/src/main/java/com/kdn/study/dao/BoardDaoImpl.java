@@ -20,6 +20,12 @@ public class BoardDaoImpl implements BoardDao {
 		return session.selectList("board.boardSearchAll", bean);
 	}
 	
-	
+	public Board search(int bno) {
+		return session.selectOne("board.search", bno);
+	}
 
+	public void update(Board board) {
+		session.update("board.update", board);
+		
+	}
 }
