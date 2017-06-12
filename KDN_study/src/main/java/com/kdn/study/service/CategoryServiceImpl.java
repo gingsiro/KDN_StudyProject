@@ -21,5 +21,17 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Category> searchAll(PageBean bean) {
 		return dao.searchAll(bean);
 	}
+	
+	public void createCategory(String cname){
+		dao.createCategory(cname);
+	}
+	
+	public void deleteCategory(int cno){
+		dao.deleteCategory(cno);
+	}
+	
+	public void updateCategory(Category cat){
+		dao.updateCategory(cat);
+	}
 
 }
