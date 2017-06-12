@@ -23,20 +23,18 @@ public class ScheduleDaoImpl implements ScheduleDao {
 
 	@Override
 	public void insertSchedule(Schedule schedule) {
-		System.out.println("DAo>>>>>" + schedule);
 		session.insert("schedule.insertSchedule", schedule);
 	}
 
 	@Override
-	public void update(Schedule schedule) {
-		// TODO Auto-generated method stub
-		
+	public void updateSchedule(Schedule schedule) {
+		session.update("schedule.updateSchedule", schedule);
 	}
 
 	@Override
-	public void remove(int no) {
-		// TODO Auto-generated method stub
-		
+	public void deleteSchedule(int scno) {
+		System.out.println("dao>>>>>>>>" + scno);
+		session.update("schedule.deleteSchedule", scno);
 	}
 
 	@Override

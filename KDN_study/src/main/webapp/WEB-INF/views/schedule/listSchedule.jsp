@@ -11,8 +11,8 @@
 		
 		<style>
 			#loadCalendar { witdth: 50px;
-									margin-left: 5%;
-									margin-right: 35%;
+									margin-left: 20%;
+									margin-right: 20%;
 				}
 			
 			#loadBoard { text-align: center;
@@ -93,8 +93,9 @@
 						<button type="submit" class="btn btn-default btn-success">
 								<span class="glyphicon glyphicon-ok"></span> 입력
 							</button>
+							
 							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
-								<span class="glyphicon glyphicon-remove"></span> 취소
+								<span class="glyphicon glyphicon-cancel"></span> 취소
 							</button>
 							
 						</form>
