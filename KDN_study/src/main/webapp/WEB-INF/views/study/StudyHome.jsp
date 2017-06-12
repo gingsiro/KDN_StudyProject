@@ -13,7 +13,10 @@
 		<div class="row">
 			<div class="col-sm-2">
 				<a href="studyList.do">전체 스터디</a><br/>
-				<a href="studyList.do?key=empno&word=${ empno }">나의 스터디</a>
+				<a href="studyList.do?key=empno&word=${ empno }">나의 스터디</a><br/>
+				<c:if test="${ admin == 'Y' }">
+					<a href="categoryList.do">카테고리 관리</a>
+				</c:if>
 			</div>
 			<div class="col-sm-10">
 				<c:choose>

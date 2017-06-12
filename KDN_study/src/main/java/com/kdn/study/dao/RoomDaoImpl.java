@@ -43,4 +43,19 @@ public class RoomDaoImpl implements RoomDao {
 	public void deleteRsvRoom(int rsvNo) {
 		session.delete("rsvroom.deleteRsvRoom", rsvNo);
 	}
+	
+	
+	public void insertRoom(Room room) {
+		session.insert("room.insertRoom", room);
+	}
+	
+
+	public void updateRoom(Room room) {
+		session.update("room.updateRoom", room);
+		
+	}
+	
+	public void deleteRoom(int rno) {
+		session.delete("room.deleteRoom", rno);
+	}
 }

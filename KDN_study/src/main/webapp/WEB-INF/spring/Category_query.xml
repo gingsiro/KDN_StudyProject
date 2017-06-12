@@ -4,12 +4,14 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 	
 <mapper namespace="category">
+
 	<select id="search" parameterType="int" resultType="category">
 		select *
 		from category
 		where cno = #{ cno }
 	</select>
-	<select id="searchAll" parameterType="String" resultType="category">
+	
+	<select id="searchAll" parameterType="string" resultType="category">
 		select *
 		from category
 		<where>
@@ -24,5 +26,22 @@
 				</choose>
 			</if>
 		</where>
+		order by cno
 	</select>
+	
+	<insert id="createCategory" parameterType="string">
+		insert into category(cno, cname)
+		values(CATEGORY_CNO.NEXTVAL, #{ cname:VARCHAR })
+	</insert>
+	
+	<delete id="deleteCategory" parameterType="int">
+		delete from category
+		where cno=#{ cno:INTEGER }
+	</delete>
+	
+	<update id="updateCategory" parameterType="category">
+		update category set cname=#{ cname:VARCHAR }
+		where cno=#{ cno:INTEGER }
+	</update>
+	
 </mapper>

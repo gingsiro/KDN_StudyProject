@@ -53,4 +53,16 @@ public class RoomServiceImpl implements RoomService {
 	public void deleteRsvRoom(int rsvNo) {
 		dao.deleteRsvRoom(rsvNo);
 	}
+	public void insertRoom(Room room) {
+		dao.insertRoom(room);
+		
+	}
+	
+	public void updateRoom(Room room) {
+		dao.updateRoom(room);
+	}
+	
+	public void deleteRoom(int rno) {
+		dao.deleteRoom(rno);
+	}
 }

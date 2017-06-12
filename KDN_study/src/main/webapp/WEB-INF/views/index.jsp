@@ -51,12 +51,12 @@
 		   						</c:otherwise>
 								</c:choose>
                             </ul>
-                            <!-- <div class="search">
+                            <div class="search">
                                 <form role="form">
                                     <input type="text" class="search-form" autocomplete="off" placeholder="Search">
                                     <i class="fa fa-search"></i>
                                 </form>
-                           </div> -->
+                           </div> 
                            <nav id="menu">		
 		 						<a href="insertEmployeeForm.do">회원가입</a><br/>
 		 					</nav>             
@@ -101,12 +101,14 @@
         </nav><!--/nav-->
 		
     </header><!--/header-->
-<section id="main-content">
 	<c:choose>
 	<c:when test="${ !empty content }">
-		<jsp:include page="${ content }"/>
+		<section id="main-content">
+			<jsp:include page="${ content }"/>
+		</section>
 	</c:when>
 	<c:otherwise>
+	
     <article id="main-slider" class="no-margin">
         <div class="carousel slide">
             <ol class="carousel-indicators">
@@ -121,9 +123,9 @@
                         <div class="row slide-margin">
                             <div class="col-sm-6">
                                 <div class="carousel-content">
-                                    <h1 class="animation animated-item-1">Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
-                                    <h2 class="animation animated-item-2">Accusantium doloremque laudantium totam rem aperiam, eaque ipsa...</h2>
-                                    <a class="btn-slide animation animated-item-3" href="#">Read More</a>
+                                    <h1 class="animation animated-item-1">KDN 사내 스터디를 위한 최고의 서비스 !</h1>
+                                    <h2 class="animation animated-item-2">스터디 운영, 스터디룸 예약, 스케줄 관리와 같은 모든 서비스를 지원해드립니다.</h2>
+                                    <a class="btn-slide animation animated-item-3" href="#">설명 보기</a>
                                 </div>
                             </div>
  
@@ -772,7 +774,6 @@
     </article><!--/#bottom-->
     </c:otherwise>
     </c:choose>
-</section>
     <footer id="footer" class="midnight-blue">
         <div class="container">
             <div class="row">
