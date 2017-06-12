@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | KDN Study</title>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	
+    <title>Home | KDN Study</title>	
 	<!-- core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -26,7 +24,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png"> 
+    
 </head><!--/head-->
  
 <body class="homepage">
@@ -36,7 +35,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-xs-4">
-                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +0123 456 70 90</p></div>
+                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +82 - 10 - 4632 - 9542</p></div>
                     </div>
                     <div class="col-sm-6 col-xs-8">
                        <div class="social">
@@ -641,7 +640,7 @@
                               <div class="panel-body">
                                   <div class="media accordion-inner">
                                         <div class="pull-left">
-                                            <img class="img-responsive" src="images/accordion1.png">
+                                            <img class="img-responsive" src="images/face/frustrate_hyun.jpg">
                                         </div>
                                         <div class="media-body">
                                              <h4>남궁현</h4>
@@ -666,7 +665,7 @@
                               <div class="panel-body">
                                   <div class="media accordion-inner">
                                         <div class="pull-left">
-                                            <img class="img-responsive" src="images/accordion1.png">
+                                            <img class="img-responsive" src="images/face/frustrate_haesung.jpg">
                                         </div>
                                         <div class="media-body">
                                              <h4>정해성</h4>
@@ -690,7 +689,7 @@
                               <div class="panel-body">
                                 <div class="media accordion-inner">
                                         <div class="pull-left">
-                                            <img class="img-responsive" src="images/accordion1.png">
+                                            <img class="img-responsive" src="images/face/frustrate_choo.jpg">
                                         </div>
                                         <div class="media-body">
                                              <h4>강추영</h4>
@@ -714,7 +713,7 @@
                               <div class="panel-body">
                                 <div class="media accordion-inner">
                                         <div class="pull-left">
-                                            <img class="img-responsive" src="images/accordion1.png">
+                                            <img class="img-responsive" src="images/face/frustrate_jaesung.jpg">
                                         </div>
                                         <div class="media-body">
                                              <h4>안재성</h4>
@@ -740,37 +739,36 @@
                         <div class="media">
                             <div class="parrent pull-left">
                                 <ul class="nav nav-tabs nav-stacked">
-                                    <li class="active"><a href="#tab1" data-toggle="tab" class="analistic-01">스터디 제작</a></li>
-                                    <li class=""><a href="#tab2" data-toggle="tab" class="analistic-02">일정관리 제작</a></li>
-                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">스터디룸 예약 제작</a></li>
-                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">로그인, 카테고리, 게시판 제작</a></li>
+                                    <li class="active"><a href="#tab1" data-toggle="tab" class="analistic-01">일정관리 제작</a></li>
+                                    <li class=""><a href="#tab2" data-toggle="tab" class="analistic-02">스터디 제작</a></li>
+                                    <li class=""><a href="#tab3" data-toggle="tab" class="tehnical">로그인, 카테고리, 게시판</a></li>
+                                    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">스터디룸 예약 제작</a></li>
                                     <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">모든 기능을 취합</a></li>
                                 </ul>
                             </div>
  
                             <div class="parrent media-body">
                                 <div class="tab-content">
-                                    <div class="tab-pane fade" id="tab1">
+                                    <div class="tab-pane fade active in" id="tab1">
                                         <div class="media">
                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/tab2.png">
+                                                <img class="img-responsive" src="images/face/picture_haesung.png">
                                             </div>
                                             <div class="media-body">
-                                                 <h2>Adipisicing elit</h2>
-                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use.</p>
+                                                 <h2>일정관리를 제작</h2>
+                                                 <p>스터디원들이 한눈에 볼 수 있도록 달력 형태로 일정을 등록하여 직관적으로 구성했습니다. 이를 통해 사용자들이 쉽게 스터디 일정을 관리할 수 있겠죠?</p>
                                             </div>
                                         </div>
                                     </div>
  
-                                     <div class="tab-pane fade active in" id="tab2">
+                                     <div class="tab-pane fade" id="tab2">
                                         <div class="media">
                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/tab1.png">
+                                                <img class="img-responsive" src="images/face/picture_hyun.png">
                                             </div>
                                             <div class="media-body">
-                                                 <h2>Adipisicing elit</h2>
-                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use.
-                                                 </p>
+                                                 <h2>스터디 제작</h2>
+                                                 <p>사용자들이 들어와 새로운 스터디에 가입해보고, 자신의 스터디에 들어가 활동할 수 있도록 보기 편한 디자인을 채택하여 개발을 진행했습니다.</p>
                                             </div>
                                         </div>
                                      </div>
@@ -778,11 +776,11 @@
                                      <div class="tab-pane fade" id="tab3">
                                         <div class="media">
                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/tab2.png">
+                                                <img class="img-responsive" src="images/face/picture_jaesung.png">
                                             </div>
                                             <div class="media-body">
-                                                 <h2>Adipisicing elit</h2>
-                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use.</p>
+                                                <h2>로그인, 카테고리, 게시판 제작</h2>
+                                                <p>우리 시스템에 접근하기 위해서는 제가 만든 로그인창을 통하지 않고선 불가능하죠. 스터디에 사용될 카테고리와 게시판도 제작하여 프로젝트에 붙였습니다!</p> 
                                             </div>
                                         </div>
                                      </div>
@@ -790,11 +788,12 @@
                                      <div class="tab-pane fade" id="tab4">
                                         <div class="media">
                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/tab2.png">
+                                                <img class="img-responsive" src="images/face/picture_choo.png">
                                             </div>
                                             <div class="media-body">
-                                                 <h2>Adipisicing elit</h2>
-                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use.</p>
+                                            	<h2>스터디룸 예약 제작</h2>
+                                                <p>나날이 변경되는 스터디룸 예약의 가능, 불가능 여부를 표시하기 위해 테이블 형태를 활용했어요 ! 덕분에 보기 이쁘고 사용하기 편하지 뭐에요 ? 하하하하하하</p>
+                                                
                                             </div>
                                         </div>
                                      </div>
@@ -803,11 +802,11 @@
                                         <!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures,</p> -->
                                         <div class="media">
                                            <div class="pull-left">
-                                                <img class="img-responsive" src="images/tab2.png">
+                                                <img class="img-responsive" src="images/face/picture_all.jpg">
                                             </div>
                                             <div class="media-body">
-                                                 <h2>Adipisicing elit</h2>
-                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use.</p>
+                                                 <h2>다같이 Git을 활용했죠 !</h2>
+                                                 <p>Git 이 없었다면 몇시간씩 데이터 취합하느라 시간을 보냈을 것 같습니다. 각자 기능을 개발한뒤 취합하고 기능을 붙여보는데 아 이래서 객체지향 객체지향 하는구나라고 느꼈습니다. </p>
                                             </div>
                                         </div>
                                      </div>
@@ -825,34 +824,34 @@
                                 <img class="img-responsive img-circle" src="images/face/jhs.jpg">
                             </div>
                             <div class="media-body">
-                                <p>달력이 스터디의 알파와 오메가다.<br/>스터디에 감성이 더해지면?<br/>최고의 결과물 ! ㅋㅋ</p>
+                                <p>달력이 스터디의 시작과 끝<br/>스터디에 감성이 더해지면?<br/>최고의 결과물 ! ㅋㅋ</p>
                                 <span><strong>-hsgoon/</strong> 감성담당 of KDN_Study</span>
                             </div>
                          </div>
  
                          <div class="media testimonial-inner">
                             <div class="pull-left">
-                                <img class="img-responsive img-circle" src="images/testimonials1.png">
+                                <img class="img-responsive img-circle" src="images/face/nkh.jpg">
                             </div>
                             <div class="media-body">
-                                <p>프로젝트 하다가 맥북이 사망했다...<br/>7년간 고생했어 <br/>나는 새 맥북으로 갈아탈게</p>
+                                <p>프로젝트중 맥북이 사망했다.<br/>7년간 고생했어 <br/>나는 새 맥북으로 갈아탈게</p>
                                 <span><strong>-gingsiro/</strong> 징징담당 of KDN_Study</span>
                             </div>
                          </div>
                          
                          <div class="media testimonial-inner">
                             <div class="pull-left">
-                                <img class="img-responsive img-circle" src="images/testimonials1.png">
+                                <img class="img-responsive img-circle" src="images/face/ajs.jpg">
                             </div>
                             <div class="media-body">
-                                <p>내 자신을 되돌아보는 계기가 되었다.<br/>고생했다.</p>
+                                <p>자신을 되돌아보게 되었다.<br/>고생했다.</p>
                                 <span><strong>-ulalla/</strong> 로그인담당 of KDN_Study</span>
                             </div>
                          </div>
                          
                          <div class="media testimonial-inner">
                             <div class="pull-left">
-                                <img class="img-responsive img-circle" src="images/testimonials1.png">
+                                <img class="img-responsive img-circle" src="images/face/kcy.jpg">
                             </div>
                             <div class="media-body">
                                 <p>프로젝트 다 끝난거<br/> 실화냐?</p>
@@ -866,14 +865,14 @@
     </section><!--/#content-->
  
     <section id="partner">
-        <div class="container">
+        <div class="container"> 
             <div class="center wow fadeInDown">
-                <h2>Our Partners</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <h2>우리 프로젝트 팀 동료들</h2>
+                <p class="lead">인턴 사원으로 시작하여 3달간 어렵게 달려왔습니다. 매일 시험에 퀴즈에 과제에 시달리느라 새벽까지도 고생했습니다.<br/>앞으로 더 나은 하루하루가 계속될 것입니다.</p>
             </div>    
  
             <div class="partners">
-                <ul>
+                <ul>	
                     <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/partners/partner1.png"></a></li>
                     <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="images/partners/partner2.png"></a></li>
                     <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="images/partners/partner3.png"></a></li>
@@ -884,7 +883,7 @@
         </div><!--/.container-->
     </section><!--/#partner-->
  
-    <section id="conatcat-info">
+    <!-- <section id="conatcat-info">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
@@ -893,14 +892,14 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="media-body">
-                            <h2>Have a question or need a custom quote?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation +0123 456 70 80</p>
+                            <h2>질문이 있으신가요 ? </h2>
+                            <p>질문이 있으시다면 지금 궁금한 사항에 답변 드리겠습니다.<br/> 질문 주시기 바랍니다.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div><!--/.container-->    
-    </section><!--/#conatcat-info-->
+        </div>/.container    
+    </section>/#conatcat-info -->
  
     <!-- <section id="bottom">
         <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
@@ -986,11 +985,12 @@
             </div>
         </div>
     </footer><!--/#footer-->
- 
+    <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/jquery.isotope.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/wow.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </body>
 </html>
