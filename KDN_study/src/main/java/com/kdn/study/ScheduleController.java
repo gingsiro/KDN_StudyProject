@@ -32,58 +32,32 @@ public class ScheduleController
 		
 		List<Schedule> right_list = scheduleService.searchAllForRightList(bean);
 		model.addAttribute("right_list", right_list);
+		
 		//model.addAttribute("content", "schedule/listSchedule.jsp");
 		model.addAttribute("content", "schedule/scheduleHome.jsp");
 		model.addAttribute("listform", "listSchedule.jsp");
-		
 		model.addAttribute("studyList", studyService.searchAll(new PageBean("all", null)));
-		
 		model.addAttribute("sno", sno);
 		model.addAttribute("myScheduleOfStudyList", scheduleService.searchMySchedule(Integer.parseInt(session.getAttribute("empno").toString())));
+		
 		return "index";
 	}
 
 	@RequestMapping(value="insertSchedule.do", method=RequestMethod.POST)
 	public String insertSchedule(Model model, Schedule schedule){
 		
+		// 빼지마요 빼면 에러나엽
 		String s = schedule.getScdate();
-		
 		String s2 = s.substring(0,10);
 		String s3 = s.substring(11, 16);
-		
-		System.out.println("s : "+ s);
-		System.out.println("s2: " + s2);
-		System.out.println("s3: " + s3);
 		String s4 = s2 + s3;
-		
-		
-		System.out.println("s4: " + s4);
 		schedule.setScdate(s4);
 		
-		
 //		2017-06-13T15:02
-		
 		scheduleService.insertSchedule(schedule);
 		return "redirect:listSchedule.do";
 	}
 	
-	
-	/*
-	@RequestMapping(value="insertSchedule.do", method=RequestMethod.GET)
-	public String reservedRoom(Model model, String roomResvDate) 
-	{
-		List<Schedule> dayRsvlist = scheduleService.searchDayRsv(roomResvDate);
-		model.addAttribute("dayRsvlist", dayRsvlist);
-		
-		System.out.println(dayRsvlist.get(0));
-		
-		model.addAttribute("content", "room/RoomHome.jsp"); 
-		model.addAttribute("listform", "RservedRoom.jsp");
-		model.addAttribute("listcontent", "DayRsvRoomCheck.jsp");
-		
-		return "index";
-	}
-	*/
 	
 	@RequestMapping(value="schedule.do", method=RequestMethod.GET)
 	public String scheduleStudy(Model model, PageBean bean)
@@ -109,6 +83,20 @@ public class ScheduleController
 		return "index";
 	}
 	
+	@RequestMapping(value="updateSchedule.do", method=RequestMethod.GET)
+	public String updateSchedule(Schedule schedule, String sno){
+		
+		// 빼지마요 빼면 에러나엽
+		String mydate = schedule.getScdate();
+		String front_date = mydate.substring(0,10);
+		String rear_date = mydate.substring(11, 16);
+		mydate = front_date + rear_date;
+
+		schedule.setScdate(mydate);
+		scheduleService.updateSchedule(schedule);
+
+		return "redirect:listSchedule.do?sno="+sno;
+	}
 	
 	@RequestMapping(value="calendar.do", method=RequestMethod.GET)
 	public String showCalendar(Model model)
@@ -116,5 +104,12 @@ public class ScheduleController
 		model.addAttribute("content", "schedule/calendar.jsp");
 		
 		return "index";
+	}
+	
+	@RequestMapping(value="deleteSchedule.do", method=RequestMethod.GET)
+	public String deleteSchedule(String scno, String sno){
+		System.out.println("controller>>>>>>>>" + sno);
+		scheduleService.deleteSchedule(Integer.parseInt(scno));
+		return "redirect:listSchedule.do?sno="+sno;
 	}
 }

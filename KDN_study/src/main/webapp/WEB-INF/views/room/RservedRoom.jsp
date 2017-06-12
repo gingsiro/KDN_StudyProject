@@ -33,18 +33,26 @@
 			$('div.modal').modal({});
 		})
 		
+		$("input[type='submit']").attr("disabled", true);//비활성화
+		
 		if (<%=date%> != null) {
 			$("#rsvtable").attr("style", "display");
 			//$("input[type='submit']").attr("disabled", false); //활성화
-			
 		} else {
-			//$("input[type='submit']").attr("disabled", true);//비활성화
 		}
 		
 
 
 	});
-
+	
+	function textBoxNull(){
+		if ( $('#roomResvDate').val() != null) {
+			$("input[type='submit']").attr("disabled", false); //활성화
+		} else {
+			$("input[type='submit']").attr("disabled", true); //비활성화
+		}
+	}
+	
 	function reserveRoom(rno, time) {
 		//location.href = "createStudy.do"
 		//alart(rno);
@@ -70,21 +78,17 @@
 		
 		<%-- $('#empno').val(<%= request.getSession().getAttribute("empno") %>); --%>
 	}
-	
-
-
 	</script>
 </head>
 <body>
 		<nav id="menu" >
 			<form style="text-align:center" method="get" action="reservedRoom.do" >
-				<input type="text" id="roomResvDate" name="roomResvDate">
+				<input type="text" onchange="textBoxNull()" id="roomResvDate" name="roomResvDate">
 
 				<input type="submit" value="예약 조회" id="rsvbtn">
 			</form>
 		</nav>
  		<article id="mainContent">
-				<div class="container">
 		<!-- Modal -->
 		<div id="roomRsvForm" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -161,13 +165,13 @@
 			<thead>
 				<tr>
 					<th>스터디룸 번호</th>
-					<th>7-9시</th>
-					<th>9-12시</th>
+					<th>07-09시</th>
+					<th>09-12시</th>
 					<th>13-15시</th>
 					<th>15-18시</th>
 					<th>19-21시</th>
 					<th>21-23시</th>
-	
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -227,8 +231,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-	
+	<p>
 	<div>
 		<h2>KDN 스터디룸 정보</h2>
 		<p>현재 KDN의 스터디룸 정보 목록입니다.</p>
