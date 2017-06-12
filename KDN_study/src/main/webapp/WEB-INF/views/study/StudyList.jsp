@@ -17,7 +17,7 @@
 	function insertForm() {
 		$('#modal-title').html("스터디 생성");
 		$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>생성");
-		$('#sname').val();
+		$('#sname').val("");
 		$('#sno').val(0);
 		$('#scurr').val(1);
 		$("#cuStudy").attr("action", "createStudy.do");
