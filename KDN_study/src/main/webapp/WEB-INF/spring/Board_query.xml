@@ -23,4 +23,16 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="search" parameterType="int" resultType="board">
+		select *
+		from board
+		where bno=#{bno}
+	</select>
+	
+	<update id="update" parameterType="board">
+		update board set btitle=#{btitle:VARCHAR}, bcontents=#{bcontents:VARCHAR}, regdaet = sysdate
+		where bno = #{bno:INTEGER}
+		
+	</update>
 </mapper>

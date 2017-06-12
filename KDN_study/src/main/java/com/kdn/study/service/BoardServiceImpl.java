@@ -29,4 +29,14 @@ public class BoardServiceImpl implements BoardService {
 			throw new UpdateException(e.getMessage());
 		}
 	}
+	
+	public Board search(int bno) {
+		return dao.search(bno);
+		
+	}
+	
+	public void update(Board board) {
+		dao.update(board);
+		
+	}
 }
