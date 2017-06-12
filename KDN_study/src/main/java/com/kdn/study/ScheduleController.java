@@ -33,7 +33,9 @@ public class ScheduleController
 		List<Schedule> right_list = scheduleService.searchAllForRightList(bean);
 		model.addAttribute("right_list", right_list);
 		
-		model.addAttribute("content", "schedule/listSchedule.jsp");
+		//model.addAttribute("content", "schedule/listSchedule.jsp");
+		model.addAttribute("content", "schedule/scheduleHome.jsp");
+		model.addAttribute("listform", "listSchedule.jsp");
 		model.addAttribute("studyList", studyService.searchAll(new PageBean("all", null)));
 		model.addAttribute("sno", sno);
 		model.addAttribute("myScheduleOfStudyList", scheduleService.searchMySchedule(Integer.parseInt(session.getAttribute("empno").toString())));
@@ -42,21 +44,20 @@ public class ScheduleController
 	}
 
 	@RequestMapping(value="insertSchedule.do", method=RequestMethod.POST)
-	public String insertSchedule(Model model, Schedule schedule){
+	public String insertSchedule(Model model, Schedule schedule, String sno){
 		
 		// 빼지마요 빼면 에러나엽
 		String s = schedule.getScdate();
 		String s2 = s.substring(0,10);
 		String s3 = s.substring(11, 16);
 		String s4 = s2 + s3;
-		
 		schedule.setScdate(s4);
 		
 //		2017-06-13T15:02
 		scheduleService.insertSchedule(schedule);
-		return "redirect:listSchedule.do";
+		return "redirect:listSchedule.do?sno=" + sno;
 	}
-	
+
 	
 	@RequestMapping(value="schedule.do", method=RequestMethod.GET)
 	public String scheduleStudy(Model model, PageBean bean)

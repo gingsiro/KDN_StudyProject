@@ -1,41 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:useBean 	id="pageBean"         class="com.kdn.study.domain.PageBean" 
-				scope="request"/>
+<%-- <jsp:useBean 	id="pageBean"         class="com.kdn.study.domain.PageBean" 
+				scope="request"/> --%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
+	
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		#loadCalendar { witdth: 50px;
+								margin-left: 20%;
+								margin-right: 20%;
+		}
+		#loadBoard { text-align: center;
+		}
+	</style>
 		
-		<style>
-			#loadCalendar { witdth: 50px;
-									margin-left: 20%;
-									margin-right: 20%;
-				}
-			
-			#loadBoard { text-align: center;
-			}
-		</style>
+	<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+	<script src="js/sch/sysdate.js"></script>
 		
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
-		</script>
+	<style>
+	.form-group {
+		display: block;
+	}
+	</style>
 		
-		<script type="text/javascript">
-			$(function() {
-				$("#popbutton").click(function() {
-					$('div.modal').modal({});
-				})
+	<script type="text/javascript">
+		$(function() {
+			$("#popbutton").click(function() {
+				$('div.modal').modal({});
 			})
+		})
 		
-			function updateForm(sname, cno, smax) {
-				$('#updateSname').val(sname);
-			}
-		</script>
+		function updateForm(sname, cno, smax) {
+			$('#updateSname').val(sname);
+		}
+			
+		console.log('현재 날짜: ' + sysdate);
+	
+	</script>
+		
+	<script type="text/javascript">
+	window.onload = function() 
+	{ 
+		console.log('현재 날짜: ' + sysdate); 
+		$('#sysdate_').val(sysdate);
+		$('#sno').val("${sno}");
+	};
+	</script>
 
 	
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 			//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
 			function pagelist(cpage){
 				//input 양식의 hidden으로 선언된 page에 요청된 페이지 정보 셋팅 
@@ -52,138 +70,60 @@
 				frm.action="searchSchedule.do";
 				frm.submit();
 			}
-		</script>
-		
-	</head>
+		</script> -->
+</head>
 
 <body>
-	
-	
-	<div class="container">
 		<!-- Modal -->
-		<div style="overflow:hidden" id="createForm" class="modal fade" role="dialog">
-			<div class="modal-dialog">
+	<div style="overflow:hidden" id="createForm" class="modal fade" role="dialog">
+		<div id="model" class="modal-dialog">
 				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 style="color: blue;">
-							<span class="glyphicon glyphicon-pencil"></span> 스케줄 입력
-						</h4>
-					</div>
-					<div class="modal-body">
-						<form role="form" method="POST" action="insertSchedule.do">
-							<div class="form-group">
-								<label for="inputScheduleName">스케줄 이름</label> 
-								<input type="text" class="form-control" id="sctitle" name="sctitle" placeholder="Schedule Name">
-							</div>
-						
-						<!-- 
-						value="2017-10-09T15:38:00" -->
-						
-						<input type="datetime-local" id="scdate" name="scdate" > 
-						
+			<div class="modal-content">
+					
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 style="color: blue;">
+						<span class="glyphicon glyphicon-pencil"></span> 일정 입력
+					</h4>
+				</div>
+					
+				<div class="modal-body" id="modal-body">
+					<form role="form" method="POST" action="insertSchedule.do">
+						<input type="hidden" class="form-control" id="sno" name="sno">
 						<div class="form-group">
-								<label for="inputScheduleName">스터디 명(일단 번호로)</label>
-								 <input type="text"
-									class="form-control" id="sno" name="sno"
-									placeholder="Schedule Name">
-							</div>
-							
-						<button type="submit" class="btn btn-default btn-success">
+							<label for="inputScheduleName">스케줄 이름</label> 
+							<input type="text" class="form-control" id="sctitle" name="sctitle" placeholder="Schedule Name">
+						</div>
+						<!-- value="2017-10-09T15:38:00" -->
+						<div class="form-group">
+							<label for="inputScheduleName">일시</label><br/>
+							<input type="datetime-local" id="sysdate_" name="scdate"  > 
+						</div>
+
+						<div style="text-align:right">
+							<button type="submit" class="btn btn-default btn-success">
 								<span class="glyphicon glyphicon-ok"></span> 입력
 							</button>
-							
-							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
-								<span class="glyphicon glyphicon-cancel"></span> 취소
+							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal" id="schedule_close_button">
+								<span class="glyphicon glyphicon-remove"></span> 취소
 							</button>
-							
-						</form>
-					</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
+	</div>
 		
-		<div>
-			<h2>니가 선택한 스터디의 메인 화면</h2>
-			<p>니 스케줄이다. 그 밑에는 게시판</p>
-			<div style="text-align: right">
-				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createForm">스케줄 입력</button>
-			</div>
+	<div>
+		<h2>니가 선택한 스터디의 메인 화면</h2>
+		<p>니 스케줄이다. 그 밑에는 게시판</p>
+		<div style="text-align: right">
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createForm">스케줄 입력</button>
 		</div>
 	</div>
 
 	<section id='loadCalendar'>
 		<jsp:include page="calendar.jsp"></jsp:include>
 	</section>
-	
-	<div class="main">
-		<form id="frm" >
-			<input type="hidden" id="pageNo"  name="pageNo"  value="1"/>
-			<input type="hidden" id="no"  name="no"/>
-			<table align="center">
-			<tr><th colspan="3"> 게시글 목록</th></tr>
-	  	<tr align="center">
-	  	</tr>
-	  	<tr align="center">
-	  	  <td width="100"> 일정번호</td><td width="200">제목</td><td  width="100">일시</td>
-	  	  <c:forEach  var="schedule" items="${myScheduleOfStudyList}">
-	  	  <tr>
-	  	  	<c:if test= "${schedule.sno == sno}">
-				 <td>${schedule.scno}</td>  	  
-				 <td>${schedule.sctitle}</td>  	  
-				 <td>${schedule.scdate}</td>  	
-			 </c:if>
-		  </tr>  
-	  	  </c:forEach>
-	  	  <td colspan="3" height="100" align="center">
-	  	  <select  name="key" id="key">
-	  		<option value="all"     >-----all-----</option>
-	  		<option value="scno"      <%=pageBean.getKey("scno")%> >일정번호</option>
-	  		<option value="sctitle"   <%=pageBean.getKey("sctitle")%>  >제목</option>
-	  		<option value="sno" <%=pageBean.getKey("sno")%>  >스터디번호</option>
-	  	  </select>
-	  	  <input type="text" id="word" name="word" value="${pageBean.word}"/>
-	  	  <a href="#" onclick="pagelist(1)">검색</a> &nbsp;&nbsp;&nbsp;
-	  	 </td>
-	  	</tr>
-		</table>
-			<div class="bottom"><center>${pageBean.pagelink } </center></div>
-		</form>
-	</div>
-	
-<div>
-	<c:forEach var="studyList" items="${ studyList }">
-		ggg${ studyList.sname }
-	</c:forEach>
-	
-	
-	<section id='loadBoard'>
-	<br/><br/><br/>
-		우하하하하하하<br/><br/><br/>		
-		여기는 바로 게시판 자리이시다<br/><br/><br/>
-		우하하하하하
-		<br/><br/><br/>
-	</section>
-</div>
-
-
-	<form method="get" action="searchSchedule.do">
-		<table align='center'>
-			<tr>
-				<td class="caption" colspan='2'>가입하고파</td>
-			</tr>
-			<tr>
-				<td class='tbasic'>검색할 스터디 선태크!</td>
-				<td class='tbasic'><input type='text' name='id' id='id'></td>
-			</tr>
-			<tr>
-				<td colspan='2' align='center' class='tfoot tspacial'><input
-					type="submit" value='전송'> <input type="reset"
-					value='취소'></td>
-			</tr>
-		</table>
-	</form>
-
 </body>
 </html>

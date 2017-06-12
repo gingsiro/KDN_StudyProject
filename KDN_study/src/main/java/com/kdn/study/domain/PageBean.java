@@ -9,7 +9,7 @@ public class PageBean implements Serializable {
 	 * pagelink : 목록의 페이지 링크를 표시
 	 */
 	private String key, word, pagelink;
-	private int pageNo, interval = 5, start=1 , end=interval ;
+	private int pageNo, interval = 5, start=1 , end=interval, sno ;
 	
 	public PageBean(){
 		setKey("all");
@@ -37,6 +37,29 @@ public class PageBean implements Serializable {
 		setPagelink(pagelink);
 		setPageNo(pageNo);
 	}
+
+	public PageBean(String key, String word, String pagelink, int pageNo,
+			int interval, int start, int end, int sno) {
+		super();
+		this.key = key;
+		this.word = word;
+		this.pagelink = pagelink;
+		this.pageNo = pageNo;
+		this.interval = interval;
+		this.start = start;
+		this.end = end;
+		this.sno = sno;
+	}
+
+	
+	public int getSno() {
+		return sno;
+	}
+
+	public void setSno(int sno) {
+		this.sno = sno;
+	}
+
 	public String getKey() {
 		return key;
 	}
@@ -98,16 +121,14 @@ public class PageBean implements Serializable {
 	public void setEnd(int end) {
 		this.end =end;
 	}
+
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("PageBean [key=").append(key).append(", word=")
-				.append(word).append(", pagelink=").append(pagelink)
-				.append(", pageNo=").append(pageNo).append(", interval=")
-				.append(interval).append(", start=").append(start)
-				.append(", end=").append(end).append("]");
-		return builder.toString();
+		return "PageBean [key=" + key + ", word=" + word + ", pagelink="
+				+ pagelink + ", pageNo=" + pageNo + ", interval=" + interval
+				+ ", start=" + start + ", end=" + end + ", sno=" + sno + "]";
 	}
+
 	
 }
 
