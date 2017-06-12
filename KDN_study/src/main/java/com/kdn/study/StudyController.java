@@ -35,9 +35,6 @@ public class StudyController {
 	
 	@RequestMapping(value="studyList.do", method=RequestMethod.GET)
 	public String studyList(Model model, String key, String word, HttpSession session) {
-		if(session.getAttribute("empno")==null){
-			return "redirect:loginForm.do";
-		}
 		if(session.getAttribute("empno")!=null){
 			if(key!=null && key.equals("empno")){
 				model.addAttribute("list", studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString())));
@@ -51,10 +48,6 @@ public class StudyController {
 			model.addAttribute("myStudyList", studyService.searchMyStudy(Integer.parseInt(session.getAttribute("empno").toString())));
 			model.addAttribute("content", "study/StudyHome.jsp");
 			model.addAttribute("categoryList", categoryService.searchAll(new PageBean("all", null)));	
-			/*for (int i = 0; i < 5; i++) {
-				model.addAttribute("room"+i, studyService.searchAll(bean));
-			}
-			*/
 			return "index";
 		}else{
 			return "redirect:loginForm.do";

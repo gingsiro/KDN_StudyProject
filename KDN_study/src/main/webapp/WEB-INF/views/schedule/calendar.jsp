@@ -6,22 +6,18 @@
 <head>
 <meta charset='utf-8' />
 <link rel='stylesheet' href='css/jquery-ui.min.css' />
-	<link href='css/fullcalendar.min.css' rel='stylesheet' />
-	<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
-	<script src='js/sch/moment.min.js'></script>
-	<script src='js/sch/jquery.min.js'></script>
-	<script src='js/fullcalendar.min.js'></script>
-	<script type="text/javascript" src="locale/ko.js"></script>
-	<script type="text/javascript" src="js/modal.js"></script>
-	
-
-<style>
-.fc-sat {color:blue;}
-.fc-sun {color:red;}
-#modal {display:none;background-color:#FFFFFF;position:absolute;top:300px;left:200px;padding:10px;border:2px solid #E2E2E2;z-Index:9999}
-</style>
-
+<link href='css/fullcalendar.min.css' rel='stylesheet' />
+<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='js/sch/jquery.min.js'></script>
+<script src='js/sch/moment.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+<script type="text/javascript" src="locale/ko.js"></script>
+<script type="text/javascript" src="js/modal.js"></script>
+<script src="js/sch/sysdate.js"></script>
 <script>
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+  // AAA
 //모달창 인스턴트 생성
 var myModal = new Example.Modal({
     id: "modal" // 모달창 아이디 지정
@@ -37,54 +33,33 @@ $("#confirm_button").click(function() {
     alert("나는 모달창이다.");
     myModal.hide(); // 모달창 감추기
 });
-</script>
 
-
-<script>
 // 날짜 가져오기, json 생성
-var ourSchedule = new Array() ;
+	var ourSchedule = new Array() ;
 <c:forEach items="${myScheduleOfStudyList}" var="item">
     // var data = {title:'${item.sctitle}', start: '${item.scdate}'}
     var data = new Object();
-    console.log(">>>>>>>>>>" + '${empno}' );
+    
     data.title='${item.sctitle}';
     data.start= '${item.scdate}';
+    data.id = '${item.scno}';
     
+    // DB로부터 가져온 date를 calendar에 넣기 위해 문자열 재구성
     var a ='${item.scdate}';
-    
     var front_date = a.substring(0,10);
-    var rear_date = a.substring(13,15);
-    
-
-    var mid_date = a.substring(11,12);
-    mid_date = Number(mid_date);
-    
-    console.log("mid>>>>>"+mid_date);
-    
-    mid_date = mid_date + 12;
-    mid_date = String(mid_date);
-    
-    var s = front_date + "T" + mid_date +   rear_date + "0:00";
+    var mid_date = a.substring(11,13);
+    var rear_date = a.substring(14,16);
+    var s = front_date + "T" + mid_date + ":" +  rear_date + ":00";  // 연월일T시분
     
     data.start= s;
-    console.log("front>>" + front_date);
-    console.log("rear>>>" + rear_date);
-    console.log("s>>>>" + s);
-    
-    console.log(data.start);
     
   <c:if test = "${item.sno == sno}">
   	ourSchedule.push(data);
    </c:if>
     
 </c:forEach>
-
-console.log(ourSchedule);
-
-// 날짜
-var date = new Date();
-var sysdate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-document.write('현재 날짜: ' + sysdate);
+// 일시 넘어오나 검사
+console.log("cal넘어옴>>>>"+sysdate)
 
 // 시작
 $(document).ready(function() {
@@ -96,18 +71,23 @@ $(document).ready(function() {
 				right: 'month, agendaWeek, agendaDay, listMonth'
 			},
 			
+			// 수정을 위해 스케줄의 특정 이벤트 항목이 선택되면 실행되는 함수
 		    eventClick: function(calEvent, jsEvent, view) {
 
+		    	$('#sch_scno').val(calEvent.id);
 		    	$('#sch_title').val(calEvent.title);
-		    	$('#sch_date').val(calEvent.start);
-		    	console.log("*******************"+calEvent.title);
-		    	console.log("*******************"+calEvent.start);
+		    	var sch_start = $.fullCalendar.formatDate(calEvent.start, 'YYYY-MM-DD HH:mm:ss');
 		    	
-		    	
-		    	
-		         alert('Event: ' + calEvent.title);
-		         /*        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-		        alert('View: ' + view.name); */
+		    	// 선택한 이벤트의 date를 모달창에 띄우기 위해 문자열 재구성
+		    	var front_date = a.substring(0,10);
+		        var rear_date = a.substring(13,15);
+		        
+		        var front_start = sch_start.substring(0,10);
+		        var rear_start = sch_start.substring(11,16);
+		        sch_start = front_start + "T" + rear_start;
+		    	$('#sch_start').val(sch_start);
+		      	$('#sch_sno').val("${sno}");
+		      	
 		        var myModal = new Example.Modal({
 		            id: "modal" // 모달창 아이디 지정
 		        });
@@ -187,72 +167,84 @@ $(document).ready(function() {
 		
 	});
 
+
+
+
+
+});
 </script>
-
-
 <style>
-
-	body {
-		margin: 40px 10px;
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
-
-	#calendar {
-		max-width: 5000px;
-		margin: 0 auto;
-	}
+.fc-sat {color:blue;}
+.fc-sun {color:red;}
+#modal {	display:none;
+				background-color:#FFFFFF;
+				position:absolute;
+				top:300px;
+				left:200px;
+				padding:10px;
+				border:2px solid #E2E2E2;
+				z-Index:9999
+			}
+		body {
+			margin: 40px 10px;
+			padding: 0;
+			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+			font-size: 14px;
+		}
 	
-	.fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
-    .fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
-
-</style>
-</head>
-<body>
-
-<div id="modal">
-    <h3>일정 수정</h3>
-    <p>이 창은 모달창입니다.</p>
-    
-   			<form role="form" method="GET" action="updateSchedule.do">
-							<div class="form-group">
-								<label for="inputScheduleName">스케줄 이름</label> 
-								<input type="text" class="form-control" id="sch_title" name="sctitle" placeholder="Schedule Name"
-								value = "">
-							</div>
-						
-						<!-- 
-						value="2017-10-09T15:38:00" -->
-						
-						<input type="datetime-local" id="sch_date" name="scdate" > 
-						
-						<div class="form-group">
-								<label for="inputScheduleName">스터디 명(일단 번호로)</label>
-								 <input type="text" class="form-control" id="sno" name="sno" placeholder="Schedule Name"
-								 value="">
-							</div>
-							
-						<button type="submit" class="btn btn-default btn-success">
-								<span class="glyphicon glyphicon-ok"></span> 입력
-							</button>
-							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
-								<span class="glyphicon glyphicon-remove"></span> 취소
-							</button>
-							
-						</form>
-    
-   <!--  <button id="schedule_confirm_button">수정</button>
-    <button id="schedule_close_button" class="js_close">취소</button> -->
-</div>
-
+		#calendar {
+			max-width: 5000px;
+			margin: 0 auto;
+		}
 		
+		.fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
+	    .fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
+	</style>
+</head>
 
-
-
-
-
-	<div id='calendar'></div>
-
+<body>
+<div style="overflow:hidden" role="dialog" id="createForm" class="container">
+	<div id="modal"  class="modal-dialog" >
+   		<div class="modal-header">
+			<button type="reset" class="close js_close" data-dismiss="modal" id="schedule_close_button">&times;</button>
+			<h4 style="color: blue;">
+				<span class="glyphicon glyphicon-pencil"></span> 스케줄 수정
+			</h4>
+		</div>
+    
+    	<div class="modal-body" id="modal-body">
+   			<form role="form" method="GET" action="updateSchedule.do">
+   				<input type="hidden" id="sch_scno"  name="scno" />
+   				<input type="hidden" id="sch_sno"  name="sno" />
+				<div class="form-group">
+					<label for="inputScheduleName">스케줄 이름</label> 
+					<input type="text" class="form-control" id="sch_title" name="sctitle" placeholder="Schedule Name" value = "">
+				</div>
+				
+				<!-- 		value="2017-10-09T15:38:00" -->
+				<div class="form-group">
+					<label for="inputScheduleName">일시</label> 
+					<input type="datetime-local" id="sch_start" name="scdate" class="form-control"> 
+				</div>
+				
+				<div style="text-align:right">
+					<button type="submit" class="btn btn-default btn-success">
+						<span class="glyphicon glyphicon-ok"></span> 수정
+					</button>
+					
+					<button type="submit" class="btn btn-default btn-success" data-dismiss="modal" formaction="deleteSchedule.do">
+						<span class="glyphicon glyphicon-remove"></span> 삭제
+					</button>
+					
+					<button type="reset" class="btn btn-default btn-success js_close" data-dismiss="modal" id="schedule_close_button">
+						<span class="glyphicon glyphicon-remove"></span> 취소
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+		
+<div id='calendar'></div>
 </body>
 </html>

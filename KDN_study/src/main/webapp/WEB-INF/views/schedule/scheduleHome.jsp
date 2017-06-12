@@ -8,7 +8,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section id="study-main">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">				
+				<a href="listSchedule.do?sno=${sno}">스터디 스케줄</a><br/>
+				<a href="boardList.do?sno=${sno}">스터디 게시판</a><br/>
+			</div>
+			<div class="col-sm-10">
+				<c:choose>
+					<c:when test="${ !empty listform }">
+						<jsp:include page="${ listform }" />
+					</c:when>
+			<c:otherwise>
+				스터디 스케줄/게시판 홈 입니다.
+			</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+	</div>
+
+<%-- 	<section id="study-main">
 		<c:choose>
 			<c:when test="${ !empty list }">
 				<jsp:include page="${ list }" />
@@ -17,6 +36,6 @@
 				스케줄홈 입니다.
 			</c:otherwise>
 		</c:choose>
-	</section>
+	</section> --%>
 </body>
 </html>

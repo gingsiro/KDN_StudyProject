@@ -42,7 +42,7 @@
 	
 	<select id="searchAllForRightList" parameterType="pagebean" resultType="schedule">
 		select scno, sctitle
-									, to_char(scdate, 'yyyy-mm-ddHH24:mi') scdate
+									, scdate
 									, sno
 									, sname
 		from schedule
@@ -87,7 +87,10 @@
 	</select>
 	
 	<select id="searchMySchedule" parameterType="int" resultType="schedule">
-		SELECT *
+		SELECT scno, sctitle
+					, scdate
+					, s.sno
+					, empno
 		FROM SCHEDULE s, JOIN_STUDY j
 		WHERE s.SNO = j.SNO AND empno = #{ empno:INTEGER }
 	</select>
@@ -101,6 +104,17 @@
 				)
 	</insert>
 	
+	
+	<update id="updateSchedule" parameterType="schedule">
+		update schedule set sctitle = #{sctitle:VARCHAR}
+               						, scdate = TO_DATE(#{scdate:DATE} , 'yyyy-mm-ddHH24:mi')
+		where scno = #{scno:INTEGER}
+	</update>
+	
+	<delete id="deleteSchedule" parameterType="int">
+		delete from schedule
+		where scno=#{ scno }
+	</delete>
 	
 	
 	</mapper>
