@@ -16,7 +16,7 @@
 	<select id="searchAll" parameterType="pagebean" resultType="study">
 		select sno, smaster, sname, smax, scurr, cno, cname
 		from study
-		JOIN category USING(cno)
+		join category using(cno)
 		<where>
 			<if test="word != null">
 				<choose>
@@ -32,6 +32,7 @@
 				</choose>
 			</if>
 		</where>
+		order by sname
 	</select>
 	
 	<select id="searchMyStudy" parameterType="int" resultType="study">
@@ -40,6 +41,7 @@
 			  from join_study js, study st
 			  where js.sno = st.sno and empno = #{ empno:INTEGER }) a, category c
 		where a.cno = c.cno
+		order by sname
 	</select>
 	
 	<insert id="createStudy" parameterType="study">

@@ -21,5 +21,17 @@ public class CategoryDaoImpl implements CategoryDao {
 	public List<Category> searchAll(PageBean bean) {
 		return session.selectList("category.searchAll", bean);
 	}
+	
+	public void createCategory(String cname){
+		session.insert("category.createCategory", cname);
+	}
+	
+	public void deleteCategory(int cno){
+		session.delete("category.deleteCategory", cno);
+	}
+	
+	public void updateCategory(Category cat){
+		session.update("category.updateCategory", cat);
+	}
 
 }

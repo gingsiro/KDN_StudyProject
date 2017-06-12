@@ -83,7 +83,6 @@ public class StudyController {
 	@RequestMapping(value="dismissStudy.do", method=RequestMethod.POST)
 	public String dismissStudy(String empno, String sno){
 		JoinStudy joinInfo = new JoinStudy(Integer.parseInt(empno), Integer.parseInt(sno));
-		System.out.println(empno+"//"+sno);
 		studyService.dismissStudy(joinInfo);
 		return "redirect:studyList.do";
 	}

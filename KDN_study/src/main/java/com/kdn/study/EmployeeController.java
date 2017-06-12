@@ -57,7 +57,9 @@ public class EmployeeController
 	{
 		
 		employeeService.login(empno, password);
+		Employee emp = employeeService.search(empno);
 		session.setAttribute("empno", empno);
+		session.setAttribute("admin", emp.getAdmin());
 		String referer = (String)session.getAttribute("referer");
 		
 		if(referer != null)
