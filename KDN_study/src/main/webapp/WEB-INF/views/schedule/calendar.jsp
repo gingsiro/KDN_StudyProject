@@ -4,32 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='utf-8' />
-	<link rel='stylesheet' href='css/jquery-ui.min.css' />
-	<link href='css/fullcalendar.min.css' rel='stylesheet' />
-	<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
-	<script src='js/sch/moment.min.js'></script>
-	<script src='js/sch/jquery.min.js'></script>
-	<script src='js/fullcalendar.min.js'></script>
-	<script type="text/javascript" src="locale/ko.js"></script>
-	<script type="text/javascript" src="js/modal.js"></script>
-	<script src="js/sch/sysdate.js"></script>
-
-<style>
-.fc-sat {color:blue;}
-.fc-sun {color:red;}
-#modal {	display:none;
-				background-color:#FFFFFF;
-				position:absolute;
-				top:300px;
-				left:200px;
-				padding:10px;
-				border:2px solid #E2E2E2;
-				z-Index:9999
-			}
-</style>
-
+<meta charset='utf-8' />
+<link rel='stylesheet' href='css/jquery-ui.min.css' />
+<link href='css/fullcalendar.min.css' rel='stylesheet' />
+<link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='js/sch/jquery.min.js'></script>
+<script src='js/sch/moment.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+<script type="text/javascript" src="locale/ko.js"></script>
+<script type="text/javascript" src="js/modal.js"></script>
+<script src="js/sch/sysdate.js"></script>
 <script>
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+  // AAA
 //모달창 인스턴트 생성
 var myModal = new Example.Modal({
     id: "modal" // 모달창 아이디 지정
@@ -45,12 +33,9 @@ $("#confirm_button").click(function() {
     alert("나는 모달창이다.");
     myModal.hide(); // 모달창 감추기
 });
-</script>
 
-
-<script>
 // 날짜 가져오기, json 생성
-var ourSchedule = new Array() ;
+	var ourSchedule = new Array() ;
 <c:forEach items="${myScheduleOfStudyList}" var="item">
     // var data = {title:'${item.sctitle}', start: '${item.scdate}'}
     var data = new Object();
@@ -182,10 +167,24 @@ $(document).ready(function() {
 		
 	});
 
+
+
+
+
+});
 </script>
-
-
-	<style>
+<style>
+.fc-sat {color:blue;}
+.fc-sun {color:red;}
+#modal {	display:none;
+				background-color:#FFFFFF;
+				position:absolute;
+				top:300px;
+				left:200px;
+				padding:10px;
+				border:2px solid #E2E2E2;
+				z-Index:9999
+			}
 		body {
 			margin: 40px 10px;
 			padding: 0;
@@ -247,6 +246,5 @@ $(document).ready(function() {
 </div>
 		
 <div id='calendar'></div>
-
 </body>
 </html>
