@@ -14,7 +14,7 @@
 			<div class="col-sm-2">				
 				<a href="reservedRoomForm.do">룸 예약하기</a><br/>
 				<a href="myRsvList.do">나의 룸 예약</a><br/>
-				<a href="insertRoomForm.do">룸 추가하기</a><br/>
+				<a href="roomList.do">룸 관리</a><br/>
 				
 			</div>
 			<div class="col-sm-10">

@@ -16,5 +16,9 @@ public interface RoomDao {
 	public void reserveRoom(RsvRoom rsvroom);
 	public List<RsvRoom> searchMyRsv(int empno);
 	public void deleteRsvRoom(int rsvNo);
+	public void insertRoom(Room room);
+	public void updateRoom(Room room);
+	public void deleteRoom(int rno);
+	
 	
 }

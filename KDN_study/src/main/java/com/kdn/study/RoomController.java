@@ -1,4 +1,3 @@
-
 package com.kdn.study;
 
 import java.util.HashMap;
@@ -22,142 +21,129 @@ import com.kdn.study.service.StudyService;
 
 @Controller
 public class RoomController {
-	
+
 	@Autowired
 	private RoomService roomService;
-	
+
 	@Autowired
 	private StudyService studyService;
-	
-	
+
 	@ExceptionHandler
-	public ModelAndView Handler(Exception e){
+	public ModelAndView Handler(Exception e) {
 		ModelAndView model = new ModelAndView("index");
-		model.addObject("msg", e.getMessage()); //request에 저장
-		model.addObject("content", "ErrorHandler.jsp"); //request에 저장
-		
+		model.addObject("msg", e.getMessage()); // request에 저장
+		model.addObject("content", "ErrorHandler.jsp"); // request에 저장
+
 		return model;
 	}
-	
-/*	@RequestMapping(value="roomList.do", method=RequestMethod.GET)
-	public String roomList(Model model, String roomdate) {
-		
-		//model.addAttribute("room", roomService.search(1));
-		model.addAttribute("content", "room/RoomHome.jsp"); 
-		model.addAttribute("listform","RoomList.jsp");
-		
-		if(roomdate == null) {
-			SimpleDateFormat date = new SimpleDateFormat ( "yyyy-MM-dd", Locale.KOREA );
-			Date currentTime = new Date();
-			roomdate = date.format(currentTime).toString();
-		} 
 
-		List<RsvRoom> rooms = roomService.rsvRoomSearchAll(roomdate);
-		model.addAttribute("rooms", rooms);
-		
-		model.addAttribute("listcontent", "ReservedRoomCheck.jsp");
-		
-		return "index";
-	}*/
-	
-	@RequestMapping(value="reservedRoomForm.do", method=RequestMethod.GET)
-	public String reservedRoomForm(Model model) {
-		model.addAttribute("content", "room/RoomHome.jsp"); 
+	@RequestMapping(value = "reservedRoomForm.do", method = RequestMethod.GET)
+	public String reservedRoomForm(Model model, HttpSession session) {
+		if (session.getAttribute("empno")!=null) {
+		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "RservedRoom.jsp");
-		
+
 		List<Room> roomList = roomService.searchAll();
 		System.out.println(roomList);
 		model.addAttribute("roomList", roomList);
-		
+
 		return "index";
+		} else {
+			return "redirect:loginForm.do";
+		}
 	}
-	
-	@RequestMapping(value="reservedRoom.do", method=RequestMethod.GET) //나중에는 post로 
+
+	@RequestMapping(value = "reservedRoom.do", method = RequestMethod.GET)
 	public String reservedRoom(Model model, String roomResvDate, HttpSession session) {
-		
-		model.addAttribute("content", "room/RoomHome.jsp"); 
+
+		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "RservedRoom.jsp");
-		
-		
-		if(roomResvDate != null) {
-		
-			List<HashMap<String, Integer>> dayRsvlist = roomService.searchDayRsv(roomResvDate);
+
+		if (roomResvDate != null) {
+
+			List<HashMap<String, Integer>> dayRsvlist = roomService
+					.searchDayRsv(roomResvDate);
 			model.addAttribute("dayRsvlist", dayRsvlist);
-			
-			//System.out.println(dayRsvlist.get(0));
-			
-			int empno = (Integer)session.getAttribute("empno");
-			//System.out.println(empno + ">>>>>controller");
-			
+
+			// System.out.println(dayRsvlist.get(0));
+
+			int empno = (Integer) session.getAttribute("empno");
+			// System.out.println(empno + ">>>>>controller");
+
 			List<Study> myStudyList = studyService.searchMyStudy(empno);
 			model.addAttribute("myStudyList", myStudyList);
-	
-			//model.addAttribute("listcontent", "DayRsvRoomCheck.jsp");
-		} 		
+
+		}
 		List<Room> roomList = roomService.searchAll();
 		System.out.println(roomList);
 		model.addAttribute("roomList", roomList);
-		
+
 		return "index";
-	}
-	
-	
-	@RequestMapping(value="reserveRoom.do", method=RequestMethod.POST)
-	public String reserveRoom(RsvRoom rsvroom, Model model) {
-			
-		roomService.reserveRoom(rsvroom);
-		
-		return "redirect:reservedRoomForm.do";
-	}
-	
-	
-	@RequestMapping(value="myRsvList.do", method=RequestMethod.GET)
-	public String myRsvList(Model model, HttpSession session) {
-		model.addAttribute("content", "room/RoomHome.jsp"); 
-		model.addAttribute("listform", "ReservedRoomCheck.jsp");
-		int empno = (Integer)session.getAttribute("empno");
-		List<RsvRoom> myRsvList = roomService.searchMyRsv(empno);
-		
-		model.addAttribute("myRsvList", myRsvList);
-		
-		System.out.println(myRsvList);
-		
-		return "index";
-		
-		
 	}
 
-	@RequestMapping(value="deleteRsvRoom.do", method=RequestMethod.POST)
+	@RequestMapping(value = "reserveRoom.do", method = RequestMethod.POST)
+	public String reserveRoom(RsvRoom rsvroom, Model model) {
+
+		roomService.reserveRoom(rsvroom);
+
+		return "redirect:reservedRoomForm.do";
+	}
+
+	@RequestMapping(value = "myRsvList.do", method = RequestMethod.GET)
+	public String myRsvList(Model model, HttpSession session) {
+		model.addAttribute("content", "room/RoomHome.jsp");
+		model.addAttribute("listform", "ReservedRoomCheck.jsp");
+		int empno = (Integer) session.getAttribute("empno");
+		List<RsvRoom> myRsvList = roomService.searchMyRsv(empno);
+
+		model.addAttribute("myRsvList", myRsvList);
+
+		System.out.println(myRsvList);
+
+		return "index";
+
+	}
+
+	@RequestMapping(value = "deleteRsvRoom.do", method = RequestMethod.POST)
 	public String deleteRsvRoom(String rsvno) {
 		int rsvNo = Integer.parseInt(rsvno);
 		roomService.deleteRsvRoom(rsvNo);
-		
+
 		return "redirect:myRsvList.do";
-		
-		
+
 	}
-	
-	@RequestMapping(value="insertRoomForm.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "roomList.do", method = RequestMethod.GET)
 	public String insertRoomForm(Model model) {
-		model.addAttribute("content", "room/InsertRoom.jsp");
-		
+		model.addAttribute("content", "room/RoomHome.jsp");
+		model.addAttribute("listform", "RoomList.jsp");
+
+		List<Room> roomList = roomService.searchAll();
+		System.out.println(roomList);
+		model.addAttribute("roomList", roomList);
+
 		return "index";
 	}
-	
-	@RequestMapping(value="insertRoom.do", method=RequestMethod.POST)
-	public String insertRoom(Model model) {
-		
-		return "redirect:RoomList.do";
+
+	@RequestMapping(value = "insertRoom.do", method = RequestMethod.POST)
+	public String insertRoom(Room room) {
+		roomService.insertRoom(room);
+
+		return "redirect:roomList.do";
 	}
 
-	
-	
-	
+	@RequestMapping(value = "updateRoom.do", method = RequestMethod.POST)
+	public String updateRoom(Room room) {
+		roomService.updateRoom(room);
+		
+		return "redirect:roomList.do";
+	}
+	@RequestMapping(value = "deleteRoom.do", method = RequestMethod.POST)
+	public String deleteRoom(int rno) {
+		
+		roomService.deleteRoom(rno);
+		
+		return "redirect:roomList.do";
+	}
 
-
-
-
-
-	
-	
 }
