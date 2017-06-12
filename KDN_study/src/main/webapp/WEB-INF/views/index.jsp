@@ -991,6 +991,5 @@
     <script src="js/jquery.isotope.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/wow.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </body>
 </html>

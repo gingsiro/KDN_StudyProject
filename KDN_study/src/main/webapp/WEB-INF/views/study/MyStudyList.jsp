@@ -44,7 +44,7 @@
 	
 	function deleteStudy(sno, smaster) {
 		if( <%=request.getSession().getAttribute("empno")%>== smaster){
-			$('#rdsno').val(sno);			
+			$('#rdsno').val(sno);
 			$('#checkContentTitle').html('스터디 삭제');
 			$('#checkContent').html('정말 삭제하시겠습니까?');
 			$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 삭제');
