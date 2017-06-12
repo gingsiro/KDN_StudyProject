@@ -9,11 +9,11 @@ var date = new Date();
 var mon = (date.getMonth()+1);
 var min = date.getMinutes();
 
-if(mon < 9){
+if(mon < 10){
 	mon = "0" + mon;
 }
 
-if(min < 9){
+if(min < 10){
 	  min = "0" + min;
 }
 
