@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<style>
+	<style type="text/css">
 		#loadCalendar { witdth: 50px;
 								/* margin-left: 20%;
 								margin-right: 20%;*/
@@ -21,8 +21,8 @@
 		}
 	</style>
 		
-	<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="js/sch/sysdate.js"></script>
 		
 	<style>
@@ -117,17 +117,15 @@
 		</div>
 	</div>
 		
-	<div>
 		<h2>니가 선택한 스터디의 메인 화면</h2>
 		<p>니 스케줄이다. 그 밑에는 게시판</p>
 		<div style="text-align: right">
 			<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
 							id = "btn_insert_schedule" data-target="#createForm">일정 입력</button>
 		</div>
-	</div>
 
-	<section id='loadCalendar'>
+	<div id='loadCalendar'>
 		<jsp:include page="calendar.jsp"></jsp:include>
-	</section>
+	</div>
 </body>
 </html>
