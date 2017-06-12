@@ -42,7 +42,7 @@ public class ScheduleController
 	}
 
 	@RequestMapping(value="insertSchedule.do", method=RequestMethod.POST)
-	public String insertSchedule(Model model, Schedule schedule){
+	public String insertSchedule(Model model, Schedule schedule, String sno){
 		
 		// 빼지마요 빼면 에러나엽
 		String s = schedule.getScdate();
@@ -54,9 +54,9 @@ public class ScheduleController
 		
 //		2017-06-13T15:02
 		scheduleService.insertSchedule(schedule);
-		return "redirect:listSchedule.do";
+		return "redirect:listSchedule.do?sno=" + sno;
 	}
-	
+
 	
 	@RequestMapping(value="schedule.do", method=RequestMethod.GET)
 	public String scheduleStudy(Model model, PageBean bean)
