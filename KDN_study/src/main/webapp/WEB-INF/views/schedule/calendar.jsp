@@ -41,45 +41,49 @@ $("#confirm_button").click(function() {
 
 
 <script>
+
 // 날짜 가져오기, json 생성
 var ourSchedule = new Array() ;
 <c:forEach items="${myScheduleOfStudyList}" var="item">
     // var data = {title:'${item.sctitle}', start: '${item.scdate}'}
     var data = new Object();
-    console.log(">>>>>>>>>>" + '${empno}' );
+    
     data.title='${item.sctitle}';
     data.start= '${item.scdate}';
+    data.id = '${item.scno}';
     
+    console.log("before_date>>>>>" + '${item.scdate}');
+    
+    // DB로부터 가져온 date를 calendar에 넣기 위해 문자열 재구성
     var a ='${item.scdate}';
-    
     var front_date = a.substring(0,10);
-    var rear_date = a.substring(13,15);
+    var mid_date = a.substring(11,13);
+    var rear_date = a.substring(14,16);
+    
+    
+    console.log("front_date>>>>" + front_date);
+    console.log("mid_date11,13>>>>" + mid_date);
+    console.log("rear_date14,16>>>>" + rear_date);
     
 
-    var mid_date = a.substring(11,12);
-    mid_date = Number(mid_date);
-    
-    console.log("mid>>>>>"+mid_date);
-    
+    /* mid_date = Number(mid_date);
     mid_date = mid_date + 12;
-    mid_date = String(mid_date);
-    
-    var s = front_date + "T" + mid_date +   rear_date + "0:00";
-    
+    mid_date = String(mid_date); */
+    // 연월일T시분
+    var s = front_date + "T" + mid_date + ":" +  rear_date + ":00";
     data.start= s;
-    console.log("front>>" + front_date);
-    console.log("rear>>>" + rear_date);
-    console.log("s>>>>" + s);
     
-    console.log(data.start);
-    
+    console.log("afte1_date>>>>>" + s);
+
   <c:if test = "${item.sno == sno}">
+  	
   	ourSchedule.push(data);
+  	
    </c:if>
     
 </c:forEach>
-
-console.log(ourSchedule);
+/* $('#sch_sno').val("${sno}");
+console.log("sno>>>>>>" + "${sno}"); */
 
 // 날짜
 var date = new Date();
@@ -96,18 +100,23 @@ $(document).ready(function() {
 				right: 'month, agendaWeek, agendaDay, listMonth'
 			},
 			
+			// 수정을 위해 스케줄의 특정 이벤트 항목이 선택되면 실행되는 함수
 		    eventClick: function(calEvent, jsEvent, view) {
 
+		    	$('#sch_scno').val(calEvent.id);
 		    	$('#sch_title').val(calEvent.title);
-		    	$('#sch_date').val(calEvent.start);
-		    	console.log("*******************"+calEvent.title);
-		    	console.log("*******************"+calEvent.start);
+		    	var sch_start = $.fullCalendar.formatDate(calEvent.start, 'YYYY-MM-DD HH:mm:ss');
 		    	
-		    	
-		    	
-		         alert('Event: ' + calEvent.title);
-		         /*        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-		        alert('View: ' + view.name); */
+		    	// 선택한 이벤트의 date를 모달창에 띄우기 위해 문자열 재구성
+		    	var front_date = a.substring(0,10);
+		        var rear_date = a.substring(13,15);
+		        
+		        var front_start = sch_start.substring(0,10);
+		        var rear_start = sch_start.substring(11,16);
+		        sch_start = front_start + "T" + rear_start;
+		    	$('#sch_start').val(sch_start);
+		      	$('#sch_sno').val("${sno}");
+		      	
 		        var myModal = new Example.Modal({
 		            id: "modal" // 모달창 아이디 지정
 		        });
@@ -213,35 +222,26 @@ $(document).ready(function() {
 
 <div id="modal">
     <h3>일정 수정</h3>
-    <p>이 창은 모달창입니다.</p>
-    
    			<form role="form" method="GET" action="updateSchedule.do">
+   					<input type="hidden" id="sch_scno"  name="scno" />
+   					<input type="hidden" id="sch_sno"  name="sno" />
 							<div class="form-group">
 								<label for="inputScheduleName">스케줄 이름</label> 
 								<input type="text" class="form-control" id="sch_title" name="sctitle" placeholder="Schedule Name"
 								value = "">
 							</div>
-						
-						<!-- 
-						value="2017-10-09T15:38:00" -->
-						
-						<input type="datetime-local" id="sch_date" name="scdate" > 
-						
-						<div class="form-group">
-								<label for="inputScheduleName">스터디 명(일단 번호로)</label>
-								 <input type="text" class="form-control" id="sno" name="sno" placeholder="Schedule Name"
-								 value="">
-							</div>
-							
+					<!-- 		value="2017-10-09T15:38:00" -->
+						<input type="datetime-local" id="sch_start" name="scdate" > 
 						<button type="submit" class="btn btn-default btn-success">
-								<span class="glyphicon glyphicon-ok"></span> 입력
+								<span class="glyphicon glyphicon-ok"></span> 수정
 							</button>
-							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal">
+							<button type="submit" class="btn btn-default btn-success" data-dismiss="modal" formaction="deleteSchedule.do">
+								<span class="glyphicon glyphicon-remove"></span> 삭제
+							</button>
+							<button type="reset" class="btn btn-default btn-success js_close" data-dismiss="modal" id="schedule_close_button">
 								<span class="glyphicon glyphicon-remove"></span> 취소
 							</button>
-							
 						</form>
-    
    <!--  <button id="schedule_confirm_button">수정</button>
     <button id="schedule_close_button" class="js_close">취소</button> -->
 </div>

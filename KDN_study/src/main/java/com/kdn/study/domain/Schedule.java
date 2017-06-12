@@ -15,6 +15,12 @@ public class Schedule implements Serializable{
 		
 	public Schedule() { }
 	
+	public Schedule(int scno, String sctitle, String scdate) {
+		this.scno = scno;
+		this.sctitle = sctitle;
+		this.scdate = scdate;
+	}
+	
 	public Schedule(int scno, String sctitle, String scdate, int sno) {
 		this.scno = scno;
 		this.sctitle = sctitle;
@@ -28,6 +34,14 @@ public class Schedule implements Serializable{
 		this.scdate = scdate;
 		this.sno = sno;
 		this.sname = sname;
+	}
+	
+	public Schedule(int scno, String sctitle, String scdate, int sno, int empno) {
+		this.scno = scno;
+		this.sctitle = sctitle;
+		this.scdate = scdate;
+		this.sno = sno;
+		this.empno = empno;
 	}
 	
 	public Schedule(int scno, String sctitle, String scdate, int sno, String sname,  int empno) {

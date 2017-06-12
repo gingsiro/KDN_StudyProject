@@ -9,8 +9,8 @@ public interface ScheduleDao {
 
 	public Schedule search(int no);
 	public void 			insertSchedule(Schedule schedule);
-	public void 			update(Schedule schedule);
-	public void 			remove(int no);
+	public void 			updateSchedule(Schedule schedule);
+	public void 			deleteSchedule(int scno);
 	public List<Schedule> 	searchAllForCalendar(PageBean bean);
 	public List<Schedule> 	searchAllForRightList(PageBean bean);
 	public int 				getCount(PageBean bean);

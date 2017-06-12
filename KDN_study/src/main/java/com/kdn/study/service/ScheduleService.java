@@ -8,8 +8,8 @@ import com.kdn.study.domain.Study;
 
 public interface ScheduleService {
 	public Schedule search(int no);
-	public void update(Schedule schedule);
-	public void remove(int no);
+	public void updateSchedule(Schedule schedule);
+	public void deleteSchedule(int scno);
 	public void insertSchedule(Schedule schedule);
 	public List<Schedule> searchAllForCalendar(PageBean bean);
 	public List<Schedule> searchAllForRightList(PageBean bean);
