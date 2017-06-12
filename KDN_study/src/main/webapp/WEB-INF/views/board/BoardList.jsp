@@ -32,8 +32,10 @@
 		<h2>스터디 게시판</h2>
 		<p>스터디 게시판 입니다.</p>
 		<form id="frm">
-			<input type="hidden" id="pageNo" name="pageNo" value="1" />
+			<input type="hidden" id="pageNo" name="pageNo" value="1" />`
 		 	<input type="hidden" id="sno" name="sno" value='${sno}' />
+		 	<input type="hidden" id="bno" name="bno" value='${sno}' />
+		 	<input type="hidden" id="no" name="no"  />
 		<table class="table">
 			<thead>
 				<tr>
@@ -47,7 +49,7 @@
 				<c:forEach var="board" items="${ boardList }">
 					<tr>
 						<th scope="row">${board.sbno}</th>
-						<td>${board.btitle}</td>
+						<td><a href="#" onclick="getBoard(${board.bno})">${board.btitle}</a></td>
 						<td>${board.empno}</td>
 						<td>${board.regdate}</td>
 					</tr>

@@ -34,9 +34,11 @@ public class BoardController {
 		model.addAttribute("content", "schedule/scheduleHome.jsp");
 		model.addAttribute("listform", "../board/BoardList.jsp");
 		
-		int studyNo = Integer.parseInt(sno);
+		/*int studyNo = Integer.parseInt(sno);
+		bean.setSno(studyNo);*/
+		
+		bean.setSno(sno);
 		model.addAttribute("sno", sno);
-		bean.setSno(studyNo);
 		
 		List<Board> boardList = boardService.boardSearchAll(bean);
 		System.out.println(boardList);
@@ -46,6 +48,31 @@ public class BoardController {
 		
 		return "index";
 
+	}
+	
+	@RequestMapping(value="searchBoard.do", method=RequestMethod.GET)
+	public String searchBoard(int no, Model model, int sno) {
+			model.addAttribute("board", boardService.search(no));
+			
+			model.addAttribute("sno", sno);
+			model.addAttribute("content", "schedule/scheduleHome.jsp");
+			model.addAttribute("listform", "../board/SearchBoard.jsp");
+			
+		return "index";
+		
+	}
+	@RequestMapping(value="updateBoard.do", method=RequestMethod.GET)
+	public String updateBoard(Model model, Board board) {
+		boardService.update(board);
+		
+		//upeate진행중....
+		/*model.addAttribute("board", boardService.search(no));
+		
+		model.addAttribute("content", "schedule/scheduleHome.jsp");
+		model.addAttribute("listform", "../board/SearchBoard.jsp");
+		*/
+		return "index";
+		
 	}
 	
 }
