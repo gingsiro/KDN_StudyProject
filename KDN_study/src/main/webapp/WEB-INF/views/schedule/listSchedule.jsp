@@ -11,10 +11,13 @@
 	<title>Insert title here</title>
 	<style>
 		#loadCalendar { witdth: 50px;
-								margin-left: 20%;
-								margin-right: 20%;
-		}
+								/* margin-left: 20%;
+								margin-right: 20%;*/
+		} 
 		#loadBoard { text-align: center;
+		}
+		
+		#btn_insert_schedule { margin-bottom: 20px;
 		}
 	</style>
 		
@@ -118,7 +121,8 @@
 		<h2>니가 선택한 스터디의 메인 화면</h2>
 		<p>니 스케줄이다. 그 밑에는 게시판</p>
 		<div style="text-align: right">
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createForm">스케줄 입력</button>
+			<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+							id = "btn_insert_schedule" data-target="#createForm">일정 입력</button>
 		</div>
 	</div>
 
