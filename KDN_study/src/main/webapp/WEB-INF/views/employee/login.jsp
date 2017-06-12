@@ -6,17 +6,42 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 @import "bourbon";
+
+
 
 body {
 	background: #eee !important;	
 }
 
+.line1{
+	display: inline-block;
+	position: absolute;
+	left: 400px;
+	top: 500px;
+}
+  
+.line2{
+	position: absolute;
+	left: 400px;
+	top: 200px;
+}
+  
+  
+.login {
+		position: absolute; left: 790px; top: 250px; height: 50px; width: 100px;
+		/* width: 50px;
+ 	    margin-left: 500px;	
+ 	    top : 600px;
+ 	    height: 100px; */
+	}  
+
 .wrapper {	
 	margin-top: 0px;
   margin-bottom: 0px;
-  margin-left: 140px;
-  width: 400px;
+  margin-left: 400px;
+  width: 300px;
 } 
 
 .form-signin {
@@ -25,12 +50,14 @@ body {
   margin: 0 auto;
   background-color: #fff;
   border: 1px solid rgba(0,0,0,0.1);  
-
+   
 	
   .form-signin-heading,
 	.checkbox {
 	  margin-bottom: 30px;
 	}
+
+	
 
 	.checkbox {
 	  font-weight: normal;
@@ -75,25 +102,32 @@ body {
  	    }
  	    String msg = (String)request.getAttribute("msg");
  	    if(msg!=null && !msg.equals("")){ %>
- 	    <p  style="color:red"><%=msg %></p>
- 	 <% } %>
- 	 
- 	 
- 	 
- 	 
- 	 <form action="login.do" method="post"  id="frm">
-		<div class="wrapper">
-    	<form class="form-signin">       
-      <h2 class="form-signin-heading" align="center">KDN 스터디에 오신것을 환영합니다.</h2><br/>
-      <input type="text" class="form-control"   name="empno" placeholder="empno" required="" autofocus="" />
-      <input type="text" class="form-control"   name="password" placeholder="Password" required=""/>      
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
-    </form>
-  </div>
+ 	    	<p style="color:red"><%=msg %></p>
+		<% } %>
+ 	  <div class="line2">
+		<img src="images/logline1.png" >
+		</div>
+	<form action="login.do" method="post"  id="frm">
+    	<form class="form-signin">   
+			<div class="wrapper">    
+      			<h2 class="form-signin-heading" align="center">KDN 스터디 방문을 환영합니다.</h2><br/>
+      			<input type="text" class="form-control"   name="empno" placeholder="사원번호" required="" autofocus="" /><br/>
+	      		<input type="password" class="form-control"   name="password" placeholder="비밀번호" required=""/><br/>      
+      			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+    		</div>
+    	</form>
 	</form>
+	
+	 <div class="login">
+		<img src="images/loginimage3.png" >
+	</div>
+	 <div class="line1">
+		<img src="images/logline1.png" >
+	</div>
+	
 	<%} %>
  	 
- 	 
+ 	
  	 
  	 
  	 
