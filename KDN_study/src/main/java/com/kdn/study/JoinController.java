@@ -55,6 +55,6 @@ public class JoinController
 		joinService.deleteMember(Integer.parseInt(jno));
 		
 		
-		return "redirect:myRsvList.do";
+		return "redirect:joinList.do?sno="+sno;
 	}
 }
