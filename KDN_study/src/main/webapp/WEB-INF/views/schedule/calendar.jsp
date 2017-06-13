@@ -164,13 +164,7 @@ $(document).ready(function() {
 				}
 			]    */
 		});
-		
 	});
-
-
-
-
-
 });
 </script>
 <style>
@@ -185,17 +179,17 @@ $(document).ready(function() {
 				border:2px solid #E2E2E2;
 				z-Index:9999
 			}
-		body {
+		/* body {
 			margin: 40px 10px;
 			padding: 0;
 			font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 			font-size: 14px;
-		}
+		} */
 	
-		#calendar {
+		/* #calendar {
 			max-width: 5000px;
 			margin: 0 auto;
-		}
+		} */
 		
 		.fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
 	    .fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
@@ -246,5 +240,6 @@ $(document).ready(function() {
 </div>
 		
 <div id='calendar'></div>
+
 </body>
 </html>
