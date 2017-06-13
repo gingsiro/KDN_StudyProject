@@ -20,18 +20,20 @@
 		$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>생성");
 		$('#sname').val("");
 		$('#sno').val(0);
+		$('#sinfo').val("");
 		$("#cuStudy").attr("action", "createStudy.do");
 		$('#cno').val(1).attr("selected", "selected");
 		$('#smax').val(2).attr("selected", "selected");
 		$('#modalForm').modal();
 	}
 
-	function updateForm(sno, sname, cno, smax, smaster) {
+	function updateForm(sno, sname, cno, smax, smaster, sinfo) {
 		if( <%=request.getSession().getAttribute("empno")%>== smaster){
 			$('#modal-title').html("스터디 수정");
 			$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>수정");
 			$('#sno').val(sno);
 			$('#sname').val(sname);
+			$('#sinfo').val(sinfo);
 			$("#cuStudy").attr("action", "updateStudy.do");
 			$('#cno').val(cno).attr("selected", "selected");
 			$('#smax').val(smax).attr("selected", "selected");
@@ -87,7 +89,7 @@
 					<form id="cuStudy" name="cuStudy" role="form" method="POST" action="createStudy.do">
 						<div class="form-group" >
 							<label for="inputStudyName">스터디 이름</label> 
-							<input type="text" class="form-control" id="sname" name="sname" placeholder="Study Name" value="" required>
+							<input type="text" class="form-control" id="sname" name="sname" placeholder="스터디 이름을 작성해주세요." value="" required>
 						</div>
 						<div class="form-group">
 							<label for="inputCategory">카테고리</label> 
@@ -106,6 +108,10 @@
 							</select>
 							<input type="hidden" id="smaster" name="smaster" value="${ empno }" />
 							<input type="hidden" id="sno" name="sno" value="${ sno }" />
+						</div>
+						<div class="form-group" >
+							<label for="inputStudyName">스터디 설명</label> 
+							<input type="text" class="form-control" id="sinfo" name="sinfo" placeholder="스터디 설명을 작성해주세요." value="" required>
 						</div>
 						<div style="text-align:right">
 							<button id="submitButtonName" name="submitButtonName" type="submit" class="btn btn-default btn-success">
@@ -190,7 +196,7 @@
 					<td style="text-align:center">${ study.smax }</td>
 					<td>
 						<c:if test="${ empno == study.smaster }">
-							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }' )"><i class="fa fa-pencil"></i>수정</a>
+							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }', '${ study.sinfo }' )"><i class="fa fa-pencil"></i>수정</a>
 						</c:if>
 					</td>
 					<td>

@@ -57,6 +57,7 @@ public class StudyController {
 	@RequestMapping(value="createStudy.do", method=RequestMethod.POST)
 	public String createStudy(HttpSession session, Study study){
 		studyService.createStudy(study);
+		System.out.println(study);
 		return "redirect:studyList.do";
 	}
 	
