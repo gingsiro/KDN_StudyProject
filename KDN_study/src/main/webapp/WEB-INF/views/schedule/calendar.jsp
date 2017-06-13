@@ -202,7 +202,7 @@ $(document).ready(function() {
    		<div class="modal-header">
 			<button type="reset" class="close js_close" data-dismiss="modal" id="schedule_close_button">&times;</button>
 			<h4 style="color: blue;">
-				<span class="glyphicon glyphicon-pencil"></span> 스케줄 수정
+				<span class="glyphicon glyphicon-pencil"></span> 일정 수정
 			</h4>
 		</div>
     
@@ -211,8 +211,8 @@ $(document).ready(function() {
    				<input type="hidden" id="sch_scno"  name="scno" />
    				<input type="hidden" id="sch_sno"  name="sno" />
 				<div class="form-group">
-					<label for="inputScheduleName">스케줄 이름</label> 
-					<input type="text" class="form-control" id="sch_title" name="sctitle" placeholder="Schedule Name" value = "">
+					<label for="inputScheduleName">일정 이름</label> 
+					<input type="text" class="form-control" id="sch_title" name="sctitle" placeholder="일정 이름을 작성해주세요." value = "">
 				</div>
 				
 				<!-- 		value="2017-10-09T15:38:00" -->
