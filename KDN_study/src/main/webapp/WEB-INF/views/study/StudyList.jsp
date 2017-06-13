@@ -194,7 +194,7 @@
 						</c:if>
 						<c:if test="${ index eq '0' }">
 							${ study.sname }
-						</c:if>ㄱ
+						</c:if>
 						<br/>
 						<c:if test="${ study.sinfo!=null }">
 							<font size="2em" color="gray">─${ study.sinfo }</font>
