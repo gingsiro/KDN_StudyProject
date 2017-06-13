@@ -4,8 +4,9 @@
 
 <mapper namespace="board">
 	<select id="boardSearchAll" parameterType="pagebean" resultType="board">
-		select *
+		select bno, sbno, btitle, bcontents, regdate, empno, sno, ename
 		from board
+		join employee using(empno)
 		<where>
 		sno=#{sno} 
 		<if test="word != null">	
@@ -26,8 +27,9 @@
 	</select>
 	
 	<select id="search" parameterType="int" resultType="board">
-		select *
+		select bno, sbno, btitle, bcontents, regdate, empno, sno, ename
 		from board
+		join employee using(empno)
 		where bno=#{bno}
 	</select>
 	

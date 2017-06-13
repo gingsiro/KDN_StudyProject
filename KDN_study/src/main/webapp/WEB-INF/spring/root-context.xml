@@ -58,6 +58,8 @@
 				<value>/WEB-INF/spring/Schedule_query.xml</value>
 				<value>/WEB-INF/spring/Board_query.xml</value>
 				<value>/WEB-INF/spring/JoinStudy_query.xml</value>
+				<value>/WEB-INF/spring/RsvCode_query.xml</value>
+				
 			</list>
 		</property>
 	</bean>

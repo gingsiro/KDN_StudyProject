@@ -1,7 +1,11 @@
 package com.kdn.study;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.study.domain.Room;
+import com.kdn.study.domain.RsvCode;
 import com.kdn.study.domain.RsvRoom;
 import com.kdn.study.domain.Study;
 import com.kdn.study.service.RoomService;
@@ -43,11 +48,9 @@ public class RoomController {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "RservedRoom.jsp");
 
-		List<Room> roomList = roomService.searchAll();
-		System.out.println(roomList);
-		model.addAttribute("roomList", roomList);
-
-		return "index";
+		
+		
+		return "redirect:reservedRoom.do";
 		} else {
 			return "redirect:loginForm.do";
 		}
@@ -55,30 +58,50 @@ public class RoomController {
 
 	@RequestMapping(value = "reservedRoom.do", method = RequestMethod.GET)
 	public String reservedRoom(Model model, String roomResvDate, HttpSession session) {
-
+		if (session.getAttribute("empno")!=null) {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "RservedRoom.jsp");
-
+		
+		//오늘날짜관련
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		Date currentTime = new Date();
+		String today = mSimpleDateFormat.format(currentTime);
+		if(roomResvDate == null){
+			roomResvDate = today;
+			System.out.println(roomResvDate+"/"+today);
+		}
+		
 		if (roomResvDate != null) {
-
-			List<HashMap<String, Integer>> dayRsvlist = roomService
-					.searchDayRsv(roomResvDate);
-			model.addAttribute("dayRsvlist", dayRsvlist);
-
-			// System.out.println(dayRsvlist.get(0));
+			System.out.println("??????");
+			int rsvcode = 0;
+			int compare  = today.compareTo(roomResvDate);
+			
+			if(compare == 0) { //오늘
+				Calendar cal  = Calendar.getInstance();
+				int hour = cal.get(cal.HOUR_OF_DAY);
+				List<RsvCode> timeCode = roomService.timeCodeSearch();
+				
+				for(int i=0; i < timeCode.size(); i++) {
+					if( hour >= timeCode.get(i).getStarttime() && hour < timeCode.get(i).getEndtime() ) {
+						rsvcode = (timeCode.get(i).getRsvcode()) +1;
+						break;
+					}
+				}
+			} else if(compare == 1) { //오늘 이전날짜 전부
+				rsvcode=7;
+			} 
 
 			int empno = (Integer) session.getAttribute("empno");
-			// System.out.println(empno + ">>>>>controller");
-
+			List<HashMap<String, Integer>> dayRsvlist = roomService.searchDayRsv(roomResvDate);
 			List<Study> myStudyList = studyService.searchMyStudy(empno);
 			model.addAttribute("myStudyList", myStudyList);
-
+			model.addAttribute("dayRsvlist", dayRsvlist);
+			model.addAttribute("rsvcode", rsvcode);
 		}
-		List<Room> roomList = roomService.searchAll();
-		System.out.println(roomList);
-		model.addAttribute("roomList", roomList);
-
-		return "index";
+			return "index";
+		} else {
+			return "redirect:loginForm.do";
+		}
 	}
 
 	@RequestMapping(value = "reserveRoom.do", method = RequestMethod.POST)

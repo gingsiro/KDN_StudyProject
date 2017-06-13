@@ -75,8 +75,8 @@
 					<form role="form" method="POST" action="insertSchedule.do">
 						<input type="hidden" class="form-control" id="sno" name="sno">
 						<div class="form-group">
-							<label for="inputScheduleName">스케줄 이름</label> 
-							<input type="text" class="form-control" id="sctitle" name="sctitle" placeholder="Schedule Name">
+							<label for="inputScheduleName">일정 이름</label> 
+							<input type="text" class="form-control" id="sctitle" name="sctitle" placeholder="일정 이름을 작성해주세요.">
 						</div>
 						<!-- value="2017-10-09T15:38:00" -->
 						<div class="form-group">

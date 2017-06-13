@@ -52,7 +52,7 @@
 					<tr><td><label for="title">제목</label></td>
 					    <td>${board.btitle}</td>
 					</tr>
-					<tr><td colspan="2">내용 &nbsp;&nbsp;글쓴이:${board.empno}
+					<tr><td colspan="2">내용 &nbsp;&nbsp;글쓴이:${board.ename}
 										&nbsp;&nbsp; 게시일:${board.regdate}</td></tr>
 					<tr><td colspan="2"  valign="top" height="200">
 						<pre>${board.bcontents }</pre>							

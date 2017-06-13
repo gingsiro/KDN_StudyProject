@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kdn.study.domain.Room;
+import com.kdn.study.domain.RsvCode;
 import com.kdn.study.domain.RsvRoom;
 
 @Repository("roomDao")
@@ -57,5 +58,10 @@ public class RoomDaoImpl implements RoomDao {
 	
 	public void deleteRoom(int rno) {
 		session.delete("room.deleteRoom", rno);
+	}
+	
+	public List<RsvCode> timeCodeSearch() {
+		return session.selectList("rsvcode.timeCodeSearch");
+		
 	}
 }
