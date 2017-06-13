@@ -6,8 +6,13 @@ public class JoinStudy
 	private int sno;
 	private String dept;
 	private String ename;
+	private String sname;
+	private String sinfo;
 	private char gender;
 	private char admin;
+	private int smax;
+	private int scurr;
+	private int smaster;
 	
 	public JoinStudy(){ }
 	
@@ -24,6 +29,20 @@ public class JoinStudy
 		this.ename = ename;
 		this.gender = gender;
 		this.admin = admin;
+	}
+
+	public JoinStudy(int empno, int sno, String dept, String ename, String sname, String sinfo, char gender
+										, char admin, int smax, int scurr, int smaster) 
+	{
+		this.empno = empno;
+		this.sno = sno;
+		this.dept = dept;
+		this.ename = ename;
+		this.gender = gender;
+		this.admin = admin;
+		this.smax = smax;
+		this.scurr = scurr;
+		this.smaster = smaster;
 	}
 
 	public int getEmpno() {
@@ -74,13 +93,57 @@ public class JoinStudy
 		this.admin = admin;
 	}
 
+	public int getSmax() {
+		return smax;
+	}
+
+	public void setSmax(int smax) {
+		this.smax = smax;
+	}
+
+	public int getScurr() {
+		return scurr;
+	}
+
+	public void setScurr(int scurr) {
+		this.scurr = scurr;
+	}
+
+	public int getSmaster() {
+		return smaster;
+	}
+
+	public void setSmaster(int smaster) {
+		this.smaster = smaster;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+	public String getSinfo() {
+		return sinfo;
+	}
+
+	public void setSinfo(String sinfo) {
+		this.sinfo = sinfo;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("JoinStudy [empno=").append(empno).append(", sno=")
 				.append(sno).append(", dept=").append(dept).append(", ename=")
-				.append(ename).append(", gender=").append(gender)
-				.append(", admin=").append(admin).append("]");
+				.append(ename).append(", sname=").append(sname)
+				.append(", sinfo=").append(sinfo).append(", gender=")
+				.append(gender).append(", admin=").append(admin)
+				.append(", smax=").append(smax).append(", scurr=")
+				.append(scurr).append(", smaster=").append(smaster).append("]");
 		return builder.toString();
 	}
+	
 }
