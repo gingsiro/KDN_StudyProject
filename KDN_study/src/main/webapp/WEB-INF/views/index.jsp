@@ -48,7 +48,7 @@
 		   						<c:otherwise>
 		   								<h2> ${employee.dept} ${employee.ename}님 환영합니다!</h2>
 		   								<li><a href="logout.do"></a>로그아웃</li>
-		     							<li><a href="employeeUpdateForm.do"></a>회원가입</li>
+		     							<li><a href="employeeUpdateForm.do"></a>회원정보 및 수정</li>
 		     							<li><a href="myPage.do"></a>회원정보</li>
 		   						</c:otherwise>
 								</c:choose>

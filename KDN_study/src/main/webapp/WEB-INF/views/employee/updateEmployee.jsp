@@ -4,48 +4,143 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<style>
+
+.line1{
+	display: inline-block;
+	position: absolute;
+	left: 400px;
+	top: 600px;
+}
+  
+.line2{
+	position: absolute;
+	left: 400px;
+	top: 200px;
+}
+  
+  
+.login {
+		position: absolute; left: 790px; top: 250px; height: 50px; width: 100px;
+		/* width: 50px;
+ 	    margin-left: 500px;	
+ 	    top : 600px;
+ 	    height: 100px; */
+	}  
+
+
+.form-signin-heading
+	{
+	  margin-bottom: 30px;
+	  margin-left: 0px; 
+	  align: center;
+	}
+
+.form-group
+{
+left: 220px;
+width: 310px;
+}
+
+.form-group1
+{
+left: 350px;
+width: 400px;
+}
+
+.form-group2
+{
+margin-left: 20px; 
+width: 300px;
+
+}
+
+.form-horizontal
+{
+width: 200px;
+margin-left: 400px;
+}
+
+.btn btn-success
+{
+left: 150px;
+
+}
+
+.tbasic 
+{
+margin-right: 420px;
+width: 310px;
+}
+
+
+
+</style>
+
+
+
 <link href="../css/basic.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<form method="post" action="updateEmployee.do" >
 
-<%-- <input type = 'hidden' name='empno' id='empno' value = "${session.employee.empno }">
- --%>
-<table  align='center' >
-	<tr><td class="caption" colspan='2'>회원 정보 수정</td></tr>
+
+<div class="line2">
+	<img src="images/logline1.png" >
+</div>
+
+
+<form method= "post" action="updateEmployee.do" class="form-horizontal">
+
 	
+<h2 class="form-signin-heading" align="center" style= "width:300px"  >회원정보 및 수정</h2>
+ 
+
+
 	
-	<tr><td class='tbasic'>사원번호</td>
-		<td>${employee.empno }</td>
+
+
+<h3 class='form-group' style="border: 1px solid #ff0000;">&nbsp; [사원번호] &nbsp;&nbsp;&nbsp;&nbsp; ${employee.empno }</h3>
 	    <td class='tbasic'><input type='hidden' name='empno'  id='empno' value = '${employee.empno }' ></td>
-	</tr>
+	
+<div class="form-group">
+  <input id="dept" name="dept" type="text" placeholder="[부서명 ]			${employee.dept }" class="form-control input-md"  style="border: 1px solid #ff0000;">
+</div>
 
-	<tr><td class='tbasic'>부 &nbsp;서</td>
-	    <td class='tbasic'><input type='text' name='dept'  id='dept' value= '${employee.dept }'>
-	</tr>
-	
-	<tr><td class='tbasic'>이 &nbsp;름</td>
-	    <td class='tbasic'><input type='text' name='ename'  id='ename' value= '${employee.ename }'></td>
-	</tr>
-	
-	<tr><td class='tbasic'>비밀번호</td>
-	    <td class='tbasic'><input type='text' name='password'  id='password'  value= '${employee.password }'></td>
-	</tr>
-	
-	
-	<tr>
+<div class="form-group">
+  <input id="ename" name="ename" type="text" placeholder="[이름]			${employee.ename }" class="form-control input-md"  style="border: 1px solid #ff0000;">
+</div> 
+
+<div class="form-group">
+   	<input id="password" name="password" type="password" placeholder="[비밀번호]    변경할 비밀번호를 입력하시오." class="form-control input-md"  style="border: 1px solid #ff0000;">
+</div>
+
+<!-- <tr>
 	   <td colspan='2' align='center' class='tfoot tspacial'>
 	     <input type="submit" value='전송'>
 		 <input type="reset" value='취소'>
 	   </td>
-	</tr>
+	</tr> -->
+
+<div class="form-group2">
+  	<button  "width:250px; background-color: #c52d2f; border-color : #c52d2f" id="1" name="1" class="btn btn-success">회원정보 수정 완료하기</button>
+	<button>
+	<a href="employeeDeleteForm.do">회원탈퇴</a>
+	</button>
+</div>
+</form>
+
+
+<div class="login">
+	<img src="images/loginimage5.png" >
+</div> 
+<div class="line1">
+	<img src="images/logline1.png" >
+</div>
+
+
+
 </table>
 </form>
 </body>
 </html>
-
-
-
-
-
-
