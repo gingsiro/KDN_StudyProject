@@ -29,7 +29,9 @@ public class JoinController
 		int int_sno = Integer.parseInt(sno);
 		List<JoinStudy> joinMembers_list = joinService.searchJoinMembers(int_sno);
 		model.addAttribute("joinMembers_list", joinMembers_list);
+		
 		model.addAttribute("sno", sno);
+		
 		model.addAttribute("content", "schedule/scheduleHome.jsp");
 		model.addAttribute("listform", "../study/JoinList.jsp");
 		

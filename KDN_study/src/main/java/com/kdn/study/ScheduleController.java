@@ -38,6 +38,10 @@ public class ScheduleController
 		List<Schedule> right_list = scheduleService.searchAllForRightList(bean);
 		model.addAttribute("right_list", right_list);
 		
+		int int_sno = Integer.parseInt(sno);
+		List<JoinStudy> joinMembers_list = joinService.searchJoinMembers(int_sno);
+		model.addAttribute("joinMembers_list", joinMembers_list);
+		
 		//model.addAttribute("content", "schedule/listSchedule.jsp");
 		model.addAttribute("content", "schedule/scheduleHome.jsp");
 		model.addAttribute("listform", "listSchedule.jsp");
