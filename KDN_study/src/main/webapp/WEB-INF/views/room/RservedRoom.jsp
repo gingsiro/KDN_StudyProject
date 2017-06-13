@@ -25,7 +25,6 @@
 		$(function() {
 			$.datepicker.setDefaults($.datepicker.regional['ko']);
 			$( "#roomResvDate" ).datepicker({minDate: 0 , dateFormat: 'yy-mm-dd'});
-			$('#roomResvDate').val($.datepicker.formatDate('yy-mm-dd', new Date()));
 	});
 
 	$("#popbutton").click(function() {
@@ -77,8 +76,7 @@ function reserveRoom(rno, time) {
 <body>
 		<nav id="menu" >
 			<form style="text-align:center" method="get" action="reservedRoom.do" >
-				<input type="text" onchange="textBoxNull()" id="roomResvDate" name="roomResvDate">
-
+				<input type="text" onchange="textBoxNull()" id="roomResvDate" name="roomResvDate" placeholder="날짜를 입력하세요.">
 				<input type="submit" value="예약 조회" id="rsvbtn">
 			</form>
 		</nav>
