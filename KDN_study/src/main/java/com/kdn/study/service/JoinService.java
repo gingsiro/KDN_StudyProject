@@ -6,4 +6,5 @@ import com.kdn.study.domain.JoinStudy;
 
 public interface JoinService {
 	public List<JoinStudy> searchJoinMembers(int sno);
+	public void deleteMember(int jno);
 }

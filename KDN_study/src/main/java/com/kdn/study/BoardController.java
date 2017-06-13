@@ -11,14 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.study.domain.Board;
+import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.service.BoardService;
+import com.kdn.study.service.JoinService;
 
 @Controller
 public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private JoinService joinService;
 
 	@ExceptionHandler
 	public ModelAndView Handler(Exception e) {
@@ -40,11 +45,13 @@ public class BoardController {
 		model.addAttribute("sno", Integer.parseInt(sno));
 
 		List<Board> boardList = boardService.boardSearchAll(bean);
-
 		model.addAttribute("boardList", boardList);
+		
+		int int_sno = Integer.parseInt(sno);
+		List<JoinStudy> joinMembers_list = joinService.searchJoinMembers(int_sno);
+		model.addAttribute("joinMembers_list", joinMembers_list);
 
 		return "index";
-
 	}
 
 	@RequestMapping(value = "searchBoard.do", method = RequestMethod.GET)

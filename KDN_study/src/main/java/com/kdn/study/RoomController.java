@@ -48,11 +48,9 @@ public class RoomController {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "RservedRoom.jsp");
 
-		List<Room> roomList = roomService.searchAll();
-		System.out.println(roomList);
-		model.addAttribute("roomList", roomList);
-
-		return "index";
+		
+		
+		return "redirect:reservedRoom.do";
 		} else {
 			return "redirect:loginForm.do";
 		}
@@ -60,52 +58,50 @@ public class RoomController {
 
 	@RequestMapping(value = "reservedRoom.do", method = RequestMethod.GET)
 	public String reservedRoom(Model model, String roomResvDate, HttpSession session) {
-
+		if (session.getAttribute("empno")!=null) {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "RservedRoom.jsp");
-
 		
 		//오늘날짜관련
 		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
 		Date currentTime = new Date();
 		String today = mSimpleDateFormat.format(currentTime);
-		//System.out.println(today);
-
+		if(roomResvDate == null){
+			roomResvDate = today;
+			System.out.println(roomResvDate+"/"+today);
+		}
 		
 		if (roomResvDate != null) {
+			System.out.println("??????");
 			int rsvcode = 0;
-			
 			int compare  = today.compareTo(roomResvDate);
+			
 			if(compare == 0) { //오늘
 				Calendar cal  = Calendar.getInstance();
-				int hour = 20;//cal.get(cal.HOUR_OF_DAY);
+				int hour = cal.get(cal.HOUR_OF_DAY);
 				List<RsvCode> timeCode = roomService.timeCodeSearch();
 				
 				for(int i=0; i < timeCode.size(); i++) {
-					if( hour >= timeCode.get(i).getStarttime() && hour < timeCode.get(i).getEndtime()) {
+					if( hour >= timeCode.get(i).getStarttime() && hour < timeCode.get(i).getEndtime() ) {
 						rsvcode = (timeCode.get(i).getRsvcode()) +1;
 						break;
 					}
 				}
-				System.out.println(rsvcode +"/"+ hour);
 			} else if(compare == 1) { //오늘 이전날짜 전부
 				rsvcode=7;
 			} 
 
-			model.addAttribute("rsvcode", rsvcode);
-		
-			List<HashMap<String, Integer>> dayRsvlist = roomService
-					.searchDayRsv(roomResvDate);
-			model.addAttribute("dayRsvlist", dayRsvlist);
-
 			int empno = (Integer) session.getAttribute("empno");
-
+			List<HashMap<String, Integer>> dayRsvlist = roomService.searchDayRsv(roomResvDate);
 			List<Study> myStudyList = studyService.searchMyStudy(empno);
 			model.addAttribute("myStudyList", myStudyList);
-
+			model.addAttribute("dayRsvlist", dayRsvlist);
+			model.addAttribute("rsvcode", rsvcode);
 		}
-
-		return "index";
+			return "index";
+		} else {
+			return "redirect:loginForm.do";
+		}
 	}
 
 	@RequestMapping(value = "reserveRoom.do", method = RequestMethod.POST)

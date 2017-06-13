@@ -13,6 +13,7 @@ public class JoinStudy
 	private int smax;
 	private int scurr;
 	private int smaster;
+	private int jno;
 	
 	public JoinStudy(){ }
 	
@@ -32,7 +33,7 @@ public class JoinStudy
 	}
 
 	public JoinStudy(int empno, int sno, String dept, String ename, String sname, String sinfo, char gender
-										, char admin, int smax, int scurr, int smaster) 
+										, char admin, int jno, int smax, int scurr, int smaster) 
 	{
 		this.empno = empno;
 		this.sno = sno;
@@ -43,6 +44,7 @@ public class JoinStudy
 		this.smax = smax;
 		this.scurr = scurr;
 		this.smaster = smaster;
+		this.jno = jno;
 	}
 
 	public int getEmpno() {
@@ -133,6 +135,14 @@ public class JoinStudy
 		this.sinfo = sinfo;
 	}
 
+	public int getJno() {
+		return jno;
+	}
+
+	public void setJno(int jno) {
+		this.jno = jno;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -142,8 +152,8 @@ public class JoinStudy
 				.append(", sinfo=").append(sinfo).append(", gender=")
 				.append(gender).append(", admin=").append(admin)
 				.append(", smax=").append(smax).append(", scurr=")
-				.append(scurr).append(", smaster=").append(smaster).append("]");
+				.append(scurr).append(", smaster=").append(smaster)
+				.append(", jno=").append(jno).append("]");
 		return builder.toString();
 	}
-	
 }

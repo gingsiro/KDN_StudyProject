@@ -7,13 +7,22 @@
 <meta charset="UTF-8">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <title>Schedule Home</title>
+
+<style>
+	#study_name { font-size: 15pt;
+							font-weight: bold;
+	}
+</style>
+
 </head>
 <body>
 	<div style="overflow:hidden" class="container">
 		<div class="row">
 			<div class="col-sm-2">
-				<p>${ joinMembers_list[0].sname }</p>
+				<p id="study_name">${ joinMembers_list[0].sname }</p>
 				<p>${ joinMembers_list[0].sinfo }</p>
+				<br/>
+				<br/>
 				<a href="listSchedule.do?sno=${sno}">일정</a><br/>
 				<a href="boardList.do?sno=${sno}">게시판</a><br/>	
 				<a href="joinList.do?sno=${sno}">구성원</a><br/>

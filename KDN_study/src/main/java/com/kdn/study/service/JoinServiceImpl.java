@@ -24,4 +24,9 @@ public class JoinServiceImpl implements JoinService{
 	public List<JoinStudy> searchJoinMembers(int sno) {
 		return dao.searchJoinMembers(sno);
 	}
+
+	@Override
+	public void deleteMember(int jno) {
+		dao.deleteMember(jno);
+	}
 }
