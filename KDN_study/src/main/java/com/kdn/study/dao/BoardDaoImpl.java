@@ -16,7 +16,6 @@ public class BoardDaoImpl implements BoardDao {
 	private SqlSessionTemplate session;
 	
 	public List<Board> boardSearchAll(PageBean bean){
-		System.out.println("boardDao>>>>");
 		return session.selectList("board.boardSearchAll", bean);
 	}
 	
@@ -26,6 +25,21 @@ public class BoardDaoImpl implements BoardDao {
 
 	public void update(Board board) {
 		session.update("board.update", board);
+		
+	}
+	
+	public void delete(int bno) {
+		session.delete("board.delete", bno);
+		
+	}
+	
+	public int maxSbnoSearch(int sno) {
+		return session.selectOne("board.maxSbnoSearch", sno);
+		
+	}
+	
+	public void insert(Board board) {
+		session.insert("board.insert", board);
 		
 	}
 }

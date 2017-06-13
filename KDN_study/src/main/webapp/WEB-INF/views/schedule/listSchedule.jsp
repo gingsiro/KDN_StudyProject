@@ -8,14 +8,12 @@
 	
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Schedule List</title>
 	<style type="text/css">
 		#loadCalendar { witdth: 50px;
 								/* margin-left: 20%;
 								margin-right: 20%;*/
 		} 
-		#loadBoard { text-align: center;
-		}
 		
 		#btn_insert_schedule { margin-bottom: 20px;
 		}
@@ -49,34 +47,27 @@
 	<script type="text/javascript">
 	window.onload = function() 
 	{ 
+        
 		console.log('현재 날짜: ' + sysdate); 
 		$('#sysdate_').val(sysdate);
 		$('#sno').val("${sno}");
 	};
 	</script>
-
 	
-		<!-- <script type="text/javascript">
-			//조건 검색, 페이지 번호로 게시글 요청을 위한 메서드  
-			function pagelist(cpage){
-				//input 양식의 hidden으로 선언된 page에 요청된 페이지 정보 셋팅 
-				document.getElementById("pageNo").value=cpage;
-				var frm = document.getElementById("frm");
-				frm.action="listSchedule.do";
-				frm.submit();
-			}
-			//게시글 번호나 타이틀을 클릭하면 해당 게시글 요청을 위한 메서드 
-			function getBoard(no){
-				//input 양식의 hidden으로 선언된 no(게시글 번호)에 요청된 게시글 번호를 셋팅
-				document.getElementById("scno").value = scno;
-				var frm = document.getElementById("frm");
-				frm.action="searchSchedule.do";
-				frm.submit();
-			}
-		</script> -->
 </head>
 
 <body>
+
+	<div>
+		<h2>스터디원 목록</h2>
+		<ul>
+			<c:forEach var="member" items="${ joinMembers_list }">
+				<li>${ member.ename }</li>
+			</c:forEach>
+		</ul>
+	</div>
+
+
 		<!-- Modal -->
 	<div style="overflow:hidden" id="createForm" class="modal fade" role="dialog">
 		<div id="model" class="modal-dialog">
@@ -117,12 +108,15 @@
 		</div>
 	</div>
 		
-		<h2>니가 선택한 스터디의 메인 화면</h2>
-		<p>니 스케줄이다. 그 밑에는 게시판</p>
-		<div style="text-align: right">
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-							id = "btn_insert_schedule" data-target="#createForm">일정 입력</button>
-		</div>
+	<div id="shcedule_title">
+		<h2>스터디 일정</h2>
+		<p>현재 스터디 그룹에 등록된 일정입니다.</p>
+	</div>
+	
+	<div style="text-align: right">
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+					id = "btn_insert_schedule" data-target="#createForm">일정 입력</button>
+	</div>
 
 	<div id='loadCalendar'>
 		<jsp:include page="calendar.jsp"></jsp:include>

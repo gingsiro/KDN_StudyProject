@@ -109,16 +109,19 @@ Example.Modal.prototype = {
     // 콘텐츠 레이어를 가운데로 이동(top, left 조절해 줌)
     moveCenter : function() {
         // left 좌표 구하기
-        var left = Math.floor((this.c_width-this.width)/2);
+ //       var left = Math.floor((this.c_width-this.width)/2);
+        var left = Math.floor(100);
  
         // top 좌표 구하기
         var res_height; // 콘텐츠를 화면상의 가운데로 두었을 때의 높이
         if(this.c_height < this.height) { // 화면 높이 < 콘텐츠 레이어 높이
             res_height = 0;
         } else { // 화면 높기 >= 콘텐츠 레이어 높이
-            res_height = Math.floor((this.c_height-this.height)/2); // 차이를 빼서 2로 나눔. 그리고 내림.
+ //           res_height = Math.floor((this.c_height-this.height)/8); // 차이를 빼서 2로 나눔. 그리고 내림.
+            res_height = Math.floor(100); // 차이를 빼서 2로 나눔. 그리고 내림.
         }
-        var top = res_height+$(document).scrollTop(); // 화면상의 높이에 스크롤높이를 더한 절대좌표를 top에 저장
+//        var top = res_height+$(document).scrollTop(); // 화면상의 높이에 스크롤높이를 더한 절대좌표를 top에 저장
+        var top = res_height; // 화면상의 높이에 스크롤높이를 더한 절대좌표를 top에 저장
  
         // css의 top,left 조정
         $("#"+this.hash.id).css("top",top);

@@ -44,7 +44,8 @@
     </c:if>
 	<div class="main" id="viewBoard" style="display:none">
 	 	<form id="frm"  >
-	 	    <input type ="hidden" name="sno"  id="sno" />
+	 	    <input type ="hidden" name="bno"  id="bno" value="${board.bno}"/>
+	 	    <input type ="hidden" name="sno"  id="sno" value="${board.sno}"/>
 	 	    <input type ="hidden" name="query"  id="query" />
 			<table border="1" align="center">
 				<tbody>
@@ -75,9 +76,9 @@
 	 	<form  id="updatefrm">
 	 	    <input type ="hidden" name="bno"  id="bno"  value="${board.bno}"/>
 	 	    <input type ="hidden" name="sbno"  id="sbno"  value="${board.sbno}"/>
-	 	    <input type ="hidden" name="sno"  id="sno"  value="${board.bno}"/>
+	 	    <input type ="hidden" name="sno"  id="sno"  value="${board.sno}"/>
 	 	    <input type ="hidden" name="empno"  id="empno"  value="${board.empno}"/>
-	 	    <input type ="hidden" name="regdate"  id="regdate"  value="${board.regdate}"/>
+	 	   <input type ="hidden" name="regdate"  id="regdate"  value="${board.regdate}"/>
 	 	    
 			<table border="1" align="center">
 				<caption>게시글 작성</caption>
@@ -87,7 +88,7 @@
 					</tr>
 					<tr><td colspan="2">내용</td></tr>
 					<tr><td colspan="2">
-						<textarea name="bcontents" id="bcontents" cols="30" rows="10">
+						<textarea name="bcontents" id="bcontents" cols="30" rows="10" value="${board.bcontents }">
 							${board.bcontents}
 						</textarea>
 						</td></tr>

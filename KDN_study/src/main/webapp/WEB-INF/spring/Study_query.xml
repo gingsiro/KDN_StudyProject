@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id="searchAll" parameterType="pagebean" resultType="study">
-		select sno, smaster, sname, smax, scurr, cno, cname
+		select sno, smaster, sname, smax, scurr, sinfo, cno, cname
 		from study
 		join category using(cno)
 		<where>
@@ -36,8 +36,8 @@
 	</select>
 	
 	<select id="searchMyStudy" parameterType="int" resultType="study">
-		select jno, empno, sno, smaster, sname, smax, scurr, a.cno, cname
-		from (select jno, empno, js.sno, smaster, st.sname, smax, scurr, cno
+		select jno, empno, sno, smaster, sname, smax, scurr, sinfo, a.cno, cname
+		from (select jno, empno, js.sno, smaster, st.sname, smax, scurr, sinfo, cno
 			  from join_study js, study st
 			  where js.sno = st.sno and empno = #{ empno:INTEGER }) a, category c
 		where a.cno = c.cno
@@ -45,8 +45,8 @@
 	</select>
 	
 	<insert id="createStudy" parameterType="study">
-		insert into study(sno, smaster, sname, smax, scurr, cno)
-		values(study_sno.nextval,#{ smaster:INTEGER },#{ sname:VARCHAR },#{ smax:INTEGER },#{ scurr:INTEGER },#{ cno:INTEGER })
+		insert into study(sno, smaster, sname, smax, scurr, sinfo, cno)
+		values(study_sno.nextval,#{ smaster:INTEGER },#{ sname:VARCHAR },#{ smax:INTEGER },#{ scurr:INTEGER },#{ sinfo:VARCHAR },#{ cno:INTEGER })
 	</insert>
 	
 	<insert id="joinStudy" parameterType="joinstudy">
@@ -59,7 +59,7 @@
 	</select>
 	
 	<update id="updateStudy" parameterType="study">
-		update study set sname=#{ sname:VARCHAR }, smax=#{ smax:INTEGER }, scurr=#{ scurr:INTEGER }, cno=#{ cno:INTEGER }
+		update study set sname=#{ sname:VARCHAR }, smax=#{ smax:INTEGER }, scurr=#{ scurr:INTEGER }, sinfo=#{ sinfo:VARCHAR }, cno=#{ cno:INTEGER }
 		where sno = #{ sno:INTEGER }
 	</update>
 	
