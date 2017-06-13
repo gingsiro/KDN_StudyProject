@@ -11,13 +11,13 @@
 	display: inline-block;
 	position: absolute;
 	left: 400px;
-	top: 600px;
+	top: 580px;
 }
   
 .line2{
 	position: absolute;
 	left: 400px;
-	top: 200px;
+	top: 220px;
 }
   
   
@@ -39,15 +39,15 @@
 
 .form-group
 {
-left: 220px;
+left: 230px;
 width: 310px;
 }
 
-.form-group1
+/* .form-group1
 {
 left: 350px;
 width: 400px;
-}
+} */
 
 .form-group2
 {
@@ -100,19 +100,19 @@ width: 310px;
 	
 
 
-<h3 class='form-group' style="border: 1px solid #ff0000;">&nbsp; [사원번호] &nbsp;&nbsp;&nbsp;&nbsp; ${employee.empno }</h3>
+<h3 class='form-group' style="border: 1px solid #ff0000;">&nbsp; [사원번호] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${employee.empno }</h3>
 	    <td class='tbasic'><input type='hidden' name='empno'  id='empno' value = '${employee.empno }' ></td>
 	
 <div class="form-group">
-  <input id="dept" name="dept" type="text" placeholder="[부서명 ]			${employee.dept }" class="form-control input-md"  style="border: 1px solid #ff0000;">
+  <input id="dept" name="dept" type="text" placeholder="[부서 : ${employee.dept} ]	변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
 </div>
 
 <div class="form-group">
-  <input id="ename" name="ename" type="text" placeholder="[이름]			${employee.ename }" class="form-control input-md"  style="border: 1px solid #ff0000;">
+  <input id="ename" name="ename" type="text" placeholder="[이름 : ${employee.ename} ]	 	변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
 </div> 
 
 <div class="form-group">
-   	<input id="password" name="password" type="password" placeholder="[비밀번호]    변경할 비밀번호를 입력하시오." class="form-control input-md"  style="border: 1px solid #ff0000;">
+   	<input id="password" name="password" type="password" placeholder="[비밀번호]    			변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
 </div>
 
 <!-- <tr>
@@ -132,7 +132,7 @@ width: 310px;
 
 
 <div class="login">
-	<img src="images/loginimage5.png" >
+	<img src="images/employeeinfoimage.png" >
 </div> 
 <div class="line1">
 	<img src="images/logline1.png" >
