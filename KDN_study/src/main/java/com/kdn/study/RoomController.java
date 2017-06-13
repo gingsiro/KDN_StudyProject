@@ -78,15 +78,16 @@ public class RoomController {
 			int compare  = today.compareTo(roomResvDate);
 			if(compare == 0) { //오늘
 				Calendar cal  = Calendar.getInstance();
-				int hour = 20;//cal.get(cal.HOUR_OF_DAY);
+				int hour = cal.get(cal.HOUR_OF_DAY);
 				List<RsvCode> timeCode = roomService.timeCodeSearch();
 				
 				for(int i=0; i < timeCode.size(); i++) {
-					if( hour >= timeCode.get(i).getStarttime() && hour < timeCode.get(i).getEndtime()) {
+					if( hour >= timeCode.get(i).getStarttime() && hour < timeCode.get(i).getEndtime() ) {
 						rsvcode = (timeCode.get(i).getRsvcode()) +1;
 						break;
 					}
 				}
+				
 				System.out.println(rsvcode +"/"+ hour);
 			} else if(compare == 1) { //오늘 이전날짜 전부
 				rsvcode=7;

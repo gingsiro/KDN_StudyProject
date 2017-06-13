@@ -173,7 +173,7 @@ function reserveRoom(rno, time) {
 					<tr>
 						<th scope="row">${room.RNO}호 [ ${room.RNAME} / ${room.RMAX} ]</th>
 						<c:choose>
-							<c:when test="${(room.TIME07_09 == 0) && ((rsvcode == 0) ||(rsvcode == 1))} ">
+							<c:when test="${(room.TIME07_09 == 0) && ((rsvcode == 0) ||(rsvcode == 1))}">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',1)">가능</a></td>
 							</c:when>
 							<c:otherwise>
