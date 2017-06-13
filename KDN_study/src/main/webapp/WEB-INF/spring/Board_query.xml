@@ -22,6 +22,7 @@
 			</choose>
 			</if>
 		</where>
+		order by sbno desc
 	</select>
 	
 	<select id="search" parameterType="int" resultType="board">
@@ -31,8 +32,40 @@
 	</select>
 	
 	<update id="update" parameterType="board">
-		update board set btitle=#{btitle:VARCHAR}, bcontents=#{bcontents:VARCHAR}, regdaet = sysdate
+		update board set 
+		sbno=#{sbno:INTEGER}, btitle=#{btitle:VARCHAR}, bcontents=#{bcontents:VARCHAR}
+		, regdate = sysdate, empno=#{empno:INTEGER}, sno=#{sno:INTEGER}
 		where bno = #{bno:INTEGER}
 		
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete 
+		from board
+		where bno = #{bno}	
+	</delete>
+	
+	<select id="maxSbnoSearch" parameterType="int" resultType="int">
+		SELECT NVL(MAX(sbno), 0) sbno
+		FROM(
+    		SELECT sbno
+    		FROM BOARD
+   			WHERE sno = #{sno}
+    	)
+
+	</select>
+	
+	<insert id="insert" parameterType="board">
+		insert into board(bno, sbno, btitle, bcontents, regdate, empno, sno)
+		values (
+				BOARD_BNO.NEXTVAL
+				, #{sbno:INTEGER}
+				, #{btitle:VARCHAR}
+				, #{bcontents:VARCHAR}
+				, sysdate
+				, #{empno:INTEGER}
+				, #{sno:INTEGER}
+		)
+		
+	</insert>
 </mapper>
