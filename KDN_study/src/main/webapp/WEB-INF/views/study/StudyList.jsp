@@ -208,14 +208,14 @@
 						</c:if>
 					</td>
 					<td>
-						<c:if test="${ empno == study.smaster }">
+						<c:if test="${ empno == study.smaster || admin eq 'Y' }">
 							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }', '${ study.scurr }', '${ study.sinfo }')">
 								<i class="fa fa-pencil"></i>수정
 							</a>
 						</c:if>
 					</td>
 					<td>
-						<c:if test="${ empno == study.smaster }">
+						<c:if test="${ empno == study.smaster || admin eq 'Y'  }">
 							<a class="red-text"onClick="deleteStudy('${ study.sno }', '${ study.smaster }')">
 								<i class="fa fa-times"></i>삭제
 							</a>
