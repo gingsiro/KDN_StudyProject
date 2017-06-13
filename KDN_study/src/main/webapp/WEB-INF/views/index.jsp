@@ -97,6 +97,9 @@
                             <ul class="dropdown-menu">
                                 <li><a href="reservedRoomForm.do">룸 예약하기</a></li>
                                 <li><a href="myRsvList.do">나의 룸예약</a></li>
+                                <c:if test="${ admin == 'Y' }">
+									<li><a href="roomList.do">룸 관리</a></li>
+								</c:if>
                             </ul>
                         </li>
                         <li><a href="contact.do">About Us</a></li>
