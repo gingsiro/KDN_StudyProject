@@ -42,23 +42,22 @@
                             <ul class="social-share">
                             	<c:choose>
 		   							<c:when test="${empty empno}">
-                               		 	<li><a href="loginForm.do"><i class="fa fa-linkedin"></i></a></li>
-                               		 	<a href="insertEmployeeForm.do">회원가입</a><br/>
+                               		 	<a href="loginForm.do" title="로그인">로그인&nbsp;<li><i class="fa fa-linkedin"></i></li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                               		 	<a href="insertEmployeeForm.do" title="회원가입">회원가입&nbsp;<li><i class="fa fa-pencil"></i></li></a><br/> 
                                 	</c:when>
-		   						<c:otherwise>
-		   								<h2> ${employee.dept} ${employee.ename}님 환영합니다!</h2>
-		   								<li><a href="logout.do"></a>로그아웃</li>
-		     							<li><a href="employeeUpdateForm.do"></a>회원정보 및 수정</li>
-		     							<li><a href="myPage.do"></a>회원정보</li>
-		   						</c:otherwise>
+		   							<c:otherwise>
+		   								<font size="2em" color="white">${employee.dept}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="employeeUpdateForm.do" title="정보수정">${employee.ename}</a><c:if test="${admin eq 'Y'}">(관리자)</c:if>님&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환영합니다!&nbsp;&nbsp;&nbsp;</font>
+		   								<a href="logout.do" title="로그아웃"><i class="fa fa-unlock-alt"></i>로그아웃<li></li></a>
+		     							<!-- <li><a href="employeeUpdateForm.do" title="정보수정"><i class="fa fa-pencil"></i></a></li> -->
+		   							</c:otherwise>
 								</c:choose>
                             </ul>
-                            <div class="search">
+                            <!-- <div class="search">
                                 <form role="form">
                                     <input type="text" class="search-form" autocomplete="off" placeholder="Search">
                                     <i class="fa fa-search"></i>
                                 </form>
-                           </div> 
+                           </div> -->
                            <nav id="menu">		
 		 						<!-- <a href="insertEmployeeForm.do">회원가입</a><br/> -->
 		 					</nav>             
@@ -77,7 +76,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/study"><img src="images/logo.png" alt="logo"></a>
+                    <a class="navbar-brand" href="/study"><img src="images/KDNStudy_ci(black).png" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
