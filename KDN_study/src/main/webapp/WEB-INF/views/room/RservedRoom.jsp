@@ -148,8 +148,7 @@ function reserveRoom(rno, time) {
 			if(date != null) {
 		%>
 		<h2>스터디룸 예약 정보</h2>
-		<p><font color="red"><%= date %></font> 의 KDN Study 포털의 룸 예약 현황 목록입니다.</p> 
-		<p>가능한 시간대를 클릭하시면 예약을 진행하실 수 있습니다.</p>
+		<p><font color="red"><%= date %></font> 의 KDN Study 포털의 룸 예약 현황 목록입니다.<br/>가능한 시간대를 클릭하시면 예약을 진행하실 수 있습니다.</p>
 		
 		<% 
 			}

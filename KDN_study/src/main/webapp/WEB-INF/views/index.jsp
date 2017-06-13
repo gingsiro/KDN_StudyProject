@@ -95,7 +95,7 @@
                         <li class="dropdown">
                             <a href="studyList.do" class="dropdown-toggle" data-toggle="dropdown">스터디 룸 <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="reservedRoomForm.do">룸 예약하기</a></li>
+                                <li><a href="reservedRoom.do">룸 예약하기</a></li>
                                 <li><a href="myRsvList.do">나의 룸예약</a></li>
                                 <c:if test="${ admin == 'Y' }">
 									<li><a href="roomList.do">룸 관리</a></li>
