@@ -35,7 +35,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-xs-4">
-                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +82 - 10 - 4632 - 9542</p></div>
+                        <div class="top-number"><p><i class="fa fa-phone-square"></i> 　061 - 931 - 7114</p></div>
                     </div>
                     <div class="col-sm-6 col-xs-8">
                        <div class="social">
@@ -831,7 +831,7 @@
                             </div>
                             <div class="media-body">
                                 <p>달력이 스터디의 시작과 끝<br/>스터디에 감성이 더해지면?<br/>최고의 결과물 ! ㅋㅋ</p>
-                                <span><strong>-hsgoon/</strong> 감성담당 of KDN_Study</span>
+                                <span><strong>-hsgoon/</strong> 감성담당<br/>of KDN_Study</span>
                             </div>
                          </div>
  
@@ -841,7 +841,7 @@
                             </div>
                             <div class="media-body">
                                 <p>프로젝트중 맥북이 사망했다.<br/>7년간 고생했어 <br/>나는 새 맥북으로 갈아탈게</p>
-                                <span><strong>-gingsiro/</strong> 징징담당 of KDN_Study</span>
+                                <span><strong>-gingsiro/</strong> 징징담당<br/>of KDN_Study</span>
                             </div>
                          </div>
                          
@@ -851,7 +851,7 @@
                             </div>
                             <div class="media-body">
                                 <p>자신을 되돌아보게 되었다.<br/>고생했다.</p>
-                                <span><strong>-ulalla/</strong> 로그인담당 of KDN_Study</span>
+                                <span><strong>-ulalla/</strong> 로그인담당<br/>of KDN_Study</span>
                             </div>
                          </div>
                          
@@ -861,7 +861,7 @@
                             </div>
                             <div class="media-body">
                                 <p>프로젝트 다 끝난거<br/> 실화냐?</p>
-                                <span><strong>-choo/</strong> 실화담당 of KDN_Study</span>
+                                <span><strong>-choo/</strong> 실화담당<br/>of KDN_Study</span>
                             </div>
                          </div>
                     </div>
