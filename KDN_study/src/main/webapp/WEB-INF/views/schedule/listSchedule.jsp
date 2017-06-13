@@ -58,16 +58,6 @@
 
 <body>
 
-	<div>
-		<h2>스터디원 목록</h2>
-		<ul>
-			<c:forEach var="member" items="${ joinMembers_list }">
-				<li>${ member.ename }</li>
-			</c:forEach>
-		</ul>
-	</div>
-
-
 		<!-- Modal -->
 	<div style="overflow:hidden" id="createForm" class="modal fade" role="dialog">
 		<div id="model" class="modal-dialog">
