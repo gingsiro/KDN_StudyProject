@@ -101,6 +101,9 @@ public class EmployeeServiceImpl implements EmployeeService
 	}*/
 	
 	public void delete(Employee employee) {
+		dao.delete(employee);	
+	}
+	
 		/*try {
 
 			Employee find = dao.search(employee.getPassword(), employee.getEmpno());
@@ -114,8 +117,6 @@ public class EmployeeServiceImpl implements EmployeeService
 			throw new UpdateException("업데이트DB 서버 오류");
 		}
 */	
-	dao.delete(employee);	
-	}
 	
 
 	

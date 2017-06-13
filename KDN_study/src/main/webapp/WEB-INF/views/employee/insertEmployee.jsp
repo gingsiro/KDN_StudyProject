@@ -23,7 +23,7 @@
   
   
 .login {
-		position: absolute; left: 790px; top: 250px; height: 50px; width: 100px;
+		position: absolute; left: 790px; top: 240px; height: 50px; width: 100px;
 		/* width: 50px;
  	    margin-left: 500px;	
  	    top : 600px;
@@ -129,14 +129,14 @@ left: 150px;
   <!-- 	<div class="col-md-2"> -->
   		<div class="checkbox">
    			<label for="Gender-0" >
-      			<input type="radio" name="gender" id="gender-0" value="M">남성
+      			<input type="radio" name="gender" id="gender-0" value="M" required>남성
    			</label>
    			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    			</span>
    			<label for="Gender-1" >
-      			<input type="radio" name="gender" id="gender-1" value="F">여성 
+      			<input type="radio" name="gender" id="gender-1" value="F" required>여성 
     		</label>
 		</div>
    </div><br/>
@@ -152,7 +152,7 @@ left: 150px;
 </form>
 
 <div class="login">
-	<img src="images/loginimage5.png" >
+	<img src="images/employeejoinimage.png" >
 </div> 
 <div class="line1">
 	<img src="images/logline1.png" >
