@@ -63,11 +63,8 @@ public class BoardController {
 	public String updateBoard(Model model, Board board, int sno) {
 		System.out.println(board + "controller");
 		boardService.update(board);
-
 		model.addAttribute("sno", sno);
-		model.addAttribute("content", "schedule/scheduleHome.jsp");
-		model.addAttribute("listform", "../board/SearchBoard.jsp");
-		return "index";
+		return "redirect:boardList.do";
 
 	}
 
@@ -77,8 +74,6 @@ public class BoardController {
 		boardService.delete(bno);
 
 		model.addAttribute("sno", Integer.toString(sno));
-/*		model.addAttribute("content", "schedule/scheduleHome.jsp");
-		model.addAttribute("listform", "../board/BoardList.jsp");*/
 
 		return "redirect:boardList.do";
 

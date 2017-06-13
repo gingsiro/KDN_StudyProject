@@ -24,7 +24,7 @@
 	jQuery( document ).ready(function( $ ) {
 		$(function() {
 			$.datepicker.setDefaults($.datepicker.regional['ko']);
-			$( "#roomResvDate" ).datepicker({minDate: +1 , dateFormat: 'yy-mm-dd'
+			$( "#roomResvDate" ).datepicker({minDate: 0 , dateFormat: 'yy-mm-dd'
 		});
 	});
 
@@ -158,7 +158,7 @@ function reserveRoom(rno, time) {
 		<table style="visibility:hidden" class="table" style="text-align: center" id="rsvtable" >
 			<thead>
 				<tr>
-					<th>스터디룸 번호</th>
+					<th>스터디룸[ 룸 이름 / 룸 정원 ]</th>
 					<th>07-09시</th>
 					<th>09-12시</th>
 					<th>13-15시</th>
@@ -171,7 +171,7 @@ function reserveRoom(rno, time) {
 			<tbody>
 				<c:forEach var="room" items="${ dayRsvlist }">
 					<tr>
-						<th scope="row">${room.RNO}</th>
+						<th scope="row">${room.RNO}호 [ ${room.RNAME} / ${room.RMAX} ]</th>
 						<c:choose>
 							<c:when test="${room.TIME07_09 == 0 }">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',1)">가능</a></td>
@@ -226,28 +226,6 @@ function reserveRoom(rno, time) {
 			</tbody>
 		</table>
 	<p>
-	<div>
-		<h2>KDN 스터디룸 정보</h2>
-		<p>현재 KDN의 스터디룸 정보 목록입니다.</p>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>룸 번호</th>
-					<th>룸 이름</th>
-					<th>룸 정원</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="room" items="${ roomList }">
-					<tr>
-						<th scope="row">${room.rno}</th>
-						<td>${room.rname}</td>
-						<td>${room.rmax}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
 </article>
 </body>
 </html>

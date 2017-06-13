@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kdn.study.dao.RoomDao;
 import com.kdn.study.domain.Room;
+import com.kdn.study.domain.RsvCode;
 import com.kdn.study.domain.RsvRoom;
 
 @Service("roomService")
@@ -64,5 +65,10 @@ public class RoomServiceImpl implements RoomService {
 	
 	public void deleteRoom(int rno) {
 		dao.deleteRoom(rno);
+	}
+	
+	public List<RsvCode> timeCodeSearch() {
+		return dao.timeCodeSearch();
+		
 	}
 }

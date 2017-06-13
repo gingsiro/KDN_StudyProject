@@ -1,7 +1,11 @@
 package com.kdn.study;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.study.domain.Room;
+import com.kdn.study.domain.RsvCode;
 import com.kdn.study.domain.RsvRoom;
 import com.kdn.study.domain.Study;
 import com.kdn.study.service.RoomService;
@@ -59,7 +64,25 @@ public class RoomController {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "RservedRoom.jsp");
 
+		
+		//오늘날짜관련
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		Date currentTime = new Date();
+		String today = mSimpleDateFormat.format(currentTime);
+		//System.out.println(today);
+		
+		
 		if (roomResvDate != null) {
+			if(roomResvDate.equals(today)) {
+				Calendar cal  = Calendar.getInstance();
+				int hour = cal.get(cal.HOUR_OF_DAY);
+				//model.addAttribute("hour", hour);		
+				List<RsvCode> timeCode = roomService.timeCodeSearch();
+				
+				System.out.println("time>>>>>>>>"+hour);
+				System.out.println("timeCode>>>>>>>>"+timeCode);
+				
+			}
 
 			List<HashMap<String, Integer>> dayRsvlist = roomService
 					.searchDayRsv(roomResvDate);
@@ -74,9 +97,11 @@ public class RoomController {
 			model.addAttribute("myStudyList", myStudyList);
 
 		}
+
 		List<Room> roomList = roomService.searchAll();
 		System.out.println(roomList);
 		model.addAttribute("roomList", roomList);
+
 
 		return "index";
 	}

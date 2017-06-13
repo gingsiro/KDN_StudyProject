@@ -10,18 +10,22 @@
 </select>
 	
 <select id="searchDayRsv" parameterType="string" resultType="hashmap">
-	SELECT r.rno, SUM(DECODE(rsvcode, 1, 1, 0)) time07_09,
-				  SUM(DECODE(rsvcode, 2, 1, 0)) time09_12,
-				  SUM(DECODE(rsvcode, 3, 1, 0)) time13_15,
-				  SUM(DECODE(rsvcode, 4, 1, 0)) time15_18,
-				  SUM(DECODE(rsvcode, 5, 1, 0)) time19_21,
-				  SUM(DECODE(rsvcode, 6, 1, 0)) time21_23
-	FROM ROOM r,( SELECT ro.rno rno, rsvcode
-				  FROM ROOM ro, RSV_ROOM rs
-				  WHERE ro.rno = rs.rno(+) AND rsvdate = TO_DATE(#{roomResvDate}, 'yyyy-mm-dd')) a
-	WHERE r.rno = a.rno(+)
-	GROUP BY r.rno
-	ORDER BY r.rno
+	SELECT b.rno rno, rname, rmax, time07_09, time09_12, time13_15, time15_18, time19_21, time21_23
+    FROM(
+        SELECT r.rno rno, SUM(DECODE(rsvcode, 1, 1, 0)) time07_09,
+                      SUM(DECODE(rsvcode, 2, 1, 0)) time09_12,
+                      SUM(DECODE(rsvcode, 3, 1, 0)) time13_15,
+                      SUM(DECODE(rsvcode, 4, 1, 0)) time15_18,
+                      SUM(DECODE(rsvcode, 5, 1, 0)) time19_21,
+                      SUM(DECODE(rsvcode, 6, 1, 0)) time21_23
+        FROM ROOM r,( SELECT ro.rno rno, rsvcode, rname, rmax
+                      FROM ROOM ro, RSV_ROOM rs
+                      WHERE ro.rno = rs.rno(+) AND rsvdate = TO_DATE(#{roomResvDate}, 'yyyy-mm-dd')) a
+        WHERE r.rno = a.rno(+)
+		GROUP BY r.rno
+		ORDER BY r.rno
+    ) b, ROOM room
+    WHERE b.rno = room.rno 
 </select>
 
 	<insert id="reserveRoom" parameterType="rsvroom">
@@ -49,5 +53,6 @@
 		from rsv_room
 		where rsvno = #{rsvNo}
 	</delete>
+	
 </mapper>
 

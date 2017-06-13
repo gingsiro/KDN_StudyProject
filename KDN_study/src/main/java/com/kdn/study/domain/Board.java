@@ -9,6 +9,7 @@ public class Board {
 	String regdate;
 	int empno;
 	int sno;
+	String ename;
 	
 	public Board() {}
 
@@ -23,6 +24,22 @@ public class Board {
 		this.regdate = regdate;
 		this.empno = empno;
 		this.sno = sno;
+	}
+	
+	
+
+
+	public Board(int bno, int sbno, String btitle, String bcontents,
+			String regdate, int empno, int sno, String ename) {
+		super();
+		this.bno = bno;
+		this.sbno = sbno;
+		this.btitle = btitle;
+		this.bcontents = bcontents;
+		this.regdate = regdate;
+		this.empno = empno;
+		this.sno = sno;
+		this.ename = ename;
 	}
 
 
@@ -96,13 +113,26 @@ public class Board {
 	}
 
 
+	
+	public String getEname() {
+		return ename;
+	}
+
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Board [bno=" + bno + ", sbno=" + sbno + ", btitle=" + btitle
 				+ ", bcontents=" + bcontents + ", regdate=" + regdate
-				+ ", empno=" + empno + ", sno=" + sno + "]";
+				+ ", empno=" + empno + ", sno=" + sno + ", ename=" + ename
+				+ "]";
 	}
-	
+
+
 	
 
 }
