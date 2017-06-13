@@ -24,8 +24,8 @@
 	jQuery( document ).ready(function( $ ) {
 		$(function() {
 			$.datepicker.setDefaults($.datepicker.regional['ko']);
-			$( "#roomResvDate" ).datepicker({minDate: 0 , dateFormat: 'yy-mm-dd'
-		});
+			$( "#roomResvDate" ).datepicker({minDate: 0 , dateFormat: 'yy-mm-dd'});
+			$('#roomResvDate').val($.datepicker.formatDate('yy-mm-dd', new Date()));
 	});
 
 	$("#popbutton").click(function() {
