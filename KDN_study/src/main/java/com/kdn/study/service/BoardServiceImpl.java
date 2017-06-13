@@ -19,10 +19,8 @@ public class BoardServiceImpl implements BoardService {
 	private BoardDao dao;
 	
 	public List<Board> boardSearchAll(PageBean bean) {
-		System.out.println("boardService>>>>");
 		try{
 			List<Board> boardlist = dao.boardSearchAll(bean);
-			System.out.println("boardService<<<<<");
 			return boardlist;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -38,5 +36,17 @@ public class BoardServiceImpl implements BoardService {
 	public void update(Board board) {
 		dao.update(board);
 		
+	}
+	public void delete(int bno) {
+		dao.delete(bno);
+		
+	}
+	
+	public int maxSbnoSearch(int sno) {
+		return dao.maxSbnoSearch(sno);
+		
+	}
+	public void insert(Board board){
+		dao.insert(board);
 	}
 }

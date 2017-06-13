@@ -63,7 +63,7 @@
 							<option value="bcontents" <%=pageBean.getKey("bcontents")%>>내용</option>
 					</select> <input type="text" id="word" name="word" value="${pageBean.word}" />
 						<a href="#" onclick="pagelist(1)">검색</a> &nbsp;&nbsp;&nbsp; <a
-						href="insertBoardForm.do">글쓰기</a></td>
+						href="insertBoardForm.do?sno=${sno}">글쓰기</a></td>
 				</tr>
 			</tbody>
 		</table>
