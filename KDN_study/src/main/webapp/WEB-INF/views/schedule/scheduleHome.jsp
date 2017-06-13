@@ -11,7 +11,9 @@
 <body>
 	<div style="overflow:hidden" class="container">
 		<div class="row">
-			<div class="col-sm-2">			
+			<div class="col-sm-2">
+				<p>${ joinMembers_list[0].sname }</p>
+				<p>${ joinMembers_list[0].sinfo }</p>
 				<a href="listSchedule.do?sno=${sno}">일정</a><br/>
 				<a href="boardList.do?sno=${sno}">게시판</a><br/>	
 				<a href="joinList.do?sno=${sno}">구성원</a><br/>
