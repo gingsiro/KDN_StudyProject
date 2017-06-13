@@ -11,13 +11,13 @@
 	display: inline-block;
 	position: absolute;
 	left: 400px;
-	top: 580px;
+	top: 540px;
 }
   
 .line2{
 	position: absolute;
 	left: 400px;
-	top: 220px;
+	top: 210px;
 }
   
   
