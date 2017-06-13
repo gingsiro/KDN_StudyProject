@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Schedule;
+import com.kdn.study.service.JoinService;
 import com.kdn.study.service.ScheduleService;
 import com.kdn.study.service.StudyService;
 
@@ -24,6 +26,9 @@ public class ScheduleController
 	@Autowired
 	private StudyService studyService;
 	
+	@Autowired
+	private JoinService joinService;
+	
 	@RequestMapping(value="listSchedule.do", method=RequestMethod.GET)
 	public String listSchedule(PageBean bean, Model model, HttpSession session, String sno)
 	{
@@ -32,6 +37,10 @@ public class ScheduleController
 		
 		List<Schedule> right_list = scheduleService.searchAllForRightList(bean);
 		model.addAttribute("right_list", right_list);
+		
+		int int_sno = Integer.parseInt(sno);
+		List<JoinStudy> joinMembers_list = joinService.searchJoinMembers(int_sno);
+		model.addAttribute("joinMembers_list", joinMembers_list);
 		
 		//model.addAttribute("content", "schedule/listSchedule.jsp");
 		model.addAttribute("content", "schedule/scheduleHome.jsp");

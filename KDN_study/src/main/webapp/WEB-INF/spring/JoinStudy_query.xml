@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<!--
+	 KDN Study 쿼리로 변경 필요 !!!!!! 
+ -->	
+<mapper namespace="joinstudy">
+	
+	<select id="selectJoinMembers" parameterType="int" resultType="joinstudy">
+		SELECT e.empno, dept, ename, gender, admin, sno
+		FROM EMPLOYEE e, JOIN_STUDY js
+		WHERE e.EMPNO = js.EMPNO AND sno =#{sno}
+	</select>
+	
+		
+	
+</mapper>

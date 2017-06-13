@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<title>Schedule Home</title>
 </head>
 <body>
-	<div class="container">
+	<div style="overflow:hidden" class="container">
 		<div class="row">
 			<div class="col-sm-2">				
 				<a href="listSchedule.do?sno=${sno}">스터디 스케줄</a><br/>

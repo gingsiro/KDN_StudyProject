@@ -58,8 +58,10 @@ public class EmployeeController
 		
 		employeeService.login(empno, password);
 		Employee emp = employeeService.search(empno);
+		model.addAttribute("employee", employeeService.search(empno));
 		session.setAttribute("empno", empno);
 		session.setAttribute("admin", emp.getAdmin());
+		System.out.println("emmm" +emp);
 		String referer = (String)session.getAttribute("referer");
 		
 		if(referer != null)
