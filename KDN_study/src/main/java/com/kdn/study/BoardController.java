@@ -77,10 +77,10 @@ public class BoardController {
 		boardService.delete(bno);
 
 		model.addAttribute("sno", Integer.toString(sno));
-		model.addAttribute("content", "schedule/scheduleHome.jsp");
-		model.addAttribute("listform", "../board/BoardList.jsp");
+/*		model.addAttribute("content", "schedule/scheduleHome.jsp");
+		model.addAttribute("listform", "../board/BoardList.jsp");*/
 
-		return "index";
+		return "redirect:boardList.do";
 
 	}
 

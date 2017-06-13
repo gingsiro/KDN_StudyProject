@@ -11,17 +11,17 @@
 	<table align="center" width="300">
 			<tr><th colspan="2"> 게시글 작성 </th></tr>
 			<tr height="50"><td><label for="btitle">제목</label></td>
-			    <td><input type="text" name="btitle" id="btitle"/>
+			    <td><input type="text" name="btitle" id="btitle" required/>
 			    	<input type ="hidden" name="sno"  id="sno" value="${sno}"/>
 			    	<input type ="hidden" name="sbno"  id="sbno" value="${ maxsbno }"/>
 			    </td>
 			</tr>
 			<tr height="50"><td><label for="empno">아이디</label></td>
-			    <td><input type="text" name="empno" id="empno" value='${ empno }' /></td>
+			    <td>${ empno }<input type="hidden" name="empno" id="empno" value='${ empno }' /></td>
 			</tr>
 			<tr><td colspan="2"><label for="bcontents">내용</label></td></tr>
 			<tr><td colspan="2" align="center">
-			    <textarea name="bcontents" id="bcontents" cols="30" rows="5"></textarea>
+			    <textarea name="bcontents" id="bcontents" cols="30" rows="5" required></textarea>
 			</td></tr>
 			<tr><td colspan="2" align="center">
 				
