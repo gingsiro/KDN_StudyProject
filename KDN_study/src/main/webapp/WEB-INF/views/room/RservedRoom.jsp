@@ -179,7 +179,7 @@ function reserveRoom(rno, time) {
 							<c:otherwise>
 								<td style="color: gray" >불가능</td>
 							</c:otherwise>
-						</c:choose>	
+						</c:choose>
 						<c:choose>
 							<c:when test="${(room.TIME09_12 == 0) && ((rsvcode == 0) ||(rsvcode == 2))}">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',2)">가능</a></td>
@@ -213,7 +213,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 							<c:choose>
-							<c:when test="${(room.TIME21_23 ==0) && ((rsvcode == 0) ||(rsvcode == 6)) }">
+							<c:when test="${(room.TIME21_23 ==0) && ((rsvcode == 0) ||(rsvcode == 6))}">
 									<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',6)">가능</a></td>
 							</c:when>
 							<c:otherwise>
