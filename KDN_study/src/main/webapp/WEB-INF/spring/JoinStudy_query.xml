@@ -9,9 +9,10 @@
 <mapper namespace="joinstudy">
 	
 	<select id="selectJoinMembers" parameterType="int" resultType="joinstudy">
-		SELECT e.empno, dept, ename, gender, admin, sno
-		FROM EMPLOYEE e, JOIN_STUDY js
-		WHERE e.EMPNO = js.EMPNO AND sno =#{sno}
+	
+		SELECT e.empno, dept, ename, gender, admin, s.SNO, sname, sinfo, smax, scurr, smaster
+		FROM EMPLOYEE e, JOIN_STUDY js, STUDY s
+		WHERE e.EMPNO = js.EMPNO AND js.sno=s.sno AND s.SNO =#{sno}
 	</select>
 	
 		

@@ -97,21 +97,21 @@ left: 150px;
 <div class="form-group">
   <!-- <label class="col-md-3 control-label" for="empno">사원번호</label> -->  
   <!-- <div class="col-md-2" > -->
-  <input id="empno" name="empno" type="text" placeholder="사원번호			ex) 170001" class="form-control input-md"  style="border: 1px solid #ff0000;">
+  <input id="empno" name="empno" type="text" placeholder="사원번호			ex) 170001" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
 <!--   </div> -->
 </div>
 
 <div class="form-group">
   <!-- <label class="col-md-3 control-label" for="dept">부서명</label>   -->
   <!-- <div class="col-md-2"> -->
-  <input id="dept" name="dept" type="text" placeholder="부서명  			ex) 인재개발팀" class="form-control input-md"  style="border: 1px solid #ff0000;">
+  <input id="dept" name="dept" type="text" placeholder="부서명  			ex) 인재개발팀" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
  <!--  </div> -->
 </div>
 
 <div class="form-group">
  <!--  <label class="col-md-3 control-label" for="ename">이  름</label> -->  
   <!-- <div class="col-md-2"> -->
-  <input id="ename" name="ename" type="text" placeholder="이름			ex) 홍길동" class="form-control input-md"  style="border: 1px solid #ff0000;">
+  <input id="ename" name="ename" type="text" placeholder="이름			ex) 홍길동" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
   <!-- </div> -->
 </div> 
 
@@ -120,7 +120,7 @@ left: 150px;
 <div class="form-group">
   <!-- <label class="col-md-3 control-label" for="password">비밀번호 </label> -->
   	<!-- <div class="col-md-2"> -->
-   		<input id="password" name="password" type="password" placeholder="비밀번호			ex) 123456" class="form-control input-md"  style="border: 1px solid #ff0000;">
+   		<input id="password" name="password" type="password" placeholder="비밀번호			ex) 123456" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
   	<!-- </div> -->
 </div>
 

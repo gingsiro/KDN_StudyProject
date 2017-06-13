@@ -35,30 +35,29 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-xs-4">
-                        <div class="top-number"><p><i class="fa fa-phone-square"></i>  +82 - 10 - 4632 - 9542</p></div>
+                        <div class="top-number"><p><i class="fa fa-phone-square"></i> 　061 - 931 - 7114</p></div>
                     </div>
                     <div class="col-sm-6 col-xs-8">
                        <div class="social">
                             <ul class="social-share">
                             	<c:choose>
 		   							<c:when test="${empty empno}">
-                               		 	<li><a href="loginForm.do"><i class="fa fa-linkedin"></i></a></li>
-                               		 	<a href="insertEmployeeForm.do">회원가입</a><br/>
+                               		 	<a href="loginForm.do" title="로그인">로그인&nbsp;<!-- <i class="fa fa-linkedin"></i> --></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                               		 	<a href="insertEmployeeForm.do" title="회원가입">회원가입&nbsp;<!-- <i class="fa fa-pencil"></i> --></a><br/> 
                                 	</c:when>
-		   						<c:otherwise>
-		   								<h2> ${employee.dept} ${employee.ename}님 환영합니다!</h2>
-		   								<li><a href="logout.do"></a>로그아웃</li>
-		     							<li><a href="employeeUpdateForm.do"></a>회원가입</li>
-		     							<li><a href="myPage.do"></a>회원정보</li>
-		   						</c:otherwise>
+		   							<c:otherwise>
+		   								<font size="2em" color="white">${dept}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="employeeUpdateForm.do" title="정보수정">${ename}</a><c:if test="${admin eq 'Y'}">(관리자)</c:if>님&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환영합니다!&nbsp;&nbsp;&nbsp;</font>
+		   								<a href="logout.do" title="로그아웃"><!-- <i class="fa fa-unlock-alt"></i> -->로그아웃</a>
+		     							<!-- <li><a href="employeeUpdateForm.do" title="정보수정"><i class="fa fa-pencil"></i></a></li> -->
+		   							</c:otherwise>
 								</c:choose>
                             </ul>
-                            <div class="search">
+                            <!-- <div class="search">
                                 <form role="form">
                                     <input type="text" class="search-form" autocomplete="off" placeholder="Search">
                                     <i class="fa fa-search"></i>
                                 </form>
-                           </div> 
+                           </div> -->
                            <nav id="menu">		
 		 						<!-- <a href="insertEmployeeForm.do">회원가입</a><br/> -->
 		 					</nav>             
@@ -77,25 +76,33 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/study"><img src="images/logo.png" alt="logo"></a>
+                    <a class="navbar-brand" href="/study"><img src="images/KDNStudy_ci(orange).png" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="/study">Home</a></li>
-                        <li><a href="studyList.do">Study</a></li>
-                        <li><a href="reservedRoomForm.do">Study Room</a></li>
-                        <li><a href="contact.do">Contact</a></li>
-                        <!-- <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
+                        <li><a href="/study">메인</a></li>
+                        <li class="dropdown">
+                            <a href="studyList.do" class="dropdown-toggle" data-toggle="dropdown">스터디 <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="shortcodes.html">Shortcodes</a></li>
+                                <li><a href="studyList.do">전체 스터디</a></li>
+                                <li><a href="studyList.do?key=empno&word=${ empno }">나의 스터디</a></li>
+                                <c:if test="${ admin == 'Y' }">
+									<li><a href="categoryList.do">카테고리 관리</a></li>
+								</c:if>
                             </ul>
-                        </li> --> 
-                        <li><a href="admin.do">Admin</a></li>
+                        </li>
+                        <li class="dropdown">
+                            <a href="studyList.do" class="dropdown-toggle" data-toggle="dropdown">스터디 룸 <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="reservedRoomForm.do">룸 예약하기</a></li>
+                                <li><a href="myRsvList.do">나의 룸예약</a></li>
+                                <c:if test="${ admin == 'Y' }">
+									<li><a href="roomList.do">룸 관리</a></li>
+								</c:if>
+                            </ul>
+                        </li>
+                        <li><a href="contact.do">About Us</a></li>
                         <!-- <li><a href="contact-us.html">Contact</a></li>  -->                       
                     </ul>
                 </div>
@@ -204,7 +211,7 @@
                         <div class="feature-wrap">
                             <i class="fa fa-user"></i>
                             <h2>자기 계발</h2>
-                            <h3>자신의 능력 계발을 위해 다양한 스터디 활동을 지원합니다.</h3>
+                            <h3>자기 능력 계발을 위해 다양한 스터디 활동을 지원합니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
  
@@ -212,7 +219,7 @@
                         <div class="feature-wrap">
                             <i class="fa fa-comments"></i>
                             <h2>스터디 게시판</h2>
-                            <h3>스터디별로 개인적인 게시판 공간을 제공합니다.</h3>
+                            <h3>스터디별로 개인적인 게시판<br/>공간을 제공합니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
  
@@ -220,7 +227,7 @@
                         <div class="feature-wrap">
                             <i class="fa fa-calendar"></i>
                             <h2>스터디 일정관리</h2>
-                            <h3>스터디별로 달력형태의 일정 관리를 제공합니다.</h3>
+                            <h3>스터디별로 달력형태의<br/>일정 관리를 제공합니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
                 
@@ -236,7 +243,7 @@
                         <div class="feature-wrap">
                             <i class="fa fa-key"></i>
                             <h2>편리한 접근과 사용</h2>
-                            <h3>사원번호를 통해 간편하게 가입하여 이용하실 수 있습니다.</h3>
+                            <h3>사원번호를 통해 간편하게<br/>이용하실 수 있습니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
  
@@ -244,7 +251,7 @@
                         <div class="feature-wrap">
                             <i class="fa fa-cogs"></i>
                             <h2>관리에 용이</h2>
-                            <h3>관리자 입장에서도 편리하게 시스템을 관리하실 수 있습니다.</h3>
+                            <h3>관리자 입장에서도 편리하게<br/>시스템을 관리할 수 있습니다.</h3>
                         </div>
                     </div><!--/.col-md-4-->
                 </div><!--/.services-->
@@ -375,101 +382,101 @@
         
 
             <ul class="portfolio-filter text-center">
-                <li><a class="btn btn-default active" href="#" data-filter="*">모든 사진</a></li>
-                <li><a class="btn btn-default" href="#" data-filter=".bootstrap">남궁현</a></li>
-                <li><a class="btn btn-default" href="#" data-filter=".html">정해성</a></li>
-                <li><a class="btn btn-default" href="#" data-filter=".apps">강추영</a></li>             
-                <li><a class="btn btn-default" href="#" data-filter=".wordpress">안재성</a></li>
+                <li><a class="btn btn-default active" href="#" data-filter="*">모든사진</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".hyun">남궁현</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".hae">정해성</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".choo">강추영</a></li>             
+                <li><a class="btn btn-default" href="#" data-filter=".jae">안재성</a></li>
             </ul><!--/#portfolio-filter-->
 
             <div class="row">
                 <div class="portfolio-items">
-                    <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-3">
+                    <div class="portfolio-item hyun col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/recent/item1.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/recent/item11.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <h3><a href="#">Business theme</a></h3>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                    <a class="preview" href="images/portfolio/full/item1.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                    <h3><a href="#">애증의 노트북</a></h3>
+                                    <p>이번 프로젝트 시작과 동시에 뻗어버리신 노트북입니다. ㅠㅠ 슬프네요.</p>
+                                    <a class="preview" href="images/portfolio/full/item11.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>
                         </div>
                     </div><!--/.portfolio-item-->
 
-                    <div class="portfolio-item joomla bootstrap col-xs-12 col-sm-4 col-md-3">
+                    <div class="portfolio-item choo col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/recent/item2.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/recent/frustrate_choo.jpg" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <h3><a href="#">Business theme</a></h3>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                    <a class="preview" href="images/portfolio/full/item2.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                    <h3><a href="#">좌절중인 추영이</a></h3>
+                                    <p>DB가 어려워서 일도 많아서 스트레스 많이 받았던 추영이 ㅋㅋ </p>
+                                    <a class="preview" href="images/portfolio/full/frustrate_choo.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>
                         </div>          
                     </div><!--/.portfolio-item-->
 
-                    <div class="portfolio-item bootstrap wordpress col-xs-12 col-sm-4 col-md-3">
+                    <div class="portfolio-item hae col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/recent/item3.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/recent/frustrate_haesung.jpg" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <h3><a href="#">Business theme</a></h3>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                    <a class="preview" href="images/portfolio/full/item3.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                    <h3><a href="#">열정적인 해성이</a></h3>
+                                    <p>무슨 일이든 적극적이고 책임감있게 마무리 잘 해내죠. 멋진 해성이 ㅋ</p>
+                                    <a class="preview" href="images/portfolio/full/frustrate_haesung.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>
                         </div>        
                     </div><!--/.portfolio-item-->
 
-                    <div class="portfolio-item joomla wordpress apps col-xs-12 col-sm-4 col-md-3">
+                    <div class="portfolio-item jae col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/recent/item4.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/recent/frustrate_jaesung.jpg" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <h3><a href="#">Business theme</a></h3>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                    <a class="preview" href="images/portfolio/full/item4.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                    <h3><a href="#">노력하는 재성이</a></h3>
+                                    <p>교육 초반부터 힘들어했는데 잘 따라와 프로젝트 까지 같이 하게된 재성이</p>
+                                    <a class="preview" href="images/portfolio/full/frustrate_jaesung.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>
                         </div>           
                     </div><!--/.portfolio-item-->
           
-                    <div class="portfolio-item joomla html bootstrap col-xs-12 col-sm-4 col-md-3">
+                    <div class="portfolio-item hyun col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/recent/item5.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/recent/frustrate_hyun.jpg" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <h3><a href="#">Business theme</a></h3>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                    <a class="preview" href="images/portfolio/full/item5.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                    <h3><a href="#">좌절하는 현이</a></h3>
+                                    <p>404...... 진짜 ㅋㅋㅋ 웹은 너무 어렵고 화가나는것 같습니다.</p>
+                                    <a class="preview" href="images/portfolio/full/frustrate_hyun.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>
                         </div>      
                     </div><!--/.portfolio-item-->
 
-                    <div class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3">
+                    <div class="portfolio-item hae col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/recent/item6.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/recent/ghost_haesung.jpg" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <h3><a href="#">Business theme</a></h3>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                    <a class="preview" href="images/portfolio/full/item6.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                    <h3><a href="#">제보받은 해성이</a></h3>
+                                    <p>ㅋㅋㅋㅋㅋㅋㅋ 순간포착 <br/>feat.수창</p>
+                                    <a class="preview" href="images/portfolio/full/ghost_haesung.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>
                         </div>         
                     </div><!--/.portfolio-item-->
 
-                    <div class="portfolio-item wordpress html col-xs-12 col-sm-4 col-md-3">
+                    <div class="portfolio-item hyun col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/recent/item7.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/recent/sleep_hyun.jpg" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <h3><a href="#">Business theme</a></h3>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority</p>
-                                    <a class="preview" href="images/portfolio/full/item7.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                    <h3><a href="#">자고있는 현이</a></h3>
+                                    <p>잠에 빠져들었습니다. 이날 힘들었죠.. 사실 매일이 .. ㅋㅋㅋ </p>
+                                    <a class="preview" href="images/portfolio/full/sleep_hyun.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>
                         </div>          
@@ -520,7 +527,7 @@
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Network</h3>
-                            <p>시스템 구조에서 네트워크가 미치는 영향에 대해 이해합니다.</p>
+                            <p>시스템 구조에서 <br/>네트워크가 미치는 <br/>영향을 이해합니다.</p>
                         </div>
                     </div>
                 </div>
@@ -532,7 +539,7 @@
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Oracle</h3>
-                            <p>데이터베이스 구조를 이해하고 각종 쿼리를 작성하였습니다.</p>
+                            <p>데이터베이스 구조를<br/>이해하고 각종 쿼리를 <br/>작성하였습니다.</p>
                         </div>
                     </div>
                 </div>  
@@ -544,7 +551,7 @@
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Java</h3>
-                            <p>객체지향 프로그래밍 언어인 자바 기반 지식을 활용하여 프로그래밍을 했습니다.</p>
+                            <p>객체지향 프로그래밍 언어<br/>자바 기반 지식을 활용하여<br/>프로그래밍을 했습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -556,7 +563,7 @@
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Spring</h3>
-                            <p>스프링 프레임워크를 습득하여 웹 개발에 필요한 기술을 활용하였습니다.</p>
+                            <p>스프링 프레임워크를 사용,<br/>웹 개발에 필요한 기술을<br/>활용하였습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -568,7 +575,7 @@
                         </div>
                         <div class="media-body">
                             <h3 class="media-heading">Spring Tools Suite</h3>
-                            <p>스프링의 각종 툴이 모여있는 스프링 전용 개발툴을 활용하였습니다.</p>
+                            <p>스프링의 각종툴이 모인<br/>스프링 전용 개발툴을<br/>활용하였습니다.</p>
                         </div>
                     </div>
                 </div>                                                
@@ -757,7 +764,7 @@
                                             </div>
                                             <div class="media-body">
                                                  <h2>일정관리를 제작</h2>
-                                                 <p>스터디원들이 한눈에 볼 수 있도록 달력 형태로 일정을 등록하여 직관적으로 구성했습니다. 이를 통해 사용자들이 쉽게 스터디 일정을 관리할 수 있겠죠?</p>
+                                                 <p>스터디원들이 한눈에 볼 수 있도록 <br/>달력 형태로 일정을 등록하여 직관적으로<br/>구성했습니다. <br/>이를 통해 사용자들이 쉽게 <br/>스터디 일정을 관리할 수 있겠죠?</p>
                                             </div>
                                         </div>
                                     </div>
@@ -769,7 +776,7 @@
                                             </div>
                                             <div class="media-body">
                                                  <h2>스터디 제작</h2>
-                                                 <p>사용자들이 들어와 새로운 스터디에 가입해보고, 자신의 스터디에 들어가 활동할 수 있도록 보기 편한 디자인을 채택하여 개발을 진행했습니다.</p>
+                                                 <p>사용자들이 들어와 새로운 스터디에 가입하고<br/>자신의 스터디에 들어가 활동할 수 있도록<br/>보기 편한 디자인을 채택하여<br/>개발을 진행했습니다.</p>
                                             </div>
                                         </div>
                                      </div>
@@ -781,7 +788,7 @@
                                             </div>
                                             <div class="media-body">
                                                 <h2>로그인, 카테고리, 게시판 제작</h2>
-                                                <p>우리 시스템에 접근하기 위해서는 제가 만든 로그인창을 통하지 않고선 불가능하죠. 스터디에 사용될 카테고리와 게시판도 제작하여 프로젝트에 붙였습니다!</p> 
+                                                <p>우리 시스템에 접근하기 위해서는<br/>제 로그인창을 통하지 않고선 불가능하죠.<br/>스터디에 사용될 카테고리와 게시판도<br/>제작하여 프로젝트에 붙였습니다!</p> 
                                             </div>
                                         </div>
                                      </div>
@@ -793,7 +800,7 @@
                                             </div>
                                             <div class="media-body">
                                             	<h2>스터디룸 예약 제작</h2>
-                                                <p>나날이 변경되는 스터디룸 예약의 가능, 불가능 여부를 표시하기 위해 테이블 형태를 활용했어요 ! 덕분에 보기 이쁘고 사용하기 편하지 뭐에요 ? 하하하하하하</p>
+                                                <p>나날이 변경되는 스터디룸 예약의<br/>가능, 불가능 여부를 표시하기 위해<br/>테이블 형태를 활용했어요 !<br/>덕분에 이쁘고 사용하기 편하지 뭐에요 ?<br/>하하하하하하</p>
                                                 
                                             </div>
                                         </div>
@@ -807,7 +814,7 @@
                                             </div>
                                             <div class="media-body">
                                                  <h2>다같이 Git을 활용했죠 !</h2>
-                                                 <p>Git 이 없었다면 몇시간씩 데이터 취합하느라 시간을 보냈을 것 같습니다. 각자 기능을 개발한뒤 취합하고 기능을 붙여보는데 아 이래서 객체지향 객체지향 하는구나라고 느꼈습니다. </p>
+                                                 <p>Git 이 없었다면 몇시간씩 데이터 취합하느라<br/>시간을 보냈을 것 같습니다.<br/>각자 기능을 개발한뒤 취합하고<br/>기능을 붙여보는데<br/>아 이래서 객체지향 객체지향 하는구나라고 느꼈습니다. </p>
                                             </div>
                                         </div>
                                      </div>
@@ -826,17 +833,17 @@
                             </div>
                             <div class="media-body">
                                 <p>달력이 스터디의 시작과 끝<br/>스터디에 감성이 더해지면?<br/>최고의 결과물 ! ㅋㅋ</p>
-                                <span><strong>-hsgoon/</strong> 감성담당 of KDN_Study</span>
+                                <span><strong>-hsgoon/</strong> 감성담당<br/>of KDN_Study</span>
                             </div>
                          </div>
  
                          <div class="media testimonial-inner">
                             <div class="pull-left">
                                 <img class="img-responsive img-circle" src="images/face/nkh.jpg">
-                            </div>
+                            </div> 
                             <div class="media-body">
                                 <p>프로젝트중 맥북이 사망했다.<br/>7년간 고생했어 <br/>나는 새 맥북으로 갈아탈게</p>
-                                <span><strong>-gingsiro/</strong> 징징담당 of KDN_Study</span>
+                                <span><strong>-gingsiro/</strong> 징징담당<br/>of KDN_Study</span>
                             </div>
                          </div>
                          
@@ -846,7 +853,7 @@
                             </div>
                             <div class="media-body">
                                 <p>자신을 되돌아보게 되었다.<br/>고생했다.</p>
-                                <span><strong>-ulalla/</strong> 로그인담당 of KDN_Study</span>
+                                <span><strong>-ulalla/</strong> 로그인담당<br/>of KDN_Study</span>
                             </div>
                          </div>
                          
@@ -856,7 +863,7 @@
                             </div>
                             <div class="media-body">
                                 <p>프로젝트 다 끝난거<br/> 실화냐?</p>
-                                <span><strong>-choo/</strong> 실화담당 of KDN_Study</span>
+                                <span><strong>-choo/</strong> 실화담당<br/>of KDN_Study</span>
                             </div>
                          </div>
                     </div>
@@ -868,17 +875,18 @@
     <section id="partner">
         <div class="container"> 
             <div class="center wow fadeInDown">
-                <h2>우리 프로젝트 팀 동료들</h2>
+                <h2>우리 동료들</h2>
                 <p class="lead">인턴 사원으로 시작하여 3달간 어렵게 달려왔습니다. 매일 시험에 퀴즈에 과제에 시달리느라 새벽까지도 고생했습니다.<br/>앞으로 더 나은 하루하루가 계속될 것입니다.</p>
             </div>    
  
             <div class="partners">
                 <ul>	
-                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/partners/partner1.png"></a></li>
-                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="images/partners/partner2.png"></a></li>
-                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="images/partners/partner3.png"></a></li>
-                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" src="images/partners/partner4.png"></a></li>
-                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1500ms" src="images/partners/partner5.png"></a></li>
+                    <li style="width:380px; text-align:center"> <a href="#"><img style="display:inline-block" class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/partners/kdn_certificate.png"></a></li>
+                    <li style="width:380px; text-align:center"> <a href="#"><img style="display:inline-block" class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="images/partners/kdn_food.png"></a></li>
+                    <li style="width:380px; text-align:center"> <a href="#"><img style="display:inline-block" class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="images/partners/kdn_intern.png"></a></li>
+                    <li style="width:380px; text-align:center"> <a href="#"><img style="display:inline-block" class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" src="images/partners/kdn_kids.png"></a></li>
+                    <li style="width:380px; text-align:center"> <a href="#"><img style="display:inline-block" class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1500ms" src="images/partners/kdn_rental.png"></a></li>
+                    <li style="width:380px; text-align:center"> <a href="#"><img style="display:inline-block" class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1800ms" src="images/partners/kdn_joonggo.png"></a></li>
                 </ul>
             </div>        
         </div><!--/.container-->
@@ -978,8 +986,8 @@
                 <div class="col-sm-6">
                     <ul class="pull-right">
                         <li><a href="#">Home</a></li>
-                         <li><a href="calendar.do">칼칼하다칼칼칼</a></li>
-                        <li><a href="listSchedule.do">여기는 스케줄</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Faq</a></li>
                         <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
