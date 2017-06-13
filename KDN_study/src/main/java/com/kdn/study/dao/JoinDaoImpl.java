@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.kdn.study.domain.JoinStudy;
 import com.kdn.study.domain.PageBean;
 import com.kdn.study.domain.Schedule;
+import com.kdn.study.domain.Study;
 
 @Repository("joinDao")
 public class JoinDaoImpl implements JoinDao {
@@ -20,6 +21,11 @@ public class JoinDaoImpl implements JoinDao {
 	@Override
 	public List<JoinStudy> searchJoinMembers(int sno) {
 		return session.selectList("joinstudy.selectJoinMembers", sno);
+	}
+
+	@Override
+	public void deleteMember(int jno) {
+		session.delete("joinstudy.deleteMember", jno);
 	}
 
 }

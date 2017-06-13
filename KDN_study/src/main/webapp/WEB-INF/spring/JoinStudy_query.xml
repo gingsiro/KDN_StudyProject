@@ -9,12 +9,21 @@
 <mapper namespace="joinstudy">
 	
 	<select id="selectJoinMembers" parameterType="int" resultType="joinstudy">
-	
-		SELECT e.empno, dept, ename, gender, admin, s.SNO, sname, sinfo, smax, scurr, smaster
+		SELECT e.empno empno, dept, ename, gender, admin, s.SNO sno, jno, sname, sinfo, smax, scurr, smaster
 		FROM EMPLOYEE e, JOIN_STUDY js, STUDY s
 		WHERE e.EMPNO = js.EMPNO AND js.sno=s.sno AND s.SNO =#{sno}
+		order by ename
 	</select>
 	
-		
+	<delete id="deleteMember" parameterType="int">
+		delete from join_study
+		where jno =#{jno}
+	</delete>
+	
+	
+	<update id="updateMember" parameterType="JoinStudy">
+		update join_study set curr=#{curr:INTEGER}
+		where sno = #{sno:INTEGER}
+	</update>
 	
 </mapper>
