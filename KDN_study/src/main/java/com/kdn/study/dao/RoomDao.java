@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.kdn.study.domain.Room;
+import com.kdn.study.domain.RsvCode;
 import com.kdn.study.domain.RsvRoom;
 
 public interface RoomDao {
@@ -19,6 +20,7 @@ public interface RoomDao {
 	public void insertRoom(Room room);
 	public void updateRoom(Room room);
 	public void deleteRoom(int rno);
+	public List<RsvCode> timeCodeSearch();
 	
 	
 }

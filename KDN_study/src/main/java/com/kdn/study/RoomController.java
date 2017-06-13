@@ -1,7 +1,11 @@
 package com.kdn.study;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.study.domain.Room;
+import com.kdn.study.domain.RsvCode;
 import com.kdn.study.domain.RsvRoom;
 import com.kdn.study.domain.Study;
 import com.kdn.study.service.RoomService;
@@ -59,24 +64,47 @@ public class RoomController {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "RservedRoom.jsp");
 
-		if (roomResvDate != null) {
+		
+		//오늘날짜관련
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
+		Date currentTime = new Date();
+		String today = mSimpleDateFormat.format(currentTime);
+		//System.out.println(today);
 
+		
+		if (roomResvDate != null) {
+			int rsvcode = 0;
+			
+			int compare  = today.compareTo(roomResvDate);
+			if(compare == 0) { //오늘
+				Calendar cal  = Calendar.getInstance();
+				int hour = cal.get(cal.HOUR_OF_DAY);
+				List<RsvCode> timeCode = roomService.timeCodeSearch();
+				
+				for(int i=0; i < timeCode.size(); i++) {
+					if( hour >= timeCode.get(i).getStarttime() && hour < timeCode.get(i).getEndtime() ) {
+						rsvcode = (timeCode.get(i).getRsvcode()) +1;
+						break;
+					}
+				}
+				
+				System.out.println(rsvcode +"/"+ hour);
+			} else if(compare == 1) { //오늘 이전날짜 전부
+				rsvcode=7;
+			} 
+
+			model.addAttribute("rsvcode", rsvcode);
+		
 			List<HashMap<String, Integer>> dayRsvlist = roomService
 					.searchDayRsv(roomResvDate);
 			model.addAttribute("dayRsvlist", dayRsvlist);
 
-			// System.out.println(dayRsvlist.get(0));
-
 			int empno = (Integer) session.getAttribute("empno");
-			// System.out.println(empno + ">>>>>controller");
 
 			List<Study> myStudyList = studyService.searchMyStudy(empno);
 			model.addAttribute("myStudyList", myStudyList);
 
 		}
-		List<Room> roomList = roomService.searchAll();
-		System.out.println(roomList);
-		model.addAttribute("roomList", roomList);
 
 		return "index";
 	}

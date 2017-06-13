@@ -35,6 +35,7 @@
 			<input type="hidden" id="pageNo" name="pageNo" value="1" />`
 		 	<input type="hidden" id="sno" name="sno" value='${sno}' />
 		 	<input type="hidden" id="bno" name="bno" value='${sno}' />
+		 	<input type="hidden" id="ename" name="ename" value='${ename}' />
 		 	<input type="hidden" id="no" name="no"  />
 		<table class="table">
 			<thead>
@@ -50,7 +51,7 @@
 					<tr>
 						<th scope="row">${board.sbno}</th>
 						<td><a href="#" onclick="getBoard(${board.bno})">${board.btitle}</a></td>
-						<td>${board.empno}</td>
+						<td>${board.ename}</td>
 						<td>${board.regdate}</td>
 					</tr>
 				</c:forEach>
