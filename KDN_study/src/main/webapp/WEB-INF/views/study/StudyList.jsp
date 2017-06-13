@@ -17,45 +17,36 @@
 	function insertForm() {
 		$('#modal-title').html("스터디 생성");
 		$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>생성");
-		$('#sname').val("");
 		$('#sno').val(0);
 		$('#scurr').val(1);
+		$('#sname').val("");
+		$('#sinfo').val("");
 		$("#cuStudy").attr("action", "createStudy.do");
 		$('#cno').val(1).attr("selected", "selected");
 		$('#smax').val(2).attr("selected", "selected");
 		$('#modalForm').modal();
 	}
 	
-	function updateForm(sno, sname, cno, smax, smaster, scurr) {
-		if( <%=request.getSession().getAttribute("empno")%>== smaster){
-			$('#modal-title').html("스터디 수정");
-			$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>수정");
-			$('#sno').val(sno);
-			$('#sname').val(sname);
-			$("#cuStudy").attr("action", "updateStudy.do");
-			$('#cno').val(cno).attr("selected", "selected");
-			$('#smax').val(smax).attr("selected", "selected");
-			$('#scurr').val(scurr).val(scurr);
-			
-			
-			$('#modalForm').modal();
-		} else {
-			alert('스터디장이 아니면 수정할 수 없습니다.');
-		}
+	function updateForm(sno, sname, cno, smax, smaster, scurr, sinfo) {
+		$('#modal-title').html("스터디 수정");
+		$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>수정");
+		$('#sno').val(sno);
+		$('#sname').val(sname);
+		$('#sinfo').val(sinfo);
+		$("#cuStudy").attr("action", "updateStudy.do");
+		$('#cno').val(cno).attr("selected", "selected");
+		$('#smax').val(smax).attr("selected", "selected");
+		$('#scurr').val(scurr).val(scurr);
+		$('#modalForm').modal();
 	}
 	
 	function deleteStudy(sno, smaster) {
-		if( <%=request.getSession().getAttribute("empno")%>== smaster){
-			$('#rdsno').val(sno);			
-			$('#checkContentTitle').html('스터디 삭제');
-			$('#checkContent').html('정말 삭제하시겠습니까?');
-			$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 삭제');
-			$("#rdStudy").attr("action", "deleteStudy.do");
-			
-			$('#checkForm').modal();
-		} else {
-			alert('스터디장이 아니면 삭제할 수 없습니다.');
-		}
+		$('#rdsno').val(sno);			
+		$('#checkContentTitle').html('스터디 삭제');
+		$('#checkContent').html('정말 삭제하시겠습니까?');
+		$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 삭제');
+		$("#rdStudy").attr("action", "deleteStudy.do");
+		$('#checkForm').modal();
 	}
 	
 	function joinStudy(sno){
@@ -64,11 +55,9 @@
 		$('#checkContent').html('정말 가입하시겠습니까?');
 		$('#checkButtonName').html('<span class="glyphicon glyphicon-ok"></span> 가입');
 		$("#rdStudy").attr("action", "joinStudy.do");
-		
 		$('#checkForm').modal();
 	}
 </script>
-
 
 </head>
 <body>
@@ -89,7 +78,7 @@
 					<form id="cuStudy" name="cuStudy" role="form" method="POST" action="createStudy.do">
 						<div class="form-group" >
 							<label for="inputStudyName">스터디 이름</label> 
-							<input type="text" class="form-control" id="sname" name="sname" placeholder="Study Name" value="" required>
+							<input type="text" class="form-control" id="sname" name="sname" placeholder="스터디 이름을 작성해주세요." value="" required>
 						</div>
 						<div class="form-group">
 							<label for="inputCategory">카테고리</label> 
@@ -109,6 +98,10 @@
 							<input type="hidden" id="smaster" name="smaster" value="${ empno }" />
 							<input type="hidden" id="sno" name="sno" value="${ sno }" />
 							<input type="hidden" id="scurr" name="scurr" value="${ scurr }" />
+						</div>
+						<div class="form-group" >
+							<label for="inputStudyName">스터디 설명</label> 
+							<input type="text" class="form-control" id="sinfo" name="sinfo" placeholder="스터디 설명을 작성해주세요." value="" required>
 						</div>
 						<div style="text-align:right">
 							<button id="submitButtonName" name="submitButtonName" type="submit" class="btn btn-default btn-success">
@@ -186,14 +179,14 @@
 		<tbody>
 			<c:forEach var="study" items="${ list }">
 				<tr>
-						<c:set var="index" value="0"/> 
-						<c:forEach var="myStudy" items="${ myStudyList }">
-							<c:if test="${index eq '0'}"> 
-								<c:if test="${ study.sno == myStudy.sno }"> 
-									<c:set var="index" value="1"/> 
-								</c:if>
+					<c:set var="index" value="0"/> 
+					<c:forEach var="myStudy" items="${ myStudyList }">
+						<c:if test="${index eq '0'}"> 
+							<c:if test="${ study.sno == myStudy.sno }"> 
+								<c:set var="index" value="1"/> 
 							</c:if>
-						</c:forEach>
+						</c:if>
+					</c:forEach>
 					<th scope="row">${ study.cname }</th>
 					<td>
 						<c:if test="${ index eq '1' }">
@@ -202,10 +195,13 @@
 						<c:if test="${ index eq '0' }">
 							${ study.sname }
 						</c:if>
+						<br/>
+						<c:if test="${ study.sinfo!=null }">
+							<font size="2em" color="gray">─${ study.sinfo }</font>
+						</c:if>
 					</td>
 					<td style="text-align:center">${ study.scurr }</td>
 					<td style="text-align:center">${ study.smax }</td>
-					
 					<td>
 						<c:if test="${ index eq '0' }">
 							<a class="teal-text" data-keyboard="true" onClick="joinStudy('${ study.sno }')"><i class="fa fa-plus"></i>가입</a>
@@ -213,12 +209,16 @@
 					</td>
 					<td>
 						<c:if test="${ empno == study.smaster }">
-							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }')"><i class="fa fa-pencil"></i>수정</a>
+							<a class="teal-text" data-keyboard="true" onClick="updateForm('${ study.sno }', '${ study.sname }', '${ study.cno }', '${ study.smax }', '${ study.smaster }', '${ study.scurr }', '${ study.sinfo }')">
+								<i class="fa fa-pencil"></i>수정
+							</a>
 						</c:if>
 					</td>
 					<td>
 						<c:if test="${ empno == study.smaster }">
-							<a class="red-text"onClick="deleteStudy('${ study.sno }', '${ study.smaster }')"><i class="fa fa-times"></i>삭제</a>
+							<a class="red-text"onClick="deleteStudy('${ study.sno }', '${ study.smaster }')">
+								<i class="fa fa-times"></i>삭제
+							</a>
 						</c:if>
 					</td>
 				</tr>

@@ -48,7 +48,7 @@
 		   						<c:otherwise>
 		   								<h2> ${employee.dept} ${employee.ename}님 환영합니다!</h2>
 		   								<li><a href="logout.do"></a>로그아웃</li>
-		     							<li><a href="employeeUpdateForm.do"></a>회원가입</li>
+		     							<li><a href="employeeUpdateForm.do"></a>회원정보 및 수정</li>
 		     							<li><a href="myPage.do"></a>회원정보</li>
 		   						</c:otherwise>
 								</c:choose>
@@ -82,20 +82,25 @@
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li><a href="/study">Home</a></li>
-                        <li><a href="studyList.do">Study</a></li>
-                        <li><a href="reservedRoomForm.do">Study Room</a></li>
-                        <li><a href="contact.do">Contact</a></li>
-                        <!-- <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
+                        <li><a href="/study">메인</a></li>
+                        <li class="dropdown">
+                            <a href="studyList.do" class="dropdown-toggle" data-toggle="dropdown">스터디 <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="shortcodes.html">Shortcodes</a></li>
+                                <li><a href="studyList.do">전체 스터디</a></li>
+                                <li><a href="studyList.do?key=empno&word=${ empno }">나의 스터디</a></li>
+                                <c:if test="${ admin == 'Y' }">
+									<li><a href="categoryList.do">카테고리 관리</a></li>
+								</c:if>
                             </ul>
-                        </li> --> 
-                        <li><a href="admin.do">Admin</a></li>
+                        </li>
+                        <li class="dropdown">
+                            <a href="studyList.do" class="dropdown-toggle" data-toggle="dropdown">스터디 룸 <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="reservedRoomForm.do">룸 예약하기</a></li>
+                                <li><a href="myRsvList.do">나의 룸예약</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.do">About Us</a></li>
                         <!-- <li><a href="contact-us.html">Contact</a></li>  -->                       
                     </ul>
                 </div>
