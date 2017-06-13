@@ -10,5 +10,8 @@ public interface BoardDao {
 	public List<Board> boardSearchAll(PageBean bean);
 	public Board search(int bno);
 	public void update(Board board);
+	public void delete(int bno);
+	public int maxSbnoSearch(int sno);
+	public void insert(Board board);
 	
 }

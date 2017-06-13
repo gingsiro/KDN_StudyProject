@@ -16,7 +16,7 @@ import com.kdn.study.service.BoardService;
 
 @Controller
 public class BoardController {
-	
+
 	@Autowired
 	private BoardService boardService;
 
@@ -28,51 +28,88 @@ public class BoardController {
 
 		return model;
 	}
-		
+
 	@RequestMapping(value = "boardList.do", method = RequestMethod.GET)
-	public String boardList(Model model, String sno, PageBean bean) {
+	public String boardList(Model model, String sno, PageBean bean) { // url전달정보
+																		// string,,
+
 		model.addAttribute("content", "schedule/scheduleHome.jsp");
 		model.addAttribute("listform", "../board/BoardList.jsp");
-		
-		/*int studyNo = Integer.parseInt(sno);
-		bean.setSno(studyNo);*/
-		
+
 		bean.setSno(sno);
-		model.addAttribute("sno", sno);
-		
+		model.addAttribute("sno", Integer.parseInt(sno));
+
 		List<Board> boardList = boardService.boardSearchAll(bean);
-		System.out.println(boardList);
-		
+
 		model.addAttribute("boardList", boardList);
 
-		
 		return "index";
 
 	}
-	
-	@RequestMapping(value="searchBoard.do", method=RequestMethod.GET)
+
+	@RequestMapping(value = "searchBoard.do", method = RequestMethod.GET)
 	public String searchBoard(int no, Model model, int sno) {
-			model.addAttribute("board", boardService.search(no));
-			
-			model.addAttribute("sno", sno);
-			model.addAttribute("content", "schedule/scheduleHome.jsp");
-			model.addAttribute("listform", "../board/SearchBoard.jsp");
-			
-		return "index";
-		
-	}
-	@RequestMapping(value="updateBoard.do", method=RequestMethod.GET)
-	public String updateBoard(Model model, Board board) {
-		boardService.update(board);
-		
-		//upeate진행중....
-		/*model.addAttribute("board", boardService.search(no));
-		
+		model.addAttribute("board", boardService.search(no));
+
+		model.addAttribute("sno", sno);
 		model.addAttribute("content", "schedule/scheduleHome.jsp");
 		model.addAttribute("listform", "../board/SearchBoard.jsp");
-		*/
+
 		return "index";
-		
+
 	}
-	
+
+	@RequestMapping(value = "updateBoard.do", method = RequestMethod.GET)
+	public String updateBoard(Model model, Board board, int sno) {
+		System.out.println(board + "controller");
+		boardService.update(board);
+
+		model.addAttribute("sno", sno);
+		model.addAttribute("content", "schedule/scheduleHome.jsp");
+		model.addAttribute("listform", "../board/SearchBoard.jsp");
+		return "index";
+
+	}
+
+	@RequestMapping(value = "deleteBoard.do", method = RequestMethod.GET)
+	public String deleteBoard(Model model, Board board, int sno, int bno) {
+
+		boardService.delete(bno);
+
+		model.addAttribute("sno", Integer.toString(sno));
+/*		model.addAttribute("content", "schedule/scheduleHome.jsp");
+		model.addAttribute("listform", "../board/BoardList.jsp");*/
+
+		return "redirect:boardList.do";
+
+	}
+
+	@RequestMapping(value = "insertBoardForm.do", method = RequestMethod.GET)
+	public String insertBoardForm(Model model, String sno) {
+
+		int studyNo = Integer.parseInt(sno);
+
+		int maxsbno = boardService.maxSbnoSearch(studyNo);
+
+		model.addAttribute("sno", sno);
+		model.addAttribute("maxsbno", ++maxsbno);
+		model.addAttribute("content", "schedule/scheduleHome.jsp");
+		model.addAttribute("listform", "../board/InsertBoard.jsp");
+
+		return "index";
+
+	}
+
+	@RequestMapping(value = "insertBoard.do", method = RequestMethod.POST)
+	public String insertBoard(Model model, Board board, String sno) {
+
+		System.out.println("insertBoard" + board);
+
+		boardService.insert(board);
+		model.addAttribute("sno", sno);
+
+		return "redirect:boardList.do";
+
+	}
+
 }
