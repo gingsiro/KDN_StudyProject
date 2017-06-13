@@ -70,38 +70,40 @@ public class RoomController {
 		Date currentTime = new Date();
 		String today = mSimpleDateFormat.format(currentTime);
 		//System.out.println(today);
-		
+
 		
 		if (roomResvDate != null) {
-			if(roomResvDate.equals(today)) {
+			int rsvcode = 0;
+			
+			int compare  = today.compareTo(roomResvDate);
+			if(compare == 0) { //오늘
 				Calendar cal  = Calendar.getInstance();
-				int hour = cal.get(cal.HOUR_OF_DAY);
-				//model.addAttribute("hour", hour);		
+				int hour = 20;//cal.get(cal.HOUR_OF_DAY);
 				List<RsvCode> timeCode = roomService.timeCodeSearch();
 				
-				System.out.println("time>>>>>>>>"+hour);
-				System.out.println("timeCode>>>>>>>>"+timeCode);
-				
-			}
+				for(int i=0; i < timeCode.size(); i++) {
+					if( hour >= timeCode.get(i).getStarttime() && hour < timeCode.get(i).getEndtime()) {
+						rsvcode = (timeCode.get(i).getRsvcode()) +1;
+						break;
+					}
+				}
+				System.out.println(rsvcode +"/"+ hour);
+			} else if(compare == 1) { //오늘 이전날짜 전부
+				rsvcode=7;
+			} 
 
+			model.addAttribute("rsvcode", rsvcode);
+		
 			List<HashMap<String, Integer>> dayRsvlist = roomService
 					.searchDayRsv(roomResvDate);
 			model.addAttribute("dayRsvlist", dayRsvlist);
 
-			// System.out.println(dayRsvlist.get(0));
-
 			int empno = (Integer) session.getAttribute("empno");
-			// System.out.println(empno + ">>>>>controller");
 
 			List<Study> myStudyList = studyService.searchMyStudy(empno);
 			model.addAttribute("myStudyList", myStudyList);
 
 		}
-
-		List<Room> roomList = roomService.searchAll();
-		System.out.println(roomList);
-		model.addAttribute("roomList", roomList);
-
 
 		return "index";
 	}

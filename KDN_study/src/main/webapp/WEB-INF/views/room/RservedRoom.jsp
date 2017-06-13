@@ -173,15 +173,15 @@ function reserveRoom(rno, time) {
 					<tr>
 						<th scope="row">${room.RNO}호 [ ${room.RNAME} / ${room.RMAX} ]</th>
 						<c:choose>
-							<c:when test="${room.TIME07_09 == 0 }">
+							<c:when test="${(room.TIME07_09 == 0) && ((rsvcode == 0) ||(rsvcode == 1))} ">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',1)">가능</a></td>
 							</c:when>
 							<c:otherwise>
-								<td style="color: gray">불가능</td>
+								<td style="color: gray" >불가능</td>
 							</c:otherwise>
 						</c:choose>	
 						<c:choose>
-							<c:when test="${room.TIME09_12 == 0 }">
+							<c:when test="${(room.TIME09_12 == 0) && ((rsvcode == 0) ||(rsvcode == 2))}">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',2)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -189,7 +189,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
-							<c:when test="${room.TIME13_15 == 0}">
+							<c:when test="${(room.TIME13_15 == 0) && ((rsvcode == 0) ||(rsvcode == 3))}">
 									<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',3)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -197,7 +197,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
-							<c:when test="${room.TIME15_18 == 0}">
+							<c:when test="${(room.TIME15_18 == 0) && ((rsvcode == 0) ||(rsvcode == 4))}">
 									<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',4)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -205,7 +205,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 							<c:choose>
-							<c:when test="${room.TIME19_21 == 0}">
+							<c:when test="${ (room.TIME19_21 == 0) && ((rsvcode == 0) ||(rsvcode == 5))}">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',5)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -213,7 +213,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 							<c:choose>
-							<c:when test="${room.TIME21_23 ==0}">
+							<c:when test="${(room.TIME21_23 ==0) && ((rsvcode == 0) ||(rsvcode == 6)) }">
 									<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',6)">가능</a></td>
 							</c:when>
 							<c:otherwise>
