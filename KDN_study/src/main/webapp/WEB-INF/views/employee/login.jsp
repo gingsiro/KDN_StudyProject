@@ -19,7 +19,7 @@ body {
 	display: inline-block;
 	position: absolute;
 	left: 400px;
-	top: 500px;
+	top: 480px;
 }
   
 .line2{
@@ -92,6 +92,8 @@ body {
 </head>
 <body>
  	<% String empno = (String) session.getAttribute("empno");
+ 	  /* String dept = (String) session.getAttribute("dept");
+ 	 String ename = (String) session.getAttribute("ename");  */
  	if(empno == null){    //로긴을 하지 않은 경우   로그인 화면 출력
  	  Cookie[] cookies = request.getCookies();
  		String empnoSave ="";
