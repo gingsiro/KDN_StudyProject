@@ -164,9 +164,6 @@ $(document).ready(function(){
     margin-bottom: 10px;
 	}
 	
-	#side_sm2 {
-			height: 900px;
-	}
 	
 </style>
 

@@ -157,7 +157,6 @@ $(document).ready(function(){
 			width: 30%;
 			height: 100%;
 			overflow: visible;
-			height: 900px;
 	}
 	
 	#side_sm10 {
