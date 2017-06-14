@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-2">				
-				<a href="reservedRoomForm.do">룸 예약하기</a><br/>
+				<a href="reservedRoom.do">룸 예약하기</a><br/>
 				<a href="myRsvList.do">나의 룸 예약</a><br/>
 				<c:if test = "${ admin == 'Y'}">
 					<a href="roomList.do">룸 관리</a><br/>

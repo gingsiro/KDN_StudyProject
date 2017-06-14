@@ -12,13 +12,13 @@
         <!-- datepicker 한국어로 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<% 
-	String date = null;
-	if(request.getQueryString() != null){
-		date = request.getParameter("roomResvDate").toString();
-	}else{
-	}
-%>
+	<%	String date = null;
+		if(request.getQueryString() != null){
+			date = request.getParameter("roomResvDate").toString();
+		}else{ 
+			date = "1";
+		} 
+	%>
 <script type="text/javascript">
 	$.noConflict();
 	jQuery( document ).ready(function( $ ) {
@@ -102,7 +102,7 @@ function reserveRoom(rno, time) {
 							
 							<div class="form-group">
 							<label for="inputRsvDate">예약 날짜</label><input type="text"
-								class="form-control" id="rsvdate" name="rsvdate" value=<%= date %>
+								class="form-control" id="rsvdate" name="rsvdate" value='${roomResvDate}'
 								placeholder="Room RESERVE DATE" readonly="readonly">
 							</div>
 						
@@ -144,11 +144,12 @@ function reserveRoom(rno, time) {
 			</div>
 		</div>
 		
-		<% 
+		
+		<%
 			if(date != null) {
 		%>
 		<h2>스터디룸 예약 정보</h2>
-		<p><font color="red"><%= date %></font> 의 KDN Study 포털의 룸 예약 현황 목록입니다.<br/>가능한 시간대를 클릭하시면 예약을 진행하실 수 있습니다.</p>
+		<p><font color="red">${roomResvDate}</font> 의 KDN Study 포털의 룸 예약 현황 목록입니다.<br/>가능한 시간대를 클릭하시면 예약을 진행하실 수 있습니다.</p>
 		
 		<% 
 			}
@@ -171,7 +172,7 @@ function reserveRoom(rno, time) {
 					<tr>
 						<th scope="row">${room.RNO}호 [ ${room.RNAME} / ${room.RMAX} ]</th>
 						<c:choose>
-							<c:when test="${(room.TIME07_09 == 0) && ((rsvcode == 0) ||(rsvcode == 1))}">
+							<c:when test="${(room.TIME07_09 == 0) && ((rsvcode == 0) ||(rsvcode <= 1))}">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',1)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -179,7 +180,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
-							<c:when test="${(room.TIME09_12 == 0) && ((rsvcode == 0) ||(rsvcode == 2))}">
+							<c:when test="${(room.TIME09_12 == 0) && ((rsvcode == 0) ||(rsvcode <= 2))}">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',2)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -187,7 +188,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
-							<c:when test="${(room.TIME13_15 == 0) && ((rsvcode == 0) ||(rsvcode == 3))}">
+							<c:when test="${(room.TIME13_15 == 0) && ((rsvcode == 0) ||(rsvcode <= 3))}">
 									<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',3)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -195,7 +196,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
-							<c:when test="${(room.TIME15_18 == 0) && ((rsvcode == 0) ||(rsvcode == 4))}">
+							<c:when test="${(room.TIME15_18 == 0) && ((rsvcode == 0) ||(rsvcode <= 4))}">
 									<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',4)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -203,7 +204,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 							<c:choose>
-							<c:when test="${ (room.TIME19_21 == 0) && ((rsvcode == 0) ||(rsvcode == 5))}">
+							<c:when test="${ (room.TIME19_21 == 0) && ((rsvcode == 0) ||(rsvcode <= 5))}">
 								<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',5)">가능</a></td>
 							</c:when>
 							<c:otherwise>
@@ -211,7 +212,7 @@ function reserveRoom(rno, time) {
 							</c:otherwise>
 						</c:choose>
 							<c:choose>
-							<c:when test="${(room.TIME21_23 ==0) && ((rsvcode == 0) ||(rsvcode == 6))}">
+							<c:when test="${(room.TIME21_23 ==0) && ((rsvcode == 0) ||(rsvcode <= 6))}">
 									<td style="color: blue"><a data-toggle="modal" data-target="#roomRsvForm" onClick="reserveRoom('${room.RNO}',6)">가능</a></td>
 							</c:when>
 							<c:otherwise>

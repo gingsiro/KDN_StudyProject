@@ -25,22 +25,7 @@
 	}
 </script>
 </head>
-<body>
-
-<%-- 예약확인화면입니다.
-<table>
-	<tr>
-	<td>번호</td><td>일시</td><td>예약코드</td><td>호수</td><td>번호</td><td>사번</td>
-	
-	</tr>	
-<c:forEach var="room" items="${rooms}" >
-	<tr>
-	<td>${room.rsvno} </td><td>${room.rsvdate}</td><td>${room.rsvcode}</td><td>${room.rno}</td><td>${room.sno}</td><td>${room.empno}</td>	
-	</tr>	
-</c:forEach>
-</table> 
- --%>
- 
+<body> 
  <div style="overflow:hidden" id="delRsv" class="modal fade" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -78,6 +63,8 @@
 					<th>예약 시간</th>
 					<th>호수</th>
 					<th>룸을 예약한 스터디</th>
+					<th>예약 취소</th>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -108,7 +95,14 @@
 						</td>
 						<td>${room.rno}</td>
 						<td>${room.sname}</td>
-						<td><a data-toggle="modal" data-target="#delRsv" class="red-text" onClick="deleteRsv('${room.rsvno}')"><i class="fa fa-times"></i></a></td>
+						<c:choose>
+							<c:when test ='${ today <= room.rsvdate}'>
+								<td><a data-toggle="modal" data-target="#delRsv" class="red-text" onClick="deleteRsv('${room.rsvno}')"><i class="fa fa-times"></i></a></td>
+							</c:when>
+							<c:otherwise>
+								<td> </td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 				</c:forEach>
 			</tbody>
