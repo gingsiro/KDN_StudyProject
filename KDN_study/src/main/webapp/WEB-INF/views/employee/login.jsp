@@ -19,7 +19,7 @@ body {
 	display: inline-block;
 	position: absolute;
 	left: 400px;
-	top: 480px;
+	top: 460px;
 }
   
 .line2{
@@ -30,7 +30,7 @@ body {
   
   
 .login {
-		position: absolute; left: 790px; top: 250px; height: 50px; width: 100px;
+		position: absolute; left: 790px; top: 230px; height: 50px; width: 100px;
 		/* width: 50px;
  	    margin-left: 500px;	
  	    top : 600px;
