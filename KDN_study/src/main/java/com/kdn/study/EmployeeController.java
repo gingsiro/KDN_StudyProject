@@ -109,14 +109,8 @@ public class EmployeeController
 		return "index";
 	}
 	
-	/*@RequestMapping(value="employeeUpdateForm.do", method=RequestMethod.GET)
-	public String employeeUpdateForm(Model model) {
-		model.addAttribute("content", "employee/updateEmployee.jsp");
-		return "index";
-	}*/
-	
 	@RequestMapping(value="updateEmployee.do", method=RequestMethod.POST)
-	public String updateEmployee(Employee employee, Model model, String passwordcheck) 
+	public String updateEmployee(HttpSession session, Employee employee, Model model, String passwordcheck) 
 	{
 		if(!employee.getPassword().equals(passwordcheck)) {
 			throw new UpdateException("비밀번호가 일치하지 않음");
@@ -125,10 +119,10 @@ public class EmployeeController
 		System.out.println("update"+employee);
 		employeeService.update(employee);
 		model.addAttribute("content", "employee/employeeInfo.jsp");
+		session.removeAttribute("dept");
+		session.setAttribute("dept", employee.getDept());
 		return "index";
 	}
-	
-	
 	
 	@RequestMapping(value="employeeDeleteForm.do", method=RequestMethod.GET)
 	public String employeeDeleteForm(HttpSession session, Model model) {
@@ -143,12 +137,10 @@ public class EmployeeController
 		Employee emp = employeeService.search(empno);
 		if(emp.getPassword().equals(password)) {
 			employeeService.delete(emp);
-		
 			model.addAttribute("content", "employee/deleteinfo.jsp");
 		}else {
 			model.addAttribute("msg", "비밀번호가 일치하지 않음");
 			model.addAttribute("content", "ErrorHandler.jsp");
-			
 		}
 		return "index";
 	}

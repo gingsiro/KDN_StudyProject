@@ -42,12 +42,12 @@
                             <ul class="social-share">
                             	<c:choose>
 		   							<c:when test="${empty empno}">
-                               		 	<a href="loginForm.do" title="로그인">로그인&nbsp;<!-- <i class="fa fa-linkedin"></i> --></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                               		 	<a href="insertEmployeeForm.do" title="회원가입">회원가입&nbsp;<!-- <i class="fa fa-pencil"></i> --></a><br/> 
+                               		 	<a href="loginForm.do" style="font-weight:bold" title="로그인">로그인&nbsp;<!-- <i class="fa fa-linkedin"></i> --></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                               		 	<a href="insertEmployeeForm.do" style="font-weight:bold" title="회원가입">회원가입&nbsp;<!-- <i class="fa fa-pencil"></i> --></a><br/> 
                                 	</c:when>
 		   							<c:otherwise>
-		   								<font size="2em" color="white">${dept}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="employeeUpdateForm.do" title="정보수정">${ename}</a><c:if test="${admin eq 'Y'}">(관리자)</c:if>님&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환영합니다!&nbsp;&nbsp;&nbsp;</font>
-		   								<a href="logout.do" title="로그아웃"><!-- <i class="fa fa-unlock-alt"></i> -->로그아웃</a>
+		   								<font size="2em" color="white">${dept}&nbsp;&nbsp;<a href="employeeUpdateForm.do" title="정보수정">${ename}</a><c:if test="${admin eq 'Y'}">(관리자)</c:if>님&nbsp;&nbsp;환영합니다!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+		   								<a href="logout.do" style="font-weight:bold" title="로그아웃"><!-- <i class="fa fa-unlock-alt"></i> -->로그아웃</a>
 		     							<!-- <li><a href="employeeUpdateForm.do" title="정보수정"><i class="fa fa-pencil"></i></a></li> -->
 		   							</c:otherwise>
 								</c:choose>

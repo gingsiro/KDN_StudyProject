@@ -10,7 +10,7 @@
 	display: inline-block;
 	position: absolute;
 	left: 400px;
-	top: 540px;
+	top: 510px;
 }
   
 .line2
@@ -65,17 +65,13 @@
 
 	<h3 class='form-group' style="left: 240px; width: 310px; border: 1px solid #ff0000;">&nbsp; [비밀번호] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${employee.password }</h3>
 	    <td><input type='hidden' name='password'  id='password' value = '${employee.password }' ></td><br/>
+	<h4 style=width:300px;  align="center" >${employee.ename }님의 정보가 수정되었습니다.</h4>
 	    
-<div>
-	<button class="btn btn-success" style= "background-color: #c52d2f; border-color : #c52d2f; margin-left: 80px;">
-	<a style="color:white" href="/study">메인으로 이동</a>
-	</button>
-</div>
 
 </form>
 
 
-<div style= "position: absolute; left: 800px; top: 240px; height: 50px; width: 100px;">
+<div style= "position: absolute; left: 800px; top: 225px; height: 50px; width: 100px;">
 	<img src="images/employeeupdateinfoimage1.png" >
 </div> 
 <div class="line1">
