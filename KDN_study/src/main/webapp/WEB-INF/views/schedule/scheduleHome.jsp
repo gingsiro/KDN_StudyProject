@@ -158,12 +158,11 @@ $(document).ready(function(){
 	
 	#side_sm10 {
 			width: 65%;
-    height: 100%;
-    margin-top: 10px;
-    margin-left: 30px;
-    margin-bottom: 10px;
+		    height: 100%;
+		    margin-top: 10px;
+		    margin-left: 30px;
+		    margin-bottom: 10px;
 	}
-	
 	
 </style>
 
