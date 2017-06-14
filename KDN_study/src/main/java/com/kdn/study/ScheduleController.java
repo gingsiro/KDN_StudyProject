@@ -61,8 +61,15 @@ public class ScheduleController
 		String s3 = s.substring(11, 16);
 		String s4 = s2 + s3;
 		
+		// 줄바꿈 위해
+		String title = "\\n" + sctitle;
+		if(12 < title.length())
+		{
+			title = title.substring(0,12) + "\\n" + title.substring(12,title.length());
+		}
+		
 //		2017-06-13T15:02
-		scheduleService.insertSchedule(new Schedule(Integer.parseInt(scno), sctitle, s4, Integer.parseInt(sno)));
+		scheduleService.insertSchedule(new Schedule(Integer.parseInt(scno), title, s4, Integer.parseInt(sno)));
 		return "redirect:listSchedule.do?sno=" + sno;
 	}
 
@@ -101,6 +108,14 @@ public class ScheduleController
 		mydate = front_date + rear_date;
 		schedule.setScdate(mydate);
 		schedule.setScno(Integer.parseInt(scno));
+		
+		String title = "\\n" + schedule.getSctitle();
+		if(12 < title.length())
+		{
+			title = title.substring(0,12) + "\\n" + title.substring(12,title.length());
+		}
+		
+		schedule.setSctitle(title);
 		scheduleService.updateSchedule(schedule);
 
 		return "redirect:listSchedule.do?sno="+sno;
