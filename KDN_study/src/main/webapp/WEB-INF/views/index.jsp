@@ -279,12 +279,12 @@
                 <div class="portfolio-items">
                 	<div class="portfolio-item choo jae col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/recent/choo_fact.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/recent/choo_fact.JPG" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
                                     <h3><a href="#">팩트폭력</a></h3>
                                     <p>당해버린 팩트폭력... 무시무시하네 ㅋㅋ </p>
-                                    <a class="preview" href="images/portfolio/full/choo_fact.png" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                                    <a class="preview" href="images/portfolio/full/choo_fact.JPG" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>
                         </div>
