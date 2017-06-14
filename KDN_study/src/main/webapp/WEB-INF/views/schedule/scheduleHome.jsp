@@ -18,13 +18,13 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<div style="overflow:visible" class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col-sm-2">
 				<div class="sidebar left" id="side_bar">
   					<ul class="list-sidebar bg-defoult">
-					    <li id="study_name"> <i class="fa fa-book"></i> <span class="nav-label">${ joinMembers_list[0].sname }</span></li>
-					    <li id="study_info"> <span class="nav-label">&nbsp &nbsp${ joinMembers_list[0].sinfo }</span></li>
+					    <li style="overflow:hidden" id="study_name"><img src="images/logline1.png" ><br/><i class="fa fa-book"></i><span class="nav-label"><strong>${ joinMembers_list[0].sname }</strong></span><br/></li>
+					    <li style="overflow:hidden" id="study_info"><img src="images/logline1.png" ><br/><span class="nav-label">${ joinMembers_list[0].sinfo }</span><br/><img src="images/logline1.png" ></li>
 					    <li> <a href="listSchedule.do?sno=${sno}"><i class="fa fa-calendar"></i> <span class="nav-label">일정</span></a> </li>
 					    <li> <a href="boardList.do?sno=${sno}"><i class="fa fa-sticky-note-o"></i> <span class="nav-label">게시판</span></a> </li>
 					    <li> <a href="joinList.do?sno=${sno}"><i class="fa fa-user-circle"></i> <span class="nav-label">구성원</span></a> </li>

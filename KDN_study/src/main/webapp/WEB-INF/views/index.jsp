@@ -123,7 +123,6 @@
             <ol class="carousel-indicators">
                 <li data-target="#main-slider" data-slide-to="0" class="active"></li>
                 <li data-target="#main-slider" data-slide-to="1"></li>
-                <li data-target="#main-slider" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
  
@@ -134,34 +133,12 @@
                                 <div class="carousel-content">
                                     <h1 class="animation animated-item-1">KDN 사내 스터디를 위한 최고의 서비스 !</h1>
                                     <h2 class="animation animated-item-2">스터디 운영, 스터디룸 예약, 스케줄 관리와 같은 모든 서비스를 지원해드립니다.</h2>
-                                    <a class="btn-slide animation animated-item-3" href="#">소개 페이지</a>
                                 </div>
                             </div>
  
                             <div class="col-sm-6 hidden-xs animation animated-item-4">
                                 <div class="slider-img">
-                                    <img src="images/slider/onthejaesung2.png" class="img-responsive"> 
-                                </div>
-                            </div>
- 
-                        </div>
-                    </div>
-                </div><!--/.item-->
- 
-                <div class="item" style="background-image: url(images/slider/bg2.jpg)">
-                    <div class="container">
-                        <div class="row slide-margin">
-                            <div class="col-sm-6">
-                                <div class="carousel-content">
-                                    <h1 class="animation animated-item-1">Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
-                                    <h2 class="animation animated-item-2">Accusantium doloremque laudantium totam rem aperiam, eaque ipsa...</h2>
-                                    <a class="btn-slide animation animated-item-3" href="#">Read More</a>
-                                </div>
-                            </div>
- 
-                            <div class="col-sm-6 hidden-xs animation animated-item-4">
-                                <div class="slider-img">
-                                    <img src="images/slider/hae_hyun.png" class="img-responsive">
+                                    <img src="images/slider/jae_onthe_choo.png" class="img-responsive"> 
                                 </div>
                             </div>
  
@@ -174,14 +151,13 @@
                         <div class="row slide-margin">
                             <div class="col-sm-6">
                                 <div class="carousel-content">
-                                    <h1 class="animation animated-item-1">Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
-                                    <h2 class="animation animated-item-2">Accusantium doloremque laudantium totam rem aperiam, eaque ipsa...</h2>
-                                    <a class="btn-slide animation animated-item-3" href="#">Read More</a>
-                                </div>
+                                    <h1 class="animation animated-item-1"><font size="40px">우리가 바로 전력의 미래</font></h1>
+                                    <h1 class="animation animated-item-2">누군가<br/> 전력의 미래를 묻거든<br/> 고개를 들어 KDN을 보게 하라.</h1>
+                                </div> 
                             </div>
                             <div class="col-sm-6 hidden-xs animation animated-item-4">
                                 <div class="slider-img">
-                                    <img src="images/slider/img3.png" class="img-responsive">
+                                    <img src="images/slider/hae_hyun2.png" class="img-responsive">
                                 </div>
                             </div>
                         </div>

@@ -93,15 +93,15 @@ public class ScheduleController
 	}
 	
 	@RequestMapping(value="updateSchedule.do", method=RequestMethod.GET)
-	public String updateSchedule(Schedule schedule, String sno){
+	public String updateSchedule(Schedule schedule, String sno, String scno){
 		
 		// 빼지마요 빼면 에러나엽
 		String mydate = schedule.getScdate();
 		String front_date = mydate.substring(0,10);
 		String rear_date = mydate.substring(11, 16);
 		mydate = front_date + rear_date;
-
 		schedule.setScdate(mydate);
+		schedule.setScno(Integer.parseInt(scno));
 		scheduleService.updateSchedule(schedule);
 
 		return "redirect:listSchedule.do?sno="+sno;

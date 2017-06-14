@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="js/sidebar.js"></script>
-<link href='css/sidebar.css' rel='stylesheet' type="text/css"/>
+<link href="css/sidebar.css" rel="stylesheet" type="text/css"/>
 <title>Study Home</title>
 <script>
 $(document).ready(function(){

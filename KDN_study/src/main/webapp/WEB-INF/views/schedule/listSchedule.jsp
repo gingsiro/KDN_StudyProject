@@ -42,9 +42,6 @@
 			
 		console.log('현재 날짜: ' + sysdate);
 	
-	</script>
-		
-	<script type="text/javascript">
 	window.onload = function() 
 	{ 
         
@@ -52,41 +49,58 @@
 		$('#sysdate_').val(sysdate);
 		$('#sno').val("${sno}");
 	};
-	</script>
 	
+	function modalButtonClick(){
+		$('#sctitle').val("");
+		$('#sch_title_main').html("<span class='glyphicon glyphicon-pencil'></span> 일정 입력");
+		$('#sysdate_').val(sysdate);
+		$("#insertsche_form").attr("action", "insertSchedule.do");
+		$("#insertsche_form").attr("method", "POST");
+		$('#createFormButtons').html("<button type='submit' class='btn btn-default btn-success'><span class='glyphicon glyphicon-ok'></span> 입력</button><button type='reset' class='btn btn-default btn-success' data-dismiss='modal' id='schedule_close_button'><span class='glyphicon glyphicon-remove'></span> 취소</button>");
+	}
+	
+	function modalDeleteClick(){
+		document.insertsche_form.action="deleteSchedule.do";
+		document.insertsche_form.method="get";
+		document.insertsche_form.submit();
+	}
+	</script>
 </head>
-
 <body>
 
 		<!-- Modal -->
-	<div style="overflow:hidden" id="createForm" class="modal fade" role="dialog">
+	<div style="overflow:hidden" id="createForm" class="modal fade" tabindex="-1"  role="dialog">
 		<div id="model" class="modal-dialog">
 				<!-- Modal content-->
 			<div class="modal-content">
 					
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 style="color: blue;">
+					<h4 id="sch_title_main" style="color: blue;">
 						<span class="glyphicon glyphicon-pencil"></span> 일정 입력
 					</h4>
 				</div>
 					
 				<div class="modal-body" id="modal-body">
-					<form role="form" method="POST" action="insertSchedule.do">
+					<form id="insertsche_form" name="insertsche_form" role="form" method="POST" action="insertSchedule.do">
 						<input type="hidden" class="form-control" id="sno" name="sno">
 						<div class="form-group">
 							<label for="inputScheduleName">일정 이름</label> 
 							<input type="text" class="form-control" id="sctitle" name="sctitle" placeholder="일정 이름을 작성해주세요.">
 						</div>
+						<input type="hidden" id="sch_scno" name="scno" value="" />
 						<!-- value="2017-10-09T15:38:00" -->
 						<div class="form-group">
 							<label for="inputScheduleName">일시</label><br/>
 							<input type="datetime-local" id="sysdate_" name="scdate"  > 
 						</div>
 
-						<div style="text-align:right">
+						<div id="createFormButtons" style="text-align:right">
 							<button type="submit" class="btn btn-default btn-success">
 								<span class="glyphicon glyphicon-ok"></span> 입력
+							</button>
+							<button type="submit" class="btn btn-default btn-success" data-dismiss="modal" formaction="deleteSchedule.do">
+								<span class="glyphicon glyphicon-remove"></span> 삭제
 							</button>
 							<button type="reset" class="btn btn-default btn-success" data-dismiss="modal" id="schedule_close_button">
 								<span class="glyphicon glyphicon-remove"></span> 취소
@@ -105,7 +119,7 @@
 	
 	<div style="text-align: right">
 		<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-					id = "btn_insert_schedule" data-target="#createForm">일정 입력</button>
+					id = "btn_insert_schedule" data-target="#createForm" onClick="modalButtonClick()">일정 입력</button>
 	</div>
 
 	<div id='loadCalendar'>

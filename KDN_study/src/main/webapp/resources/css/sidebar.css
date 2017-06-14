@@ -48,10 +48,9 @@ h1,h2,h3,h4,h5,h6,p,ul,ol{ margin:0px; padding:0px;}
 .sidebar ul{ list-style:none; margin:0px; padding:0px; }
 
 .sidebar li a,.sidebar li a.collapsed.active{      display: block;
-    padding-left: 3px;
+    padding-left: 20px;
     padding-top: 30px;
     padding-bottom: 30px;
-    text-align: center;
     color: #2779aa;
     border-left: 0px solid #dedede;
     text-decoration: none;
