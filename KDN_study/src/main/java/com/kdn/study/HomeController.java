@@ -35,4 +35,9 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value="contact.do")
+	public String contact(Model model){
+		model.addAttribute("content", "about-us.jsp");
+		return "index";
+	}
 }
