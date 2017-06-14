@@ -112,7 +112,7 @@
     </header><!--/header-->
 	<c:choose>
 	<c:when test="${ !empty content }">
-		<section id="main-content">
+		<section id="main-content" class="disabled">
 			<jsp:include page="${ content }"/>
 		</section>
 	</c:when>
