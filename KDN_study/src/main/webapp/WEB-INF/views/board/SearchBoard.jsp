@@ -47,38 +47,33 @@
 	 	    <input type ="hidden" name="bno"  id="bno" value="${board.bno}"/>
 	 	    <input type ="hidden" name="sno"  id="sno" value="${board.sno}"/>
 	 	    <input type ="hidden" name="query"  id="query" />
-			<table border="1" align="center">
-				<tbody>
-					<tr><td><label for="title">제목</label></td>
-					    <td>${board.btitle}</td>
-					</tr>
-					<tr><td colspan="2">내용 &nbsp;&nbsp;글쓴이:${board.ename}
-										&nbsp;&nbsp; 게시일:${board.regdate}</td></tr>
-					<tr><td colspan="2"  valign="top" height="200">
-						<pre>${board.bcontents }</pre>							
-						</td></tr>
-				</tbody>
-				<tfoot>
-					<tr><td colspan="2" align="center">
-							<a href="#" onclick="listBoard('frm')">목록</a>
-	 					<<c:if test="${board.empno == empno }">
-							<a href="#" onclick="updateForm()">수정</a>
-							<a href="#" onclick="deleteBoard()">삭제</a>
-						</c:if>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
+			
+				<label for="btitle">제&nbsp;&nbsp;&nbsp;&nbsp;목 :&nbsp;</label>${board.btitle}<br/>
+				<label for="empno">글쓴이 :&nbsp;</label>${board.ename}<br/>
+				<label for="regdate">게시일 :&nbsp;</label>${board.regdate}<br/>
+				<label for="bcontents">내&nbsp;&nbsp;&nbsp;&nbsp;용</label> 
+				<pre>${board.bcontents}</pre><br/>
+				
+				<a href="#" onclick="listBoard('frm')">목록</a>
+				
+				<c:if test="${board.empno == empno }">
+					<a href="#" onclick="updateForm()">수정</a>
+					<a href="#" onclick="deleteBoard()">삭제</a>
+				</c:if>
 		</form>
 	</div>
 	
-	<div class="main" id="writeBoard" style="display:none">
-	 	<form  id="updatefrm">
+	<div class="main" id="writeBoard_" style="display:none">
+	 	<form  id="updatefrm_">
 	 	    <input type ="hidden" name="bno"  id="bno"  value="${board.bno}"/>
 	 	    <input type ="hidden" name="sbno"  id="sbno"  value="${board.sbno}"/>
 	 	    <input type ="hidden" name="sno"  id="sno"  value="${board.sno}"/>
-	 	    <input type ="hidden" name="empno"  id="empno"  value="${board.empno}"/>
+<input type ="hidden" name="empno"  id="empno"  value="${board.empno}"/>
 	 	   <input type ="hidden" name="regdate"  id="regdate"  value="${board.regdate}"/>
+	 	    
+	 	    
+	 	    
+	 	    
 	 	    
 			<table border="1" align="center">
 				<caption>게시글 작성</caption>
@@ -101,10 +96,33 @@
 						</td>
 					</tr>
 				</tfoot>
-			</table>
+			</table>			
 		</form>
 	</div>
 	
+	<div id="writeBoard" style="display:none">
+		<form id="updatefrm">
+			<input type ="hidden" name="bno"  id="bno"  value="${board.bno}"/>
+	 	    <input type ="hidden" name="sbno"  id="sbno"  value="${board.sbno}"/>
+	 	    <input type ="hidden" name="sno"  id="sno"  value="${board.sno}"/>
+	 	    <input type ="hidden" name="empno"  id="empno"  value="${board.empno}"/>
+	 	   	<input type ="hidden" name="regdate"  id="regdate"  value="${board.regdate}"/>
+	 	   	
+			<div class="form-group">
+   				<label for="btitle_ex">글 제목</label>
+    			<input type="text" class="form-control" id="btitle" name="btitle" placeholder="제목을 입력하세요." value="${ board.btitle }" required>
+  			</div>
+		    
+		    
+		
+			<div class="form-group">
+				<label for="exampleInputPassword1">글 내용</label>
+				<textarea class="form-control" name="bcontents" id="bcontents"  rows="5" id="comment" placeholder="내용을 입력하세요." value="${ board.bcontents }">${board.bcontents}
+						</textarea>
+  			</div>
+  			<button onclick="updateBoard()" class="btn btn-default">제출</button><button onclick="resetBoard()" class="btn btn-default">다시쓰기</button><button onclick="listBoard()" class="btn btn-default">목록</button>
+		</form>
+	</div>
 	
 </body>
 </html>
