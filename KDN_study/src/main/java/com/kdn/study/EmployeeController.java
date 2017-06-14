@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kdn.study.service.EmployeeService;
 import com.kdn.study.domain.Employee;
+import com.kdn.study.domain.UpdateException;
 
 
 @Controller
@@ -38,8 +39,12 @@ public class EmployeeController
 	}
 	
 	@RequestMapping(value="insertEmployee.do", method=RequestMethod.POST)
-	public String insertEmployee(Employee employee, Model model)
+	public String insertEmployee(Employee employee, Model model, String passwordcheck)
 	{
+		if(!employee.getPassword().equals(passwordcheck)) {
+			throw new UpdateException("비밀번호가 일치하지 않음");
+		}
+		
 		employeeService.add(employee);
 		model.addAttribute("content", "employee/login.jsp");
 		return "index";
@@ -111,12 +116,19 @@ public class EmployeeController
 	}*/
 	
 	@RequestMapping(value="updateEmployee.do", method=RequestMethod.POST)
-	public String updateEmployee(Employee employee, Model model) {
+	public String updateEmployee(Employee employee, Model model, String passwordcheck) 
+	{
+		if(!employee.getPassword().equals(passwordcheck)) {
+			throw new UpdateException("비밀번호가 일치하지 않음");
+		}
+		
 		System.out.println("update"+employee);
 		employeeService.update(employee);
 		model.addAttribute("content", "employee/employeeInfo.jsp");
 		return "index";
 	}
+	
+	
 	
 	@RequestMapping(value="employeeDeleteForm.do", method=RequestMethod.GET)
 	public String employeeDeleteForm(HttpSession session, Model model) {

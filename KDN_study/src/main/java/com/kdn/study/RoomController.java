@@ -93,6 +93,7 @@ public class RoomController {
 
 	@RequestMapping(value = "myRsvList.do", method = RequestMethod.GET)
 	public String myRsvList(Model model, HttpSession session) {
+		if (session.getAttribute("empno") != null) {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "ReservedRoomCheck.jsp");
 
@@ -109,6 +110,9 @@ public class RoomController {
 		model.addAttribute("rsvcode", rsvcode);
 		
 		return "index";
+		} else {
+			return "redirect:loginForm.do";
+		}
 
 	}
 

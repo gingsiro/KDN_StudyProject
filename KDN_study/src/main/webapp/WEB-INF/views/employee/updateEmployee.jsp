@@ -11,7 +11,7 @@
 	display: inline-block;
 	position: absolute;
 	left: 400px;
-	top: 540px;
+	top: 545px;
 }
   
 .line2{
@@ -22,11 +22,11 @@
   
   
 .login {
-		position: absolute; left: 790px; top: 250px; height: 50px; width: 100px;
-		/* width: 50px;
- 	    margin-left: 500px;	
- 	    top : 600px;
- 	    height: 100px; */
+		position: absolute;
+		left: 790px;
+		top: 230px;
+		height: 50px;
+		width: 100px;
 	}  
 
 
@@ -99,21 +99,17 @@ width: 310px;
 
 <h3 class='form-group' style="border: 1px solid #ff0000;">&nbsp; [이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${employee.ename }</h3>
 	    <td class='tbasic'><input type='hidden' name='ename'  id='ename' value = '${employee.ename }' ></td>
-
-
-
-<%-- <div class="form-group">
-  <input id="ename" name="ename" type="text" placeholder="[이름 : ${employee.ename} ]	 	변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
-</div> 
- --%>
 	
 <div class="form-group">
   <input id="dept" name="dept" type="text" placeholder="[부서 : ${employee.dept} ]	변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
 </div>
 
-
 <div class="form-group">
    	<input id="password" name="password" type="password" placeholder="[비밀번호]    			변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
+</div>
+
+<div class="form-group">
+   	<input id="password" name="passwordcheck" type="password" placeholder="[비밀번호 확인]		변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
 </div>
 
 <!-- <tr>
@@ -131,7 +127,7 @@ width: 310px;
 
 
 <div class="login">
-	<img src="images/employeeinfoimage.png" >
+	<img src="images/employeeinfoimage1.png" >
 </div> 
 <div class="line1">
 	<img src="images/logline1.png" >

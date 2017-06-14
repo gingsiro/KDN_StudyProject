@@ -6,12 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<table align="center">
-		<caption> 에러 발생 </caption>
-		<tr><td> ${msg} </td></tr>
-		<tr><td> 에러가 발생했습니다. 다시 수행해 주세요! </td> 
-	</table>
+<body align="center">
+	
+	<h2 align="center"> 경 고</h2>
+	<h3 style="font-weight:bold" align="center"> <u>${msg}</u> </h3><br/>
+	<h3 style= "color:blue" align="center"> 이전 페이지로 이동하십시오. </h3>
+	
+	
 </body>
 </html>
 

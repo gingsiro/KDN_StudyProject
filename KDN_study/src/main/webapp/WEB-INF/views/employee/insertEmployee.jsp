@@ -6,13 +6,14 @@
 <meta charset="UTF-8">
 <title>파일 업로드</title>
 
+
 <style>
 
 .line1{
 	display: inline-block;
 	position: absolute;
 	left: 400px;
-	top: 600px;
+	top: 610px;
 }
   
 .line2{
@@ -23,7 +24,7 @@
   
   
 .login {
-		position: absolute; left: 790px; top: 240px; height: 50px; width: 100px;
+		position: absolute; left: 790px; top: 225px; height: 50px; width: 100px;
 		/* width: 50px;
  	    margin-left: 500px;	
  	    top : 600px;
@@ -118,10 +119,11 @@ left: 150px;
 
 
 <div class="form-group">
-  <!-- <label class="col-md-3 control-label" for="password">비밀번호 </label> -->
-  	<!-- <div class="col-md-2"> -->
-   		<input id="password" name="password" type="password" placeholder="비밀번호			ex) 123456" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
-  	<!-- </div> -->
+   	<input id="password" name="password" type="password" placeholder="비밀번호			ex) 123456" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
+</div>
+
+<div class="form-group">
+   	<input id="password" name="passwordcheck" type="password" placeholder="비밀번호 확인	ex) 123456" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
 </div>
 
 <div class="form-group1" >
@@ -152,7 +154,7 @@ left: 150px;
 </form>
 
 <div class="login">
-	<img src="images/employeejoinimage.png" >
+	<img src="images/employeeinsertimage2.png" >
 </div> 
 <div class="line1">
 	<img src="images/logline1.png" >
