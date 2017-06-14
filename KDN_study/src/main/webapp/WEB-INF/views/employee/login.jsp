@@ -128,40 +128,6 @@ body {
 	</div>
 	
 	<%} %>
- 	 
- 	
- 	 
- 	 
- 	 
- 	 
-	<%-- <form action="login.do" method="post"  id="frm">
-		사원번호 : <input type="text" name="empno" value='<%=empnoSave %>'  id="empno"/>
-		<input type="checkbox" name='empnosave' value='t'
-		 <%= empnoSave.length()>0? "checked='checked'" :"" %>
-		>사원번호 저장<br/>
-		비밀번호 : <input type="text" name="password"  id="password"/><br/>
-		
-		<input type="submit" value="Login"/>
-	</form>
-	<%} %> --%>
-	
-	
-	
-	
-	
-	<!--  <div class="wrapper">
-    <form class="form-signin">       
-      <h2 class="form-signin-heading">Please login</h2>
-      <input type="text" class="form-control" name="e" placeholder="Email Address" required="" autofocus="" />
-      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>      
-      <label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-      </label>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
-    </form>
-  </div>
-	 -->
-	
 	
 	
 </body>

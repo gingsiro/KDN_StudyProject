@@ -118,11 +118,6 @@ public class EmployeeController
 		return "index";
 	}
 	
-	
-	
-	
-	
-	
 	@RequestMapping(value="employeeDeleteForm.do", method=RequestMethod.GET)
 	public String employeeDeleteForm(HttpSession session, Model model) {
 		int empno = (Integer)session.getAttribute("empno");
@@ -132,10 +127,17 @@ public class EmployeeController
 	}
 	
 	@RequestMapping(value="deleteEmployee.do", method=RequestMethod.POST)
-	public String deleteEmployee(Employee employee, Model model) {
-		System.out.println("delete"+employee);
-		employeeService.delete(employee);
-		model.addAttribute("content", "employee/deleteinfo.jsp");
+	public String deleteEmployee(int empno, String password, Model model) {
+		Employee emp = employeeService.search(empno);
+		if(emp.getPassword().equals(password)) {
+			employeeService.delete(emp);
+		
+			model.addAttribute("content", "employee/deleteinfo.jsp");
+		}else {
+			model.addAttribute("msg", "비밀번호가 일치하지 않음");
+			model.addAttribute("content", "ErrorHandler.jsp");
+			
+		}
 		return "index";
 	}
 
@@ -146,13 +148,4 @@ public class EmployeeController
 		return "index";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	}	
+}	

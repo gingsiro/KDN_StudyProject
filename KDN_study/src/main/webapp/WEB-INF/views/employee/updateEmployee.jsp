@@ -51,7 +51,7 @@ width: 400px;
 
 .form-group2
 {
-margin-left: 20px; 
+margin-left: 10px; 
 width: 300px;
 
 }
@@ -73,18 +73,12 @@ left: 150px;
 margin-right: 420px;
 width: 310px;
 }
-
-
-
 </style>
-
-
-
 <link href="../css/basic.css" rel="stylesheet" type="text/css">
 </head>
+
+
 <body>
-
-
 <div class="line2">
 	<img src="images/logline1.png" >
 </div>
@@ -102,14 +96,21 @@ width: 310px;
 
 <h3 class='form-group' style="border: 1px solid #ff0000;">&nbsp; [사원번호] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${employee.empno }</h3>
 	    <td class='tbasic'><input type='hidden' name='empno'  id='empno' value = '${employee.empno }' ></td>
+
+<h3 class='form-group' style="border: 1px solid #ff0000;">&nbsp; [이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${employee.ename }</h3>
+	    <td class='tbasic'><input type='hidden' name='ename'  id='ename' value = '${employee.ename }' ></td>
+
+
+
+<%-- <div class="form-group">
+  <input id="ename" name="ename" type="text" placeholder="[이름 : ${employee.ename} ]	 	변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
+</div> 
+ --%>
 	
 <div class="form-group">
   <input id="dept" name="dept" type="text" placeholder="[부서 : ${employee.dept} ]	변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
 </div>
 
-<div class="form-group">
-  <input id="ename" name="ename" type="text" placeholder="[이름 : ${employee.ename} ]	 	변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
-</div> 
 
 <div class="form-group">
    	<input id="password" name="password" type="password" placeholder="[비밀번호]    			변경할 데이타 입력" class="form-control input-md"  style="border: 1px solid #ff0000;" required>
@@ -122,11 +123,9 @@ width: 310px;
 	   </td>
 	</tr> -->
 
-<div class="form-group2">
-  	<button  "width:250px; background-color: #c52d2f; border-color : #c52d2f" id="1" name="1" class="btn btn-success">회원정보 수정 완료하기</button>
-	<button>
-	<a href="employeeDeleteForm.do">회원탈퇴</a>
-	</button>
+<div class="form-group">
+  	<button  "width:250px; background-color: #c52d2f; border-color : #c52d2f" id="1" name="1" class="btn btn-success">회원정보 수정 완료하기</button>	
+	<a href="employeeDeleteForm.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;회원탈퇴</a>
 </div>
 </form>
 
