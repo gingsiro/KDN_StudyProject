@@ -23,6 +23,7 @@ import com.kdn.study.domain.RsvRoom;
 import com.kdn.study.domain.Study;
 import com.kdn.study.service.RoomService;
 import com.kdn.study.service.StudyService;
+import com.kdn.study.util.TimeCheck;
 
 @Controller
 public class RoomController {
@@ -42,16 +43,6 @@ public class RoomController {
 		return model;
 	}
 
-	/*
-	 * @RequestMapping(value = "reservedRoomForm.do", method =
-	 * RequestMethod.GET) public String reservedRoomForm(Model model,
-	 * HttpSession session) { if (session.getAttribute("empno") != null) {
-	 * model.addAttribute("content", "room/RoomHome.jsp");
-	 * model.addAttribute("listform", "RservedRoom.jsp");
-	 * 
-	 * return "redirect:reservedRoom.do"; } else { return
-	 * "redirect:loginForm.do"; } }
-	 */
 	@RequestMapping(value = "reservedRoom.do", method = RequestMethod.GET)
 	public String reservedRoom(Model model, String roomResvDate,
 			HttpSession session) {
@@ -59,36 +50,17 @@ public class RoomController {
 			model.addAttribute("content", "room/RoomHome.jsp");
 			model.addAttribute("listform", "RservedRoom.jsp");
 
-			// 오늘날짜관련
-			SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(
-					"yyyy-MM-dd", Locale.KOREA);
-			Date currentTime = new Date();
-			String today = mSimpleDateFormat.format(currentTime);
+			String today = TimeCheck.dayCheck();
 
 			if (roomResvDate == null) {
 				roomResvDate = today;
-				System.out.println(roomResvDate + "/" + today);
 			}
 
+			List<RsvCode> timeCodeTable = roomService.timeCodeSearch();
+			
 			int rsvcode = 0;
 			if (roomResvDate != null) {
-				int compare = today.compareTo(roomResvDate);
-
-				if (compare == 0) { // 오늘
-					Calendar cal = Calendar.getInstance();
-					int hour = cal.get(Calendar.HOUR_OF_DAY);
-					List<RsvCode> timeCode = roomService.timeCodeSearch();
-
-					for (int i = 0; i < timeCode.size(); i++) {
-						if (hour >= timeCode.get(i).getStarttime()
-								&& hour < timeCode.get(i).getEndtime()) {
-							rsvcode = (timeCode.get(i).getRsvcode()) + 1;
-							break;
-						}
-					}
-				} else if (compare == 1) { // 오늘 이전날짜 전부
-					rsvcode = 7;
-				}
+				rsvcode = TimeCheck.timeCodeCheck(roomResvDate, today, timeCodeTable);
 
 			}
 			int empno = (Integer) session.getAttribute("empno");
@@ -124,10 +96,9 @@ public class RoomController {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "ReservedRoomCheck.jsp");
 
-		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(
-				"yyyy-MM-dd", Locale.KOREA);
-		Date currentTime = new Date();
-		String today = mSimpleDateFormat.format(currentTime);
+		String today = TimeCheck.dayCheck();
+		List<RsvCode> timeCodeTable = roomService.timeCodeSearch();
+		int rsvcode = TimeCheck.timeCodeCheck(today, today, timeCodeTable);
 		
 		
 		int empno = (Integer) session.getAttribute("empno");
@@ -135,9 +106,8 @@ public class RoomController {
 
 		model.addAttribute("myRsvList", myRsvList);
 		model.addAttribute("today", today);
+		model.addAttribute("rsvcode", rsvcode);
 		
-		System.out.println(myRsvList);
-
 		return "index";
 
 	}
