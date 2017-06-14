@@ -53,17 +53,16 @@ public class ScheduleController
 	}
 
 	@RequestMapping(value="insertSchedule.do", method=RequestMethod.POST)
-	public String insertSchedule(Model model, Schedule schedule, String sno){
+	public String insertSchedule(Model model, String sno, String scno, String scdate, String sctitle){
 		
 		// 빼지마요 빼면 에러나엽
-		String s = schedule.getScdate();
+		String s = scdate;
 		String s2 = s.substring(0,10);
 		String s3 = s.substring(11, 16);
 		String s4 = s2 + s3;
-		schedule.setScdate(s4);
 		
 //		2017-06-13T15:02
-		scheduleService.insertSchedule(schedule);
+		scheduleService.insertSchedule(new Schedule(Integer.parseInt(scno), sctitle, s4, Integer.parseInt(sno)));
 		return "redirect:listSchedule.do?sno=" + sno;
 	}
 
