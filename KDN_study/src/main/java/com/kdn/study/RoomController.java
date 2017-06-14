@@ -23,6 +23,7 @@ import com.kdn.study.domain.RsvRoom;
 import com.kdn.study.domain.Study;
 import com.kdn.study.service.RoomService;
 import com.kdn.study.service.StudyService;
+import com.kdn.study.util.TimeCheck;
 
 @Controller
 public class RoomController {
@@ -42,62 +43,40 @@ public class RoomController {
 		return model;
 	}
 
-	@RequestMapping(value = "reservedRoomForm.do", method = RequestMethod.GET)
-	public String reservedRoomForm(Model model, HttpSession session) {
-		if (session.getAttribute("empno")!=null) {
-		model.addAttribute("content", "room/RoomHome.jsp");
-		model.addAttribute("listform", "RservedRoom.jsp");
-
-		
-		
-		return "redirect:reservedRoom.do";
-		} else {
-			return "redirect:loginForm.do";
-		}
-	}
-
 	@RequestMapping(value = "reservedRoom.do", method = RequestMethod.GET)
-	public String reservedRoom(Model model, String roomResvDate, HttpSession session) {
-		if (session.getAttribute("empno")!=null) {
-		model.addAttribute("content", "room/RoomHome.jsp");
-		model.addAttribute("listform", "RservedRoom.jsp");
-		
-		//오늘날짜관련
-		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA);
-		Date currentTime = new Date();
-		String today = mSimpleDateFormat.format(currentTime);
-		if(roomResvDate == null){
-			roomResvDate = today;
-			System.out.println(roomResvDate+"/"+today);
-		}
-		
-		if (roomResvDate != null) {
-			System.out.println("??????");
-			int rsvcode = 0;
-			int compare  = today.compareTo(roomResvDate);
-			
-			if(compare == 0) { //오늘
-				Calendar cal  = Calendar.getInstance();
-				int hour = cal.get(cal.HOUR_OF_DAY);
-				List<RsvCode> timeCode = roomService.timeCodeSearch();
-				
-				for(int i=0; i < timeCode.size(); i++) {
-					if( hour >= timeCode.get(i).getStarttime() && hour < timeCode.get(i).getEndtime() ) {
-						rsvcode = (timeCode.get(i).getRsvcode()) +1;
-						break;
-					}
-				}
-			} else if(compare == 1) { //오늘 이전날짜 전부
-				rsvcode=7;
-			} 
+	public String reservedRoom(Model model, String roomResvDate,
+			HttpSession session) {
+		if (session.getAttribute("empno") != null) {
+			model.addAttribute("content", "room/RoomHome.jsp");
+			model.addAttribute("listform", "RservedRoom.jsp");
 
+			String today = TimeCheck.dayCheck();
+
+			if (roomResvDate == null) {
+				roomResvDate = today;
+			}
+
+			List<RsvCode> timeCodeTable = roomService.timeCodeSearch();
+			
+			int rsvcode = 0;
+			if (roomResvDate != null) {
+				rsvcode = TimeCheck.timeCodeCheck(roomResvDate, today, timeCodeTable);
+
+			}
 			int empno = (Integer) session.getAttribute("empno");
-			List<HashMap<String, Integer>> dayRsvlist = roomService.searchDayRsv(roomResvDate);
+			List<HashMap<String, Integer>> dayRsvlist = roomService
+					.searchDayRsv(roomResvDate);
+			model.addAttribute("dayRsvlist", dayRsvlist);
+
+			System.out.println(roomResvDate + "code: " + rsvcode + " / "
+					+ dayRsvlist);
+
 			List<Study> myStudyList = studyService.searchMyStudy(empno);
 			model.addAttribute("myStudyList", myStudyList);
-			model.addAttribute("dayRsvlist", dayRsvlist);
+
 			model.addAttribute("rsvcode", rsvcode);
-		}
+			model.addAttribute("roomResvDate", roomResvDate);
+
 			return "index";
 		} else {
 			return "redirect:loginForm.do";
@@ -109,20 +88,26 @@ public class RoomController {
 
 		roomService.reserveRoom(rsvroom);
 
-		return "redirect:reservedRoomForm.do";
+		return "redirect:reservedRoom.do";
 	}
 
 	@RequestMapping(value = "myRsvList.do", method = RequestMethod.GET)
 	public String myRsvList(Model model, HttpSession session) {
 		model.addAttribute("content", "room/RoomHome.jsp");
 		model.addAttribute("listform", "ReservedRoomCheck.jsp");
+
+		String today = TimeCheck.dayCheck();
+		List<RsvCode> timeCodeTable = roomService.timeCodeSearch();
+		int rsvcode = TimeCheck.timeCodeCheck(today, today, timeCodeTable);
+		
+		
 		int empno = (Integer) session.getAttribute("empno");
 		List<RsvRoom> myRsvList = roomService.searchMyRsv(empno);
 
 		model.addAttribute("myRsvList", myRsvList);
-
-		System.out.println(myRsvList);
-
+		model.addAttribute("today", today);
+		model.addAttribute("rsvcode", rsvcode);
+		
 		return "index";
 
 	}
@@ -158,14 +143,15 @@ public class RoomController {
 	@RequestMapping(value = "updateRoom.do", method = RequestMethod.POST)
 	public String updateRoom(Room room) {
 		roomService.updateRoom(room);
-		
+
 		return "redirect:roomList.do";
 	}
+
 	@RequestMapping(value = "deleteRoom.do", method = RequestMethod.POST)
 	public String deleteRoom(int rno) {
-		
+
 		roomService.deleteRoom(rno);
-		
+
 		return "redirect:roomList.do";
 	}
 

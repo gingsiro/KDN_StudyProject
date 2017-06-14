@@ -44,7 +44,7 @@
 		select rsvno, to_char(rsvdate, 'yyyy-mm-dd') rsvdate, rsvcode, rno, rs.sno sno, empno, sname
 		from rsv_room rs, study s
 		where empno = #{empno} and s.sno = rs.sno 
-		order by rsvdate
+		order by rsvdate desc, rsvcode desc
 		
 	</select>
 	

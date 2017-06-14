@@ -58,6 +58,9 @@ public class BoardController {
 	public String searchBoard(int no, Model model, int sno) {
 		model.addAttribute("board", boardService.search(no));
 
+		List<JoinStudy> joinMembers_list = joinService.searchJoinMembers(sno);
+		model.addAttribute("joinMembers_list", joinMembers_list);
+		
 		model.addAttribute("sno", sno);
 		model.addAttribute("content", "schedule/scheduleHome.jsp");
 		model.addAttribute("listform", "../board/SearchBoard.jsp");
@@ -71,6 +74,8 @@ public class BoardController {
 		System.out.println(board + "controller");
 		boardService.update(board);
 		model.addAttribute("sno", sno);
+		List<JoinStudy> joinMembers_list = joinService.searchJoinMembers(sno);
+		model.addAttribute("joinMembers_list", joinMembers_list);
 		return "redirect:boardList.do";
 
 	}
@@ -81,7 +86,9 @@ public class BoardController {
 		boardService.delete(bno);
 
 		model.addAttribute("sno", Integer.toString(sno));
-
+		List<JoinStudy> joinMembers_list = joinService.searchJoinMembers(sno);
+		model.addAttribute("joinMembers_list", joinMembers_list);
+		
 		return "redirect:boardList.do";
 
 	}
@@ -92,7 +99,8 @@ public class BoardController {
 		int studyNo = Integer.parseInt(sno);
 
 		int maxsbno = boardService.maxSbnoSearch(studyNo);
-
+		List<JoinStudy> joinMembers_list = joinService.searchJoinMembers(studyNo);
+		model.addAttribute("joinMembers_list", joinMembers_list);
 		model.addAttribute("sno", sno);
 		model.addAttribute("maxsbno", ++maxsbno);
 		model.addAttribute("content", "schedule/scheduleHome.jsp");

@@ -7,28 +7,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="insertBoard.do" >
-	<table align="center" width="300">
-			<tr><th colspan="2"> 게시글 작성 </th></tr>
-			<tr height="50"><td><label for="btitle">제목</label></td>
-			    <td><input type="text" name="btitle" id="btitle" required/>
-			    	<input type ="hidden" name="sno"  id="sno" value="${sno}"/>
-			    	<input type ="hidden" name="sbno"  id="sbno" value="${ maxsbno }"/>
-			    </td>
-			</tr>
-			<tr height="50"><td><label for="empno">아이디</label></td>
-			    <td>${ empno }<input type="hidden" name="empno" id="empno" value='${ empno }' /></td>
-			</tr>
-			<tr><td colspan="2"><label for="bcontents">내용</label></td></tr>
-			<tr><td colspan="2" align="center">
-			    <textarea name="bcontents" id="bcontents" cols="30" rows="5" required></textarea>
-			</td></tr>
-			<tr><td colspan="2" align="center">
-				
-				<input type="submit" value="작성"/>
-				<input type="reset" value="취소"/>
-			</td></tr>
-	</table>
-</form>
+	<form method="post" action="insertBoard.do" >
+		<div class="form-group">
+   			<label for="btitle_ex">글 제목</label>
+    		<input type="text" class="form-control" id="btitle" name="btitle" placeholder="제목을 입력하세요."  required>
+  		</div>
+		    	<input type ="hidden" name="sno"  id="sno" value="${sno}"/>
+		    	<input type ="hidden" name="sbno"  id="sbno" value="${ maxsbno }"/>
+		    
+		
+		<label for="empno">아이디  ${ empno }</label>
+		<input type="hidden" class="form-control" id="btitle" value=${ empno } />
+		<input type="hidden" name="empno" id="empno" value='${ empno }' />
+		    
+		
+		<div class="form-group">
+			<label for="exampleInputPassword1">글 내용</label>
+			<textarea class="form-control" name="bcontents" id="bcontents"  rows="5" id="comment" placeholder="내용을 입력하세요."></textarea>
+  		</div>
+  		<button type="submit" class="btn btn-default">제출</button><button type="reset" class="btn btn-default">취소</button>
+	</form>
 </body>
 </html>
