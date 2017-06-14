@@ -96,7 +96,10 @@
 						<td>${room.rno}</td>
 						<td>${room.sname}</td>
 						<c:choose>
-							<c:when test ='${ today <= room.rsvdate}'>
+							<c:when test ='${ today < room.rsvdate}'>
+								<td><a data-toggle="modal" data-target="#delRsv" class="red-text" onClick="deleteRsv('${room.rsvno}')"><i class="fa fa-times"></i></a></td>
+							</c:when>
+							<c:when test ='${(today == room.rsvdate) &&(rsvcode <= room.rsvcode)}'>
 								<td><a data-toggle="modal" data-target="#delRsv" class="red-text" onClick="deleteRsv('${room.rsvno}')"><i class="fa fa-times"></i></a></td>
 							</c:when>
 							<c:otherwise>
