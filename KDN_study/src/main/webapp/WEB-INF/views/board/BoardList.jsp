@@ -58,7 +58,7 @@
 				<tr align="center">
 					<td colspan="3" height="100" align="center"><select name="key"
 						id="key">
-							<option value="all">-----all-----</option>
+							<option value="all">전체</option>
 							<option value="empno" <%=pageBean.getKey("empno")%>>글쓴이</option>
 							<option value="btitle" <%=pageBean.getKey("btitle")%>>제목</option>
 							<option value="bcontents" <%=pageBean.getKey("bcontents")%>>내용</option>
@@ -68,7 +68,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<center>${pageBean.pagelink }</center>
+		<div class="bottom">
+			<center>${pageBean.pagelink }</center>
+		</div>
 	</form>
 	</div>
 

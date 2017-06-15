@@ -9,8 +9,12 @@ public class PageBean implements Serializable {
 	 * pagelink : 목록의 페이지 링크를 표시
 	 */
 	private String key, word, pagelink, sno;
-	private int pageNo, interval = 5, start=1 , end=interval;
+	private int pageNo, interval = 3, start=1 , end=interval;
 	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public PageBean(){
 		setKey("all");
 		setWord("");
