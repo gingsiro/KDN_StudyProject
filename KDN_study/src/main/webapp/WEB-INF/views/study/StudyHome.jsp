@@ -23,8 +23,8 @@ $(document).ready(function(){
 			<div class="col-sm-2">
 				<div class="sidebar left" id="side_bar">
 					<ul class="list-sidebar bg-defoult">	
-						<li> <a href="studyList.do"><i class="fa fa-calendar"></i>전체 스터디</a> </li>
-						<li> <a href="studyList.do?key=empno&word=${ empno }"><i class="fa fa-sticky-note-o"></i>나의 스터디</a> </li>
+						<li> <a href="studyList.do"><i class="fa fa-calendar"></i> <span class="nav-label">전체 스터디</span></a> </li>
+						<li> <a href="studyList.do?key=empno&word=${ empno }"><i class="fa fa-sticky-note-o"></i> <span class="nav-label">나의 스터디</span></a> </li>
 						<c:if test="${ admin == 'Y' }">
 							<li> <a href="categoryList.do"><i class="fa fa-calendar"></i>카테고리 관리</a> </li> 
 						</c:if>
