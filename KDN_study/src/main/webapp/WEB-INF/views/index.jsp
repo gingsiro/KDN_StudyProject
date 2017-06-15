@@ -146,13 +146,13 @@
                     </div>
                 </div><!--/.item-->
  
-                <div class="item" style="background-image: url(images/slider/bg3.jpg)">
+                <div class="item" style="background-image: url(images/slider/kdn.png)">
                     <div class="container">
                         <div class="row slide-margin">
                             <div class="col-sm-6">
                                 <div class="carousel-content">
-                                    <h1 class="animation animated-item-1"><font size="40px">우리가 바로 전력의 미래</font></h1>
-                                    <h1 class="animation animated-item-2">누군가<br/> 전력의 미래를 묻거든<br/> 고개를 들어 KDN을 보게 하라.</h1>
+                                    <h1 class="animation animated-item-1"><font size="40px">우리가 바로 <font color="#E2583E">전력</font>의 미래</font></h1>
+                                    <h1 class="animation animated-item-2">누군가<br/> 전력의 미래를 묻거든<br/> 고개를 들어 <strong><font color="#DD4124">KDN</font></strong>을 보게 하라.</h1>
                                 </div> 
                             </div>
                             <div class="col-sm-6 hidden-xs animation animated-item-4">
@@ -919,10 +919,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/contact.do">About Us</a></li>
                     </ul>
                 </div>
             </div>
