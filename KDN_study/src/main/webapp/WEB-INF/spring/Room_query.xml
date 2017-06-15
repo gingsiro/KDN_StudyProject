@@ -6,6 +6,7 @@
 	<select id="searchAll" parameterType="int" resultType="room">
 		select *
 		from room
+		order by rno
 	</select>
 
 	<insert id="insertRoom" parameterType="room">
@@ -18,7 +19,7 @@
 	</insert>
 	
 	<update id="updateRoom" parameterType="room">
-		update room set rno=#{rno:INTEGER}, rname=#{rname:VARCHAR}, rmax=#{rmax:INTEGER}
+		update room set rname=#{rname:VARCHAR}, rmax=#{rmax:INTEGER}
 		where rno = #{rno:INTEGER}
 	</update>
 	
