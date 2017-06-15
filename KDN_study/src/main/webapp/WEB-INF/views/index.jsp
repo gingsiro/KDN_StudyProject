@@ -131,7 +131,7 @@
                         <div class="row slide-margin">
                             <div class="col-sm-6">
                                 <div class="carousel-content">
-                                    <h1 class="animation animated-item-1">KDN 사내 스터디를 위한 최고의 서비스 !</h1>
+                                    <h1 class="animation animated-item-1"><font color="#DD4124">KDN 사내 스터디</font>를 위한 최고의 서비스 !</h1>
                                     <h2 class="animation animated-item-2">스터디 운영, 스터디룸 예약, 스케줄 관리와 같은 모든 서비스를 지원해드립니다.</h2>
                                 </div>
                             </div>
