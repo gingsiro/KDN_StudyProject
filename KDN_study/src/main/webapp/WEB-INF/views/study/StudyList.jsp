@@ -203,7 +203,7 @@
 					<td style="text-align:center">${ study.scurr }</td>
 					<td style="text-align:center">${ study.smax }</td>
 					<td>
-						<c:if test="${ index eq '0' }">
+						<c:if test="${ index eq '0' && study.scurr < study.smax}">
 							<a class="teal-text" data-keyboard="true" onClick="joinStudy('${ study.sno }')"><i class="fa fa-plus"></i>가입</a>
 						</c:if>
 					</td>
