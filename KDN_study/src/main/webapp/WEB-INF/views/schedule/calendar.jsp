@@ -92,9 +92,8 @@ $(document).ready(function() {
 		        //myModal.show();
 		        // change the border color just for fun
 		        $(this).css('border-color', 'red');
-
 		    },
-			
+		    
 			eventBorderColor: '#E2583E',
 	 		eventBackgroundColor: '#E2583E',
 	 		lang : "ko",
