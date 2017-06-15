@@ -26,6 +26,8 @@
 		ORDER BY r.rno
     ) b, ROOM room
     WHERE b.rno = room.rno 
+	ORDER BY rno
+    
 </select>
 
 	<insert id="reserveRoom" parameterType="rsvroom">
