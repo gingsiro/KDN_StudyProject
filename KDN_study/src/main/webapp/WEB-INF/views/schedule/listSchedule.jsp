@@ -88,7 +88,7 @@
 							<label for="inputScheduleName">일정 이름</label> 
 							<input type="text" class="form-control" id="sctitle" name="sctitle" placeholder="일정 이름을 작성해주세요.">
 						</div>
-						<input type="hidden" id="sch_scno" name="scno" value="" />
+						<input type="hidden" id="sch_scno" name="scno" value="1" />
 						<!-- value="2017-10-09T15:38:00" -->
 						<div class="form-group">
 							<label for="inputScheduleName">일시</label><br/>

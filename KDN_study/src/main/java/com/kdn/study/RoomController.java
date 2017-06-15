@@ -88,7 +88,7 @@ public class RoomController {
 
 		roomService.reserveRoom(rsvroom);
 
-		return "redirect:reservedRoom.do";
+		return "redirect:myRsvList.do";
 	}
 
 	@RequestMapping(value = "myRsvList.do", method = RequestMethod.GET)
