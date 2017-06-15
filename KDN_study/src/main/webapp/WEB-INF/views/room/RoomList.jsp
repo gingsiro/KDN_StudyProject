@@ -17,19 +17,19 @@ function insertForm() {
 	$('#rname').val();
 	$('#rmax').val();
 	$("#cuRoom").attr("action", "insertRoom.do");
-
+	$('#rno').attr("readOnly", false);
 	$('#modalForm').modal();
 }
 
 function updateForm(rno, rname, rmax) {
-		$('#modal-title').html("스터디룸 수정");
-		$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>수정");
-		$('#rno').val(rno);
-		$('#rname').val(rname);
-		$('#rmax').val(rmax);
-		$("#cuRoom").attr("action", "updateRoom.do");
-
-		$('#modalForm').modal();
+	$('#modal-title').html("스터디룸 수정");
+	$('#submitButtonName').html("<span class='glyphicon glyphicon-ok'></span>수정");
+	$('#rno').val(rno);
+	$('#rname').val(rname);
+	$('#rmax').val(rmax);
+	$("#cuRoom").attr("action", "updateRoom.do");
+	$('#rno').attr("readOnly", true);
+	$('#modalForm').modal();
 }
 
 function deleteRoom(rno) {
