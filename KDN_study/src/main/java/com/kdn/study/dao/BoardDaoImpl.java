@@ -2,6 +2,7 @@ package com.kdn.study.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,8 @@ public class BoardDaoImpl implements BoardDao {
 	private SqlSessionTemplate session;
 	
 	public List<Board> boardSearchAll(PageBean bean){
-		return session.selectList("board.boardSearchAll", bean);
+		RowBounds rows = new RowBounds(bean.getStart()-1, bean.getInterval());
+		return session.selectList("board.boardSearchAll", bean, rows);
 	}
 	
 	public Board search(int bno) {

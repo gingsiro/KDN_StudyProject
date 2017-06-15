@@ -109,6 +109,7 @@ public class ScheduleController
 		schedule.setScdate(mydate);
 		schedule.setScno(Integer.parseInt(scno));
 		
+		// 줄바꿈 위해
 		String title = "\\n" + schedule.getSctitle();
 		if(12 < title.length())
 		{
