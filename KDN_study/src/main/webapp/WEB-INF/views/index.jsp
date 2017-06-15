@@ -138,7 +138,7 @@
  
                             <div class="col-sm-6 hidden-xs animation animated-item-4">
                                 <div class="slider-img">
-                                    <img src="images/slider/jae_onthe_choo.png" class="img-responsive"> 
+                                    <img src="images/slider/jae_choo_m.png" class="img-responsive"> 
                                 </div>
                             </div>
  
